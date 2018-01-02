@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-nov-2017, 19:30:52
+    Author     : marcf
+*/
+
+/*body{padding: 0px; margin: 0px;}*/
+div a{text-decoration: none;}
+.bordeChuloAbajo{margin: 0px auto; font-size: 20px;}
+.bordeChuloAbajo:hover{
+      border-bottom:3px solid ;
+      border-bottom-color: blue;  }
+.bordeChulo:hover{
+    border:3px solid ;
+    border-color: blue;
+    margin: 0px;
+}
+a{text-decoration: none; color:black;}
+a:hover{text-decoration: none; color:black;}
+
+/*/ Tablets en horizonal y escritorios normales*/
+   /*------------------------------------------------------------------------- /*/
+@media (min-width: 768px) and (max-width: 1199px) {
+
+}
+ 
+/*/ Móviles en horizontal o tablets en vertical
+   ------------------------------------------------------------------------- /*/
+/*@media (max-width: 767px) { ... }
+ 
+/ Móviles en vertical
+   ------------------------------------------------------------------------- */
+/*@media (max-width: 480px) { ... }*/
