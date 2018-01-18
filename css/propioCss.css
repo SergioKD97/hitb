@@ -10,18 +10,30 @@ and open the template in the editor.
 
 /*body{padding: 0px; margin: 0px;}*/
 div a{text-decoration: none;}
-.bordeChuloAbajo{margin: 0px auto; font-size: 20px;}
+.bordeChuloAbajo{margin: 0px auto; font-size: 20px; }
 .bordeChuloAbajo:hover{
       border-bottom:3px solid ;
       border-bottom-color: blue;  }
+
+.bordeChulo{
+    border:3px red solid ;
+    margin: 0px;
+    
+}
 .bordeChulo:hover{
     border:3px solid ;
     border-color: blue;
     margin: 0px;
+    
 }
 a{text-decoration: none; color:black;}
 a:hover{text-decoration: none; color:black;}
 
+.bordesCirculares{
+ border-radius: 50% 50% 50% 50%;
+-moz-border-radius: 50% 50% 50% 50%;
+-webkit-border-radius: 50% 50% 50% 50%;
+border: 0px solid #000000;}
 /*/ Tablets en horizonal y escritorios normales*/
    /*------------------------------------------------------------------------- /*/
 @media (min-width: 768px) and (max-width: 1199px) {

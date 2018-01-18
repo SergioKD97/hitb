@@ -27,25 +27,26 @@ and open the template in the editor.
                         
             $arrayNivel1 = niveles($creaConexion, $lvl);
             for($i = 0; $i<count($arrayNivel1); $i++){
-                $nombre1 = $arrayNivel1[$i][2];
-                print('<p> '.$nombre1.' </p>');
+                $nombre1 = $arrayNivel1[$i][3];
+                $descri = $arrayNivel1[$i][4];
+                print('<p> '.$nombre1.' </p> ');
             }
         }
         
         function niveles ($creaConexion, $nivel){
             switch ($nivel){
                 case 1:
-                    $consulta1 = "select * from pecho where nivel = 1";
+                    $consulta1 = 'select * from pecho where nivel = 1 and tipo = "'.$_GET['tipo'].'"';
                     $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
                     $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
                     return $arrayConsulta1;break;   
                 case 2:
-                    $consulta1 = "select * from pecho where nivel = 2";
+                    $consulta1 = 'select * from pecho where nivel = 2 and tipo = "'.$_GET['tipo'].'"';
                     $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
                     $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
                     return $arrayConsulta1;break;
                 case 3:
-                    $consulta1 = "select * from pecho where nivel = 3";
+                    $consulta1 = 'select * from pecho where nivel = 3 and tipo = "'.$_GET['tipo'].'"';
                     $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
                     $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
                     return $arrayConsulta1;break;                    
@@ -57,39 +58,46 @@ and open the template in the editor.
         
        
         
-        <div id="menuArriba"class="row" style=" height: 50px; background-color: grey; margin-bottom: 15px;">
+        <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
             <div class="col-md-6">utlimas noticias</div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
             <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
-        <div class="row">
-            <div class="col-md-4 text-center" style="padding: 30px; background-color: #66ffc2">
-                <h1>Nivel 1</h1>
-                <div>
+            <div class="row" style="margin: 0 auto; margin-left: 5% ">
+                                
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #66ffc2">
+                <!--<div  class="text-center bordesCirculares" style="height:15vh; width: 100%; background-color: #66ffc2">-->
+                    <h1 class="text-center">Nivel 1</h1>
+                <!--</div>-->
+                <div style="width: 100%">
                     <?php
                         ejecutaConsulta($creaConexion, $lvl = 1);
                     ?>
                 </div>
-            </div>
-            <div class="col-md-4 text-center" style="padding: 30px; background-color: #66ffc2">
-                <h1>Nivel 2</h1>
-                <div>
+                </div></a>
+
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #ffcc66">
+                <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ffcc66">-->
+                    <h1>Nivel 2</h1>
+                <!--</div>-->
+                <div style="width: 100%">
                     <?php
                         ejecutaConsulta($creaConexion, $lvl = 2);
                     ?>
-                </div>            
-            
-            </div>
-            <div class="col-md-4 text-center" style="padding: 30px; background-color: #66ffc2">
-                <h1>Nivel 3</h1>
-                <div>
+                </div>
+                </div></a>
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>"><div class="col-md-3 text-center" style="margin: 3%; background-color: #ff5c33">
+                <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ff5c33">-->
+                    <h1>Nivel 3</h1>
+                <!--</div>-->
+                <div style="width: 100%">
                     <?php
                         ejecutaConsulta($creaConexion, $lvl = 3);
                     ?>
-                </div>            
-            </div>
-
+                </div>
+                </div></a>
         </div>
+           
 <!--        <div id="menuAbajo" class="row">
             <div class="col-md-12 text-center">contactanos acabar este menu</div>
         </div>-->

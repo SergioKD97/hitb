@@ -22,24 +22,21 @@ and open the template in the editor.
     <body>
         <?php require './conectarBBDD.php';?>
         
+        
         <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
             <div class="col-md-6">utlimas noticias</div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
             <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
         <div class="row">
-            <div class="col-md-12 ">
-                <?php
-                $consultaSQL = "select *  from Programas";
-                $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
-                $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
-                for ($i = 0; $i< count($arrayConsulta); $i++){
-                    $nombrePrograma = $arrayConsulta[$i][1];
-                    $foto = $arrayConsulta[$i][2];
-                print('<a href="niveles.php?tipo='.$nombrePrograma.'"><div class="col-md-4 text-center pull-left bordeChulo" style="font-size: 3vw;">'.$nombrePrograma.'<br> '
-                    . '<div class="img-responsive "><img style="width:20vw; height:20vw;" src="imagenes/'.$foto.'"></img></div> </div></a>');
-                }
-                ?>
+            <div class="col-md-3">
+                <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+            </div>
+            <div class="col-md-6" style="background-color: red;">
+                <p><b>AQUI IRA EL GIF, EL NOMBRE DEL EJERCICIO Y ABAJO LAS REPETICIONES PASAR DE UNA ACTIVIDAD A OTRA Y EN EL DIV DE LA DERECHA LA INFO DEL EJERCICIO</b></p>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-question" aria-hidden="true"></i></button>    
             </div>
         </div>
 <!--        <div id="menuAbajo" class="row">
@@ -50,4 +47,3 @@ and open the template in the editor.
     </script>
     </body>
 </html>
-
