@@ -22,10 +22,10 @@ and open the template in the editor.
     <body>
         <?php require './conectarBBDD.php';?>
         
-        <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
+        <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px; padding: 0%">
             <div class="col-md-6">utlimas noticias</div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
-            <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
+            <div class="col-md-2"><div style="height: 100%; width:15vh;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
         <div class="row">
             <div class="col-md-12 ">
@@ -36,8 +36,9 @@ and open the template in the editor.
                 for ($i = 0; $i< count($arrayConsulta); $i++){
                     $nombrePrograma = $arrayConsulta[$i][1];
                     $foto = $arrayConsulta[$i][2];
-                print('<a href="niveles.php?tipo='.$nombrePrograma.'"><div class="col-md-4 text-center pull-left bordeChulo" style="font-size: 3vw;">'.$nombrePrograma.'<br> '
-                    . '<div class="img-responsive "><img style="width:20vw; height:20vw;" src="imagenes/'.$foto.'"></img></div> </div></a>');
+                print('<a href="niveles.php?tipo='.$nombrePrograma.'">'
+                        . '<div class="col-md-4 text-center bordeChulo img-responsive" style=" margin:20px;font-size: 3vw; background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
+                    . '</div></a>');
                 }
                 ?>
             </div>

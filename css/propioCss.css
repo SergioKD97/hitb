@@ -10,14 +10,15 @@ and open the template in the editor.
 
 /*body{padding: 0px; margin: 0px;}*/
 div a{text-decoration: none;}
-.bordeChuloAbajo{margin: 0px auto; font-size: 20px; }
+.bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
 .bordeChuloAbajo:hover{
       border-bottom:3px solid ;
       border-bottom-color: blue;  }
 
 .bordeChulo{
-    border:3px red solid ;
+    border:3px white solid ;
     margin: 0px;
+    padding: 0%;
     
 }
 .bordeChulo:hover{
@@ -26,8 +27,52 @@ div a{text-decoration: none;}
     margin: 0px;
     
 }
+
+.info{
+    margin: 0%;
+    width: 50vh;
+    height: 50vh;
+    background-color:rgba(31,31,31,0.9);
+    color: white;
+    padding-top: 20%; 
+    /*Animacion background*/
+    -webkit-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s; 
+    opacity: 0;
+    
+}
+.info p{
+    /*Animacion texto*/
+    overflow: hidden;
+    position: absolute;
+    -webkit-transition: margin 0.4s;
+    -moz-transition: margin 0.4s;
+    margin-left: -100px;
+}
+
+.info:hover p{
+    overflow: hidden;
+    margin-left: 15%;
+    text-align: center;
+}
+.bordeChulo:hover *.info{
+    
+ opacity: 1; 
+ 
+}
+div div .img-responsive {
+    width: 50vh;
+    height: 50vh;
+    border:3px white solid ;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+/*para quitar cuando se marca la url*/
 a{text-decoration: none; color:black;}
 a:hover{text-decoration: none; color:black;}
+
+
+
 
 .bordesCirculares{
  border-radius: 50% 50% 50% 50%;
