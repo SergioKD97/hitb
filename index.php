@@ -25,10 +25,11 @@ and open the template in the editor.
         <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px; padding: 0%">
             <div class="col-md-6">utlimas noticias</div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
-            <div class="col-md-2"><div style="height: 100%; width:15vh;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
+            <div class="col-md-2"><!--<div style="height: 100%; width:15vh;"class="btn bordeChuloAbajo text-center">Registrate</div>--></div>
         </div>
-        <div class="row">
-            <div class="col-md-12 ">
+        <div class="row container ">
+            <div class="col-xs-3 "></div>
+            <div class=" col-xs-9 container ">
                 <?php
                 $consultaSQL = "select *  from Programas";
                 $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
@@ -37,8 +38,11 @@ and open the template in the editor.
                     $nombrePrograma = $arrayConsulta[$i][1];
                     $foto = $arrayConsulta[$i][2];
                 print('<a href="niveles.php?tipo='.$nombrePrograma.'">'
-                        . '<div class="col-md-4 text-center bordeChulo img-responsive" style=" margin:20px;font-size: 3vw; background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
+                        . '<div class="col-sm-4 col-xs-12 text-center bordeChulo img-responsive" style=" margin:20px;font-size: 3vw; background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
                     . '</div></a>');
+                if(($i == 1 || $i ==3)){
+                    print('<div style="clear: both"></div>');
+                }
                 }
                 ?>
             </div>

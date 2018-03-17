@@ -65,7 +65,7 @@ and open the template in the editor.
         </div>
             <div class="row" style="margin: 0 auto; margin-left: 5% ">
                                 
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #66ffc2">
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=1"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #66ffc2">
                 <!--<div  class="text-center bordesCirculares" style="height:15vh; width: 100%; background-color: #66ffc2">-->
                     <h1 class="text-center">Nivel 1</h1>
                 <!--</div>-->
@@ -76,7 +76,7 @@ and open the template in the editor.
                 </div>
                 </div></a>
 
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #ffcc66">
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #ffcc66">
                 <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ffcc66">-->
                     <h1>Nivel 2</h1>
                 <!--</div>-->
@@ -86,7 +86,7 @@ and open the template in the editor.
                     ?>
                 </div>
                 </div></a>
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>"><div class="col-md-3 text-center" style="margin: 3%; background-color: #ff5c33">
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=3"><div class="col-md-3 text-center" style="margin: 3%; background-color: #ff5c33">
                 <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ff5c33">-->
                     <h1>Nivel 3</h1>
                 <!--</div>-->

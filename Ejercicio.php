@@ -20,8 +20,12 @@ and open the template in the editor.
         <script src="js/jquery.raty.js" type="text/javascript"></script>
     </head>
     <body>
-        <?php require './conectarBBDD.php';?>
-        
+        <?php 
+        include './metodos.php';
+        $miMetodos = new metodos();
+        $nivel = "";
+        $contador = 1; 
+        ?>
         
         <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
             <div class="col-md-6">utlimas noticias</div>
@@ -32,18 +36,94 @@ and open the template in the editor.
             <div class="col-md-3">
                 <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
             </div>
-            <div class="col-md-6" style="background-color: red;">
+            <div class="col-md-6" id="ejercicio"  style="background-color: red;">
                 <p><b>AQUI IRA EL GIF, EL NOMBRE DEL EJERCICIO Y ABAJO LAS REPETICIONES PASAR DE UNA ACTIVIDAD A OTRA Y EN EL DIV DE LA DERECHA LA INFO DEL EJERCICIO</b></p>
+                
             </div>
             <div class="col-md-3">
-                <button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-question" aria-hidden="true"></i></button>    
+                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-question" aria-hidden="true"></i></button> 
+                <br>
+                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $contador)?></div>
             </div>
+        </div>
+        
+        <div class="row">
+            <!--<form method="post" name="formularioEjercicio">-->
+            <div class="col-md-12 text-center">      <!--ESta funcion ya hace sola que printe el numero total de ejercicios, PERO FALTA PONER POR CUAL VA-->
+                <button name="botonMenos"  
+                        class="btn btn-info" style="border-radius: 50%; font-size: 8vw;" onclick="restaEjercicio(<?php // echo $contador;?>);">
+                    <i class="fa fa-arrow-left  " aria-hidden="true"></i></button>
+                    
+                <span id="numeroEjercicio" style="font-size: 8vw;">
+                    <span id="spanContador"> 1<?php // echo $contador;?></span>
+                    /
+                    <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
+                </span>
+                <button onclick="sumaEjercicio(<?php // echo $contador;?>);" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%; font-size: 8vw;"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+            <!--</form>-->
         </div>
 <!--        <div id="menuAbajo" class="row">
             <div class="col-md-12 text-center">contactanos acabar este menu</div>
         </div>-->
     <script>
+    var ayuda = false;
+    var contador = 1; 
+    //para el boton de ayuda
+    function apareceAyuda(){
+        if(!ayuda){
+            $('#textoAyuda').css({ 'opacity': '1'});
+            ayuda = true;
+        }else{
+            $('#textoAyuda').css({ 'opacity': '0'});
+            ayuda = false;
+        }
+        return ayuda;
+    }
+    //AJAAAAAAAAAAAAAX
+    //de momento no va
+    $(document).ready(function(){
+        $('#BotonMas').click(function(){
+            console.log("el AJAX funcionaaaaaa");
+//        $("#ejercicio").load("BotonMas.html");
+                                    });
+        $('#BotonMenos').click(function(){
+        $("#ejercicio").load("BotonMenos.html");
+                                    });
+                                    });
     
+    //FIN AJAAAAAAAAAAAAAX
+    
+    
+    
+    
+    function sumaEjercicio (){
+       // actualización de contador
+        if(contador != $('#spanTotal').text()){ // esta bien esta comparacion, no poner otro igual
+        contador++;
+        $('#spanContador').text(contador);
+        $('#spanTotal').text($('#spanTotal').text());
+        
+        return contador;
+        }
+        // ahora actualizar el contenido del div que muestra el gif
+        
+
+        
+    }
+    function restaEjercicio (){
+       // actualización de contador
+        if( contador !== 1){
+        contador--;
+        $('#spanContador').text(contador);
+        $('#spanTotal').text($('#spanTotal').text());
+        return contador;
+        }
+
+       // ahora actualizar el contenido del div que muestra el gif
+    }
+    
+
     </script>
     </body>
 </html>
