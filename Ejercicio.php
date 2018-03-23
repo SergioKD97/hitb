@@ -24,9 +24,11 @@ and open the template in the editor.
         include './metodos.php';
         $miMetodos = new metodos();
         $nivel = "";
-        $contador = 1; 
+        //$contador = 1; 
+//        $contador = $_POST['postContador'];
         ?>
-        
+
+
         <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
             <div class="col-md-6">utlimas noticias</div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
@@ -36,14 +38,14 @@ and open the template in the editor.
             <div class="col-md-3">
                 <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
             </div>
-            <div class="col-md-6" id="ejercicio"  style="background-color: red;">
+            <div class="col-md-6" id="ejercicio"   style="background-color: red;">
                 <p><b>AQUI IRA EL GIF, EL NOMBRE DEL EJERCICIO Y ABAJO LAS REPETICIONES PASAR DE UNA ACTIVIDAD A OTRA Y EN EL DIV DE LA DERECHA LA INFO DEL EJERCICIO</b></p>
                 
             </div>
             <div class="col-md-3">
                 <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-question" aria-hidden="true"></i></button> 
                 <br>
-                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $contador)?></div>
+                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
         </div>
         
@@ -60,13 +62,14 @@ and open the template in the editor.
                     <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
                 </span>
                 <button onclick="sumaEjercicio(<?php // echo $contador;?>);" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%; font-size: 8vw;"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-            </div>
+            </div> 
             <!--</form>-->
         </div>
+        <div id="invisible"></div>
 <!--        <div id="menuAbajo" class="row">
             <div class="col-md-12 text-center">contactanos acabar este menu</div>
         </div>-->
-    <script>
+            <script>
     var ayuda = false;
     var contador = 1; 
     //para el boton de ayuda
@@ -85,7 +88,7 @@ and open the template in the editor.
     $(document).ready(function(){
         $('#BotonMas').click(function(){
             console.log("el AJAX funcionaaaaaa");
-//        $("#ejercicio").load("BotonMas.html");
+        $("#ejercicio").load("BotonMas.html");
                                     });
         $('#BotonMenos').click(function(){
         $("#ejercicio").load("BotonMenos.html");
@@ -103,6 +106,10 @@ and open the template in the editor.
         contador++;
         $('#spanContador').text(contador);
         $('#spanTotal').text($('#spanTotal').text());
+       // $("#").load("BotonMas.html");
+      //  $.post('AjaxGuarro.php',{postContador:contador});
+       $('#ejercicio').load('AjaxGuarro.php?');
+       
         
         return contador;
         }

@@ -26,7 +26,7 @@ and open the template in the editor.
         class metodos {
         //PAGINA EJERCICIOS
         function numeroEjercicio($creaConexion){
-        $consultaSQL = 'select count(*) from pecho where tipo="'.$_GET['tipo'].'" and nivel='.$_GET['nivel'].'';
+        $consultaSQL = 'select count(*) from '.$_GET['tipo'].' where nivel='.$_GET['nivel'].'';
         $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
         $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
         echo $arrayConsulta[0][0];
@@ -36,7 +36,7 @@ and open the template in the editor.
         function consultaBotonAyuda($creaConexion, $contador){
            
         // ESTA CONSULTASQL ESTA MAL, HAY QUE CORREGIRLA
-        $consultaSQL = 'select descripcion from pecho where tipo="'.$_GET['tipo'].'" and nivel='.$_GET['nivel'].'';
+        $consultaSQL = 'select descripcion from '.$_GET['tipo'].' where nivel='.$_GET['nivel'].'';
         $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
         $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
         echo $arrayConsulta[$contador][0];
@@ -45,7 +45,7 @@ and open the template in the editor.
     }
     
     function colocaEjercicioPrincipal($creaConexion){
-        $sql = 'select * from pecho where tipo="'.$_GET['tipo'].'" and ';
+        $sql = 'select * from '.$_GET['tipo'].' where id = '; //ACABAAAAAAAAAAAAAAAAAAAAR
     }
         // FIN PAGINA EJERCICIOS
     
