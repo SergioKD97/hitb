@@ -5,10 +5,113 @@ and open the template in the editor.
 */
 /* 
     Created on : 22-nov-2017, 19:30:52
-    Author     : marcf
+    Author     : marcf y Sergio
 */
 
-/*body{padding: 0px; margin: 0px;}*/
+
+                            /*MENU*/
+        
+#main {
+            position: relative;
+            min-height: 700px;
+        }
+        header {
+            background: #322E2D;
+            height: 70px;
+            width: 100%;
+            display: table;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+        header .container {
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        header .header-logo {
+            float: left;
+            height: 100%;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        #menu{
+            float: left;
+            margin-top: 30px;
+        }
+        #menu ul.top-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+        
+        #menu ul.top-menu li {
+            display: inline-block;
+            float: left;
+            margin: 0;
+            margin-right: 10px;
+            position: relative;
+            hover color: #E75A3A;
+        }
+        
+#menu .sub-container ul.sub-menu li:hover a{ background: #E75A3A !important; color: #fff !important;}
+#menu ul.top-menu li:hover .sub-container ul.sub-menu li a{ color: #ccc;}
+#menu ul.top-menu li:hover a{color: #fff; background: #E75A3A;}
+        
+        
+        
+        
+        
+        
+        #menu ul.top-menu li a {
+            height: 45px;
+            line-height: 45px;
+            margin: 0;
+            padding: 0 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+            display: inline-block;
+            border-left: none;
+            position: relative;
+            margin: 18px 0;
+        }
+        
+  
+        #menu ul.top-menu li a span.li-text {
+            display: block;
+            text-align: center;
+        }
+
+        #logo {
+            background-image: url(../imagenes/logo.jpg);
+            background-position: 50% 25%;
+            background-size: cover;
+            height: 93px;
+            width: 154px;
+            margin: 0px 21px;
+            display: inline-block;
+        }
+        
+        a {
+            color: #333;
+            text-decoration: none !important;
+            outline: none;
+            -moz-outline: none;
+        }
+                            
+                            
+
+
 
 /* INDEXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 div a{text-decoration: none;}
@@ -86,9 +189,7 @@ a:hover{text-decoration: none; color:black;}
 border: 0px solid #000000;}
 /*/ Tablets en horizonal y escritorios normales*/
    /*------------------------------------------------------------------------- /*/
-@media (min-width: 768px) and (max-width: 1199px) {
 
-}
  
 /*/ Móviles en horizontal o tablets en vertical
    ------------------------------------------------------------------------- /*/

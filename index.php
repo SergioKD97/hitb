@@ -19,14 +19,41 @@ and open the template in the editor.
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/jquery.raty.js" type="text/javascript"></script>
     </head>
-    <body>
+    <style>
+    
+    
+    </style>
+    
+    
+    <body class="body-wrap-home">
         <?php require './conectarBBDD.php';?>
         
-        <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px; padding: 0%">
-            <div class="col-md-6">utlimas noticias</div>
-            <div class="col-md-4"><a href="index.php">logo</a></div>
-            <div class="col-md-2"><!--<div style="height: 100%; width:15vh;"class="btn bordeChuloAbajo text-center">Registrate</div>--></div>
+   <div id="main" class="main-wrap-home">
+    <header>
+        <div class="container" >
+            <div class="header-logo">
+                <h1>
+                    <a a href="index.php" id="logo"></a>
+                </h1>
+            </div>
+            <div class="" id="menu">
+                
+                    <ul class="top-menu">
+                        <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
+                        <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
+                        <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
+                        
+                    </ul>
+                    <div class="clearfix"></div>
+            </div>
         </div>
+    </header>
+
+        
+        
+        
+        
+        
         <div class="row container ">
             <div class="col-xs-3 "></div>
             <div class=" col-xs-9 container ">
@@ -47,12 +74,18 @@ and open the template in the editor.
                 ?>
             </div>
         </div>
-<!--        <div id="menuAbajo" class="row">
+        <div id="menuAbajo" class="row">
             <div class="col-md-12 text-center">contactanos acabar este menu</div>
         </div>-->
     <script>
     
     </script>
+    
+    
+    
+    
+   </div>
+    
     </body>
 </html>
 
