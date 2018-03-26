@@ -41,14 +41,16 @@ and open the template in the editor.
             z-index: 2;
         }
         #menu{
-            float: left;
-            margin-top: 33px;
         }
+        
         #menu ul.top-menu {
             list-style: none;
             padding: 0;
             margin: 0;
             display: block;
+            display: flex;
+            justify-content: center;
+            
         }
         
         #menu ul.top-menu li {
@@ -100,7 +102,6 @@ and open the template in the editor.
             width: 154px;
             margin: 0px 21px;
             display: inline-block;
-            float: right;
         }
         
         
@@ -118,6 +119,7 @@ and open the template in the editor.
             padding: 50px 25px;
             position: relative;
             z-index: 2;
+            
         }
         
         /*separacion entre menu y contenido*/        
@@ -136,9 +138,12 @@ and open the template in the editor.
         
         
         #HitBee{
-            font-size: 40px;
-            color: white;
-            text-align: center;
+            background-image: url(../imagenes/hitbee.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 87px;
+            width: 192px;
+            display: inline-block;
         }
         
 

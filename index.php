@@ -6,16 +6,15 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
         <title>Hitbee</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
+
         
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/fontawesome-all.css" rel="stylesheet" type="text/css"/>
-        <link href="css/fontawesome-all.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
         
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
         
@@ -40,16 +39,16 @@ and open the template in the editor.
     <header>
         <div class="row container" >
             
-            <div class="col-xs-5 col-s-5  col-lg-3  header-logo">
+            <div class="col-s-3 col-lg-3  header-logo">
                 <h1>
                     <a a href="index.php" id="logo"></a>
                 </h1>
             </div>
             
-            <div class="col-xs-5 col-lg-7">
+            <div class="col-s-6 col-lg-6" style="text-align: center">
                 
                 <div id="HitBee">
-                    HIT BEE
+                   
                 </div>
                 
                 <div style="clear: both"></div>
@@ -66,7 +65,7 @@ and open the template in the editor.
                 
             </div>
             
-            <div id="top-user" class="col-xs-2 col-lg-2">
+            <div id="top-user" class="col-s-3 col-lg-2">
             
                 <div id="marginLogin">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
