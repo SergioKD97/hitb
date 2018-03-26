@@ -11,8 +11,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
+        
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/fontawesome-all.css" rel="stylesheet" type="text/css"/>
+        <link href="css/fontawesome-all.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
+        
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
+        
+        
         
         <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
         <script src="js/jquery.js" type="text/javascript"></script>
@@ -22,6 +29,7 @@ and open the template in the editor.
     <style>
     
     
+        
     </style>
     
     
@@ -30,31 +38,56 @@ and open the template in the editor.
         
    <div id="main" class="main-wrap-home">
     <header>
-        <div class="container" >
-            <div class="header-logo">
+        <div class="row container" >
+            
+            <div class="col-xs-5 col-s-5  col-lg-3  header-logo">
                 <h1>
                     <a a href="index.php" id="logo"></a>
                 </h1>
             </div>
-            <div class="" id="menu">
+            
+            <div class="col-xs-5 col-lg-7">
                 
+                <div id="HitBee">
+                    HIT BEE
+                </div>
+                
+                <div style="clear: both"></div>
+                
+                <div  id="menu">
                     <ul class="top-menu">
                         <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
-                        
+                        <li><a href="Productos.php"><span class="li-text"> Noticias </span></a></li>
+                        <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
+                        <li><a href="Productos.php"><span class="li-text"> Sobre Nosotros </span></a></li>
                     </ul>
-                    <div class="clearfix"></div>
+                </div>
+                
+                
             </div>
-        </div>
+            
+            <div id="top-user" class="col-xs-2 col-lg-2">
+            
+                <div id="marginLogin">
+                    <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
+                        <i class="fas fa-user"></i> LOGIN
+                    </a>                
+                
+                </div>
+                    
+            
+            
+            
+            </div>
+            
     </header>
-
+       <div id="headerPad" ></div>
         
         
         
         
         
-        <div class="row container ">
+       <div class="row container ">
             <div class="col-xs-3 "></div>
             <div class=" col-xs-9 container ">
                 <?php

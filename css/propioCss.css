@@ -11,7 +11,7 @@ and open the template in the editor.
 
                             /*MENU*/
         
-#main {
+        #main {
             position: relative;
             min-height: 700px;
         }
@@ -42,7 +42,7 @@ and open the template in the editor.
         }
         #menu{
             float: left;
-            margin-top: 30px;
+            margin-top: 33px;
         }
         #menu ul.top-menu {
             list-style: none;
@@ -60,18 +60,18 @@ and open the template in the editor.
             hover color: #E75A3A;
         }
         
-#menu .sub-container ul.sub-menu li:hover a{ background: #E75A3A !important; color: #fff !important;}
-#menu ul.top-menu li:hover .sub-container ul.sub-menu li a{ color: #ccc;}
-#menu ul.top-menu li:hover a{color: #fff; background: #E75A3A;}
-        
-        
+        #menu .sub-container ul.sub-menu li:hover a{ background: #E75A3A !important; color: #fff !important;}
+        #menu ul.top-menu li:hover .sub-container ul.sub-menu li a{ color: #ccc;}
+        #menu ul.top-menu li:hover a{color: #fff; background: #E75A3A;}
+
+
         
         
         
         
         #menu ul.top-menu li a {
-            height: 45px;
-            line-height: 45px;
+            height: 70px;
+            line-height: 70px;
             margin: 0;
             padding: 0 15px;
             text-align: center;
@@ -96,11 +96,14 @@ and open the template in the editor.
             background-image: url(../imagenes/logo.jpg);
             background-position: 50% 25%;
             background-size: cover;
-            height: 93px;
+            height: 161px;
             width: 154px;
             margin: 0px 21px;
             display: inline-block;
+            float: right;
         }
+        
+        
         
         a {
             color: #333;
@@ -108,13 +111,39 @@ and open the template in the editor.
             outline: none;
             -moz-outline: none;
         }
-                            
-                            
-
+        
+        #top-user {
+            float: right;
+            height: 70px;
+            padding: 50px 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /*separacion entre menu y contenido*/        
+        #headerPad {
+            height: 200px;
+        }
+        
+        #marginLogin{
+            margin-top: 10px;
+        }
+                         
+        #loginPop{
+            color: white;
+            font-size: 50px
+        }
+        
+        
+        #HitBee{
+            font-size: 40px;
+            color: white;
+            text-align: center;
+        }
+        
 
 
 /* INDEXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
-div a{text-decoration: none;}
 .bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
 .bordeChuloAbajo:hover{
       border-bottom:3px solid ;
