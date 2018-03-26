@@ -1,25 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Musculo</title>
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
-        
-        <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
-        <script src="js/jquery.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/jquery.raty.js" type="text/javascript"></script>
-    </head>
-    <body>
+
         <?php require './conectarBBDD.php';?>
         
         <?php 
@@ -34,7 +14,7 @@ and open the template in the editor.
         
 
         function consultaBotonAyuda($creaConexion, $contador){
-           
+            
         // ESTA CONSULTASQL ESTA MAL, HAY QUE CORREGIRLA
         $consultaSQL = 'select descripcion from '.$_GET['tipo'].' where nivel='.$_GET['nivel'].'';
         $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
@@ -50,7 +30,3 @@ and open the template in the editor.
         // FIN PAGINA EJERCICIOS
     
         ?>
-        
-       
-    </body>
-</html>

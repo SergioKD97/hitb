@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Musculo</title>
+        <title>Hitbee</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
@@ -72,6 +72,9 @@ and open the template in the editor.
             <script>
     var ayuda = false;
     var contador = 1; 
+    //Para cargar el 1 ejercicio
+    actualizaAjax();
+    
     //para el boton de ayuda
     function apareceAyuda(){
         if(!ayuda){
@@ -83,22 +86,12 @@ and open the template in the editor.
         }
         return ayuda;
     }
-    //AJAAAAAAAAAAAAAX
-    //de momento no va
-    $(document).ready(function(){
-        $('#BotonMas').click(function(){
-            console.log("el AJAX funcionaaaaaa");
-        $("#ejercicio").load("BotonMas.html");
-                                    });
-        $('#BotonMenos').click(function(){
-        $("#ejercicio").load("BotonMenos.html");
-                                    });
-                                    });
-    
-    //FIN AJAAAAAAAAAAAAAX
     
     
-    
+    function actualizaAjax(){
+         $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
+         $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
+    }
     
     function sumaEjercicio (){
        // actualización de contador
@@ -106,11 +99,7 @@ and open the template in the editor.
         contador++;
         $('#spanContador').text(contador);
         $('#spanTotal').text($('#spanTotal').text());
-       // $("#").load("BotonMas.html");
-      //  $.post('AjaxGuarro.php',{postContador:contador});
-       $('#ejercicio').load('AjaxGuarro.php?');
-       
-        
+        actualizaAjax();
         return contador;
         }
         // ahora actualizar el contenido del div que muestra el gif
@@ -124,6 +113,7 @@ and open the template in the editor.
         contador--;
         $('#spanContador').text(contador);
         $('#spanTotal').text($('#spanTotal').text());
+        actualizaAjax();
         return contador;
         }
 
