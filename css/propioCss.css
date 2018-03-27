@@ -41,6 +41,7 @@ and open the template in the editor.
             z-index: 2;
         }
         #menu{
+            
         }
         
         #menu ul.top-menu {
@@ -128,12 +129,15 @@ and open the template in the editor.
         }
         
         #marginLogin{
-            margin-top: 10px;
+            margin-top: 64px;
+            margin-left: 12%;
         }
                          
         #loginPop{
             color: white;
-            font-size: 50px
+            font-size: 50px;
+            float: right;
+            margin-right: 10%;
         }
         
         

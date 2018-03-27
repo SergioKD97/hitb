@@ -69,7 +69,7 @@ and open the template in the editor.
                 
             </div>
             
-            <div id="top-user" class="col-s-3 col-lg-2">
+            <div id="top-user" class="col-s-3 col-md-2 col-lg-3">
             
                 <div id="marginLogin">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
