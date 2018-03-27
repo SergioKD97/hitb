@@ -11,9 +11,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
         <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -36,14 +35,14 @@ and open the template in the editor.
         </div>
         <div class="row">
             <div class="col-md-3">
-                <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-arrow-left" ></i></button></a>
             </div>
             <div class="col-md-6" id="ejercicio"   style="background-color: red;">
                 <p><b>AQUI IRA EL GIF, EL NOMBRE DEL EJERCICIO Y ABAJO LAS REPETICIONES PASAR DE UNA ACTIVIDAD A OTRA Y EN EL DIV DE LA DERECHA LA INFO DEL EJERCICIO</b></p>
                 
             </div>
             <div class="col-md-3">
-                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="fa fa-question" aria-hidden="true"></i></button> 
+                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
                 <br>
                 <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
@@ -54,14 +53,14 @@ and open the template in the editor.
             <div class="col-md-12 text-center">      <!--ESta funcion ya hace sola que printe el numero total de ejercicios, PERO FALTA PONER POR CUAL VA-->
                 <button name="botonMenos"  
                         class="btn btn-info" style="border-radius: 50%; font-size: 8vw;" onclick="restaEjercicio(<?php // echo $contador;?>);">
-                    <i class="fa fa-arrow-left  " aria-hidden="true"></i></button>
+                    <i class="icon-arrow-left  "></i></button>
                     
                 <span id="numeroEjercicio" style="font-size: 8vw;">
                     <span id="spanContador"> 1<?php // echo $contador;?></span>
                     /
                     <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
                 </span>
-                <button onclick="sumaEjercicio(<?php // echo $contador;?>);" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%; font-size: 8vw;"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                <button onclick="sumaEjercicio(<?php // echo $contador;?>);" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%; font-size: 8vw;"><i class="icon-arrow-right" ></i></button>
             </div> 
             <!--</form>-->
         </div>

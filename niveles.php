@@ -11,9 +11,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!--<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>-->
+        <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
-        
         <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -64,6 +64,7 @@ and open the template in the editor.
             <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
             <div class="row" style="margin: 0 auto; margin-left: 5% ">
+                
                                 
                 <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=1"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #66ffc2">
                 <!--<div  class="text-center bordesCirculares" style="height:15vh; width: 100%; background-color: #66ffc2">-->
