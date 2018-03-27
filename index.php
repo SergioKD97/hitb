@@ -13,11 +13,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
-
-        
-        
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
-        
+
+        <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
         
         
         <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
@@ -58,7 +56,8 @@ and open the template in the editor.
                         <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
                         <li><a href="Productos.php"><span class="li-text"> Noticias </span></a></li>
                         <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Sobre Nosotros </span></a></li>
+                        <li><a href="Productos.php"><span class="ac_unit"> Sobre Nosotros </span></a></li>
+                        
                     </ul>
                 </div>
                 
@@ -69,7 +68,7 @@ and open the template in the editor.
             
                 <div id="marginLogin">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
-                        <i class="fas fa-user"></i> LOGIN
+                        <span class="icon-user-circle"></span> LOGIN
                     </a>                
                 
                 </div>
