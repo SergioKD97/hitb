@@ -92,12 +92,12 @@ and open the template in the editor.
 <div class="modal fade" id="ModalContenedor" tabindex="-1" role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+        <div class="modal-header">
           <!--Este boton es la x de arriba a la derecha-->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-          <h3 class="modal-title text-center" id="tituloModal"><b>Formulario de registro</b></h3>
+          <h3 class="modal-title text-center"  id="tituloModal"><b>Formulario de registro</b></h3>
       </div>
         
       <div class="modal-body">

@@ -14,6 +14,7 @@ and open the template in the editor.
         <!--<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>-->
         <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
+        <link href="css/niveles/prueba.css" rel="stylesheet" type="text/css"/>
         <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -66,44 +67,64 @@ and open the template in the editor.
             <div class="row" style="margin: 0 auto; margin-left: 5% ">
                 
                                 
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=1"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #66ffc2">
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=1"><div class="col-md-3 text-center" style="margin: 3% ; ">
                 <!--<div  class="text-center bordesCirculares" style="height:15vh; width: 100%; background-color: #66ffc2">-->
-                    <h1 class="text-center">Nivel 1</h1>
+                <h1 id="titulo1" class="text-center logo">Nivel 1</h1>
                 <!--</div>-->
-                <div style="width: 100%">
+                <div id="texto1" style="width: 100%; color: white;">
                     <?php
                         ejecutaConsulta($creaConexion, $lvl = 1);
                     ?>
                 </div>
                 </div></a>
 
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2"><div class="col-md-3 text-center" style="margin: 3% ; background-color: #ffcc66">
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2"><div class="col-md-3 text-center" style="margin: 3% ;">
                 <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ffcc66">-->
-                    <h1>Nivel 2</h1>
+                    <h1 id="titulo2"  class="text-center logo">Nivel 2</h1>
                 <!--</div>-->
-                <div style="width: 100%">
+                <div id="texto2" style="width: 100%; color: white;">
                     <?php
                         ejecutaConsulta($creaConexion, $lvl = 2);
                     ?>
                 </div>
                 </div></a>
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=3"><div class="col-md-3 text-center" style="margin: 3%; background-color: #ff5c33">
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=3"><div class="col-md-3 text-center" style="margin: 3%;">
                 <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ff5c33">-->
-                    <h1>Nivel 3</h1>
+                    <h1 id="titulo3"  class="text-center logo">Nivel 3</h1>
                 <!--</div>-->
-                <div style="width: 100%">
+                <div id="texto3" style="width: 100%; color: white;">
                     <?php
                         ejecutaConsulta($creaConexion, $lvl = 3);
                     ?>
                 </div>
                 </div></a>
         </div>
-           
 <!--        <div id="menuAbajo" class="row">
             <div class="col-md-12 text-center">contactanos acabar este menu</div>
         </div>-->
     <script>
-    
+        //ocultar y desocultar los textos
+        $('#texto1').hide();
+        $('#texto2').hide();
+        $('#texto3').hide();
+        
+        $("#titulo1").hover(function(){
+		$("#texto1").fadeIn('fast');
+		}, function(){
+			$('#texto1').hide();
+		});
+        $("#titulo2").hover(function(){
+		$("#texto2").fadeIn('fast');
+		}, function(){
+			$('#texto2').hide();
+		});
+        $("#titulo3").hover(function(){
+		$("#texto3").fadeIn('fast');
+		}, function(){
+			$('#texto3').hide();
+		});
+               
+        //fin ocultar y desocultar los textos
     </script>
     </body>
 </html>
