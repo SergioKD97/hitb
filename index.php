@@ -74,7 +74,7 @@ and open the template in the editor.
                 <div id="marginLogin">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
-                        <i class="icon-user-circle" data-toggle="modal" data-target="#ModalContenedor"></i> LOGIN
+                       <i class="icon-user-circle" data-toggle="modal" data-target="#ModalContenedor"></i> <span id="letraLogin">LOGIN</span>
                     </a>                
                 
                 </div>

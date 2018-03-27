@@ -73,12 +73,12 @@ and open the template in the editor.
         
         
         #menu ul.top-menu li a {
-            height: 70px;
-            line-height: 70px;
+            height: 60px;
+            line-height: 60px;
             margin: 0;
             padding: 0 15px;
             text-align: center;
-            font-size: 24px;
+            font-size: 25px;
             font-weight: 400;
             color: rgba(255,255,255,0.7);
             background: rgba(255,255,255,0.05);
@@ -86,7 +86,7 @@ and open the template in the editor.
             display: inline-block;
             border-left: none;
             position: relative;
-            margin: 18px 0;
+            margin: 23px 0;
         }
         
   
@@ -116,7 +116,7 @@ and open the template in the editor.
         
         #top-user {
             float: right;
-            height: 70px;
+            height: 198px;
             padding: 50px 25px;
             position: relative;
             z-index: 2;
@@ -129,15 +129,15 @@ and open the template in the editor.
         }
         
         #marginLogin{
-            margin-top: 64px;
+            margin-top: 74px;
             margin-left: 12%;
         }
                          
         #loginPop{
             color: white;
-            font-size: 50px;
-            float: right;
+            font-size: 42px;
             margin-right: 10%;
+            font-family: -webkit-pictograph;
         }
         
         
@@ -151,6 +151,8 @@ and open the template in the editor.
         }
         
 
+        
+        
 
 /* INDEXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 .bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
@@ -227,7 +229,16 @@ a:hover{text-decoration: none; color:black;}
 border: 0px solid #000000;}
 /*/ Tablets en horizonal y escritorios normales*/
    /*------------------------------------------------------------------------- /*/
+@media (max-width: 1299px) { 
 
+    
+    #loginPop{
+            font-size: 36px;
+        }
+
+
+
+}
  
 /*/ Móviles en horizontal o tablets en vertical
    ------------------------------------------------------------------------- /*/
