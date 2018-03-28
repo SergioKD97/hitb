@@ -42,19 +42,21 @@ and open the template in the editor.
     <header>
         <div class="row container" >
             
-            <div class="col-s-3 col-lg-3  header-logo">
+            <div class="menu_bar  col-xs-3 col-s-3 col-md-3 col-lg-3">
+                <a href="#" class="bt-menu iconoMenu"><span class="icon-bars"></span></a>
+            </div>
+            
+            <div class=" header-logo col-lg-3">
                 <h1>
                     <a a href="index.php" id="logo"></a>
                 </h1>
             </div>
             
-            <div class="col-s-6 col-lg-6" style="text-align: center">
+            <div class="col-xs-6 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
                 <div id="HitBee">
                    
                 </div>
-                
-                <div style="clear: both"></div>
                 
                 <div  id="menu">
                     <ul class="top-menu">
@@ -69,12 +71,12 @@ and open the template in the editor.
                 
             </div>
             
-            <div id="top-user" class="col-s-3 col-md-2 col-lg-3">
+            <div id="top-user" class="col-xs-3 col-s-3 col-md-3  col-lg-3">
             
                 <div id="marginLogin">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
-                       <i class="icon-user-circle" data-toggle="modal" data-target="#ModalContenedor"></i> <span id="letraLogin">LOGIN</span>
+                       <i class="icon-user-circle iconoLogin" data-toggle="modal" data-target="#ModalContenedor"></i> <span class="letraLogin">LOGIN</span>
                     </a>                
                 
                 </div>
@@ -85,8 +87,21 @@ and open the template in the editor.
             </div>
             
     </header>
-       <div id="headerPad" ></div>
+                  
+    <div class="headerPad" ></div>
         
+    
+    
+                <nav class="navResponsive">
+                    <ul class="ulResponsive">
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-house spanResponsive"></span>Inicio</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-suitcase spanResponsive"></span>Trabajos</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-earth spanResponsive"></span>Servicios</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-mail spanResponsive"></span>Contacto</a></li>
+                    </ul>
+		</nav>
+    
+    
         <!--****MODAAAAAAAAAAAAAAAAAAAAAL*****-->
 <!-- Modal -->
 <div class="modal fade" id="ModalContenedor" tabindex="-1" role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
@@ -131,6 +146,8 @@ and open the template in the editor.
         
         <!--**** FIN  MODAAAAAAAAAAAAAAAAAAAAAL*****-->
         
+        <div container></div>
+        
         
         
        <div class="row container ">
@@ -161,3 +178,34 @@ and open the template in the editor.
     </body>
 </html>
 
+<script>
+    
+$(document).ready(main);
+ 
+var contador = 1;
+ 
+function main () {
+	$('.iconoMenu').click(function(){
+		if (contador == 1) {
+			$('.navResponsive').animate({
+				left: '0'
+			});
+			contador = 0;
+		} else {
+			contador = 1;
+			$('.navResponsive').animate({
+				left: '-100%'
+			});
+		}
+	});
+ 
+	// Mostramos y ocultamos submenus
+	$('.submenu').click(function(){
+		$(this).children('.children').slideToggle();
+	});
+}
+    
+    
+    
+    
+</script>

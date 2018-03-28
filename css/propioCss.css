@@ -9,241 +9,377 @@ and open the template in the editor.
 */
 
 
-                            /*MENU*/
+                                    /*MENUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU*/
         
-        #main {
-            position: relative;
-            min-height: 700px;
-        }
-        header {
-            background: #322E2D;
-            height: 70px;
-            width: 100%;
-            display: table;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 99;
-        }
-        header .container {
-            width: 100%;
-            padding: 0;
-            margin: 0 auto;
-        }
+    #main {
+        position: relative;
+        min-height: 700px;
+    }
+    header {
+        background: #322E2D;
+        height: 70px;
+        width: 100%;
+        display: table;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+    }
+    header .container {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
 
-        header .header-logo {
-            float: left;
-            height: 100%;
-            display: inline-block;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        #menu{
-            
-        }
-        
-        #menu ul.top-menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: block;
-            display: flex;
-            justify-content: center;
-            
-        }
-        
-        #menu ul.top-menu li {
-            display: inline-block;
-            float: left;
-            margin: 0;
-            margin-right: 10px;
-            position: relative;
-            hover color: #E75A3A;
-        }
-        
-        #menu .sub-container ul.sub-menu li:hover a{ background: #E75A3A !important; color: #fff !important;}
-        #menu ul.top-menu li:hover .sub-container ul.sub-menu li a{ color: #ccc;}
-        #menu ul.top-menu li:hover a{color: #fff; background: #E75A3A;}
+    .menu_bar{
+        display: none;
 
+    }
 
-        
-        
-        
-        
-        #menu ul.top-menu li a {
-            height: 60px;
-            line-height: 60px;
-            margin: 0;
-            padding: 0 15px;
-            text-align: center;
-            font-size: 25px;
-            font-weight: 400;
-            color: rgba(255,255,255,0.7);
-            background: rgba(255,255,255,0.05);
-            border-radius: 3px;
-            display: inline-block;
-            border-left: none;
-            position: relative;
-            margin: 23px 0;
-        }
-        
-  
-        #menu ul.top-menu li a span.li-text {
-            display: block;
-            text-align: center;
-        }
+    .header-logo {
+        float: left;
+        height: 100%;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+    #menu{
+        display: block;
+    }
 
-        #logo {
-            background-image: url(../imagenes/logo.jpg);
-            background-position: 50% 25%;
-            background-size: cover;
-            height: 161px;
-            width: 154px;
-            margin: 0px 21px;
-            display: inline-block;
-        }
-        
-        
-        
-        a {
-            color: #333;
-            text-decoration: none !important;
-            outline: none;
-            -moz-outline: none;
-        }
-        
-        #top-user {
-            float: right;
-            height: 198px;
-            padding: 50px 25px;
-            position: relative;
-            z-index: 2;
-            
-        }
-        
-        /*separacion entre menu y contenido*/        
-        #headerPad {
-            height: 200px;
-        }
-        
-        #marginLogin{
-            margin-top: 74px;
-            margin-left: 12%;
-        }
-                         
-        #loginPop{
-            color: white;
-            font-size: 42px;
-            margin-right: 10%;
-            font-family: -webkit-pictograph;
-        }
-        
-        
-        #HitBee{
-            background-image: url(../imagenes/hitbee.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            height: 87px;
-            width: 192px;
-            display: inline-block;
-        }
-        
+    #menu ul.top-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: block;
+        display: flex;
+        justify-content: center;
 
-        
-        
+    }
 
-/* INDEXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
-.bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
-.bordeChuloAbajo:hover{
-      border-bottom:3px solid ;
-      border-bottom-color: blue;  }
+    #menu ul.top-menu li {
+        display: inline-block;
+        float: left;
+        margin: 0;
+        margin-right: 10px;
+        position: relative;
+        hover color: #E75A3A;
+    }
 
-.bordeChulo{
-    border:3px white solid ;
-    margin: 0px;
-    padding: 0%;
-    
-}
-.bordeChulo:hover{
-    border:3px solid ;
-    border-color: blue;
-    margin: 0px;
-    
-}
-
-.info{
-    margin: 0%;
-    width: 50vh;
-    height: 50vh;
-    background-color:rgba(31,31,31,0.9);
-    color: white;
-    padding-top: 20%; 
-    /*Animacion background*/
-    -webkit-transition: opacity 0.4s;
-    -moz-transition: opacity 0.4s; 
-    opacity: 0;
-    
-}
-.info p{
-    /*Animacion texto*/
-    overflow: hidden;
-    position: absolute;
-    -webkit-transition: margin 0.4s;
-    -moz-transition: margin 0.4s;
-    margin-left: -100px;
-}
-
-.info:hover p{
-    overflow: hidden;
-    margin-left: 15%;
-    text-align: center;
-}
-.bordeChulo:hover *.info{
-    
- opacity: 1; 
- 
-}
-div div .img-responsive {
-    width: 50vh;
-    height: 50vh;
-    border:3px white solid ;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-/*para quitar cuando se marca la url*/
-a{text-decoration: none; color:black;}
-a:hover{text-decoration: none; color:black;}
-
-/*EJERCICIOOOOOOOOOOOOOOOOS*/
-#textoAyuda{
-    opacity: 0;
-}
+    #menu .sub-container ul.sub-menu li:hover a{ background: #E75A3A !important; color: #fff !important;}
+    #menu ul.top-menu li:hover .sub-container ul.sub-menu li a{ color: #ccc;}
+    #menu ul.top-menu li:hover a{color: #fff; background: #E75A3A;}
 
 
-.bordesCirculares{
- border-radius: 50% 50% 50% 50%;
--moz-border-radius: 50% 50% 50% 50%;
--webkit-border-radius: 50% 50% 50% 50%;
-border: 0px solid #000000;}
-/*/ Tablets en horizonal y escritorios normales*/
-   /*------------------------------------------------------------------------- /*/
-@media (max-width: 1299px) { 
 
-    
+
+
+
+    #menu ul.top-menu li a {
+        height: 60px;
+        line-height: 60px;
+        margin: 0;
+        padding: 0 15px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 400;
+        color: rgba(255,255,255,0.7);
+        background: rgba(255,255,255,0.05);
+        border-radius: 3px;
+        display: inline-block;
+        border-left: none;
+        position: relative;
+        margin: 23px 0;
+    }
+
+
+    #menu ul.top-menu li a span.li-text {
+        display: block;
+        text-align: center;
+    }
+
+    #logo {
+        background-image: url(../imagenes/logo.jpg);
+        background-position: 50% 25%;
+        background-size: cover;
+        height: 161px;
+        width: 154px;
+        margin: 0px 21px;
+        display: inline-block;
+    }
+
+
+
+    a {
+        color: #333;
+        text-decoration: none !important;
+        outline: none;
+        -moz-outline: none;
+    }
+
+    #top-user {
+        float: right;
+        height: 198px;
+        padding: 50px 25px;
+        position: relative;
+        z-index: 2;
+
+    }
+
+    /*separacion entre menu y contenido*/        
+    .headerPad {
+        height: 200px;
+    }
+
+    #marginLogin{
+        margin-top: 74px;
+        margin-left: 12%;
+    }
+
     #loginPop{
-            font-size: 36px;
+        color: white;
+        font-size: 42px;
+        margin-right: 10%;
+        font-family: -webkit-pictograph;
+    }
+
+    .letraLogin{
+    }    
+    #HitBee{
+        background-image: url(../imagenes/hitbee.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 87px;
+        width: 192px;
+        display: inline-block;
+    }
+        
+
+                                            /*MENU RESPONSIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/
+    .navResponsive {
+            display: none;
+            background:#023859;
+            z-index:1000;
+            max-width: 1000px;
+            width:95%;
+            margin:20px auto;
+    }
+
+    .ulResponsive {
+            list-style:none;
+    }
+
+    .liResponsive {
+            display:inline-block;
+            position: relative;
+    }
+
+    .liResponsive:hover {
+            background:#E6344A;
+    }
+
+    .aResponsive{
+            color:#fff;
+            display:block;
+            text-decoration:none;
+            padding: 20px;
+    }
+
+    .spanResponsive{
+            margin-right:10px;
+    }
+
+
+
+
+
+
+                                                    /* INDEXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
+    .bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
+    .bordeChuloAbajo:hover{
+          border-bottom:3px solid ;
+          border-bottom-color: blue;  }
+
+    .bordeChulo{
+        border:3px white solid ;
+        margin: 0px;
+        padding: 0%;
+
+    }
+    .bordeChulo:hover{
+        border:3px solid ;
+        border-color: blue;
+        margin: 0px;
+
+    }
+
+    .info{
+        margin: 0%;
+        width: 50vh;
+        height: 50vh;
+        background-color:rgba(31,31,31,0.9);
+        color: white;
+        padding-top: 20%; 
+        /*Animacion background*/
+        -webkit-transition: opacity 0.4s;
+        -moz-transition: opacity 0.4s; 
+        opacity: 0;
+
+    }
+    .info p{
+        /*Animacion texto*/
+        overflow: hidden;
+        position: absolute;
+        -webkit-transition: margin 0.4s;
+        -moz-transition: margin 0.4s;
+        margin-left: -100px;
+    }
+
+    .info:hover p{
+        overflow: hidden;
+        margin-left: 15%;
+        text-align: center;
+    }
+    .bordeChulo:hover *.info{
+
+     opacity: 1; 
+
+    }
+    div div .img-responsive {
+        width: 50vh;
+        height: 50vh;
+        border:3px white solid ;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    /*para quitar cuando se marca la url*/
+    a{text-decoration: none; color:black;}
+    a:hover{text-decoration: none; color:black;}
+
+                                                            /*EJERCICIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS*/
+    #textoAyuda{
+        opacity: 0;
+    }
+
+
+    .bordesCirculares{
+     border-radius: 50% 50% 50% 50%;
+    -moz-border-radius: 50% 50% 50% 50%;
+    -webkit-border-radius: 50% 50% 50% 50%;
+    border: 0px solid #000000;}
+
+                                                /*/ Tablets en horizonal y escritorios normales*/
+                                                   /*------------------------------------------------------------------------- /*/
+    @media (max-width: 1299px) { 
+
+        #loginPop{
+                font-size: 36px;
+            }
+    }
+
+    @media (max-width: 1199px) { 
+
+
+        .headerPad{
+            height: 92px;
+        }
+
+        .letraLogin{
+            font-size: 30px;
+
+        }
+        .menu_bar{
+            display: block;
+            margin: 13px 0px;
+            font-size: 40px;
+        }
+
+        .header-logo{
+            display: none;
+        }
+
+        #menu{
+            display: none;
+        }
+
+        #top-user {
+            height: auto;
+            padding: 0px;
+            margin: 20px 0px;
+        }
+
+        #marginLogin{margin: auto}
+
+        .iconoLogin{
+            font-size: 39px;
+            vertical-align: text-top;
+            margin-right: 3px;
+        }
+
+        .iconoMenu{
+            font-size: 42px;
+            vertical-align: text-top;
+            margin-right: 3px; 
+            margin-left: 23px;
+
+        }
+
+        #loginPop{margin-left: 18%}
+
+                                                                   /* MENU RESPONSIVE   */
+
+
+
+        .navResponsive{
+            display: block;
+            width: 80%;
+            position: fixed;
+            right:100%;
+            margin: 0;
+            overflow: scroll;
+        }
+
+        .liResponsive{
+            display: block;
+            border-bottom:1px solid rgba(255,255,255,.5);
+        }
+
+        .aResponsive{
+            display: block;
+        }
+
+        .ulResponsive{
+            margin-top: 0;
+            margin-bottom: 0px;
+            margin-left: -41px;
+
+
+        }
+
+
+    }
+
+    @media (max-width: 991px) { 
+        .letraLogin{
+            display: none;
+
+        }
+        #marginLogin{
+            margin: 0px 42%;    
+        }
+
+        #HitBee{
+            height: 74px;
+            margin: 6px 0px;
+        }
+
+        #loginPop{
+            margin-left: auto;
         }
 
 
 
-}
- 
-/*/ Móviles en horizontal o tablets en vertical
-   ------------------------------------------------------------------------- /*/
-/*@media (max-width: 767px) { ... }
- 
-/ Móviles en vertical
-   ------------------------------------------------------------------------- */
-/*@media (max-width: 480px) { ... }*/
+
+    }
