@@ -29,7 +29,7 @@ and open the template in the editor.
 
 
         <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
-            <div class="col-md-6" id="ultimasNoticias">utlimas noticias</div>
+            <div class="col-md-6" id="ultimasNoticias"><span id="temporizador" style="background-color: grey;"><span id="minutos">01</span>:<span id="segundos">03</span></span></div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
             <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
@@ -66,7 +66,55 @@ and open the template in the editor.
     var temporizadorCorrecto = true;
     //Para cargar el 1 ejercicio
     actualizaAjax(); 
-     
+   
+   // TEMPORIZADOR PARA LA DURACION DE LOS EJERCICIOS
+   function duracionEjercicio(){
+       var minutos = $('#minutos').text();
+       var segundos = $('#segundos').text();
+       
+       var tiempo = function (){
+        
+        
+        
+            
+            // actualizo minutos
+            if((segundos == 0) && (minutos != 0)){
+                   segundos = 60;
+                   minutos--;
+                 
+                   $('#minutos').html('0'+minutos);
+                   $('#segundos').html(segundos);
+               }
+               //actualizo segundos
+//            if((segundos != 0) && (minutos ==0) ){
+//                segundos = 59;
+//                   $('#minutos').html('00');
+//                   $('#segundos').html(segundos);  
+//            }
+            //bajada de segundos normal
+            if((segundos != 0) && (minutos != 0) ){
+                segundos--;
+                $('#segundos').html(segundos);
+            }
+            
+            //se acaba el tiempo
+            if((segundos == 0) && (minutos ==00) ){
+               clearInterval(tiempoMinutos);
+               sumaEjercicio();
+               duracionEjercicio();
+           }
+           
+           if(segundos != 0){
+                segundos--;
+                $('#segundos').html(segundos);
+            }
+       };
+       
+        tiempoMinutos = setInterval(tiempo, 1000);
+   }
+   
+   
+   // TEMPORIZADOR PARA DESCANSOS
    
     function temporizador (condicion){
         if(temporizadorCorrecto){
@@ -124,6 +172,7 @@ and open the template in the editor.
     
     //para el boton de ayuda
     function apareceAyuda(){
+        duracionEjercicio();
         if(!ayuda){
             $('#textoAyuda').css({ 'opacity': '1'});
             ayuda = true;
