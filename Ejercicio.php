@@ -34,10 +34,10 @@ and open the template in the editor.
             <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-sm-1 col-md-3">
                 <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-arrow-left" ></i></button></a>
             </div>
-            <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio"   style="background-color: red;">
+            <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio">
                 <div id="ejercicio" style="width: 100%;"></div>
                 
                 <div id="botones" class="text-center" style=" margin: auto;" >  
@@ -54,7 +54,7 @@ and open the template in the editor.
                 </div>
                 
             </div>
-            <div class="col-md-3">
+            <div class="col-sm-2 col-md-3">
                 <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
                 <br>
                 <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>

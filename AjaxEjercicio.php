@@ -13,7 +13,7 @@ for ($i = 0; $i < count($fetch); $i++){
     $foto = $fetch[$i][5];
     
     
-    print( ' <div><img class="img-responsive" src="imagenes/'.$foto.'"/></div>
+    print( ' <div><img class="img-responsive" style="margin:auto;" src="imagenes/'.$foto.'"/></div>
              <h3 class="text-center">'.$nombre.' x '.$repeticiones.'</h3>
   ');
  }
