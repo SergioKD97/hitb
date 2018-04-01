@@ -37,8 +37,21 @@ and open the template in the editor.
             <div class="col-md-3">
                 <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-arrow-left" ></i></button></a>
             </div>
-            <div class="col-md-6" id="ejercicio"   style="background-color: red;">
-                <p><b>AQUI IRA EL GIF, EL NOMBRE DEL EJERCICIO Y ABAJO LAS REPETICIONES PASAR DE UNA ACTIVIDAD A OTRA Y EN EL DIV DE LA DERECHA LA INFO DEL EJERCICIO</b></p>
+            <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio"   style="background-color: red;">
+                <div id="ejercicio" style="width: 100%;"></div>
+                
+                <div id="botones" class="text-center" style=" margin: auto;" >  
+                    <button name="botonMenos"  
+                     class="btn btn-info" style="border-radius: 50%;" onclick="temporizador('menos');">
+                    <i class="icon-arrow-left  "></i></button>
+                    
+                    <span id="numeroEjercicio" style="font-size: 30px;">
+                    <span id="spanContador"> 1<?php // echo $contador;?></span>
+                    /
+                    <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
+                </span>
+                <button onclick="temporizador('mas');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>
+                </div>
                 
             </div>
             <div class="col-md-3">
@@ -47,37 +60,19 @@ and open the template in the editor.
                 <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
         </div>
-        
-        <div class="row">
-            <!--<form method="post" name="formularioEjercicio">-->
-            <div class="col-md-12 text-center">      <!--ESta funcion ya hace sola que printe el numero total de ejercicios, PERO FALTA PONER POR CUAL VA-->
-                <button name="botonMenos"  
-                        class="btn btn-info" style="border-radius: 50%; font-size: 8vw;" onclick="temporizador('menos');">
-                    <i class="icon-arrow-left  "></i></button>
-                    
-                <span id="numeroEjercicio" style="font-size: 8vw;">
-                    <span id="spanContador"> 1<?php // echo $contador;?></span>
-                    /
-                    <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
-                </span>
-                <button onclick="temporizador('mas');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%; font-size: 8vw;"><i class="icon-arrow-right" ></i></button>
-            </div> 
-            <!--</form>-->
-        </div>
-        <div id="invisible"></div>
-<!--        <div id="menuAbajo" class="row">
-            <div class="col-md-12 text-center">contactanos acabar este menu</div>
-        </div>-->
-            <script>
+    <script>
     var ayuda = false;
     var contador = 1; 
+    var temporizadorCorrecto = true;
     //Para cargar el 1 ejercicio
     actualizaAjax(); 
      
-    
+   
     function temporizador (condicion){
-        
-        if((condicion === 'mas') && (contador != $('#spanTotal').text())){
+        if(temporizadorCorrecto){
+            
+            temporizadorCorrecto = false;
+            if((condicion === 'mas') && (contador != $('#spanTotal').text())){
         
                 var contadorCronometro = 5;
                 var saludo = function (){
@@ -86,6 +81,7 @@ and open the template in the editor.
                     if(contadorCronometro === 0){
                         clearInterval(intervalo);
                         sumaEjercicio();
+                        temporizadorCorrecto = true;
                     }
             };
     
@@ -96,17 +92,33 @@ and open the template in the editor.
                 var contadorCronometro = 5;
                 var saludo = function (){
                     contadorCronometro--;
-                    $('#ejercicio').text('<h1 class="text-center">'+contadorCronometro+'</h1>');  
+                    $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>');  
                     if(contadorCronometro === 0){
                         clearInterval(intervalo);
                         restaEjercicio();
+                        temporizadorCorrecto = true;
                     }
             };
 
             intervalo = setInterval(saludo, 1000);
         }
+        }else{
+            if(condicion === 'mas'){
+    
+                clearInterval(intervalo);
+                temporizadorCorrecto = true;
+                sumaEjercicio();
+            }else{
+    
+                clearInterval(intervalo);
+                temporizadorCorrecto = true;
+                restaEjercicio();
+            }
+        }
+        
         
     };   
+    //fin temporizador
     
     
     

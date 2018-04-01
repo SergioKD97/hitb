@@ -1,4 +1,4 @@
-<?php
+    <?php
 require './metodos.php';
 //function principal(){
 $sql = "select * from ".$_GET['tipo']." where nivel = ".$_GET['nivel']. " and id =". $_GET['id'];
