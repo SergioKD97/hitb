@@ -60,10 +60,10 @@ and open the template in the editor.
                 
                 <div  id="menu">
                     <ul class="top-menu">
-                        <li><a href="Productos.php"><span class="li-text"> Home </span></a></li>
+                        <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
                         <li><a href="Productos.php"><span class="li-text"> Noticias </span></a></li>
                         <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
-                        <li><a href="Productos.php"><span class="ac_unit"> Sobre Nosotros </span></a></li>
+                        <li><a href="Productos.php"><span class="ac_unit"> Info </span></a></li>
                         
                     </ul>
                 </div>
@@ -80,16 +80,16 @@ and open the template in the editor.
                     </a>                
                 
                 </div>
-                    
+            
             
             
             
             </div>
             
     </header>
-                  
+       
+    <!--hace que el body se baje-->
     <div class="headerPad" ></div>
-        
     
     
                 <nav class="navResponsive">
@@ -146,13 +146,16 @@ and open the template in the editor.
         
         <!--**** FIN  MODAAAAAAAAAAAAAAAAAAAAAL*****-->
         
-        <div container></div>
         
         
         
        <div class="row container ">
-            <div class="col-xs-3 "></div>
             <div class=" col-xs-9 container ">
+                
+                <div id="bodyText">
+                    <div >EJERCICIOS</div>
+                </div>
+                
                 <?php
                 $consultaSQL = "select *  from Programas";
                 $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
@@ -169,6 +172,11 @@ and open the template in the editor.
                 }
                 ?>
             </div>
+           
+           <div col-xs-3></div>
+           
+           
+           
         </div>
         <div id="menuAbajo" class="row">
             <div class="col-md-12 text-center">contactanos acabar este menu</div>

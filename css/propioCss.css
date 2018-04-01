@@ -196,7 +196,17 @@ and open the template in the editor.
 
 
 
-                                                    /* INDEXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
+                                                    /* BODYYYYYYYYYYYYYYYYYYYYYYYYYY*/
+                        
+                                                    
+                                                    
+    #bodyText div{
+        font-size: 40px;
+        font-family: serif;
+        margin: 0 auto;
+        width: 27%;
+    }
+                                                    
     .bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
     .bordeChuloAbajo:hover{
           border-bottom:3px solid ;
@@ -231,10 +241,8 @@ and open the template in the editor.
     .info p{
         /*Animacion texto*/
         overflow: hidden;
-        position: absolute;
         -webkit-transition: margin 0.4s;
         -moz-transition: margin 0.4s;
-        margin-left: -100px;
     }
 
     .info:hover p{
@@ -258,6 +266,10 @@ and open the template in the editor.
     a{text-decoration: none; color:black;}
     a:hover{text-decoration: none; color:black;}
 
+    
+    
+    
+    
                                                             /*EJERCICIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS*/
     #textoAyuda{
         opacity: 0;
@@ -338,7 +350,6 @@ and open the template in the editor.
             position: fixed;
             right:100%;
             margin: 0;
-            overflow: scroll;
         }
 
         .liResponsive{
@@ -354,13 +365,13 @@ and open the template in the editor.
             margin-top: 0;
             margin-bottom: 0px;
             margin-left: -41px;
-
-
+            
+            
         }
-
-
+        
+        
     }
-
+    
     @media (max-width: 991px) { 
         .letraLogin{
             display: none;
