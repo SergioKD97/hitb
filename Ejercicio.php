@@ -29,7 +29,7 @@ and open the template in the editor.
 
 
         <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
-            <div class="col-md-6">utlimas noticias</div>
+            <div class="col-md-6" id="ultimasNoticias">utlimas noticias</div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
             <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
@@ -52,7 +52,7 @@ and open the template in the editor.
             <!--<form method="post" name="formularioEjercicio">-->
             <div class="col-md-12 text-center">      <!--ESta funcion ya hace sola que printe el numero total de ejercicios, PERO FALTA PONER POR CUAL VA-->
                 <button name="botonMenos"  
-                        class="btn btn-info" style="border-radius: 50%; font-size: 8vw;" onclick="restaEjercicio(<?php // echo $contador;?>);">
+                        class="btn btn-info" style="border-radius: 50%; font-size: 8vw;" onclick="temporizador('menos');">
                     <i class="icon-arrow-left  "></i></button>
                     
                 <span id="numeroEjercicio" style="font-size: 8vw;">
@@ -60,7 +60,7 @@ and open the template in the editor.
                     /
                     <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
                 </span>
-                <button onclick="sumaEjercicio(<?php // echo $contador;?>);" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%; font-size: 8vw;"><i class="icon-arrow-right" ></i></button>
+                <button onclick="temporizador('mas');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%; font-size: 8vw;"><i class="icon-arrow-right" ></i></button>
             </div> 
             <!--</form>-->
         </div>
@@ -72,7 +72,43 @@ and open the template in the editor.
     var ayuda = false;
     var contador = 1; 
     //Para cargar el 1 ejercicio
-    actualizaAjax();
+    actualizaAjax(); 
+     
+    
+    function temporizador (condicion){
+        
+        if((condicion === 'mas') && (contador != $('#spanTotal').text())){
+        
+                var contadorCronometro = 5;
+                var saludo = function (){
+                    contadorCronometro--;
+                    $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>');  
+                    if(contadorCronometro === 0){
+                        clearInterval(intervalo);
+                        sumaEjercicio();
+                    }
+            };
+    
+                intervalo = setInterval(saludo, 1000);
+        }
+        if((condicion ==='menos') && (contador !== 1)){
+
+                var contadorCronometro = 5;
+                var saludo = function (){
+                    contadorCronometro--;
+                    $('#ejercicio').text('<h1 class="text-center">'+contadorCronometro+'</h1>');  
+                    if(contadorCronometro === 0){
+                        clearInterval(intervalo);
+                        restaEjercicio();
+                    }
+            };
+
+            intervalo = setInterval(saludo, 1000);
+        }
+        
+    };   
+    
+    
     
     //para el boton de ayuda
     function apareceAyuda(){
@@ -118,7 +154,7 @@ and open the template in the editor.
 
        // ahora actualizar el contenido del div que muestra el gif
     }
-    
+
 
     </script>
     </body>
