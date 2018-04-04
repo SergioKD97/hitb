@@ -199,12 +199,16 @@ and open the template in the editor.
                                                     /* BODYYYYYYYYYYYYYYYYYYYYYYYYYY*/
                         
                                                     
+    .bodyEjercicios{
+       background-color: azure;
+    }
+                                                    
                                                     
     #bodyText div{
         font-size: 40px;
         font-family: serif;
         margin: 0 auto;
-        width: 27%;
+        width: 53%;
     }
                                                     
     .bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
@@ -216,7 +220,14 @@ and open the template in the editor.
         border:3px white solid ;
         margin: 0px;
         padding: 0%;
-
+        width: 354px;
+        height: 278px;
+        border:3px white solid ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        float: left;
+        font-size: 54px;
+        
     }
     .bordeChulo:hover{
         border:3px solid ;
@@ -255,17 +266,31 @@ and open the template in the editor.
      opacity: 1; 
 
     }
-    div div .img-responsive {
-        width: 50vh;
-        height: 50vh;
-        border:3px white solid ;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
+
     /*para quitar cuando se marca la url*/
     a{text-decoration: none; color:black;}
     a:hover{text-decoration: none; color:black;}
 
+    
+    
+    .pecho{margin-right: 0px; }
+    .pecho div p{margin: -4px 32px 0px;}
+    
+    .Hombro{margin-right: 0px;}
+    .Hombro div p{margin: -4px 32px 0px;}
+    
+    .Abdominales{margin-right: 0px;}
+    .Abdominales div p{margin: -4px 32px 0px; font-size: 46px}
+    
+    .Pierna{margin-left: 24px !important}
+    .Pierna div p{margin: -4px 32px 0px;}
+
+    .Dieta{}
+    .Dieta div p{margin: -4px 32px 0px;}
+    
+   
+    
+    
     
     
     

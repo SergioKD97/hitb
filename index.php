@@ -149,13 +149,13 @@ and open the template in the editor.
         
         
         
-       <div class="row container ">
-            <div class=" col-xs-9 container ">
+       <div class="container bodyEjercicios">
                 
-                <div id="bodyText">
-                    <div >EJERCICIOS</div>
-                </div>
-                
+           <div id="bodyText">
+               <div >EJERCICIOS POR REPETICIONES</div>
+           </div>
+           
+           <div>
                 <?php
                 $consultaSQL = "select *  from Programas";
                 $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
@@ -164,17 +164,14 @@ and open the template in the editor.
                     $nombrePrograma = $arrayConsulta[$i][1];
                     $foto = $arrayConsulta[$i][2];
                 print('<a href="niveles.php?tipo='.$nombrePrograma.'">'
-                        . '<div class="col-sm-4 col-xs-12 text-center bordeChulo img-responsive" style=" margin:20px;font-size: 3vw; background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
+                        . '<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
                     . '</div></a>');
-                if(($i == 1 || $i ==3)){
+                if(($i == 2)){
                     print('<div style="clear: both"></div>');
                 }
                 }
                 ?>
-            </div>
-           
-           <div col-xs-3></div>
-           
+           </div>        
            
            
         </div>
@@ -187,7 +184,7 @@ and open the template in the editor.
 </html>
 
 <script>
-    
+
 $(document).ready(main);
  
 var contador = 1;
