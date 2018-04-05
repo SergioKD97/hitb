@@ -11,6 +11,11 @@ and open the template in the editor.
 
                                     /*MENUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU*/
         
+    body{
+    font-size: 17px;
+    height: 80px;
+    }                               
+                                    
     #main {
         position: relative;
         min-height: 700px;
@@ -198,9 +203,14 @@ and open the template in the editor.
 
                                                     /* BODYYYYYYYYYYYYYYYYYYYYYYYYYY*/
                         
+    .fotoBack{
+    background-image: url(../imagenes/Gym-desktop-background.jpg);
+
+    }                  
                                                     
     .bodyEjercicios{
-       background-color: azure;
+       padding-top: 20px;
+       padding-bottom: 40px;
     }
                                                     
                                                     
@@ -227,7 +237,7 @@ and open the template in the editor.
         background-size: cover;
         float: left;
         font-size: 54px;
-        
+        border-radius: 15px;
     }
     .bordeChulo:hover{
         border:3px solid ;
@@ -247,7 +257,7 @@ and open the template in the editor.
         -webkit-transition: opacity 0.4s;
         -moz-transition: opacity 0.4s; 
         opacity: 0;
-
+        border-radius: 15px;
     }
     .info p{
         /*Animacion texto*/
@@ -273,27 +283,29 @@ and open the template in the editor.
 
     
     
-    .pecho{margin-right: 0px; }
-    .pecho div p{margin: -4px 32px 0px;}
+    .Pecho{margin-right: 0px; }
+    .Pecho div p{margin: -4px 32px 0px;}
     
-    .Hombro{margin-right: 0px;}
-    .Hombro div p{margin: -4px 32px 0px;}
+    .Hombro-Espalda{margin-right: 0px;}
+    .Hombro-Espalda div p{margin: -4px 32px 0px;}
     
-    .Abdominales{margin-right: 0px;}
-    .Abdominales div p{margin: -4px 32px 0px; font-size: 46px}
+    .Brazo{margin-right: 0px;}
+    .Brazo div p{margin: -4px 32px 0px; font-size: 46px}
+
+    .Abs{margin-left: 211px !important;}
+    .Abs{margin: -4px 32px 0px;}    
     
-    .Pierna{margin-left: 24px !important}
+    .Pierna{}
     .Pierna div p{margin: -4px 32px 0px;}
 
-    .Dieta{}
-    .Dieta div p{margin: -4px 32px 0px;}
+
     
    
     
     
+                                                            /*FOTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR*/
     
-    
-    
+    #menuAbajo{background: #322E2D;}
     
                                                             /*EJERCICIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS*/
     #textoAyuda{
@@ -364,6 +376,11 @@ and open the template in the editor.
         }
 
         #loginPop{margin-left: 18%}
+        
+        
+        
+        
+        
 
                                                                    /* MENU RESPONSIVE   */
 

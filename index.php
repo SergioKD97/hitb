@@ -38,7 +38,7 @@ and open the template in the editor.
         ?>
         
         
-   <div id="main" class="main-wrap-home">
+   <div id="main">
     <header>
         <div class="row container" >
             
@@ -148,33 +148,36 @@ and open the template in the editor.
         
         
         
-        
-       <div class="container bodyEjercicios">
-                
-           <div id="bodyText">
-               <div >EJERCICIOS POR REPETICIONES</div>
-           </div>
-           
-           <div>
-                <?php
-                $consultaSQL = "select *  from Programas";
-                $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
-                $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
-                for ($i = 0; $i< count($arrayConsulta); $i++){
-                    $nombrePrograma = $arrayConsulta[$i][1];
-                    $foto = $arrayConsulta[$i][2];
-                print('<a href="niveles.php?tipo='.$nombrePrograma.'">'
-                        . '<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
-                    . '</div></a>');
-                if(($i == 2)){
-                    print('<div style="clear: both"></div>');
-                }
-                }
-                ?>
-           </div>        
-           
-           
-        </div>
+       <div class="fotoBack">
+        <div class="container bodyEjercicios">
+
+            <div id="bodyText">
+                <div >EJERCICIOS POR REPETICIONES</div>
+            </div>
+
+            <div>
+                 <?php
+                 $consultaSQL = "select *  from Programas";
+                 $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
+                 $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
+                 for ($i = 0; $i< count($arrayConsulta); $i++){
+                     $nombrePrograma = $arrayConsulta[$i][1];
+                     $foto = $arrayConsulta[$i][2];
+                 print('<a href="niveles.php?tipo='.$nombrePrograma.'">'
+                         . '<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
+                     . '</div></a>');
+                 if(($i == 2)){
+                     print('<div style="clear: both"></div>');
+                 }
+                 }
+                 ?>
+            </div>        
+
+
+         </div>
+        </div>    
+            
+            
         <div id="menuAbajo" class="row">
             <div class="col-md-12 text-center">contactanos acabar este menu</div>
         </div>
