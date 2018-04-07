@@ -29,17 +29,21 @@ and open the template in the editor.
 
 
         <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
-            <div class="col-md-6" id="ultimasNoticias"><span id="temporizador" style="background-color: grey;"><span id="minutos">01</span>:<span id="segundos">03</span></span></div>
+            <div class="col-md-6" id="ultimasNoticias">EL ERROR DEL CRONOMETRO DE QUITAR AL PRINCIPIO 2 SEGUNDOS EN VEZZ DE UNO SOLO OCURRE CUANDO LOS MINUTOS SON DISTINTOS DE CERO</div>
             <div class="col-md-4"><a href="index.php">logo</a></div>
             <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
         </div>
+        
+        
+        
         <div class="row">
             <div class="col-sm-1 col-md-3">
                 <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-arrow-left" ></i></button></a>
             </div>
-            <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio">
-                <div id="ejercicio" style="width: 100%;"></div>
+            <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio" style="margin: auto;">
                 
+                <div id="ejercicio" class="text-center"style="width: 100%;"></div>
+                <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">00</span>:<span id="segundos">03</span></span></h1></div>
                 <div id="botones" class="text-center" style=" margin: auto;" >  
                     <button name="botonMenos"  
                      class="btn btn-info" style="border-radius: 50%;" onclick="temporizador('menos');">
@@ -50,7 +54,10 @@ and open the template in the editor.
                     /
                     <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
                 </span>
-                <button onclick="temporizador('mas');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>
+                <button onclick="temporizador('mas');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
+                </div>
+                <div id="menuBotones" class="text-center" style="margin: auto;">
+                    <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i class="icon-play"></i></button>
                 </div>
                 
             </div>
@@ -60,23 +67,57 @@ and open the template in the editor.
                 <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
         </div>
+        
+        
     <script>
     var ayuda = false;
     var contador = 1; 
     var temporizadorCorrecto = true;
+    var play = false;
     //Para cargar el 1 ejercicio
+    
+    $('#cronometro').hide();
     actualizaAjax(); 
+   
+   
+   
+   
+   function actualizaPlay() {
+       //adapto el div al cronometro      
+    if(play){
+       $('#play').html('<i class="icon-play"></i>');  
+      clearInterval(tiempoMinutos);
+      clearInterval(intervalo);
+      play = false;     
+      
+    }else{
+      $('#play').html('<i class="icon-pause"></i>'); 
+      
+//      if($("#cronometro").is(":visible")){       
+      duracionEjercicio();
+//      }else{
+      temporizador();
+//      }
+      play = true;  
+    }
+}
+   
    
    // TEMPORIZADOR PARA LA DURACION DE LOS EJERCICIOS
    function duracionEjercicio(){
+       $('#cronometro').css({ 'display': 'block'});
+       //actulizo el contenido del div para ajustarlo al cronometro
        var minutos = $('#minutos').text();
        var segundos = $('#segundos').text();
        
        var tiempo = function (){
-        
-        
-        
-            
+           
+           //NO VA PONER EL 0 DELANTE DE LOS SEGUNDOS BIEN. SOLO CUANDO TANTO LOS SEGUNDOS COMO LOS MINUTOS SON 0
+//            if(parseInt(segundos) < 10){
+                
+                $('#segundos').html('0'+segundos);
+//            }
+           
             // actualizo minutos
             if((segundos == 0) && (minutos != 0)){
                    segundos = 60;
@@ -85,12 +126,7 @@ and open the template in the editor.
                    $('#minutos').html('0'+minutos);
                    $('#segundos').html(segundos);
                }
-               //actualizo segundos
-//            if((segundos != 0) && (minutos ==0) ){
-//                segundos = 59;
-//                   $('#minutos').html('00');
-//                   $('#segundos').html(segundos);  
-//            }
+
             //bajada de segundos normal
             if((segundos != 0) && (minutos != 0) ){
                 segundos--;
@@ -100,8 +136,11 @@ and open the template in the editor.
             //se acaba el tiempo
             if((segundos == 0) && (minutos ==00) ){
                clearInterval(tiempoMinutos);
-               sumaEjercicio();
-               duracionEjercicio();
+            //pasa al siguiente ejercicio
+               temporizador('mas');
+               $('#cronometro').hide();
+//               $('#minutos').text();
+               $('#segundos').text('03');
            }
            
            if(segundos != 0){
@@ -114,22 +153,22 @@ and open the template in the editor.
    }
    
    
+   
    // TEMPORIZADOR PARA DESCANSOS
    
     function temporizador (condicion){
         if(temporizadorCorrecto){
-            
             temporizadorCorrecto = false;
             if((condicion === 'mas') && (contador != $('#spanTotal').text())){
-        
                 var contadorCronometro = 5;
                 var saludo = function (){
                     contadorCronometro--;
-                    $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>');  
+                    $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>'); 
                     if(contadorCronometro === 0){
                         clearInterval(intervalo);
                         sumaEjercicio();
                         temporizadorCorrecto = true;
+                        duracionEjercicio();
                     }
             };
     
@@ -150,9 +189,12 @@ and open the template in the editor.
 
             intervalo = setInterval(saludo, 1000);
         }
-        }else{
+            
+        }
+        else{
+            console.log('me voy por el else grande');
             if(condicion === 'mas'){
-    
+                console.log('me meto en la condicion = mas del else grande');
                 clearInterval(intervalo);
                 temporizadorCorrecto = true;
                 sumaEjercicio();
@@ -172,7 +214,7 @@ and open the template in the editor.
     
     //para el boton de ayuda
     function apareceAyuda(){
-        duracionEjercicio();
+        
         if(!ayuda){
             $('#textoAyuda').css({ 'opacity': '1'});
             ayuda = true;
