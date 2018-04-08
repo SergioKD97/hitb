@@ -57,7 +57,7 @@ and open the template in the editor.
                 <button onclick="temporizador('mas');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
                 </div>
                 <div id="menuBotones" class="text-center" style="margin: auto;">
-                    <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i class="icon-play"></i></button>
+                    <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i id="icono" class="icon-pause"></i></button>
                 </div>
                 
             </div>
@@ -73,43 +73,36 @@ and open the template in the editor.
     var ayuda = false;
     var contador = 1; 
     var temporizadorCorrecto = true;
-    var play = false;
-    var pivote = 'ejercicio';
+    var tiempoTemporizador = 5;
+    var primerPlay = 0;
     //Para cargar el 1 ejercicio
     
-    $('#cronometro').hide();
+    $('#cronometro').css({'display' : 'none'});
     actualizaAjax(); 
    
    
    
    
    function actualizaPlay() {
-       //adapto el div al cronometro      
-    if(play){
-       $('#play').html('<i class="icon-play"></i>');  
+       //adapto el div al cronometro 
        
-      if(pivote === 'ejercicio'){       
-         clearInterval(tiempoMinutos);
-      }else{
-        clearInterval(intervalo);
-      }
-      
-      
-      play = false;     
+       if(primerPlay === 0){primerPlay++;$('#icono').removeClass('icon-pause').addClass('icon-play'); duracionEjercicio();}else{
+       
+    if($('#icono').hasClass('icon-play')){
+        
+       $('#icono').removeClass('icon-play').addClass('icon-pause');  
+       
+        if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
+        if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+         
       
     }else{
-      $('#play').html('<i class="icon-pause"></i>'); 
-      
-      if(pivote === 'ejercicio'){       
-        duracionEjercicio();
-      }else{
-          temporizadorCorrecto= true;
-         temporizador('mas');
-      }
-      play = true;  
+      $('#icono').removeClass('icon-pause').addClass('icon-play'); 
+      if(typeof tiempoMinutos !== 'undefined'){ document.write('me he metido cuando tiempoMinutos no exsiste');duracionEjercicio();}
+      if(typeof intervalo !== 'undefined'){document.write('me he metido cuando intervalo no existe');temporizadorCorrecto= true;temporizador('mas');}
+    }
     }
 }
-   
    
    // TEMPORIZADOR PARA LA DURACION DE LOS EJERCICIOS
    function duracionEjercicio(){
@@ -151,7 +144,7 @@ and open the template in the editor.
                $('#cronometro').hide();
 //             $('#minutos').text();
                $('#segundos').text('03');
-               $('#ejercicio').html('<h1>5</h1>');
+               $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
                temporizador('mas');
 
            }
@@ -170,6 +163,10 @@ and open the template in the editor.
    // TEMPORIZADOR PARA DESCANSOS
    
     function temporizador (condicion){
+        //para los cronometros si es que exsisten
+        if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
+        if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+        $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
         if(temporizadorCorrecto){
             temporizadorCorrecto = false;
             if((condicion === 'mas') && (contador != $('#spanTotal').text())){
@@ -189,24 +186,11 @@ and open the template in the editor.
                 intervalo = setInterval(saludo, 1000);
         }
         if((condicion ==='menos') && (contador !== 1)){
-
-                var contadorCronometro = 5;
-                var saludo = function (){
-                    contadorCronometro--;
-                    $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>');  
-                    if(contadorCronometro === 0){
-                        pivote = 'ejercicio';
-                        clearInterval(intervalo);
-                        restaEjercicio();
-                        temporizadorCorrecto = true;
-                    }
-            };
-
-            intervalo = setInterval(saludo, 1000);
+            restaEjercicio();
+            temporizadorCorrecto = true;
         }
             
-        }
-        else{
+        }else{
             console.log('me voy por el else grande');
             if(condicion === 'mas'){
                 console.log('me meto en la condicion = mas del else grande');
