@@ -98,8 +98,8 @@ and open the template in the editor.
       
     }else{
       $('#icono').removeClass('icon-pause').addClass('icon-play'); 
-      if(typeof tiempoMinutos !== 'undefined'){ document.write('me he metido cuando tiempoMinutos no exsiste');duracionEjercicio();}
-      if(typeof intervalo !== 'undefined'){document.write('me he metido cuando intervalo no existe');temporizadorCorrecto= true;temporizador('mas');}
+      if($('#cronometro').is(":visible")){duracionEjercicio();}
+      else{temporizadorCorrecto= true;temporizador('mas');}
     }
     }
 }
@@ -140,7 +140,6 @@ and open the template in the editor.
             if((segundos == 0) && (minutos ==00) ){
                clearInterval(tiempoMinutos);
             //pasa al siguiente ejercicio
-               pivote = 'descanso';
                $('#cronometro').hide();
 //             $('#minutos').text();
                $('#segundos').text('03');
@@ -163,19 +162,25 @@ and open the template in the editor.
    // TEMPORIZADOR PARA DESCANSOS
    
     function temporizador (condicion){
+        
+        //oculto el cronometro para que solo se vea el temporizador 
+        if($('#cronometro').is(":visible")){$('#cronometro').css({'display': 'none'});}
         //para los cronometros si es que exsisten
         if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+        
+        
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
         if(temporizadorCorrecto){
             temporizadorCorrecto = false;
             if((condicion === 'mas') && (contador != $('#spanTotal').text())){
-                var contadorCronometro = $('#ejercicio').text();
+              //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
-                    contadorCronometro--;
-                    $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>'); 
-                    if(contadorCronometro === 0){
-                        pivote = 'ejercicio';
+                    tiempoTemporizador--;
+                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>'); 
+                    if(tiempoTemporizador === 0){
+                        //recargo el tiempo otra vezzzzz
+                        tiempoTemporizador = 5;
                         clearInterval(intervalo);
                         sumaEjercicio();
                         temporizadorCorrecto = true;
@@ -197,6 +202,10 @@ and open the template in the editor.
                 clearInterval(intervalo);
                 temporizadorCorrecto = true;
                 sumaEjercicio();
+                //actualizo el contador del ejercicio para tenerlo actualizado
+                //$('#minutos').text();
+               $('#segundos').text('03');
+                duracionEjercicio();
             }else{
     
                 clearInterval(intervalo);
@@ -231,6 +240,8 @@ and open the template in the editor.
     }
     
     function sumaEjercicio (){
+        //actulizo el temporizador de descanso 
+        tiempoTemporizador =5;
        // actualización de contador
         if(contador != $('#spanTotal').text()){ // esta bien esta comparacion, no poner otro igual
         contador++;
