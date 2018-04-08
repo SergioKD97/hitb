@@ -74,6 +74,7 @@ and open the template in the editor.
     var contador = 1; 
     var temporizadorCorrecto = true;
     var play = false;
+    var pivote = 'ejercicio';
     //Para cargar el 1 ejercicio
     
     $('#cronometro').hide();
@@ -86,18 +87,25 @@ and open the template in the editor.
        //adapto el div al cronometro      
     if(play){
        $('#play').html('<i class="icon-play"></i>');  
-      clearInterval(tiempoMinutos);
-      clearInterval(intervalo);
+       
+      if(pivote === 'ejercicio'){       
+         clearInterval(tiempoMinutos);
+      }else{
+        clearInterval(intervalo);
+      }
+      
+      
       play = false;     
       
     }else{
       $('#play').html('<i class="icon-pause"></i>'); 
       
-//      if($("#cronometro").is(":visible")){       
-      duracionEjercicio();
-//      }else{
-      temporizador();
-//      }
+      if(pivote === 'ejercicio'){       
+        duracionEjercicio();
+      }else{
+          temporizadorCorrecto= true;
+         temporizador('mas');
+      }
       play = true;  
     }
 }
@@ -105,6 +113,8 @@ and open the template in the editor.
    
    // TEMPORIZADOR PARA LA DURACION DE LOS EJERCICIOS
    function duracionEjercicio(){
+   
+   
        $('#cronometro').css({ 'display': 'block'});
        //actulizo el contenido del div para ajustarlo al cronometro
        var minutos = $('#minutos').text();
@@ -137,10 +147,13 @@ and open the template in the editor.
             if((segundos == 0) && (minutos ==00) ){
                clearInterval(tiempoMinutos);
             //pasa al siguiente ejercicio
-               temporizador('mas');
+               pivote = 'descanso';
                $('#cronometro').hide();
-//               $('#minutos').text();
+//             $('#minutos').text();
                $('#segundos').text('03');
+               $('#ejercicio').html('<h1>5</h1>');
+               temporizador('mas');
+
            }
            
            if(segundos != 0){
@@ -160,11 +173,12 @@ and open the template in the editor.
         if(temporizadorCorrecto){
             temporizadorCorrecto = false;
             if((condicion === 'mas') && (contador != $('#spanTotal').text())){
-                var contadorCronometro = 5;
+                var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     contadorCronometro--;
                     $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>'); 
                     if(contadorCronometro === 0){
+                        pivote = 'ejercicio';
                         clearInterval(intervalo);
                         sumaEjercicio();
                         temporizadorCorrecto = true;
@@ -181,6 +195,7 @@ and open the template in the editor.
                     contadorCronometro--;
                     $('#ejercicio').html('<h1 class="text-center">'+contadorCronometro+'</h1>');  
                     if(contadorCronometro === 0){
+                        pivote = 'ejercicio';
                         clearInterval(intervalo);
                         restaEjercicio();
                         temporizadorCorrecto = true;
