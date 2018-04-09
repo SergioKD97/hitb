@@ -215,10 +215,12 @@ and open the template in the editor.
                                                     
                                                     
     #bodyText div{
-        font-size: 40px;
+        font-size: 51px;
         font-family: serif;
         margin: 0 auto;
-        width: 53%;
+        width: 24%;
+        text-shadow: black 0.1em 0.1em 0.2em;
+            color: lavenderblush;
     }
                                                     
     .bordeChuloAbajo{margin: 0px auto; font-size: 20px; border: 3px #e6e6e6 solid}
@@ -287,13 +289,13 @@ and open the template in the editor.
     .Pecho div p{margin: -4px 32px 0px;}
     
     .Hombro-Espalda{margin-right: 0px;}
-    .Hombro-Espalda div p{margin: -4px 32px 0px;}
+    .Hombro-Espalda div p{margin: -33px 32px 0px;}
     
     .Brazo{margin-right: 0px;}
     .Brazo div p{margin: -4px 32px 0px; font-size: 46px}
 
-    .Abs{margin-left: 211px !important;}
-    .Abs{margin: -4px 32px 0px;}    
+    .Abs{margin-left: 211px !important;clear: both}
+    .Abs div p{margin: -4px 32px 0px;}    
     
     .Pierna{}
     .Pierna div p{margin: -4px 32px 0px;}
@@ -304,9 +306,21 @@ and open the template in the editor.
     
     
                                                             /*FOTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR*/
+    footer{
+    padding: 40px 0 40px;
+    color: #fff;
+    position: relative;
+    background: #322E2D;
+    }
     
-    #menuAbajo{background: #322E2D;}
-    
+    .footer-home {
+    padding: 0;
+    font-size: 22px;
+    color: white;    
+    }
+                                                            
+                                                            
+                                                            
                                                             /*EJERCICIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS*/
     #textoAyuda{
         opacity: 0;
@@ -384,8 +398,6 @@ and open the template in the editor.
 
                                                                    /* MENU RESPONSIVE   */
 
-
-
         .navResponsive{
             display: block;
             width: 80%;
@@ -411,13 +423,26 @@ and open the template in the editor.
             
         }
         
+                                                                   /* BODY  */
+         
+        #bodyText div {width: 30%;}                                                          
+                                                                   
+        .Abs{margin-left: 15px !important;clear: none}
+                                                           
+        .Pecho {margin-left: 105px !important;}
         
+        .Brazo {margin-left: 105px !important;}    
+    
+        .Pierna {margin-left: 296px !important;}    
+
     }
     
     @media (max-width: 991px) { 
+     /* start of large tablet styles */
+
+        
         .letraLogin{
             display: none;
-
         }
         #marginLogin{
             margin: 0px 42%;    
@@ -433,6 +458,106 @@ and open the template in the editor.
         }
 
 
+        
+                                                                   /* BODY  */
+                                                
+                                                                   
+        #bodyText div {width: 39%;font-size: 51px}                                                          
+        
+        .bordeChulo {
+            width: 269px;
+            height: 212px;
+        }
+   
+        
+        .Pecho {margin-left: 80px !important;}
+        
+        .Brazo {margin-left: 80px !important;}    
+    
+        .Pierna {margin-left: 225px !important;}  
+        
+        
+       
+    }
+    
+    
+    
+    @media screen and (max-width: 767px) {
+    #bodyText div {
+        width: 50%;
+        font-size: 50px;
+    }
+        
+    .Pecho {margin-left: 0px !important;;}
+        
+    .Brazo {margin-left: 0px !important;;}    
+    
+    .Pierna {margin-left: 147px !important;}
 
+     
+     .container {
+        width: 591px;
+    }
+     
+     
+    }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    @media screen and (max-width: 605px) {
+         
+    .bordeChulo {
+        width: 370px;
+        height: 292px;
+    }    
+    
+    
+    #bodyText div {
+    width: 73%;
+    font-size: 50px;
+    }
+        
+    .Pecho {margin-left: 0px !important;;}
+    .Hombro-Espalda{margin-left: 0px !important;;}
+    .Brazo {margin-left: 0px !important;;}    
+    .Abs {margin-left: 0px !important;;}    
+    .Pierna {margin-left: 0px !important;}
+
+     
+     .container {
+        width: 400px;
+    }        
+        
+   
+    }
+    
+    
+    @media screen and (max-width: 440px) {
+    
+    
+    .bordeChulo {
+        width: 298px;
+        height: 236px;
+    }    
+    
+    
+    #bodyText div {
+     width: 67%;
+     font-size: 37px;
+    }
+    
+     
+     .container {
+        width: 330px;
+    }    
+    
+    
+    
+    
     }

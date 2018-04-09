@@ -42,7 +42,7 @@ and open the template in the editor.
     <header>
         <div class="row container" >
             
-            <div class="menu_bar  col-xs-3 col-s-3 col-md-3 col-lg-3">
+            <div class="menu_bar  col-xs-2 col-s-3 col-md-3 col-lg-3">
                 <a href="#" class="bt-menu iconoMenu"><span class="icon-bars"></span></a>
             </div>
             
@@ -52,7 +52,7 @@ and open the template in the editor.
                 </h1>
             </div>
             
-            <div class="col-xs-6 col-s-6 col-md-6  col-lg-6" style="text-align: center">
+            <div class="col-xs-7 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
                 <div id="HitBee">
                    
@@ -152,7 +152,7 @@ and open the template in the editor.
         <div class="container bodyEjercicios">
 
             <div id="bodyText">
-                <div >EJERCICIOS POR REPETICIONES</div>
+                <div >MÚSCULOS</div>
             </div>
 
             <div>
@@ -166,9 +166,7 @@ and open the template in the editor.
                  print('<a href="niveles.php?tipo='.$nombrePrograma.'">'
                          . '<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
                      . '</div></a>');
-                 if(($i == 2)){
-                     print('<div style="clear: both"></div>');
-                 }
+
                  }
                  ?>
             </div>        
@@ -178,9 +176,11 @@ and open the template in the editor.
         </div>    
             
             
-        <div id="menuAbajo" class="row">
-            <div class="col-md-12 text-center">contactanos acabar este menu</div>
-        </div>
+        <footer>
+            <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
+        </footer>
+        
+        
    </div>
         
     </body>
