@@ -78,7 +78,9 @@ and open the template in the editor.
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
                        <i class="icon-user-circle iconoLogin" data-toggle="modal" data-target="#ModalContenedor"></i> <span class="letraLogin">LOGIN</span>
                     </a>                
-                
+                    
+                    
+                    
                 </div>
             
             
@@ -163,9 +165,9 @@ and open the template in the editor.
                  for ($i = 0; $i< count($arrayConsulta); $i++){
                      $nombrePrograma = $arrayConsulta[$i][1];
                      $foto = $arrayConsulta[$i][2];
-                 print('<a href="niveles.php?tipo='.$nombrePrograma.'">'
-                         . '<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')"><div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p></div>' 
-                     . '</div></a>');
+                 print('<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')">'
+                    . '<div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="series bordeChulo1">Series</p></a> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="tiempo bordeChulo1">Tiempo</p></a> </div>' 
+                    . '</div></a>');
 
                  }
                  ?>
@@ -175,7 +177,7 @@ and open the template in the editor.
          </div>
         </div>    
             
-            
+
         <footer>
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
         </footer>

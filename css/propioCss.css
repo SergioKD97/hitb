@@ -248,13 +248,24 @@ and open the template in the editor.
 
     }
 
+    .bordeChulo1{
+        border:3px white solid ;
+        border-radius: 15px;
+    }
+    .bordeChulo1:hover{
+        border:3px solid ;
+        border-color: blue;
+        margin: 0px;
+
+    }
+    
     .info{
         margin: 0%;
         width: 50vh;
         height: 50vh;
         background-color:rgba(31,31,31,0.9);
         color: white;
-        padding-top: 20%; 
+        padding-top: 5%; 
         /*Animacion background*/
         -webkit-transition: opacity 0.4s;
         -moz-transition: opacity 0.4s; 
@@ -286,28 +297,55 @@ and open the template in the editor.
     
     
     .Pecho{margin-right: 0px; }
-    .Pecho div p{margin: -4px 32px 0px;}
+    .Pecho div p{margin: -4px 32px 45px;}
+    .Pecho div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
+    .Pecho div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
     
     .Hombro-Espalda{margin-right: 0px;}
     .Hombro-Espalda div p{margin: -33px 32px 0px;}
+    .Hombro-Espalda div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
+    .Hombro-Espalda div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
+
+    
     
     .Brazo{margin-right: 0px;}
-    .Brazo div p{margin: -4px 32px 0px; font-size: 46px}
+    .Brazo div p{margin: -4px 32px 45px; font-size: 46px}
+    .Brazo div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
+    .Brazo div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
 
     .Abs{margin-left: 211px !important;clear: both}
-    .Abs div p{margin: -4px 32px 0px;}    
-    
+    .Abs div p{margin: -4px 32px 45px;}    
+    .Abs div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
+    .Abs div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
+
     .Pierna{}
-    .Pierna div p{margin: -4px 32px 0px;}
+    .Pierna div p{margin: -4px 32px 45px;}
+    .Pierna div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
+    .Pierna div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
 
 
     
    
+                                                    /* TRIANGULO*/
+    #triangle-topright { 
+	width: 0; 
+	height: 0; 
+	border-top: 100px solid blue; 
+	border-left: 100px solid transparent; 
+/*	float: right;*/
+	display: inline-block;
+}
+
+    
+    
+    
+    
+    
     
     
                                                             /*FOTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR*/
     footer{
-    padding: 40px 0 40px;
+    padding: 20px 0 20px;
     color: #fff;
     position: relative;
     background: #322E2D;
