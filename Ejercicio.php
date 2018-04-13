@@ -43,10 +43,10 @@ and open the template in the editor.
             <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio" style="margin: auto;">
                 
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
-                <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">00</span>:<span id="segundos">03</span></span></h1></div>
+                <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">00</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
                 <div id="botones" class="text-center" style=" margin: auto;" >  
-                    <button name="botonMenos"  
-                     class="btn btn-info" style="border-radius: 50%;" onclick="temporizador('menos');">
+                    <button id="botonMenos"  
+                            class="btn btn-info" style="border-radius: 50%;" onclick="restaEjercicio();">
                     <i class="icon-arrow-left  "></i></button>
                     
                     <span id="numeroEjercicio" style="font-size: 30px;">
@@ -76,17 +76,18 @@ and open the template in the editor.
     var tiempoTemporizador = 5;
     var primerPlay = 0;
     //Para cargar el 1 ejercicio
-    
+    $('#botonMenos').attr("disabled","disabled");
     $('#cronometro').css({'display' : 'none'});
+    $('#cero').css({'opacity' : '0'});
     actualizaAjax(); 
    
    
    
    
    function actualizaPlay() {
-       //adapto el div al cronometro 
-       
-       if(primerPlay === 0){primerPlay++;$('#icono').removeClass('icon-pause').addClass('icon-play'); duracionEjercicio();}else{
+       //adapto el div al cronometro
+       $('#botonMenos').removeAttr('disabled');
+       if((primerPlay === 0) &&(contador ===1)){primerPlay++;$('#icono').removeClass('icon-pause').addClass('icon-play'); duracionEjercicio();}else{
        
     if($('#icono').hasClass('icon-play')){
         
@@ -116,10 +117,10 @@ and open the template in the editor.
        var tiempo = function (){
            
            //NO VA PONER EL 0 DELANTE DE LOS SEGUNDOS BIEN. SOLO CUANDO TANTO LOS SEGUNDOS COMO LOS MINUTOS SON 0
-//            if(parseInt(segundos) < 10){
-                
-                $('#segundos').html('0'+segundos);
-//            }
+            if((segundos < 10)){
+                console.log('el cero extra');
+                $('#cero').css({ 'opacity': '100'});
+            }
            
             // actualizo minutos
             if((segundos == 0) && (minutos != 0)){
@@ -142,9 +143,10 @@ and open the template in the editor.
             //pasa al siguiente ejercicio
                $('#cronometro').hide();
 //             $('#minutos').text();
-               $('#segundos').text('03');
+               $('#segundos').text('3');
                $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
                temporizador('mas');
+               
 
            }
            
@@ -162,18 +164,20 @@ and open the template in the editor.
    // TEMPORIZADOR PARA DESCANSOS
    
     function temporizador (condicion){
+        $('#icono').removeClass('icon-pause').addClass('icon-play'); 
         
         //oculto el cronometro para que solo se vea el temporizador 
         if($('#cronometro').is(":visible")){$('#cronometro').css({'display': 'none'});}
         //para los cronometros si es que exsisten
         if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
-        
-        
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+        
+        
         if(temporizadorCorrecto){
             temporizadorCorrecto = false;
             if((condicion === 'mas') && (contador != $('#spanTotal').text())){
+                
               //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     tiempoTemporizador--;
@@ -184,34 +188,33 @@ and open the template in the editor.
                         clearInterval(intervalo);
                         sumaEjercicio();
                         temporizadorCorrecto = true;
-                        duracionEjercicio();
+                        if(contador != $('#spanTotal').text()){duracionEjercicio();}
+                        else{$('#botonMas').attr("disabled","disabled");}
                     }
             };
     
                 intervalo = setInterval(saludo, 1000);
         }
-        if((condicion ==='menos') && (contador !== 1)){
-            restaEjercicio();
-            temporizadorCorrecto = true;
-        }
+//        if((condicion ==='menos') && (contador !== 1)){
+//            restaEjercicio();
+//            temporizadorCorrecto = true;
+//        }
             
         }else{
-            console.log('me voy por el else grande');
             if(condicion === 'mas'){
-                console.log('me meto en la condicion = mas del else grande');
                 clearInterval(intervalo);
                 temporizadorCorrecto = true;
                 sumaEjercicio();
                 //actualizo el contador del ejercicio para tenerlo actualizado
                 //$('#minutos').text();
-               $('#segundos').text('03');
-                duracionEjercicio();
-            }else{
-    
-                clearInterval(intervalo);
-                temporizadorCorrecto = true;
-                restaEjercicio();
-            }
+               $('#segundos').text('3'); // poner aqui cero?
+                if(contador != $('#spanTotal').text()){duracionEjercicio();}
+              }else{$('#botonMas').attr("disabled","disabled");}
+//            else{
+//              //  clearInterval(intervalo);
+//                temporizadorCorrecto = true;
+//                restaEjercicio();
+//            }
         }
         
         
@@ -237,31 +240,44 @@ and open the template in the editor.
     function actualizaAjax(){
          $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
          $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
-    }
+  }
     
     function sumaEjercicio (){
         //actulizo el temporizador de descanso 
         tiempoTemporizador =5;
+        $('#botonMenos').removeAttr('disabled');
        // actualización de contador
         if(contador != $('#spanTotal').text()){ // esta bien esta comparacion, no poner otro igual
         contador++;
         $('#spanContador').text(contador);
         $('#spanTotal').text($('#spanTotal').text());
         actualizaAjax();
-        return contador;
-        }
+       
+        }if(contador == parseInt($('#spanTotal').text())){
+            $('#botonMas').attr("disabled","disabled");}
         // ahora actualizar el contenido del div que muestra el gif
-        
+        return contador; 
 
         
     }
     function restaEjercicio (){
        // actualización de contador
+       $('#botonMas').removeAttr("disabled");
         if( contador !== 1){
         contador--;
+        //paro el cronometro
+        if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
+        if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+        //actualizo el contador
         $('#spanContador').text(contador);
         $('#spanTotal').text($('#spanTotal').text());
+        //cambio de ejercicio
         actualizaAjax();
+        $('#icono').removeClass('icon-play').addClass('icon-pause');
+        $('#cronometro').css({'display': 'block'});
+        //NOSE SI HACE FALTA PONER ESTE TRUEEEEEEEEEEEEEEEEEE
+        if(contador ==1){$('#botonMenos').attr("disabled","disabled");}
+        temporizadorCorrecto=true;
         return contador;
         }
 
