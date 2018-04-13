@@ -66,10 +66,12 @@ and open the template in the editor.
                 <br>
                 <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
-        </div>
+        </div>                
+    
         
-        
-    <script>
+      
+<!--Nose porque pero tienen que estar separados estos script-->
+<script>
     var ayuda = false;
     var contador = 1; 
     var temporizadorCorrecto = true;
@@ -80,9 +82,6 @@ and open the template in the editor.
     $('#cronometro').css({'display' : 'none'});
     $('#cero').css({'opacity' : '0'});
     actualizaAjax(); 
-   
-   
-   
    
    function actualizaPlay() {
        //adapto el div al cronometro
@@ -118,10 +117,13 @@ and open the template in the editor.
            
            //NO VA PONER EL 0 DELANTE DE LOS SEGUNDOS BIEN. SOLO CUANDO TANTO LOS SEGUNDOS COMO LOS MINUTOS SON 0
             if((segundos < 10)){
-                console.log('el cero extra');
+//                console.log('el cero extra');
                 $('#cero').css({ 'opacity': '100'});
             }
-           
+            //para hacer el pitido de los 5 segundos
+            if(segundos == 5){
+                reproduceSonido('5s')
+            }
             // actualizo minutos
             if((segundos == 0) && (minutos != 0)){
                    segundos = 60;
@@ -145,6 +147,7 @@ and open the template in the editor.
 //             $('#minutos').text();
                $('#segundos').text('3');
                $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+               reproduceSonido('go');
                temporizador('mas');
                
 
@@ -181,11 +184,16 @@ and open the template in the editor.
               //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     tiempoTemporizador--;
-                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>'); 
+                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    if(tiempoTemporizador === 4){
+                        console.log('cambiar esto a 5s');
+                        reproduceSonido('4s');
+                    }
                     if(tiempoTemporizador === 0){
                         //recargo el tiempo otra vezzzzz
                         tiempoTemporizador = 5;
                         clearInterval(intervalo);
+                        reproduceSonido('go');
                         sumaEjercicio();
                         temporizadorCorrecto = true;
                         if(contador != $('#spanTotal').text()){duracionEjercicio();}
@@ -282,6 +290,20 @@ and open the template in the editor.
         }
 
        // ahora actualizar el contenido del div que muestra el gif
+    }
+    function reproduceSonido(condicion){
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', 'https://www.soundjay.com/misc/sounds/censor-beep-2.mp3');                    
+        var audio2 = document.createElement('audio');
+        audio2.setAttribute('src', 'https://www.soundjay.com/button/sounds/beep-25.mp3');
+        
+        if(condicion == "go"){
+            audioElement.play();
+        }else{
+            console.log('desde el metodo');
+            audio2.play();
+        }
+        
     }
 
 
