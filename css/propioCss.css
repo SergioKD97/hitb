@@ -330,8 +330,8 @@ and open the template in the editor.
     clear: both;
     width: 96.5%;
     height: 222px;
-    border: solid 5px black;
-    margin: 15px;
+    border: solid 5px white;
+    margin: 0px 0px 15px 15px;
     float: left;}
     
     
@@ -342,12 +342,13 @@ and open the template in the editor.
    
                                                     /* TRIANGULO*/
     #triangulo-equilatero-bottom {
-    width: 0;
+        width: 0;
     height: 0;
-    border-right: 100px solid transparent;
-    border-top: 100px solid transparent;
-    border-left: 100px solid transparent;
-    border-bottom: 100px solid #f0ad4e;
+    clear: both;
+    margin-left: 140px;
+    border-right: 50px solid transparent;
+    border-left: 50px solid transparent;
+    border-bottom: 50px solid white;
 }
 
     
