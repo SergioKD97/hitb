@@ -14,9 +14,8 @@ and open the template in the editor.
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/niveles/prueba.css" rel="stylesheet" type="text/css"/>
         <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
-        
         
         <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
         <script src="js/jquery.js" type="text/javascript"></script>
@@ -159,6 +158,40 @@ and open the template in the editor.
 
             <div>
                  <?php
+                
+        // funcion que muestran el contenido de cada nivel
+        function ejecutaConsulta($creaConexion, $lvl){
+                        
+            $arrayNivel1 = niveles($creaConexion, $lvl);
+            for($i = 0; $i<count($arrayNivel1); $i++){
+                $nombre1 = $arrayNivel1[$i][2];
+                $descri = $arrayNivel1[$i][4];
+                print('<p> '.$nombre1.' </p> ');
+            }
+        }
+        
+        function niveles ($creaConexion, $nivel){
+            switch ($nivel){
+                case 1:
+                    $consulta1 = 'select * from '.$_GET['tipo'].' where nivel = 1';
+                    $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
+                    $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
+                    return $arrayConsulta1;break;   
+                case 2:
+                    $consulta1 = 'select * from '.$_GET['tipo'].' where nivel = 2';
+                    $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
+                    $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
+                    return $arrayConsulta1;break;
+                case 3:
+                    $consulta1 = 'select * from '.$_GET['tipo'].' where nivel = 3';
+                    $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
+                    $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
+                    return $arrayConsulta1;break;                    
+            }   
+        
+        }
+                 
+                    //consultas para mostrar los ejercicios
                  $consultaSQL = "select *  from Programas";
                  $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
                  $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
@@ -168,11 +201,57 @@ and open the template in the editor.
                  print('<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')">'
                     . '<div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="series bordeChulo1">Series</p></a> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="tiempo bordeChulo1">Tiempo</p></a> </div>' 
                     . '</div></a>');
-                    if($i == 2){
-                        print('<div id="triangulo-equilatero-bottom"></div><div class="divNiveles"></div>');
+                    if($i == 0){
+                        print('<div class="triangulo1"></div><div class="divNiveles1">'.$contenidoNiveles.'</div>');
                     }
+                    if($i == 1){
+                        print('<div class="triangulo2"></div><div class="divNiveles2"></div>');
+                    }
+                    if($i == 2){
+                        print('<div class="triangulo3"></div><div class="divNiveles3"></div>');
+                    }
+                    if($i == 3){
+                        print('<div class="triangulo4"></div><div class="divNiveles4"></div>');
+                    }
+                    
+                    if($i == 4){
+                        print('<div class="triangulo5"></div><div class="divNiveles5"></div>');
+                    }
+                    
+                    
                  }
+                 
+                 
+                 $contenidoNiveles= 
+                ' <div class="row" style="margin: 0 auto; margin-left: 5% ">'
+                . '<a href="Ejercicio.php?tipo=' .echo $_GET['tipo']. '&nivel=1">'
+                . '<div class="col-md-3 text-center" style="margin: 3% ; ">'
+                . '<h1 id="titulo1" class="text-center logo">Nivel 1</h1>'
+                . '<div id="texto1" style="width: 100%; color: white;">'.ejecutaConsulta($creaConexion, $lvl = 1).';</div>'
+                . '</div></a>' 
+
+                . '<a href="Ejercicio.php?tipo='. $_GET['tipo'] .' &nivel=2">'
+                . '<div class="col-md-3 text-center" style="margin: 3% ;">'
+                .  '<h1 id="titulo2"  class="text-center logo">Nivel 2</h1>'
+                .  '<div id="texto2" style="width: 100%; color: white;">'.ejecutaConsulta($creaConexion, $lvl = 2).';</div>' 
+                .  '</div></a>' 
+                .  '<a href="Ejercicio.php?tipo='. $_GET['tipo'] .'&nivel=3"><div class="col-md-3 text-center" style="margin: 3%;">'
+                .  '<h1 id="titulo3"  class="text-center logo">Nivel 3</h1>'
+                .  '<div id="texto3" style="width: 100%; color: white;">'.ejecutaConsulta($creaConexion, $lvl = 3).';'
+                .  '</div>'
+                .  '</div></a>'
+                .  '</div> ';
+                 
+                 
+                 
+                 
+                 
+                 
                  ?>
+                
+                
+                
+                
             </div>        
 
 
@@ -192,6 +271,9 @@ and open the template in the editor.
 
 <script>
 
+
+
+                                    /*MENU RESPONSIVE*/
 $(document).ready(main);
  
 var contador = 1;
@@ -216,6 +298,46 @@ function main () {
 		$(this).children('.children').slideToggle();
 	});
 }
+    
+    
+                                    /*BODY*/
+    
+    
+function main () {
+	
+        $('.triangulo1,.triangulo2,.triangulo4,.triangulo5').hide();
+        $('.divNiveles1,.divNiveles2,.divNiveles4,.divNiveles5').hide();
+        
+}
+    
+    
+//ocultar y desocultar los textos
+        $('#texto1').hide();
+        $('#texto2').hide();
+        $('#texto3').hide();
+        
+        $("#titulo1").hover(function(){
+		$("#texto1").fadeIn('fast');
+		}, function(){
+			$('#texto1').hide();
+		});
+        $("#titulo2").hover(function(){
+		$("#texto2").fadeIn('fast');
+		}, function(){
+			$('#texto2').hide();
+		});
+        $("#titulo3").hover(function(){
+		$("#texto3").fadeIn('fast');
+		}, function(){
+			$('#texto3').hide();
+		});
+               
+        //fin ocultar y desocultar los textos    
+    
+    
+    
+    
+    
     
     
     

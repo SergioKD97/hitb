@@ -59,11 +59,6 @@ and open the template in the editor.
         
        
         
-        <div id="menuArriba"class="row" style=" height: 50px; background-color: #e6e6e6; margin-bottom: 15px;">
-            <div class="col-md-6">utlimas noticias</div>
-            <div class="col-md-4"><a href="index.php">logo</a></div>
-            <div class="col-md-2"><div style="height: 50px;"class="btn bordeChuloAbajo text-center">Registrate</div></div>
-        </div>
             <div class="row" style="margin: 0 auto; margin-left: 5% ">
                 
                                 
@@ -78,11 +73,10 @@ and open the template in the editor.
                 </div>
                 </div></a>
 
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2"><div class="col-md-3 text-center" style="margin: 3% ;">
-                <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ffcc66">-->
+                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2">
+                <div class="col-md-3 text-center" style="margin: 3% ;">
                     <h1 id="titulo2"  class="text-center logo">Nivel 2</h1>
-                <!--</div>-->
-                <div id="texto2" style="width: 100%; color: white;">
+                    <div id="texto2" style="width: 100%; color: white;">
                     <?php
                         ejecutaConsulta($creaConexion, $lvl = 2);
                     ?>
@@ -99,9 +93,8 @@ and open the template in the editor.
                 </div>
                 </div></a>
         </div>
-<!--        <div id="menuAbajo" class="row">
-            <div class="col-md-12 text-center">contactanos acabar este menu</div>
-        </div>-->
+        
+ 
     <script>
         //ocultar y desocultar los textos
         $('#texto1').hide();
