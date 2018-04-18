@@ -325,15 +325,29 @@ and open the template in the editor.
 
 
     
+    
+    .divNiveles{
+    clear: both;
+    width: 96.5%;
+    height: 222px;
+    border: solid 5px black;
+    margin: 15px;
+    float: left;}
+    
+    
+    
+    
+    
+    
    
                                                     /* TRIANGULO*/
-    #triangle-topright { 
-	width: 0; 
-	height: 0; 
-	border-top: 100px solid blue; 
-	border-left: 100px solid transparent; 
-/*	float: right;*/
-	display: inline-block;
+    #triangulo-equilatero-bottom {
+    width: 0;
+    height: 0;
+    border-right: 100px solid transparent;
+    border-top: 100px solid transparent;
+    border-left: 100px solid transparent;
+    border-bottom: 100px solid #f0ad4e;
 }
 
     
