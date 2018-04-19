@@ -224,7 +224,7 @@ and open the template in the editor.
                  
                  $contenidoNiveles= 
                 ' <div class="row" style="margin: 0 auto; margin-left: 5% ">'
-                . '<a href="Ejercicio.php?tipo=' .echo $_GET['tipo']. '&nivel=1">'
+                . '<a href="Ejercicio.php?tipo=' . $_GET['tipo']. '&nivel=1">'
                 . '<div class="col-md-3 text-center" style="margin: 3% ; ">'
                 . '<h1 id="titulo1" class="text-center logo">Nivel 1</h1>'
                 . '<div id="texto1" style="width: 100%; color: white;">'.ejecutaConsulta($creaConexion, $lvl = 1).';</div>'

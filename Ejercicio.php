@@ -17,6 +17,12 @@ and open the template in the editor.
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/jquery.raty.js" type="text/javascript"></script>
+        
+        <link rel='stylesheet' href='css/calendario/fullcalendar.css' />
+        <script src='js/calendario/jquery.min.js'></script>
+        <script src='js/calendario/moment.min.js'></script>
+        <script src='js/calendario/fullcalendar.js'></script>
+
     </head>
     <body>
         <?php 
@@ -68,6 +74,48 @@ and open the template in the editor.
             </div>
         </div>                
     
+        
+        
+            
+            
+        <div class="container">
+                
+                    <div id="CalendarioWeb"></div>
+               
+            
+        </div>
+        
+        
+        <script>
+        
+            $('#CalendarioWeb').fullCalendar();
+        
+        
+        
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
       
 <!--Nose porque pero tienen que estar separados estos script-->
