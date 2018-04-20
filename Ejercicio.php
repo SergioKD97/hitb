@@ -60,7 +60,7 @@ and open the template in the editor.
                     /
                     <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
                 </span>
-                <button onclick="temporizador('mas');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
+                    <button onclick="temporizador('mas'); temporizadorCorrecto = false; console.log('hola' + temporizadorCorrecto);" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
                 </div>
                 <div id="menuBotones" class="text-center" style="margin: auto;">
                     <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i id="icono" class="icon-pause"></i></button>
@@ -84,41 +84,8 @@ and open the template in the editor.
                
             
         </div>
-        
-        
-        <script>
-        
-            $('#CalendarioWeb').fullCalendar();
-        
-        
-        
-        </script>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-<!--Nose porque pero tienen que estar separados estos script-->
+    
+
 <script>
     var ayuda = false;
     var contador = 1; 
@@ -155,14 +122,14 @@ and open the template in the editor.
    // TEMPORIZADOR PARA LA DURACION DE LOS EJERCICIOS
    function duracionEjercicio(){
    
-   
+       $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
        $('#cronometro').css({ 'display': 'block'});
        //actulizo el contenido del div para ajustarlo al cronometro
        var minutos = $('#minutos').text();
        var segundos = $('#segundos').text();
-       
+       console.log('justo antes del contador ' + segundos+ 'texto de segundos' + $('#segundos').text());
        var tiempo = function (){
-           
+           console.log('dentro del contador ' +  segundos);
            //NO VA PONER EL 0 DELANTE DE LOS SEGUNDOS BIEN. SOLO CUANDO TANTO LOS SEGUNDOS COMO LOS MINUTOS SON 0
             if((segundos < 10)){
 //                console.log('el cero extra');
@@ -192,8 +159,7 @@ and open the template in the editor.
                clearInterval(tiempoMinutos);
             //pasa al siguiente ejercicio
                $('#cronometro').hide();
-//             $('#minutos').text();
-               $('#segundos').text('3');
+               $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
                $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
                reproduceSonido('go');
                temporizador('mas');
@@ -251,26 +217,14 @@ and open the template in the editor.
     
                 intervalo = setInterval(saludo, 1000);
         }
-//        if((condicion ==='menos') && (contador !== 1)){
-//            restaEjercicio();
-//            temporizadorCorrecto = true;
-//        }
-            
         }else{
             if(condicion === 'mas'){
                 clearInterval(intervalo);
                 temporizadorCorrecto = true;
                 sumaEjercicio();
                 //actualizo el contador del ejercicio para tenerlo actualizado
-                //$('#minutos').text();
-               $('#segundos').text('3'); // poner aqui cero?
                 if(contador != $('#spanTotal').text()){duracionEjercicio();}
               }else{$('#botonMas').attr("disabled","disabled");}
-//            else{
-//              //  clearInterval(intervalo);
-//                temporizadorCorrecto = true;
-//                restaEjercicio();
-//            }
         }
         
         
@@ -284,9 +238,11 @@ and open the template in the editor.
         
         if(!ayuda){
             $('#textoAyuda').css({ 'opacity': '1'});
+            $('#cronometro').css({ 'display': 'block'});
             ayuda = true;
         }else{
             $('#textoAyuda').css({ 'opacity': '0'});
+            $('#cronometro').css({ 'display': 'none'});
             ayuda = false;
         }
         return ayuda;
@@ -296,7 +252,9 @@ and open the template in the editor.
     function actualizaAjax(){
          $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
          $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
-  }
+//         $('#minutos').load();
+         $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
+ }
     
     function sumaEjercicio (){
         //actulizo el temporizador de descanso 
@@ -339,19 +297,20 @@ and open the template in the editor.
 
        // ahora actualizar el contenido del div que muestra el gif
     }
+    //comentado porque no soporto el puto sonido 
     function reproduceSonido(condicion){
-        var audioElement = document.createElement('audio');
-        audioElement.setAttribute('src', 'https://www.soundjay.com/misc/sounds/censor-beep-2.mp3');                    
-        var audio2 = document.createElement('audio');
-        audio2.setAttribute('src', 'https://www.soundjay.com/button/sounds/beep-25.mp3');
-        
-        if(condicion == "go"){
-            audioElement.play();
-        }else{
-            console.log('desde el metodo');
-            audio2.play();
-        }
-        
+//        var audioElement = document.createElement('audio');
+//        audioElement.setAttribute('src', 'https://www.soundjay.com/misc/sounds/censor-beep-2.mp3');                    
+//        var audio2 = document.createElement('audio');
+//        audio2.setAttribute('src', 'https://www.soundjay.com/button/sounds/beep-25.mp3');
+//        
+//        if(condicion == "go"){
+//            audioElement.play();
+//        }else{
+//            console.log('desde el metodo');
+//            audio2.play();
+//        }
+//        
     }
 
 
