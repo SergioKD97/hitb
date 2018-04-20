@@ -7,7 +7,6 @@ and open the template in the editor.
 <html>
     <head>
         
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
         <title>Hitbee</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
@@ -30,10 +29,14 @@ and open the template in the editor.
     
     
     <body class="body-wrap-home">
-        <?php require './conectarBBDD.php';
+        <?php //require './conectarBBDD.php';
+             include './metodos.php';
         if(isset($_GET['usuarioNuevo'])){
             echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
+            $metodos = new metodos();
+            
         }
+        
         ?>
         
         
@@ -150,46 +153,18 @@ and open the template in the editor.
         
         
        <div class="fotoBack">
-        <div class="container bodyEjercicios">
+           <div class="container bodyEjercicios " >
 
             <div id="bodyText">
-                <div >MÚSCULOS</div>
+                <div id="borrar">MÚSCULOS</div>
             </div>
 
             <div>
                  <?php
                 
-        // funcion que muestran el contenido de cada nivel
-        function ejecutaConsulta($creaConexion, $lvl){
-                        
-            $arrayNivel1 = niveles($creaConexion, $lvl);
-            for($i = 0; $i<count($arrayNivel1); $i++){
-                $nombre1 = $arrayNivel1[$i][2];
-                $descri = $arrayNivel1[$i][4];
-                print('<p> '.$nombre1.' </p> ');
-            }
-        }
+
         
-        function niveles ($creaConexion, $nivel){
-            switch ($nivel){
-                case 1:
-                    $consulta1 = 'select * from '.$_GET['tipo'].' where nivel = 1';
-                    $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
-                    $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
-                    return $arrayConsulta1;break;   
-                case 2:
-                    $consulta1 = 'select * from '.$_GET['tipo'].' where nivel = 2';
-                    $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
-                    $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
-                    return $arrayConsulta1;break;
-                case 3:
-                    $consulta1 = 'select * from '.$_GET['tipo'].' where nivel = 3';
-                    $ejecutaConsulta1 = mysqli_query($creaConexion, $consulta1);
-                    $arrayConsulta1 = mysqli_fetch_all($ejecutaConsulta1);
-                    return $arrayConsulta1;break;                    
-            }   
-        
-        }
+
                  
                     //consultas para mostrar los ejercicios
                  $consultaSQL = "select *  from Programas";
@@ -199,23 +174,23 @@ and open the template in the editor.
                      $nombrePrograma = $arrayConsulta[$i][1];
                      $foto = $arrayConsulta[$i][2];
                  print('<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')">'
-                    . '<div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="series bordeChulo1">Series</p></a> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="tiempo bordeChulo1">Tiempo</p></a> </div>' 
+                    . '<div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p><p id="serie'.($i+1) .'" onclick="muestraNiveles()"  class="series bordeChulo1">Series</p><p id="tiempo'.$i.'" class="tiempo bordeChulo1">Tiempo</p></div>' 
                     . '</div></a>');
                     if($i == 0){
-                        print('<div class="triangulo1"></div><div class="divNiveles1">'.$contenidoNiveles.'</div>');
+                        print('<div id="triangulo1" class="triangulo1"></div><div id="divNiveles1"  class="divNiveles1">'.$contenidoNiveles.'</div>');
                     }
                     if($i == 1){
-                        print('<div class="triangulo2"></div><div class="divNiveles2"></div>');
+                        print('<div id="triangulo2" class="triangulo2"></div><div id="divNiveles2" class="divNiveles2"></div>');
                     }
                     if($i == 2){
-                        print('<div class="triangulo3"></div><div class="divNiveles3"></div>');
+                        print('<div id="triangulo3" class="triangulo3"></div><div id="divNiveles3" class="divNiveles3"></div>');
                     }
                     if($i == 3){
-                        print('<div class="triangulo4"></div><div class="divNiveles4"></div>');
+                        print('<div id="triangulo4" class="triangulo4"></div><div id="divNiveles4" class="divNiveles4"></div>');
                     }
                     
                     if($i == 4){
-                        print('<div class="triangulo5"></div><div class="divNiveles5"></div>');
+                        print('<div id="triangulo15 class="triangulo5"></div><div id="divNiveles5" class="divNiveles5"></div>');
                     }
                     
                     
@@ -274,30 +249,41 @@ and open the template in the editor.
 
 
                                     /*MENU RESPONSIVE*/
-$(document).ready(main);
- 
+//$(document).ready(main);
+$('#borrar').hide();
 var contador = 1;
- 
-function main () {
-	$('.iconoMenu').click(function(){
-		if (contador == 1) {
-			$('.navResponsive').animate({
-				left: '0'
-			});
-			contador = 0;
-		} else {
-			contador = 1;
-			$('.navResponsive').animate({
-				left: '-100%'
-			});
-		}
-	});
- 
-	// Mostramos y ocultamos submenus
-	$('.submenu').click(function(){
-		$(this).children('.children').slideToggle();
-	});
+
+//function main () {
+//	$('.iconoMenu').click(function(){
+//		if (contador == 1) {
+//			$('.navResponsive').animate({
+//				left: '0'
+//			});
+//			contador = 0;
+//		} else {
+//			contador = 1;
+//			$('.navResponsive').animate({
+//				left: '-100%'
+//			});
+//		}
+//	});
+// 
+//	// Mostramos y ocultamos submenus
+//	$('.submenu').click(function(){
+//		$(this).children('.children').slideToggle();
+//	});
+//}
+
+function muestraNiveles(){
+    
+    document.write('hola');
 }
+
+
+
+
+
+
     
     
                                     /*BODY*/
@@ -305,7 +291,7 @@ function main () {
     
 function main () {
 	
-        $('.triangulo1,.triangulo2,.triangulo4,.triangulo5').hide();
+        $('#triangulo1','#triangulo2','#triangulo4','#triangulo5').hide();
         $('.divNiveles1,.divNiveles2,.divNiveles4,.divNiveles5').hide();
         
 }

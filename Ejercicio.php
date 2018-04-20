@@ -60,7 +60,7 @@ and open the template in the editor.
                     /
                     <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
                 </span>
-                    <button onclick="temporizador('mas'); temporizadorCorrecto = false; console.log('hola' + temporizadorCorrecto);" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
+                    <button onclick="temporizador('mas', 'flecha');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
                 </div>
                 <div id="menuBotones" class="text-center" style="margin: auto;">
                     <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i id="icono" class="icon-pause"></i></button>
@@ -180,7 +180,7 @@ and open the template in the editor.
    
    // TEMPORIZADOR PARA DESCANSOS
    
-    function temporizador (condicion){
+    function temporizador (condicion, flecha = 'no'){
         $('#icono').removeClass('icon-pause').addClass('icon-play'); 
         
         //oculto el cronometro para que solo se vea el temporizador 
@@ -204,14 +204,21 @@ and open the template in the editor.
                         reproduceSonido('4s');
                     }
                     if(tiempoTemporizador === 0){
+                     
                         //recargo el tiempo otra vezzzzz
                         tiempoTemporizador = 5;
                         clearInterval(intervalo);
                         reproduceSonido('go');
                         sumaEjercicio();
                         temporizadorCorrecto = true;
-                        if(contador != $('#spanTotal').text()){duracionEjercicio();}
-                        else{$('#botonMas').attr("disabled","disabled");}
+                        if((flecha === 'flecha')){
+                            $('#cronometro').css({'display': 'block'});
+                            $('#icono').removeClass('icon-play').addClass('icon-pause'); 
+                            
+                        }else{}
+                        if(contador != $('#spanTotal').text()){
+                            $('#botonMas').attr("disabled","disabled");
+                        }
                     }
             };
     
@@ -223,7 +230,7 @@ and open the template in the editor.
                 temporizadorCorrecto = true;
                 sumaEjercicio();
                 //actualizo el contador del ejercicio para tenerlo actualizado
-                if(contador != $('#spanTotal').text()){duracionEjercicio();}
+                if(contador != $('#spanTotal').text()){ duracionEjercicio();}
               }else{$('#botonMas').attr("disabled","disabled");}
         }
         
