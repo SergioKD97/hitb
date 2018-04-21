@@ -184,8 +184,7 @@ and open the template in the editor.
                     if($i == 4){
                         print('<div class="triangulo5"></div><div class="divNiveles5"></div>');
                     }
-                    
-                    
+                 
                  }
                  ?>
             </div>        
@@ -206,10 +205,10 @@ and open the template in the editor.
 </html>
 
 <script>
-
-
-
-                                    /*MENU RESPONSIVE*/
+                                  
+    
+    
+                                /*MENU RESPONSIVE*/
 $(document).ready(main);
  
 var contador = 1;
@@ -236,21 +235,12 @@ function main () {
 }
     
     
-                                    /*BODY*/
+                                /*BODY*/
     
     
-function main () {
-	
         $('.triangulo1,.triangulo2,.triangulo4,.triangulo5').hide();
         $('.divNiveles1,.divNiveles2,.divNiveles4,.divNiveles5').hide();
-        
-}
-    
-    
-    
-    
-    
-    
+
     
     
     
