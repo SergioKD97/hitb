@@ -192,7 +192,7 @@ and open the template in the editor.
                     /
                     <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
                 </span>
-                    <button onclick="temporizador('mas', 'flecha');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
+                    <button onclick="sumaEjercicio('flecha');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
                 </div>
                 <div id="menuBotones" class="text-center" style="margin: auto;">
                     <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i id="icono" class="icon-pause"></i></button>
@@ -260,7 +260,7 @@ and open the template in the editor.
    // TEMPORIZADOR PARA LA DURACION DE LOS EJERCICIOS
    function duracionEjercicio(){
    
-       $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
+
        $('#cronometro').css({ 'display': 'block'});
        //actulizo el contenido del div para ajustarlo al cronometro
        var minutos = $('#minutos').text();
@@ -300,7 +300,7 @@ and open the template in the editor.
                $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
                $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
                reproduceSonido('go');
-               temporizador('mas');
+               temporizador();
                
 
            }
@@ -318,20 +318,20 @@ and open the template in the editor.
    
    // TEMPORIZADOR PARA DESCANSOS
    
-    function temporizador (condicion, flecha = 'no'){
+    function temporizador (){
         $('#icono').removeClass('icon-pause').addClass('icon-play'); 
         
         //oculto el cronometro para que solo se vea el temporizador 
         if($('#cronometro').is(":visible")){$('#cronometro').css({'display': 'none'});}
         //para los cronometros si es que exsisten
-        if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
-        if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+        if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos); $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);}
+        if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 5;}
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
         
         
-        if(temporizadorCorrecto){
-            temporizadorCorrecto = false;
-            if((condicion === 'mas') && (contador != $('#spanTotal').text())){
+//        if(temporizadorCorrecto){
+//            temporizadorCorrecto = false;
+            if((contador != $('#spanTotal').text())){
                 
               //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
@@ -348,30 +348,26 @@ and open the template in the editor.
                         clearInterval(intervalo);
                         reproduceSonido('go');
                         sumaEjercicio();
-                        temporizadorCorrecto = true;
-                        if((flecha === 'flecha')){
-                            $('#cronometro').css({'display': 'block'});
-                            $('#icono').removeClass('icon-play').addClass('icon-pause'); 
-                            
-                        }else{}
+//                        temporizadorCorrecto = true;
                         if(contador != $('#spanTotal').text()){
-                            $('#botonMas').attr("disabled","disabled");
+                          //  $('#botonMas').attr("disabled","disabled");
                         }
                     }
             };
     
                 intervalo = setInterval(saludo, 1000);
         }
-        }else{
-            if(condicion === 'mas'){
-                clearInterval(intervalo);
-                temporizadorCorrecto = true;
-                sumaEjercicio();
-                //actualizo el contador del ejercicio para tenerlo actualizado
-                if(contador != $('#spanTotal').text()){ duracionEjercicio();}
-              }else{$('#botonMas').attr("disabled","disabled");}
-        }
-        
+//        }
+//        else{
+//            if(condicion === 'mas'){
+//                clearInterval(intervalo);
+//                temporizadorCorrecto = true;
+//                sumaEjercicio();
+//                //actualizo el contador del ejercicio para tenerlo actualizado
+//                if(contador != $('#spanTotal').text()){ duracionEjercicio();}
+//              }else{$('#botonMas').attr("disabled","disabled");}
+//        }
+//        
         
     };   
     //fin temporizador
@@ -401,8 +397,10 @@ and open the template in the editor.
          $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
  }
     
-    function sumaEjercicio (){
-        //actulizo el temporizador de descanso 
+    function sumaEjercicio (flecha){
+        console.log(flecha);
+        if(flecha != 'flecha'){
+            //actulizo el temporizador de descanso 
         tiempoTemporizador =5;
         $('#botonMenos').removeAttr('disabled');
        // actualización de contador
@@ -411,11 +409,23 @@ and open the template in the editor.
         $('#spanContador').text(contador);
         $('#spanTotal').text($('#spanTotal').text());
         actualizaAjax();
-       
+       duracionEjercicio();
         }if(contador == parseInt($('#spanTotal').text())){
             $('#botonMas').attr("disabled","disabled");}
         // ahora actualizar el contenido del div que muestra el gif
         return contador; 
+        }else{
+        //paro los cronos (ver si se pueden ponner a 0)
+        if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
+        if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+        if($('#cronometro').is(":visible")){
+            temporizador();
+        }else{
+            sumaEjercicio();
+        }
+        
+        }
+        
 
         
     }
