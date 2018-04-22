@@ -230,9 +230,6 @@ id++;
 //Siempre que se da a el boton se ocultan todos
 $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
 $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
-//se muestra el correcto
-$('.triangulo' + id).show();
-$('.divNiveles' + id).show();
 // Ahora empezamos con la carga de la informacion
 switch(id){
         case 1: nombreBBDD = 'pecho';break;
@@ -243,9 +240,50 @@ switch(id){
 }
 //agrupar todo el tipo en una sola variable
 var tipoFinal = tipo.toString() + nombreBBDD .toString();
-console.log('tipo + nombreBBDD =' + tipoFinal);
-$('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
-console.log('Niveles.php?tipo='+tipo+nombreBBDD);
+
+
+if(innerWidth < 650 ){
+    //se muestra el correcto
+    $('.triangulo' + id).show();
+    $('.divNiveles' + id).show();
+    $('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
+}
+if((innerWidth > 650) && (innerWidth < 1199)){
+    //div 2 
+     if(id <= 2){
+         $('.triangulo2').show();
+         $('.divNiveles2').show();
+         $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal);
+    }
+    //div 4
+         if((id === 3) || (id === 4)){
+         $('.triangulo4').show();
+         $('.divNiveles4').show();
+         $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal);
+    }
+    //div 5
+    if(id === 5){
+         $('.triangulo5').show();
+         $('.divNiveles5').show();
+         $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal); 
+    }
+}
+if(innerWidth > 1199){
+    if(id <= 3){
+         $('.triangulo3').show();
+         $('.divNiveles3').show();
+         $('.divNiveles3').load('Niveles.php?tipo='+tipoFinal);
+    }
+    else{
+        console.log('entro por el grande ' + id);
+            //se muestra el correcto
+            $('.triangulo5').show();
+            $('.divNiveles5').show();
+            $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal);
+    }
+}
+
+
 
 }
 //Fin Marc

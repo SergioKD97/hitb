@@ -323,7 +323,7 @@ and open the template in the editor.
         
         //oculto el cronometro para que solo se vea el temporizador 
         if($('#cronometro').is(":visible")){$('#cronometro').css({'display': 'none'});}
-        //para los cronometros si es que exsisten
+        //para los cronometros si es que exsisten. Aqui se actualiza bien el cronometro del ejercicio para la siguiente vez si es que se ha avanzado antes de acabar
         if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos); $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);}
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 5;}
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
