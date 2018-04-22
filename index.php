@@ -244,8 +244,8 @@ switch(id){
 //agrupar todo el tipo en una sola variable
 var tipoFinal = tipo.toString() + nombreBBDD .toString();
 console.log('tipo + nombreBBDD =' + tipoFinal);
-$('.divNiveles' + id).load('AjaxNiveles.php?tipo='+tipoFinal);
-console.log('AjaxNiveles.php?tipo='+tipo+nombreBBDD);
+$('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
+console.log('Niveles.php?tipo='+tipo+nombreBBDD);
 
 }
 //Fin Marc
