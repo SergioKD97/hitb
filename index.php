@@ -7,7 +7,6 @@ and open the template in the editor.
 <html>
     <head>
         
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
         <title>Hitbee</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
@@ -154,7 +153,7 @@ and open the template in the editor.
         <div class="container bodyEjercicios">
 
             <div id="bodyText">
-                <div >MÚSCULOS</div>
+                <div id="borrar" >MÚSCULOS</div>
             </div>
 
             <div>
@@ -166,8 +165,9 @@ and open the template in the editor.
                      $nombrePrograma = $arrayConsulta[$i][1];
                      $foto = $arrayConsulta[$i][2];
                  print('<div class="bordeChulo '.$nombrePrograma.'" style="margin:15px;margin-right:4px;background-image: url(imagenes/'.$foto.')">'
-                    . '<div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="series bordeChulo1">Series</p></a> <a href="niveles.php?tipo='.$nombrePrograma.'"><p class="tiempo bordeChulo1">Tiempo</p></a> </div>' 
+                    . '<div class ="info" style="height: 100%;width:100%;"><p>'.$nombrePrograma.'</p><p id="'.$i.'" class="series bordeChulo1"  onclick="ocultaDivs(this.id,1);">Series</p><p id="'.$i.'" class="tiempo bordeChulo1" onclick="ocultaDivs(this.id,2);">Tiempo</p> </div>' 
                     . '</div></a>');
+                 
                     if($i == 0){
                         print('<div class="triangulo1"></div><div class="divNiveles1"></div>');
                     }
@@ -209,11 +209,46 @@ and open the template in the editor.
     
     
                                 /*MENU RESPONSIVE*/
-$(document).ready(main);
+mainS();
  
 var contador = 1;
- 
-function main () {
+$('.triangulo1,.triangulo2,.triangulo4,.triangulo5').hide();
+$('.divNiveles1,.divNiveles2,.divNiveles4,.divNiveles5').hide();
+
+
+//Marc
+function ocultaDivs (id, tipo){
+var nombreBBDD = '';
+//para saber si son repes o tiempo    
+if(tipo === 1){
+    tipo = '';
+}else{
+    tipo = 't';
+}
+//para igualar el id
+id++; 
+//Siempre que se da a el boton se ocultan todos
+$('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+$('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+//se muestra el correcto
+$('.triangulo' + id).show();
+$('.divNiveles' + id).show();
+// Ahora empezamos con la carga de la informacion
+switch(id){
+        case 1: nombreBBDD = 'pecho';break;
+        case 2: nombreBBDD = 'hombro-espalda';break;
+        case 3: nombreBBDD = 'brazo';break;
+        case 4: nombreBBDD = 'abs';break;
+        case 5: nombreBBDD = 'pierna';break;
+}
+var tipoFinal = tipo.toString() + nombreBBDD .toString();
+console.log('tipo + nombreBBDD =' + tipoFinal);
+$('.divNiveles' + id).load('AjaxNiveles.php?tipo='+tipoFinal);
+console.log('AjaxNiveles.php?tipo='+tipo+nombreBBDD);
+
+}
+//Fin Marc
+function mainS () {
 	$('.iconoMenu').click(function(){
 		if (contador == 1) {
 			$('.navResponsive').animate({
@@ -238,8 +273,7 @@ function main () {
                                 /*BODY*/
     
     
-        $('.triangulo1,.triangulo2,.triangulo4,.triangulo5').hide();
-        $('.divNiveles1,.divNiveles2,.divNiveles4,.divNiveles5').hide();
+
 
     
     

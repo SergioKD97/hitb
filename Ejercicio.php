@@ -218,7 +218,13 @@ and open the template in the editor.
         </div>
     
 
+
 <script>
+    
+    //Sergio
+    mainS();
+    var contadorS = 1;
+//fin sergio 
     var ayuda = false;
     var contador = 1; 
     var temporizadorCorrecto = true;
@@ -458,21 +464,22 @@ and open the template in the editor.
 
 
 
+
+
+
     
                                     /*MENU RESPONSIVE*/
-$(document).ready(main);
+
  
-var contador = 1;
- 
-function main () {
+function mainS () {
 	$('.iconoMenu').click(function(){
-		if (contador == 1) {
+		if (contadorS == 1) {
 			$('.navResponsive').animate({
 				left: '0'
 			});
-			contador = 0;
+			contadorS = 0;
 		} else {
-			contador = 1;
+			contadorS = 1;
 			$('.navResponsive').animate({
 				left: '-100%'
 			});
