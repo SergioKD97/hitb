@@ -241,6 +241,7 @@ switch(id){
         case 4: nombreBBDD = 'abs';break;
         case 5: nombreBBDD = 'pierna';break;
 }
+//agrupar todo el tipo en una sola variable
 var tipoFinal = tipo.toString() + nombreBBDD .toString();
 console.log('tipo + nombreBBDD =' + tipoFinal);
 $('.divNiveles' + id).load('AjaxNiveles.php?tipo='+tipoFinal);
