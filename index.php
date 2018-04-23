@@ -13,7 +13,8 @@ and open the template in the editor.
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/niveles/prueba.css" rel="stylesheet" type="text/css"/>
+        
         <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
         
         
@@ -25,6 +26,7 @@ and open the template in the editor.
     <style>
     
     
+        
         
     </style>
     

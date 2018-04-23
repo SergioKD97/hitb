@@ -1,9 +1,12 @@
-body {
+.bodyNiveles {
   background-color: #02111b;
+  margin: 0px auto;
+  height: 250px;
 }
 
 .logo {
   margin: 50px auto;
+  margin-top: 26px !important;
   text-align: center;
 
     text-decoration: none;
@@ -15,10 +18,9 @@ body {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
-  display: inline-block;
   text-align: center;
   text-transform: uppercase;
-  font-size: 75px;
+  font-size: 60px;
   font-weight: 700;
   font-family: 'Exo 2';
   line-height: 0.8;
@@ -28,6 +30,8 @@ body {
 .logo:first-line {
   font-size: 0.8em;
 }
+    
+
 .logo:hover {
   -webkit-transform: perspective(8em) rotateX(11deg) scale(1.2);
   -moz-transform: perspective(8em) rotateX(11deg) scale(1.2);
@@ -35,4 +39,18 @@ body {
   -o-transform: perspective(8em) rotateX(11deg) scale(1.2);
   transform: perspective(8em) rotateX(11deg) scale(1.2);
   text-shadow: 0 -1px 15px black, 0 1px 0 #7f6303, 0 2px 0 #846703, 0 0px 0 #896b03, 0 1px 0 #8e6f03, 0 2px 0 #937203, 0 2px 30px rgba(252, 223, 92, 0.6);
+  
 }
+
+
+                                                /* EJERCICIOS DE CADA NIVEL*/
+                                                        
+#texto1{width: 330px;margin-top: -22px;color: white;display: block !important}
+
+
+
+
+.id1nvl1{}
+.id2nvl1{}
+.id3nvl1{}
+.id4nvl1{}

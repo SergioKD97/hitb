@@ -28,9 +28,11 @@ and open the template in the editor.
                         
             $arrayNivel1 = niveles($creaConexion, $lvl);
             for($i = 0; $i<count($arrayNivel1); $i++){
+                $id1 = $arrayNivel1[$i][0];
+                $nivel1 = $arrayNivel1[$i][1];
                 $nombre1 = $arrayNivel1[$i][2];
-                $descri = $arrayNivel1[$i][4];
-                print('<p> '.$nombre1.' </p> ');
+                $descri1 = $arrayNivel1[$i][4];
+                print('<p class="id'.$id1.'nvl'.$nivel1.'"> -'.$nombre1.' </p> ');
             }
         }
         
@@ -59,39 +61,45 @@ and open the template in the editor.
         
        
         
-            <div class="row" style="margin: 0 auto; margin-left: 5% ">
+            <div class="row bodyNiveles" >
                 
                                 
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=1"><div class="col-md-3 text-center" style="margin: 3% ; ">
-                <!--<div  class="text-center bordesCirculares" style="height:15vh; width: 100%; background-color: #66ffc2">-->
-                <h1 id="titulo1" class="text-center logo">Nivel 1</h1>
-                <!--</div>-->
-                <div id="texto1" style="width: 100%; color: white;">
-                    <?php
-                        ejecutaConsulta($creaConexion, $lvl = 1);
-                    ?>
+                <div class="col-md-4 text-center divNivelBocata" style="margin-top: 0%;height: 250px;">
+                    <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=1"> 
+                        <h1 id="titulo1" class="text-center logo">Nivel 1</h1>
+                     </a>
+                    
+                    <div id="texto1">
+                        <?php
+                            ejecutaConsulta($creaConexion, $lvl = 1);
+                        ?>
+                    </div>
                 </div>
-                </div></a>
 
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2">
-                <div class="col-md-3 text-center" style="margin: 3% ;">
-                    <h1 id="titulo2"  class="text-center logo">Nivel 2</h1>
-                    <div id="texto2" style="width: 100%; color: white;">
-                    <?php
-                        ejecutaConsulta($creaConexion, $lvl = 2);
-                    ?>
+                
+                <div class="col-md-4 text-center" style="margin-top: 0%;height: 250px;">
+                    <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2">
+                        <h1 id="titulo2"  class="text-center logo">Nivel 2</h1>
+                    </a>
+                   
+                    <div id="texto1">
+                        <?php
+                            ejecutaConsulta($creaConexion, $lvl = 2);
+                        ?>
+                    </div>
                 </div>
-                </div></a>
-                <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=3"><div class="col-md-3 text-center" style="margin: 3%;">
-                <!--<div class="text-center bordesCirculares" style="width: 100%; background-color: #ff5c33">-->
-                    <h1 id="titulo3"  class="text-center logo">Nivel 3</h1>
-                <!--</div>-->
-                <div id="texto3" style="width: 100%; color: white;">
-                    <?php
-                        ejecutaConsulta($creaConexion, $lvl = 3);
-                    ?>
+                
+                <div class="col-md-4 text-center" style="margin-top: 0%;height: 250px;">
+                    <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=3">
+                        <h1 id="titulo3"  class="text-center logo">Nivel 3</h1>
+                    </a>
+                    
+                    <div id="texto1">
+                        <?php
+                            ejecutaConsulta($creaConexion, $lvl = 3);
+                        ?>
+                    </div>
                 </div>
-                </div></a>
         </div>
         
  
@@ -118,6 +126,20 @@ and open the template in the editor.
 		});
                
         //fin ocultar y desocultar los textos
+        
+        
+        
+    /*   FUNCION PARA HACER ALGO EN OTRO DIV Q NO SEA EL HOVER 
+    $(".logo").hover(function(){
+        $(".divNivelBocata").css("border", "2px solid #C00");
+        }, function(){
+        $(".divNivelBocata").css("border", "none");
+    });
+    */
+        
+        
+        
+        
     </script>
     </body>
 </html>
