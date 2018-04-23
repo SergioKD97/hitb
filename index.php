@@ -243,7 +243,7 @@ switch(id){
 //agrupar todo el tipo en una sola variable
 var tipoFinal = tipo.toString() + nombreBBDD .toString();
 
-
+// aqui se ajusta a que div se va a meter la informacion dependiendo del tamaño
 if(innerWidth < 650 ){
     //se muestra el correcto
     $('.triangulo' + id).show();
