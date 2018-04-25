@@ -181,7 +181,7 @@ and open the template in the editor.
             <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio" style="margin: auto;">
                 
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
-                <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">00</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
+                <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">3</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
                 <div id="botones" class="text-center" style=" margin: auto;" >  
                     <button id="botonMenos"  
                             class="btn btn-info" style="border-radius: 50%;" onclick="restaEjercicio();">
@@ -234,12 +234,20 @@ and open the template in the editor.
     $('#botonMenos').attr("disabled","disabled");
     $('#cronometro').css({'display' : 'none'});
     $('#cero').css({'display' : 'none'});
+    $('#botonMenos').css({'display' : 'none'});
+    $('#botonMas').css({'display' : 'none'});
     actualizaAjax(); 
    
    function actualizaPlay() {
        //adapto el div al cronometro
        $('#botonMenos').removeAttr('disabled');
-       if((primerPlay === 0) &&(contador ===1)){primerPlay++;$('#icono').removeClass('icon-pause').addClass('icon-play'); duracionEjercicio();}else{
+       if((primerPlay === 0)){
+           primerPlay++;
+           $('#botonMenos').css({'display' : 'inline'});
+           $('#botonMas').css({'display' : 'inline'});
+           $('#icono').removeClass('icon-pause').addClass('icon-play');
+           duracionEjercicio();
+       }else{
        
     if($('#icono').hasClass('icon-play')){
         
@@ -261,41 +269,32 @@ and open the template in the editor.
    function duracionEjercicio(){
        //para que si se pasa de ejercicio antes de que se acaabe el tiempo no siga estando el cero de mas
        $('#cero').css({ 'display': 'none'});
-
        $('#cronometro').css({ 'display': 'block'});
        //actulizo el contenido del div para ajustarlo al cronometro
        var minutos = $('#minutos').text();
        var segundos = $('#segundos').text();
        var tiempo = function (){
-           //NO VA PONER EL 0 DELANTE DE LOS SEGUNDOS BIEN. SOLO CUANDO TANTO LOS SEGUNDOS COMO LOS MINUTOS SON 0
-               
-            if((segundos <= 10)){
-                console.log('deberia poner el cero? segundos = ' + segundos);
+                          
+            if((segundos <= 11)){
                 $('#cero').css({'display' : 'inline'});
             }
-            if(segundos >9){
-
+            if((segundos >9)){
                 $('#cero').css({ 'display': 'none'});
             }
-            //para hacer el pitido de los 5 segundos
+            
+           //para hacer el pitido de los 5 segundos
             if(segundos == 5){
                 reproduceSonido('5s')
             }
             // actualizo minutos
             if((segundos == 0) && (minutos != 0)){
+                $('#cero').css({ 'display': 'none'});
                    segundos = 60;
                    minutos--;
                  
-                   $('#minutos').html('0'+minutos);
+                   $('#minutos').html(minutos);
                    $('#segundos').html(segundos);
-               }
-
-            //bajada de segundos normal
-            if((segundos != 0) && (minutos != 0) ){
-                segundos--;
-                $('#segundos').html(segundos);
-            }
-            
+               }            
             //se acaba el tiempo
             if((segundos == 0) && (minutos ==00) ){
                clearInterval(tiempoMinutos);
@@ -303,11 +302,10 @@ and open the template in the editor.
                $('#cronometro').hide();
                var correctorDeContador = contador+1;
                $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
+               $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
                $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
                reproduceSonido('go');
                temporizador();
-               
-
            }
            
            if(segundos != 0){
@@ -333,7 +331,7 @@ and open the template in the editor.
             clearInterval(tiempoMinutos);
             var correctorDeContador = contador+1;
             $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
-            
+            $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
         }
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 5;}
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
@@ -367,17 +365,6 @@ and open the template in the editor.
     
                 intervalo = setInterval(saludo, 1000);
         }
-//        }
-//        else{
-//            if(condicion === 'mas'){
-//                clearInterval(intervalo);
-//                temporizadorCorrecto = true;
-//                sumaEjercicio();
-//                //actualizo el contador del ejercicio para tenerlo actualizado
-//                if(contador != $('#spanTotal').text()){ duracionEjercicio();}
-//              }else{$('#botonMas').attr("disabled","disabled");}
-//        }
-//        
         
     };   
     //fin temporizador
@@ -405,16 +392,16 @@ and open the template in the editor.
          $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
 //         $('#minutos').load();
          $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
-         
+         $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
  }
     
-    function sumaEjercicio (flecha){
+    function sumaEjercicio (flecha){       
         //me creo esta variable para corregir el error del contador que cuenta uno menos y actualizo segundos
         //quizas para minutos deberia hacer lo mismo
         console.log('si no entiendes porque el crono funciona bien aqui esta el codigo que arregla el contador explicado');
         var correctorDeContador = contador+1;
         $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
-        
+        $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
     
         console.log(flecha);
         if(flecha != 'flecha'){
@@ -445,9 +432,6 @@ and open the template in the editor.
         }
         
         }
-        
-
-        
     }
     function restaEjercicio (){
        // actualización de contador
