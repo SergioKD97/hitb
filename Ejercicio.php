@@ -230,6 +230,7 @@ and open the template in the editor.
     var temporizadorCorrecto = true;
     var tiempoTemporizador = 5;
     var primerPlay = 0;
+    var numeroTotal = $('#spanTotal').text();
     //Para cargar el 1 ejercicio
     $('#botonMenos').attr("disabled","disabled");
     $('#cronometro').css({'display' : 'none'});
@@ -275,7 +276,7 @@ and open the template in the editor.
        var segundos = $('#segundos').text();
        var tiempo = function (){
                           
-            if((segundos <= 11)){
+            if((segundos <= 11) || ($("#segundos").val().length < 2)){
                 $('#cero').css({'display' : 'inline'});
             }
             if((segundos >9)){
@@ -305,7 +306,15 @@ and open the template in the editor.
                $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
                $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
                reproduceSonido('go');
+               if(contador != numeroTotal){  
                temporizador();
+               }else{
+                $('#ejercicio').html('<h1>COMPLETADO!</h1>');
+                $('#botonMas').hide();
+                $('#play').hide();
+                $('#botonMenos').hide();
+                $('#numeroEjercicio').hide();
+               }
            }
            
            if(segundos != 0){
@@ -376,11 +385,9 @@ and open the template in the editor.
         
         if(!ayuda){
             $('#textoAyuda').css({ 'opacity': '1'});
-            $('#cronometro').css({ 'display': 'block'});
             ayuda = true;
         }else{
             $('#textoAyuda').css({ 'opacity': '0'});
-            $('#cronometro').css({ 'display': 'none'});
             ayuda = false;
         }
         return ayuda;
@@ -426,7 +433,15 @@ and open the template in the editor.
         if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
         if($('#cronometro').is(":visible")){
-            temporizador();
+            if(contador != numeroTotal){   
+               temporizador();
+            }else{
+                $('#ejercicio').html('<h1>COMPLETADO!</h1>');
+                $('#botonMas').hide();
+                $('#play').hide();
+                $('#botonMenos').hide();
+                $('#numeroEjercicio').hide();
+             }
         }else{
             sumaEjercicio();
         }
@@ -436,6 +451,7 @@ and open the template in the editor.
     function restaEjercicio (){
        // actualización de contador
        $('#botonMas').removeAttr("disabled");
+       $('#cero').css({'display' : 'none'});
         if( contador !== 1){
         contador--;
         //paro el cronometro
