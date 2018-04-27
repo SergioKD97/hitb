@@ -213,7 +213,7 @@ and open the template in the editor.
     var ayuda = false;
     var contador = 1; 
     var temporizadorCorrecto = true;
-    var tiempoTemporizador = 5;
+    var tiempoTemporizador = 30;
     var primerPlay = 0;
     var numeroTotal = $('#spanTotal').text();
     var modo = '<?php echo $Modo?>';
@@ -301,11 +301,7 @@ and open the template in the editor.
                if(contador != numeroTotal){  
                temporizador();
                }else{
-                $('#ejercicio').html('<h1>COMPLETADO!</h1>');
-                $('#botonMas').hide();
-                $('#play').hide();
-                $('#botonMenos').hide();
-                $('#numeroEjercicio').hide();
+                completado();
                }
            }
            
@@ -341,7 +337,7 @@ and open the template in the editor.
             $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
             $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
         }
-        if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 5;}
+        if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
             if((contador != $('#spanTotal').text())){
                 
@@ -349,14 +345,14 @@ and open the template in the editor.
                 var saludo = function (){
                     tiempoTemporizador--;
                     $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
-                    if(tiempoTemporizador === 4){
+                    if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('4s');
                     }
                     if(tiempoTemporizador === 0){
                      
                         //recargo el tiempo otra vezzzzz
-                        tiempoTemporizador = 5;
+                        tiempoTemporizador = 30;
                         clearInterval(intervalo);
                         reproduceSonido('go');
                         sumaEjercicio();
@@ -408,7 +404,7 @@ and open the template in the editor.
         console.log(flecha);
         if(flecha != 'flecha'){
             //actulizo el temporizador de descanso 
-        tiempoTemporizador =5;
+        tiempoTemporizador =30;
         $('#botonMenos').removeAttr('disabled');
        // actualización de contador
         if(contador != $('#spanTotal').text()){ // esta bien esta comparacion, no poner otro igual
@@ -431,11 +427,7 @@ and open the template in the editor.
             if(contador != numeroTotal){   
                temporizador();
             }else{
-                $('#ejercicio').html('<h1>COMPLETADO!</h1>');
-                $('#botonMas').hide();
-                $('#play').hide();
-                $('#botonMenos').hide();
-                $('#numeroEjercicio').hide();
+                completado();
              }
         }else{
             sumaEjercicio();
@@ -472,18 +464,26 @@ and open the template in the editor.
     }
     //comentado porque no soporto el puto sonido 
     function reproduceSonido(condicion){
-//        var audioElement = document.createElement('audio');
-//        audioElement.setAttribute('src', 'https://www.soundjay.com/misc/sounds/censor-beep-2.mp3');                    
-//        var audio2 = document.createElement('audio');
-//        audio2.setAttribute('src', 'https://www.soundjay.com/button/sounds/beep-25.mp3');
-//        
-//        if(condicion == "go"){
-//            audioElement.play();
-//        }else{
-//            console.log('desde el metodo');
-//            audio2.play();
-//        }
-//        
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', 'https://www.soundjay.com/misc/sounds/censor-beep-2.mp3');                    
+        var audio2 = document.createElement('audio');
+        audio2.setAttribute('src', 'https://www.soundjay.com/button/sounds/beep-25.mp3');
+        
+        if(condicion == "go"){
+            console.log('audio1');
+            audioElement.play();
+        }else{
+            console.log('audio2');
+            audio2.play();
+        }
+        
+    }
+    function completado (){
+        $('#ejercicio').html('<h1>COMPLETADO!</h1>');
+        $('#botonMas').hide();
+        $('#play').hide();
+        $('#botonMenos').hide();
+        $('#numeroEjercicio').hide();
     }
 
 //METODOS DUPLICADOS PARA CUANDO SEA DE REPETICIONES
@@ -498,14 +498,14 @@ and open the template in the editor.
           var saludo = function (){
                     tiempoTemporizador--;
                     $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
-                    if(tiempoTemporizador === 4){
+                    if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
-                        reproduceSonido('4s');
+                        reproduceSonido('5s');
                     }
                     if(tiempoTemporizador === 0){
                      
                         //recargo el tiempo otra vezzzzz
-                        tiempoTemporizador = 5;
+                        tiempoTemporizador = 30;
                         clearInterval(intervalo);
                         reproduceSonido('go');
                         contador++;       
@@ -533,7 +533,7 @@ and open the template in the editor.
            actualizaAjax();
            $('#play').css({'display' : 'none'});
        }else{
-           if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 5;}
+           if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
            $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
            if((contador != $('#spanTotal').text())){
                 
@@ -541,14 +541,14 @@ and open the template in the editor.
                 var saludo = function (){
                     tiempoTemporizador--;
                     $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
-                    if(tiempoTemporizador === 4){
+                    if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('4s');
                     }
                     if(tiempoTemporizador === 0){
                      
                         //recargo el tiempo otra vezzzzz
-                        tiempoTemporizador = 5;
+                        tiempoTemporizador = 30;
                         clearInterval(intervalo);
                         reproduceSonido('go');
                         contador++;       
@@ -566,11 +566,7 @@ and open the template in the editor.
             intervalo = setInterval(saludo, 1000);
            $('#play').css({'display' : 'inline'});
        }else{
-           $('#ejercicio').html('<h1>COMPLETADO!</h1>');
-                $('#botonMas').hide();
-                $('#play').hide();
-                $('#botonMenos').hide();
-                $('#numeroEjercicio').hide();
+            completado();
                }
        
      }
