@@ -204,7 +204,8 @@ and open the template in the editor.
 
 
 <script>
-    
+//    NOTAS:
+//    HAY METODOS DUPLICADOS PARA EJECUTARSE SEGÚN EL METODO SEA DE REPETICIONES O TIEMPO
     //Sergio
     mainS();
     var contadorS = 1;
@@ -443,6 +444,9 @@ and open the template in the editor.
         }
     }
     function restaEjercicio (){
+       if(modo === 'repes'){
+           restaEjercicioRepes();
+       }else{
        // actualización de contador
        $('#botonMas').removeAttr("disabled");
        $('#cero').css({'display' : 'none'});
@@ -464,7 +468,7 @@ and open the template in the editor.
         return contador;
         }
 
-       // ahora actualizar el contenido del div que muestra el gif
+    }
     }
     //comentado porque no soporto el puto sonido 
     function reproduceSonido(condicion){
@@ -519,8 +523,9 @@ and open the template in the editor.
         }
     }
     function  sumaEjercicioRepes(){
-       
+       $('#icono').removeClass('icon-pause').addClass('icon-play');
        if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+       $('#botonMenos').removeAttr('disabled');
        if($('#play').is(":visible")){
            contador++;       
            $('#spanContador').text(contador);
@@ -560,10 +565,35 @@ and open the template in the editor.
     
             intervalo = setInterval(saludo, 1000);
            $('#play').css({'display' : 'inline'});
-       }
+       }else{
+           $('#ejercicio').html('<h1>COMPLETADO!</h1>');
+                $('#botonMas').hide();
+                $('#play').hide();
+                $('#botonMenos').hide();
+                $('#numeroEjercicio').hide();
+               }
+       
+     }
     }
-    }
-                                    /*MENU RESPONSIVE*/
+    
+    function restaEjercicioRepes(){
+        $('#botonMas').removeAttr("disabled");
+        $('#cero').css({'display' : 'none'});
+        if( contador !== 1){
+        contador--;
+        //paro el cronometro
+        if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+        //actualizo el contador
+        $('#spanContador').text(contador);
+        $('#spanTotal').text($('#spanTotal').text());
+        $('#play').css({'display' : 'none'});  
+        //cambio de ejercicio
+        actualizaAjax();
+        $('#icono').removeClass('icon-pause').addClass('icon-play');
+        if(contador ==1){$('#botonMenos').attr("disabled","disabled");}
+        return contador;
+        }
+    }                                   /*MENU RESPONSIVE*/
 
  
 function mainS () {

@@ -214,8 +214,8 @@ and open the template in the editor.
 mainS();
  
 var contador = 1;
-$('.triangulo1,.triangulo2,.triangulo4,.triangulo5').hide();
-$('.divNiveles1,.divNiveles2,.divNiveles4,.divNiveles5').hide();
+$('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+$('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
 
 
 //Marc
@@ -255,19 +255,19 @@ if((innerWidth > 650) && (innerWidth < 1199)){
      if(id <= 2){
          $('.triangulo2').show();
          $('.divNiveles2').show();
-         $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal);
+         $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal + '&modo="tiempo"');
     }
     //div 4
          if((id === 3) || (id === 4)){
          $('.triangulo4').show();
          $('.divNiveles4').show();
-         $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal);
+         $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal  + '&modo="tiempo"');
     }
     //div 5
     if(id === 5){
          $('.triangulo5').show();
          $('.divNiveles5').show();
-         $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal); 
+         $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal  + '&modo="tiempo"'); 
     }
 }
 if(innerWidth > 1199){
