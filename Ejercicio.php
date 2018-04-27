@@ -29,9 +29,8 @@ and open the template in the editor.
         include './metodos.php';
         $miMetodos = new metodos();
         $nivel = "";
-        //$contador = 1; 
-//        $contador = $_POST['postContador'];
-        
+//        $Modo = $_GET['modo'];
+        $Modo = 'repes';
         if(isset($_GET['usuarioNuevo'])){
             echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
         }
@@ -150,20 +149,7 @@ and open the template in the editor.
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         
@@ -231,6 +217,7 @@ and open the template in the editor.
     var tiempoTemporizador = 5;
     var primerPlay = 0;
     var numeroTotal = $('#spanTotal').text();
+    var modo = '<?php echo $Modo?>';
     //Para cargar el 1 ejercicio
     $('#botonMenos').attr("disabled","disabled");
     $('#cronometro').css({'display' : 'none'});
@@ -275,14 +262,7 @@ and open the template in the editor.
        var minutos = $('#minutos').text();
        var segundos = $('#segundos').text();
        var tiempo = function (){
-                          
-            if((segundos <= 11) || ($("#segundos").val().length < 2)){
-                $('#cero').css({'display' : 'inline'});
-            }
-            if((segundos >9)){
-                $('#cero').css({ 'display': 'none'});
-            }
-            
+                                     
            //para hacer el pitido de los 5 segundos
             if(segundos == 5){
                 reproduceSonido('5s')
@@ -319,6 +299,12 @@ and open the template in the editor.
            
            if(segundos != 0){
                 segundos--;
+                if(segundos <10){
+                    $('#cero').css({'display' : 'inline'});
+                }else{
+                    $('#cero').css({'display' : 'none'});
+                    
+                }
                 $('#segundos').html(segundos);
             }
        };
@@ -331,6 +317,7 @@ and open the template in the editor.
    // TEMPORIZADOR PARA DESCANSOS
    
     function temporizador (){
+    
         $('#icono').removeClass('icon-pause').addClass('icon-play'); 
         
         //oculto el cronometro para que solo se vea el temporizador 
@@ -344,10 +331,6 @@ and open the template in the editor.
         }
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 5;}
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
-        
-        
-//        if(temporizadorCorrecto){
-//            temporizadorCorrecto = false;
             if((contador != $('#spanTotal').text())){
                 
               //  var contadorCronometro = $('#ejercicio').text();
@@ -374,7 +357,7 @@ and open the template in the editor.
     
                 intervalo = setInterval(saludo, 1000);
         }
-        
+ 
     };   
     //fin temporizador
     
@@ -402,14 +385,12 @@ and open the template in the editor.
          $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
  }
     
-    function sumaEjercicio (flecha){       
-        //me creo esta variable para corregir el error del contador que cuenta uno menos y actualizo segundos
-        //quizas para minutos deberia hacer lo mismo
+    function sumaEjercicio (flecha){
+        
         console.log('si no entiendes porque el crono funciona bien aqui esta el codigo que arregla el contador explicado');
         var correctorDeContador = contador+1;
         $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
         $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
-    
         console.log(flecha);
         if(flecha != 'flecha'){
             //actulizo el temporizador de descanso 
@@ -445,7 +426,7 @@ and open the template in the editor.
         }else{
             sumaEjercicio();
         }
-        
+           
         }
     }
     function restaEjercicio (){
