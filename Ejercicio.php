@@ -34,8 +34,6 @@ and open the template in the editor.
         if(isset($_GET['usuarioNuevo'])){
             echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
         }
-        
-        
         ?>
         
         
@@ -222,11 +220,23 @@ and open the template in the editor.
     $('#botonMenos').attr("disabled","disabled");
     $('#cronometro').css({'display' : 'none'});
     $('#cero').css({'display' : 'none'});
-    $('#botonMenos').css({'display' : 'none'});
-    $('#botonMas').css({'display' : 'none'});
+    adaptaInterfaz();
     actualizaAjax(); 
    
+  function adaptaInterfaz(){
+      if(modo === 'repes'){
+        $('#icono').removeClass('icon-pause').addClass('icon-play');
+        $('#play').css({'display' : 'none'});  
+      }else{
+        $('#botonMenos').css({'display' : 'none'});
+        $('#botonMas').css({'display' : 'none'});
+      }
+  }
+   
    function actualizaPlay() {
+       if(modo ==='repes'){
+         actualizaPlayRepes();  
+       }else{
        //adapto el div al cronometro
        $('#botonMenos').removeAttr('disabled');
        if((primerPlay === 0)){
@@ -250,6 +260,7 @@ and open the template in the editor.
       if($('#cronometro').is(":visible")){duracionEjercicio();}
       else{temporizadorCorrecto= true;temporizador('mas');}
     }
+}
     }
 }
    
@@ -386,7 +397,9 @@ and open the template in the editor.
  }
     
     function sumaEjercicio (flecha){
-        
+        if(modo === 'repes'){
+            sumaEjercicioRepes();
+        }else{
         console.log('si no entiendes porque el crono funciona bien aqui esta el codigo que arregla el contador explicado');
         var correctorDeContador = contador+1;
         $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
@@ -426,7 +439,7 @@ and open the template in the editor.
         }else{
             sumaEjercicio();
         }
-           
+    }         
         }
     }
     function restaEjercicio (){
@@ -469,16 +482,87 @@ and open the template in the editor.
 //        
     }
 
+//METODOS DUPLICADOS PARA CUANDO SEA DE REPETICIONES
+    function actualizaPlayRepes(){
+               
+        if($('#icono').hasClass('icon-play')){ 
+           $('#icono').removeClass('icon-play').addClass('icon-pause');  
+           if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
 
-
-
-
-
-
-
-
-
+        }else{
+          $('#icono').removeClass('icon-pause').addClass('icon-play'); 
+          var saludo = function (){
+                    tiempoTemporizador--;
+                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    if(tiempoTemporizador === 4){
+                        console.log('cambiar esto a 5s');
+                        reproduceSonido('4s');
+                    }
+                    if(tiempoTemporizador === 0){
+                     
+                        //recargo el tiempo otra vezzzzz
+                        tiempoTemporizador = 5;
+                        clearInterval(intervalo);
+                        reproduceSonido('go');
+                        contador++;       
+                        $('#spanContador').text(contador);
+                        $('#spanTotal').text($('#spanTotal').text());
+                        actualizaAjax();
+//                        temporizadorCorrecto = true;
+                        if(contador != $('#spanTotal').text()){
+                          //  $('#botonMas').attr("disabled","disabled");
+                        }
+                    }
+            };
     
+            intervalo = setInterval(saludo, 1000);
+        }
+    }
+    function  sumaEjercicioRepes(){
+       
+       if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
+       if($('#play').is(":visible")){
+           contador++;       
+           $('#spanContador').text(contador);
+           $('#spanTotal').text($('#spanTotal').text());
+           actualizaAjax();
+           $('#play').css({'display' : 'none'});
+       }else{
+           if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 5;}
+           $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+           if((contador != $('#spanTotal').text())){
+                
+              //  var contadorCronometro = $('#ejercicio').text();
+                var saludo = function (){
+                    tiempoTemporizador--;
+                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    if(tiempoTemporizador === 4){
+                        console.log('cambiar esto a 5s');
+                        reproduceSonido('4s');
+                    }
+                    if(tiempoTemporizador === 0){
+                     
+                        //recargo el tiempo otra vezzzzz
+                        tiempoTemporizador = 5;
+                        clearInterval(intervalo);
+                        reproduceSonido('go');
+                        contador++;       
+                        $('#spanContador').text(contador);
+                        $('#spanTotal').text($('#spanTotal').text());
+                        $('#play').css({'display' : 'none'});
+                        actualizaAjax();
+//                        temporizadorCorrecto = true;
+                        if(contador != $('#spanTotal').text()){
+                          //  $('#botonMas').attr("disabled","disabled");
+                        }
+                    }
+            };
+    
+            intervalo = setInterval(saludo, 1000);
+           $('#play').css({'display' : 'inline'});
+       }
+    }
+    }
                                     /*MENU RESPONSIVE*/
 
  
