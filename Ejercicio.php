@@ -29,8 +29,8 @@ and open the template in the editor.
         include './metodos.php';
         $miMetodos = new metodos();
         $nivel = "";
-//        $Modo = $_GET['modo'];
-        $Modo = 'repes';
+        $tipo = $_GET['tipo'];
+        $Modo = $tipo[0];
         if(isset($_GET['usuarioNuevo'])){
             echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
         }
@@ -217,17 +217,20 @@ and open the template in the editor.
     var primerPlay = 0;
     var numeroTotal = $('#spanTotal').text();
     var modo = '<?php echo $Modo?>';
+    console.log(modo);
     //Para cargar el 1 ejercicio
     $('#botonMenos').attr("disabled","disabled");
     $('#cronometro').css({'display' : 'none'});
     $('#cero').css({'display' : 'none'});
+    actualizaAjax();
     adaptaInterfaz();
-    actualizaAjax(); 
+ 
    
   function adaptaInterfaz(){
-      if(modo === 'repes'){
+      if(modo !== 't'){
         $('#icono').removeClass('icon-pause').addClass('icon-play');
-        $('#play').css({'display' : 'none'});  
+        $('#play').css({'display' : 'none'});
+        $('#repeticiones').css({'display' : 'inline'});
       }else{
         $('#botonMenos').css({'display' : 'none'});
         $('#botonMas').css({'display' : 'none'});
@@ -386,7 +389,7 @@ and open the template in the editor.
     
     
     function actualizaAjax(){
-         $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
+         $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&modo=<?php echo $Modo?>&id='+contador);
          $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
 //         $('#minutos').load();
          $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
@@ -394,7 +397,7 @@ and open the template in the editor.
  }
     
     function sumaEjercicio (flecha){
-        if(modo === 'repes'){
+        if(modo !== 't'){
             sumaEjercicioRepes();
         }else{
         console.log('si no entiendes porque el crono funciona bien aqui esta el codigo que arregla el contador explicado');
@@ -436,7 +439,7 @@ and open the template in the editor.
         }
     }
     function restaEjercicio (){
-       if(modo === 'repes'){
+       if(modo !== 't'){
            restaEjercicioRepes();
        }else{
        // actualización de contador

@@ -212,7 +212,7 @@ and open the template in the editor.
     
                                 /*MENU RESPONSIVE*/
 mainS();
- 
+var modo ="";
 var contador = 1;
 $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
 $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
@@ -224,8 +224,10 @@ var nombreBBDD = '';
 //para saber si son repes o tiempo    
 if(tipo === 1){
     tipo = '';
+    modo = 'repes';
 }else{
     tipo = 't';
+    modo = 'tiempo';
 }
 //para igualar el id
 id++; 
@@ -254,20 +256,20 @@ if((innerWidth > 650) && (innerWidth < 1199)){
     //div 2 
      if(id <= 2){
          $('.triangulo2').show();
-         $('.divNiveles2').show();
-         $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal + '&modo="tiempo"');
+         $('.divNiveles2').show();       
+         $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal);
     }
     //div 4
          if((id === 3) || (id === 4)){
          $('.triangulo4').show();
-         $('.divNiveles4').show();
-         $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal  + '&modo="tiempo"');
+         $('.divNiveles4').show();         
+         $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal);
     }
     //div 5
     if(id === 5){
          $('.triangulo5').show();
          $('.divNiveles5').show();
-         $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal  + '&modo="tiempo"'); 
+         $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal); 
     }
 }
 if(innerWidth > 1199){

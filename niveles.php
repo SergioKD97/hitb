@@ -24,6 +24,9 @@ and open the template in the editor.
         <?php require './conectarBBDD.php'; 
         // funcion que muestran el contenido de cada nivel
         
+
+ 
+
         function ejecutaConsulta($creaConexion, $lvl){
                         
             $arrayNivel1 = niveles($creaConexion, $lvl);
