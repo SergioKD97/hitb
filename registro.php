@@ -12,7 +12,6 @@ require './metodos.php';
                     //email
                     $sql="SELECT * FROM usuario WHERE nombre='$nombreUsuario'";
                     $checkeaUsuario=mysqli_query($creaConexion,$sql);
-                    
                     $numeroVecesUsuario=mysqli_num_rows($checkeaUsuario);
                     //nombre de usuario
                         

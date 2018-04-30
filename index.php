@@ -119,7 +119,8 @@ and open the template in the editor.
       </div>
         
       <div class="modal-body">
-          <form name="formularioRegsitroModal" action="registro.php" method="POST">
+          <!--formulario registro-->
+          <form id="formularioRegsitroModal" name="formularioRegsitroModal" action="registro.php" method="POST">
           <table border="0" style=" margin-left: auto; margin-right: auto;">
                     <tbody>
                       <tr>
@@ -139,7 +140,28 @@ and open the template in the editor.
                   </tbody>
               </table>
           <br>
-          <input  type="submit" class="btn  btn-block btn-primary"value="Confirmar" name="botonEnviar" />   
+          <input  type="submit" class="btn  btn-block btn-primary"value="Confirmar" id="botonEnviar" name="botonEnviar" />   
+          <input type="buton" class="btn  btn-block btn-danger" value="Login" id="login" onclick="muestraLogin(this.id);"/>
+          </form>
+          <!--FORMULARIO LOGIN-->
+          <form id="formularioLogin" action="login.php" method="post">
+             <table border="0" style=" margin-left: auto; margin-right: auto;">
+                    <tbody>
+                      <tr>
+                          <td>Nombre de usuario</td>
+                          <td style="margin-left: 10%;"><input type="text" required="" name="nombreLogin" placeholder="Nombre de usuario" /></th>
+                      </tr>
+
+                  
+                      <tr>
+                          <td>Contraseña</td>
+                          <td style="margin-left: 10%;"> <input type="password" required="" name="contraLogin" placeholder="contraseña" /></td>
+                      </tr>
+                  </tbody>
+              </table>
+          <br> 
+          <input  type="submit" class="btn  btn-block btn-primary" value="Confirmar" id="ConfirmarLogin" name="botonEnviar" />   
+          <input type="buton" class="btn  btn-block btn-danger" value="Registro" id="registro" onclick="muestraLogin(this.id);"/>
           </form>
       </div>
     </div>
@@ -211,106 +233,119 @@ and open the template in the editor.
     
     
                                 /*MENU RESPONSIVE*/
-mainS();
-var modo ="";
-var contador = 1;
-$('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
-$('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        mainS();
+        var modo ="";
+        var contador = 1;
+        $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+        $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
 
 
-//Marc
-function ocultaDivs (id, tipo){
-var nombreBBDD = '';
-//para saber si son repes o tiempo    
-if(tipo === 1){
-    tipo = '';
-    modo = 'repes';
-}else{
-    tipo = 't';
-    modo = 'tiempo';
-}
-//para igualar el id
-id++; 
-//Siempre que se da a el boton se ocultan todos
-$('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
-$('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
-// Ahora empezamos con la carga de la informacion
-switch(id){
-        case 1: nombreBBDD = 'pecho';break;
-        case 2: nombreBBDD = 'hombro-espalda';break;
-        case 3: nombreBBDD = 'brazo';break;
-        case 4: nombreBBDD = 'abs';break;
-        case 5: nombreBBDD = 'pierna';break;
-}
-//agrupar todo el tipo en una sola variable
-var tipoFinal = tipo.toString() + nombreBBDD .toString();
+        //Marc
+        $('#formularioLogin').css({'display' : 'none'});
+        
+        
+        function muestraLogin(id){
+            if(id === 'login'){
+                            $('#formularioRegsitroModal').hide();
+            $('#formularioLogin').css({'display' : 'inline'});
+            }else{
+            $('#formularioRegsitroModal').css({'display' : 'inline'});
+            $('#formularioLogin').hide();
+            }
+            
+        }
+        function ocultaDivs (id, tipo){
+        var nombreBBDD = '';
+        //para saber si son repes o tiempo    
+        if(tipo === 1){
+            tipo = '';
+            modo = 'repes';
+        }else{
+            tipo = 't';
+            modo = 'tiempo';
+        }
+        //para igualar el id
+        id++; 
+        //Siempre que se da a el boton se ocultan todos
+        $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+        $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        // Ahora empezamos con la carga de la informacion
+        switch(id){
+                case 1: nombreBBDD = 'pecho';break;
+                case 2: nombreBBDD = 'hombro-espalda';break;
+                case 3: nombreBBDD = 'brazo';break;
+                case 4: nombreBBDD = 'abs';break;
+                case 5: nombreBBDD = 'pierna';break;
+        }
+        //agrupar todo el tipo en una sola variable
+        var tipoFinal = tipo.toString() + nombreBBDD .toString();
 
-// aqui se ajusta a que div se va a meter la informacion dependiendo del tamaño
-if(innerWidth < 650 ){
-    //se muestra el correcto
-    $('.triangulo' + id).show();
-    $('.divNiveles' + id).show();
-    $('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
-}
-if((innerWidth > 650) && (innerWidth < 1199)){
-    //div 2 
-     if(id <= 2){
-         $('.triangulo2').show();
-         $('.divNiveles2').show();       
-         $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal);
-    }
-    //div 4
-         if((id === 3) || (id === 4)){
-         $('.triangulo4').show();
-         $('.divNiveles4').show();         
-         $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal);
-    }
-    //div 5
-    if(id === 5){
-         $('.triangulo5').show();
-         $('.divNiveles5').show();
-         $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal); 
-    }
-}
-if(innerWidth > 1199){
-    if(id <= 3){
-         $('.triangulo3').show();
-         $('.divNiveles3').show();
-         $('.divNiveles3').load('Niveles.php?tipo='+tipoFinal);
-    }
-    else{
-        console.log('entro por el grande ' + id);
+        // aqui se ajusta a que div se va a meter la informacion dependiendo del tamaño
+        if(innerWidth < 650 ){
             //se muestra el correcto
-            $('.triangulo5').show();
-            $('.divNiveles5').show();
-            $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal);
-    }
-}
+            $('.triangulo' + id).show();
+            $('.divNiveles' + id).show();
+            $('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
+        }
+        if((innerWidth > 650) && (innerWidth < 1199)){
+            //div 2 
+             if(id <= 2){
+                 $('.triangulo2').show();
+                 $('.divNiveles2').show();       
+                 $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal);
+            }
+            //div 4
+                 if((id === 3) || (id === 4)){
+                 $('.triangulo4').show();
+                 $('.divNiveles4').show();         
+                 $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal);
+            }
+            //div 5
+            if(id === 5){
+                 $('.triangulo5').show();
+                 $('.divNiveles5').show();
+                 $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal); 
+            }
+        }
+        if(innerWidth > 1199){
+            if(id <= 3){
+                 $('.triangulo3').show();
+                 $('.divNiveles3').show();
+                 $('.divNiveles3').load('Niveles.php?tipo='+tipoFinal);
+            }
+            else{
+                console.log('entro por el grande ' + id);
+                    //se muestra el correcto
+                    $('.triangulo5').show();
+                    $('.divNiveles5').show();
+                    $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal);
+            }
+        }
 
 
 
-}
-//Fin Marc
-function mainS () {
-	$('.iconoMenu').click(function(){
-		if (contador == 1) {
-			$('.navResponsive').animate({
-				left: '0'
-			});
-			contador = 0;
-		} else {
-			contador = 1;
-			$('.navResponsive').animate({
-				left: '-100%'
-			});
-		}
-	});
- 
-	// Mostramos y ocultamos submenus
-	$('.submenu').click(function(){
-		$(this).children('.children').slideToggle();
-	});
-}
+        }
+        //Fin Marc
+        function mainS () {
+                $('.iconoMenu').click(function(){
+                        if (contador == 1) {
+                                $('.navResponsive').animate({
+                                        left: '0'
+                                });
+                                contador = 0;
+                        } else {
+                                contador = 1;
+                                $('.navResponsive').animate({
+                                        left: '-100%'
+                                });
+                        }
+                });
+
+                // Mostramos y ocultamos submenus
+                $('.submenu').click(function(){
+                        $(this).children('.children').slideToggle();
+                });
+        }
     
     
                                 /*BODY*/

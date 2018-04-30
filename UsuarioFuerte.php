@@ -8,24 +8,21 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Hitbee</title>
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">        
+          <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
         <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
-        <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
-        <script src="js/jquery.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/jquery.raty.js" type="text/javascript"></script>
-        
         <link rel='stylesheet' href='css/calendario/fullcalendar.css' />
-        <script src='js/calendario/jquery.min.js'></script>
+        <script src="js/calendario/jquery.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        
+                
         <script src='js/calendario/moment.min.js'></script>
         <script src='js/calendario/fullcalendar.js'></script>
         <script src="js/calendario/es.js" type="text/javascript"></script>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     </head>
     <body class="body-wrap-home">
         <?php 
@@ -148,7 +145,7 @@ and open the template in the editor.
 </div>
         
 <div class="container">   
-    <div class="col-md-5" data-toggle="modal" data-target="#modalEvento1" id="calendar"></div>
+    <div class="col-md-7"  id="calendar"></div>
 </div>      
 
 
@@ -156,22 +153,15 @@ and open the template in the editor.
 $("#calendar").fullCalendar({
     dayClick:function(date,jsEvent,view){
         $(this).css('background-color', 'red');
-        alert('valor seleccionado: ' + date.format());
-//        $('#modalEvento1').modal();
+        alert('pulsaste sobre ' + date.format());
+        //$('#modalEvento1').modal();
     },
-    eventSources:[{
-            events:[
-        {
-            title:'titulo',
-            descripcion:'descripcion',
-            start:'2018-05-01'
-            
-        }
-    ]//event
-    }],//eventSources
-    eventClick:function(calEvent,jsEvent,view){
+    events:'http://127.0.0.1:8081/PHP/hitbee/eventos.php',
+    eventClick:function(calEvent,jsEvent,view){     
         $('#titutloEvento').html(calEvent.title);
         $('#descripcionEvento').html(calEvent.descripcion);
+        $('#modalEvento1').modal();
+        
     }
 });
 </script>
