@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+session_start();
+?>
 <html>
     <head>
         
@@ -32,11 +30,7 @@ and open the template in the editor.
     
     
     <body class="body-wrap-home">
-        <?php require './conectarBBDD.php';
-        if(isset($_GET['usuarioNuevo'])){
-            echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
-        }
-        ?>
+        <?php require './conectarBBDD.php';?>
         
         
    <div id="main">
@@ -74,11 +68,11 @@ and open the template in the editor.
             
             <div id="top-user" class="col-xs-3 col-s-3 col-md-3  col-lg-3">
             
-                <div id="marginLogin">
+                <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
-                       <i class="icon-user-circle iconoLogin"  data-toggle="modal" data-target="#ModalContenedor"></i> <span class="letraLogin">LOGIN</span>
-                    </a>                
+                       <i class="icon-user-circle iconoLogin"  ></i> <span id="letraLogin" class="letraLogin">LOGIN</span>
+                    </a>               
                     
                     
                     
@@ -149,13 +143,13 @@ and open the template in the editor.
                     <tbody>
                       <tr>
                           <td>Nombre de usuario</td>
-                          <td style="margin-left: 10%;"><input type="text" required="" name="nombreLogin" placeholder="Nombre de usuario" /></th>
+                          <td style="margin-left: 10%;"><input type="text" value="Marco" required="" name="nombreLogin" placeholder="Nombre de usuario" /></th>
                       </tr>
 
                   
                       <tr>
                           <td>Contraseña</td>
-                          <td style="margin-left: 10%;"> <input type="password" required="" name="contraLogin" placeholder="contraseña" /></td>
+                          <td style="margin-left: 10%;"> <input type="password" value="1234" required="" name="contraLogin" placeholder="contraseña" /></td>
                       </tr>
                   </tbody>
               </table>
@@ -224,7 +218,17 @@ and open the template in the editor.
         
         
    </div>
-        
+        <?php
+        //CODIGO QUE SE EJECUTA CUANDO ALGUIEN SE LOGUEA
+        if( (isset($_GET['usuarioNuevo'])) && ($_GET['usuarioNuevo'] == true)){
+            echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
+        }
+        if((isset($_SESSION['nombreUsuario'])) && 
+           (isset($_GET['login'])) &&
+           ($_GET['login'] == true)){
+            echo "<script>$('#letraLogin').text('".$_SESSION['nombreUsuario']."');</script>";
+        }
+        ?>
     </body>
 </html>
 
@@ -242,7 +246,6 @@ and open the template in the editor.
 
         //Marc
         $('#formularioLogin').css({'display' : 'none'});
-        
         
         function muestraLogin(id){
             if(id === 'login'){
