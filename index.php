@@ -30,7 +30,30 @@ session_start();
     
     
     <body class="body-wrap-home">
-        <?php require './conectarBBDD.php';?>
+        <?php 
+        require './conectarBBDD.php';
+        //CODIGO QUE SE EJECUTA CUANDO ALGUIEN SE LOGUEA
+        // REVISAR SI ESTA BIEN
+        //ABAJO ESTA LA EJECUCION
+        function actualizaInterfaz(){
+            if( (isset($_GET['usuarioNuevo'])) && ($_GET['usuarioNuevo'] == true)){
+                echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
+            }
+            if((isset($_SESSION['nombreUsuario'])) && 
+               ($_SESSION['nombreUsuario'] != '')){
+                //actulaliza el nombre de usuario en el nombre del login
+                echo "<script>$('#letraLogin').text('".$_SESSION['nombreUsuario']."');</script>";
+    //          print_r($_SESSION['nombreUsuario'] + 'este es el nombre de usuario');
+                echo '<script>$("#top-user").html('.'<div id="marginLogin">'
+                . '<a href="UsuarioFuerte.php" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">'
+                        . '<i class="icon-user-circle iconoLogin"></i> <span id="letraLogin" class="letraLogin">'.$_SESSION['nombreUsuario'].'</span>'
+                        . '</a>'
+                        . '</div>'.');</script>';
+                
+            }
+          }
+        
+        ?>
         
         
    <div id="main">
@@ -219,15 +242,8 @@ session_start();
         
    </div>
         <?php
-        //CODIGO QUE SE EJECUTA CUANDO ALGUIEN SE LOGUEA
-        if( (isset($_GET['usuarioNuevo'])) && ($_GET['usuarioNuevo'] == true)){
-            echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
-        }
-        if((isset($_SESSION['nombreUsuario'])) && 
-           (isset($_GET['login'])) &&
-           ($_GET['login'] == true)){
-            echo "<script>$('#letraLogin').text('".$_SESSION['nombreUsuario']."');</script>";
-        }
+        actualizaInterfaz();    
+        
         ?>
     </body>
 </html>
@@ -249,7 +265,7 @@ session_start();
         
         function muestraLogin(id){
             if(id === 'login'){
-                            $('#formularioRegsitroModal').hide();
+            $('#formularioRegsitroModal').hide();
             $('#formularioLogin').css({'display' : 'inline'});
             }else{
             $('#formularioRegsitroModal').css({'display' : 'inline'});

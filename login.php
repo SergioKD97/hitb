@@ -23,7 +23,7 @@ require './metodos.php';
                 $_SESSION['id'] = $arrayVariablesUsuario[0][0] ;
                 $_SESSION['nombreUsuario'] = $arrayVariablesUsuario[0][1];
                 $_SESSION['contraseña'] = $arrayVariablesUsuario[0][2];
-                echo "<script>location.href='index.php?login=true'</script>";
+                echo "<script>location.href='index.php'</script>";
              }else{
                   echo ' <script language="javascript">alert("Contraseña incorrecta");</script> ';
                   echo "<script>location.href='index.php'</script>"; 
