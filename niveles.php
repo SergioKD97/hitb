@@ -35,7 +35,7 @@ and open the template in the editor.
                 $nivel1 = $arrayNivel1[$i][1];
                 $nombre1 = $arrayNivel1[$i][2];
                 $descri1 = $arrayNivel1[$i][4];
-                print('<p class="id'.$id1.'nvl'.$nivel1.'"> -'.$nombre1.' </p> ');
+                print('<p class="texto1Ejercicio"> '.$nombre1.' </p> ');
             }
         }
         
@@ -67,7 +67,7 @@ and open the template in the editor.
             <div class="row bodyNiveles" >
                 
                                 
-                <div class="col-md-4 text-center divNivelBocata" style="margin-top: 0%;height: 250px;">
+                <div class="col-md-4 text-center divNivelBocata" style="margin-top: 0%">
                     <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=1"> 
                         <h1 id="titulo1" class="text-center logo">Nivel 1</h1>
                      </a>
@@ -80,7 +80,7 @@ and open the template in the editor.
                 </div>
 
                 
-                <div class="col-md-4 text-center" style="margin-top: 0%;height: 250px;">
+                <div class="col-md-4 text-center" style="margin-top: 0%;">
                     <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=2">
                         <h1 id="titulo2"  class="text-center logo">Nivel 2</h1>
                     </a>
@@ -92,7 +92,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 
-                <div class="col-md-4 text-center" style="margin-top: 0%;height: 250px;">
+                <div class="col-md-4 text-center" style="margin-top: 0%;">
                     <a href="Ejercicio.php?tipo=<?php echo $_GET['tipo'] ?>&nivel=3">
                         <h1 id="titulo3"  class="text-center logo">Nivel 3</h1>
                     </a>

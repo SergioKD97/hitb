@@ -275,6 +275,8 @@ session_start();
         }
         function ocultaDivs (id, tipo){
         var nombreBBDD = '';
+                
+        
         //para saber si son repes o tiempo    
         if(tipo === 1){
             tipo = '';
@@ -288,6 +290,9 @@ session_start();
         //Siempre que se da a el boton se ocultan todos
         $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
         $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        
+        
+        
         // Ahora empezamos con la carga de la informacion
         switch(id){
                 case 1: nombreBBDD = 'pecho';break;
@@ -327,6 +332,16 @@ session_start();
             }
         }
         if(innerWidth > 1199){
+            //switch para mover el triangulo segun que id tenga series y tiempo en pantalla grande
+        
+            switch(id){
+                    case 1: $('.triangulo3').css("margin-left", "140px");break;
+                    case 2: $('.triangulo3').css("margin-left", "514px");break;
+                    case 3: $('.triangulo3').css("margin-left", "514px");break;
+                    case 4: $('.triangulo3').css("margin-left", "514px");break;
+                    case 5: $('.triangulo3').css("margin-left", "514px");break;
+            }
+            
             if(id <= 3){
                  $('.triangulo3').show();
                  $('.divNiveles3').show();
@@ -339,10 +354,15 @@ session_start();
                     $('.divNiveles5').show();
                     $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal);
             }
+            //TE DESPLAZA AL BOCADILLO CORRESPONDIENTE
+            $('html,body').animate({
+            scrollTop: $(".info").offset().top
+            }, 1000);
+            
         }
 
-
-
+        
+        
         }
         //Fin Marc
         function mainS () {
@@ -368,7 +388,6 @@ session_start();
     
     
                                 /*BODY*/
-    
     
 
 

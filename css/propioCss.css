@@ -330,16 +330,18 @@ and open the template in the editor.
 
     
     
-    .divNiveles1, .divNiveles2, .divNiveles3, .divNiveles4, .divNiveles5{clear: both;width: 96.5%;height: 260px;border: solid 5px white;margin: 0px 0px 15px 15px;float: left;}
+    .divNiveles1, .divNiveles2, .divNiveles3, .divNiveles4, .divNiveles5{clear: both;width: 96.5%;border: solid 5px white;margin: 0px 0px 15px 15px;float: left;}
 
     
-    .triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5 {width: 0;height: 0;clear: both;margin-left: 140px;border-right: 50px solid transparent;border-left: 50px solid transparent;border-bottom: 50px solid white;}
+    .triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5 {width: 0;height: 0;clear: both;border-right: 50px solid transparent;border-left: 50px solid transparent;border-bottom: 50px solid white;}
 
 
-
-
-
-
+    #tema0{}
+    #tema1{}
+    #tema2{}
+    #tema3{}
+    #tema4{}
+    
     
     
                                                             /*FOTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR*/
