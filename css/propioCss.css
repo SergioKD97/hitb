@@ -296,13 +296,13 @@ and open the template in the editor.
 
     
     
-    .Pecho{margin-right: 0px; }
-    .Pecho div p{margin: -4px 32px 45px;}
-    .Pecho div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
-    .Pecho div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
+    .Pecho-Triceps{margin-right: 0px; }
+    .Pecho-Triceps div p{margin: -4px 32px 10px;}
+    .Pecho-Triceps div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
+    .Pecho-Triceps div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
     
     .Hombro-Espalda{margin-right: 0px;}
-    .Hombro-Espalda div p{margin: -33px 32px 0px;}
+    .Hombro-Espalda div p{margin: -7px 32px 9px;}
     .Hombro-Espalda div .series{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;margin-left: 34px;font-size: 40px}
     .Hombro-Espalda div .tiempo{color: white;text-align: left;text-align: -webkit-center;width: 40%;float: left;margin: auto;font-size: 40px}
 
@@ -473,6 +473,8 @@ and open the template in the editor.
         .Brazo {margin-left: 105px !important;}    
     
         .Pierna {margin-left: 296px !important;}    
+        
+        #texto1 {width: 259px !important;}
 
     }
     
@@ -524,6 +526,9 @@ and open the template in the editor.
         .texto1-1,.texto1-3,.texto1-5,.texto1-7{float: left;clear: both;margin-left: 60px}
         .texto1-2,.texto1-4,.texto1-6,.texto1-8{float: right;margin-right: 60px}
         
+        .divNivelBocata2{margin-top: 200px}
+        .divNivelBocata3{margin-top: 200px}
+        
     }
     
     
@@ -544,8 +549,12 @@ and open the template in the editor.
      .container {
         width: 591px;
     }
-     
-     
+    
+    
+        .texto1-1,.texto1-3,.texto1-5,.texto1-7{float: left;clear: both;margin-left: 20px;font-size: 15px}
+        .texto1-2,.texto1-4,.texto1-6,.texto1-8{float: right;margin-right: 20px;font-size: 15px}     
+   
+    
     }
 
     
