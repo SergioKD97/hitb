@@ -311,41 +311,74 @@ session_start();
             $('.divNiveles' + id).show();
             $('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
         }
+        
+        
         if((innerWidth > 650) && (innerWidth < 1199)){
+            //switch para mover el triangulo segun que id tenga series y tiempo en pantalla grande
+            switch(id){
+                    case 1: $('.triangulo2').css("margin-left", "230px");break;
+                    case 2: $('.triangulo2').css("margin-left", "607px");break;
+                    case 3: $('.triangulo4').css("margin-left", "230px");break;
+                    case 4: $('.triangulo4').css("margin-left", "607px");break;
+                    case 5: $('.triangulo5').css("margin-left", "420px");break;
+            }
+            
             //div 2 
              if(id <= 2){
                  $('.triangulo2').show();
                  $('.divNiveles2').show();       
                  $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal);
+            
+                //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
+                 $('html,body').animate({
+                scrollTop: $(".info").offset().top
+                }, 1000);
             }
             //div 4
                  if((id === 3) || (id === 4)){
                  $('.triangulo4').show();
                  $('.divNiveles4').show();         
                  $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal);
+            
+                //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
+                 $('html,body').animate({
+                scrollTop: $(".Brazo").offset().top
+                }, 1000);
             }
             //div 5
             if(id === 5){
                  $('.triangulo5').show();
                  $('.divNiveles5').show();
                  $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal); 
+            
+                 //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
+                 $('html,body').animate({
+                scrollTop: $(".Pierna").offset().top
+                }, 1000);
             }
         }
+        
+        
         if(innerWidth > 1199){
             //switch para mover el triangulo segun que id tenga series y tiempo en pantalla grande
         
             switch(id){
                     case 1: $('.triangulo3').css("margin-left", "140px");break;
                     case 2: $('.triangulo3').css("margin-left", "514px");break;
-                    case 3: $('.triangulo3').css("margin-left", "514px");break;
-                    case 4: $('.triangulo3').css("margin-left", "514px");break;
-                    case 5: $('.triangulo3').css("margin-left", "514px");break;
+                    case 3: $('.triangulo3').css("margin-left", "891px");break;
+                    case 4: $('.triangulo5').css("margin-left", "331px");break;
+                    case 5: $('.triangulo5').css("margin-left", "700px");break;
             }
             
             if(id <= 3){
                  $('.triangulo3').show();
                  $('.divNiveles3').show();
                  $('.divNiveles3').load('Niveles.php?tipo='+tipoFinal);
+            
+                 //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
+                 $('html,body').animate({
+                scrollTop: $(".info").offset().top
+                }, 1000);
             }
             else{
                 console.log('entro por el grande ' + id);
@@ -353,11 +386,13 @@ session_start();
                     $('.triangulo5').show();
                     $('.divNiveles5').show();
                     $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal);
+                 
+                //DESPLAZAR AL BOCADILLO EN LOS 2 ULTIMOS EJERCICIOS
+                 $('html,body').animate({
+                scrollTop: $(".footer-home").offset().top
+                }, 2000);            
             }
-            //TE DESPLAZA AL BOCADILLO CORRESPONDIENTE
-            $('html,body').animate({
-            scrollTop: $(".info").offset().top
-            }, 1000);
+            
             
         }
 

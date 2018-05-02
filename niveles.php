@@ -35,7 +35,7 @@ and open the template in the editor.
                 $nivel1 = $arrayNivel1[$i][1];
                 $nombre1 = $arrayNivel1[$i][2];
                 $descri1 = $arrayNivel1[$i][4];
-                print('<p class="texto1Ejercicio"> '.$nombre1.' </p> ');
+                print('<p class="texto1-'.$id1.'"> '.$nombre1.' </p> ');
             }
         }
         
