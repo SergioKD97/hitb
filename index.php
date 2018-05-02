@@ -305,16 +305,45 @@ session_start();
         var tipoFinal = tipo.toString() + nombreBBDD .toString();
 
         // aqui se ajusta a que div se va a meter la informacion dependiendo del tamaño
-        if(innerWidth < 650 ){
+        if(innerWidth < 605 ){
+            switch(id){
+                    case 1: $('.triangulo1').css("margin-left", "134px");break;
+                    case 2: $('.triangulo2').css("margin-left", "134px");break;
+                    case 3: $('.triangulo3').css("margin-left", "134px");break;
+                    case 4: $('.triangulo4').css("margin-left", "134px");break;
+                    case 5: $('.triangulo5').css("margin-left", "134px");break;
+            }
+            
+            //para el @media mas pequeño
+            if(innerWidth < 440 ){
+                switch(id){
+                        case 1: $('.triangulo1').css("margin-left", "100px");break;
+                        case 2: $('.triangulo2').css("margin-left", "100px");break;
+                        case 3: $('.triangulo3').css("margin-left", "100px");break;
+                        case 4: $('.triangulo4').css("margin-left", "100px");break;
+                        case 5: $('.triangulo5').css("margin-left", "100px");break;
+                }
+            }
+            
+           
+            
             //se muestra el correcto
             $('.triangulo' + id).show();
             $('.divNiveles' + id).show();
             $('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
+            
+            
+            //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
+                 $('html,body').animate({
+                scrollTop: $(".bordeChulo1").offset().top
+                }, 1000);
+           
         }
         
         
-        if((innerWidth > 650) && (innerWidth < 1199)){
-            //switch para mover el triangulo segun que id tenga series y tiempo en pantalla grande
+        //CUANDO HAY DOS CUADRADOS ARRIBA
+        if((innerWidth > 605) && (innerWidth < 1199)){
+            //cambia el triangulo para @ media mas grande cuando hay dos cuadrados
             switch(id){
                     case 1: $('.triangulo2').css("margin-left", "230px");break;
                     case 2: $('.triangulo2').css("margin-left", "607px");break;
@@ -322,6 +351,31 @@ session_start();
                     case 4: $('.triangulo4').css("margin-left", "607px");break;
                     case 5: $('.triangulo5').css("margin-left", "420px");break;
             }
+            
+            
+            if((innerWidth > 605) && (innerWidth < 991)){
+                if((innerWidth > 605) && (innerWidth < 767)){
+                    //cambia el triangulo para @ media mediano cuando hay dos cuadrados
+                    switch(id){
+                        case 1: $('.triangulo2').css("margin-left", "90px");break;
+                        case 2: $('.triangulo2').css("margin-left", "372px");break;
+                        case 3: $('.triangulo4').css("margin-left", "90px");break;
+                        case 4: $('.triangulo4').css("margin-left", "372px");break;
+                        case 5: $('.triangulo5').css("margin-left", "236px");break;
+                    }
+                }else{
+                    //cambia el triangulo para @ media mas pequeño cuando hay dos cuadrados
+                    switch(id){
+                        case 1: $('.triangulo2').css("margin-left", "164px");break;
+                        case 2: $('.triangulo2').css("margin-left", "450px");break;
+                        case 3: $('.triangulo4').css("margin-left", "164px");break;
+                        case 4: $('.triangulo4').css("margin-left", "450px");break;
+                        case 5: $('.triangulo5').css("margin-left", "310px");break;
+                    }
+                }
+            }
+            
+            
             
             //div 2 
              if(id <= 2){
