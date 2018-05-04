@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -29,8 +27,8 @@ and open the template in the editor.
         include './metodos.php';
         $miMetodos = new metodos();
         $nivel = "";
-        $tipo = $_GET['tipo'];
-        $Modo = $tipo[0];
+//        $tipo = $_GET['tipo'];
+//        $Modo = $tipo[0];
         if(isset($_GET['usuarioNuevo'])){
             echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
         }
@@ -143,7 +141,7 @@ and open the template in the editor.
     </div>
   </div>
 </div>
-        
+<br><br>       
 <div class="container">   
     <div class="col-md-7"  id="calendar"></div>
 </div>      

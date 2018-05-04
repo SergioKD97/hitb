@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -225,6 +222,15 @@ and open the template in the editor.
     actualizaAjax();
     adaptaInterfaz();
  
+  function añadeAlCalendario (){
+      $.ajax({
+          url: 'ActualizaEvento.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>',
+          type: 'post',
+          success: function (resp) {
+            console.log(resp);
+                    }
+      });
+  }
    
   function adaptaInterfaz(){
       if(modo !== 't'){
@@ -391,7 +397,7 @@ and open the template in the editor.
     function actualizaAjax(){
          $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&modo=<?php echo $Modo?>&id='+contador);
          $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
-//         $('#minutos').load();
+
          $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
          $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
  }
@@ -400,7 +406,7 @@ and open the template in the editor.
         if(modo !== 't'){
             sumaEjercicioRepes();
         }else{
-        console.log('si no entiendes porque el crono funciona bien aqui esta el codigo que arregla el contador explicado');
+        //console.log('si no entiendes porque el crono funciona bien aqui esta el codigo que arregla el contador explicado');
         var correctorDeContador = contador+1;
         $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
         $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
@@ -487,6 +493,7 @@ and open the template in the editor.
         $('#play').hide();
         $('#botonMenos').hide();
         $('#numeroEjercicio').hide();
+        añadeAlCalendario();
     }
 
 //METODOS DUPLICADOS PARA CUANDO SEA DE REPETICIONES

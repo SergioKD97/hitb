@@ -44,17 +44,17 @@ session_start();
                 //actulaliza el nombre de usuario en el nombre del login
                 echo "<script>$('#letraLogin').text('".$_SESSION['nombreUsuario']."');</script>";
     //          print_r($_SESSION['nombreUsuario'] + 'este es el nombre de usuario');
-                echo '<script>$("#top-user").html('.'<div id="marginLogin">'
-                . '<a href="UsuarioFuerte.php" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">'
-                        . '<i class="icon-user-circle iconoLogin"></i> <span id="letraLogin" class="letraLogin">'.$_SESSION['nombreUsuario'].'</span>'
+                echo '<script>$("#top-user").html("'.'<div onclick="+"enviaPanel();"+" id="+"marginLogin"+">'
+                . '<a href="+"javascript:void(0)"+" id="+"loginPop"+" title="+"Login"+" data-toggle="+"modal"+" data-target="+"#pop-auth"+">'
+                        . '<i class="+"icon-user-circle iconoLogin"+"></i> <span id="+"letraLogin"+" class="+"letraLogin"+">'.$_SESSION['nombreUsuario'].'</span>'
                         . '</a>'
-                        . '</div>'.');</script>';
+                        . '</div>'.'");</script>';
                 
             }
           }
         
         ?>
-        
+
         
    <div id="main">
     <header>
@@ -72,9 +72,7 @@ session_start();
             
             <div class="col-xs-7 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
-                <div id="HitBee">
-                   
-                </div>
+                <a href="cerrarSesion.php"><div id="HitBee"></div></a>
                 
                 <div  id="menu">
                     <ul class="top-menu">
@@ -262,7 +260,9 @@ session_start();
 
         //Marc
         $('#formularioLogin').css({'display' : 'none'});
-        
+        function enviaPanel(){
+            location.href='UsuarioFuerte.php';
+        }
         function muestraLogin(id){
             if(id === 'login'){
             $('#formularioRegsitroModal').hide();
