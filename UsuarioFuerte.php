@@ -157,7 +157,8 @@ session_start();
                 for($i = 0; $i<count($resultado); $i++){
                     $id = $resultado[$i][0] ;
                     $nombreTabla = $resultado[$i][2];
-                    print('<button class="btn btn-warning btn-block">'.$nombreTabla.'</button>');
+
+                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button class="btn btn-warning btn-block">'.$nombreTabla.'</button></a>');
                 }
             ?>
         </div>
