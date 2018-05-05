@@ -57,11 +57,19 @@
         echo $arrayConsulta[$contador][0];
         
         }
+        
+         // esta solo vale para las repes, no para el tiempo
+    function numeroEjercicioPersonalizado($creaConexion){
+        $consultaSQL = 'select count(*) from seriesPersonalizado where NombreUsu="'.$_SESSION['nombreUsuario'].'" and NombreTabla = "'.$_GET['NombreSerie'].'"';
+        $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
+        $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
+        echo $arrayConsulta[0][0];
+        }
     }
     
     function colocaEjercicioPrincipal($creaConexion){
         $sql = 'select * from '.$_GET['tipo'].' where id = '; //ACABAAAAAAAAAAAAAAAAAAAAR
     }
         // FIN PAGINA EJERCICIOS
-    
+   
         ?>

@@ -15,8 +15,8 @@ $modo = $_GET['modo'];
             $nivelEj = $fetch[$i][1];
             $nombre = $fetch[$i][2];
             $descripcion = $fetch[$i][3];
-            $repeticiones = $fetch[$i][4];
-            $foto = $fetch[$i][5];
+            $repeticiones = $fetch[$i][6];
+            $foto = $fetch[$i][4];
 
 
             print( ' <div><img class="img-responsive" style="margin:auto;" src="imagenes/'.$foto.'"/></div>

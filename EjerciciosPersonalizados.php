@@ -169,7 +169,7 @@
                     <span id="numeroEjercicio" style="font-size: 30px;">
                     <span id="spanContador"> 1<?php // echo $contador;?></span>
                     /
-                    <span id="spanTotal"><?php echo $miMetodos->numeroEjercicio($creaConexion); ?></span>
+                    <span id="spanTotal"><?php echo $miMetodos->numeroEjercicioPersonalizado($creaConexion); ?></span>
                 </span>
                     <button onclick="sumaEjercicio('flecha');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
                 </div>

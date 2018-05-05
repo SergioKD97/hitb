@@ -154,8 +154,21 @@
         
         
         <div class="row">
-            <div class="col-sm-1 col-md-3">
-                <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-arrow-left" ></i></button></a>
+            <div  class="col-sm-1 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+                <h3>Tanda de Ejercicios</h3>
+                <br>
+                <?php
+                    $sqlHistorial = "select * from ".$_GET['tipo']." where nivel = ".$_GET['nivel']."";
+                    $sqlHistorial = mysqli_query($creaConexion, $sqlHistorial);
+                    $resultadoHistorial = mysqli_fetch_all($sqlHistorial);
+                    for($m = 0; $m <count($resultadoHistorial); $m++){
+                        $idNivel = $resultadoHistorial[$m][5];
+                        $nombreEjer = $resultadoHistorial[$m][2];
+                        $repes = $resultadoHistorial[$m][6];
+                        
+                        print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.' x '.$repes.'</h4>');
+                    }
+                ?>
             </div>
             <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio" style="margin: auto;">
                 
@@ -219,7 +232,13 @@
     $('#cero').css({'display' : 'none'});
     actualizaAjax();
     adaptaInterfaz();
- 
+    
+  
+  function coloreaTanda(){ // pone en rojo el ejercicio actual en la tanda de ejercicios
+    $('.tanda').css({'color' : 'black', 'font-weight':'normal'});
+    $('#tanda'+ (contador-1)).css({'color' : 'red', 'font-weight':'bold'}); //esto ultimo es negrita
+
+  }
   function añadeAlCalendario (){
       $.ajax({
           url: 'ActualizaEvento.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>',
@@ -395,7 +414,7 @@
     function actualizaAjax(){
          $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&modo=<?php echo $Modo?>&id='+contador);
          $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
-
+         coloreaTanda();
          $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
          $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
  }
