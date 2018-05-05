@@ -295,6 +295,7 @@ session_start();
         
         // Ahora empezamos con la carga de la informacion
         switch(id){
+            //ESTOS TIENEN QUE SER LOS NOMBRES DE LAS TABLAS DE EJRCICIOS DE LA BBDD
                 case 1: nombreBBDD = 'pecho';break;
                 case 2: nombreBBDD = 'hombro-espalda';break;
                 case 3: nombreBBDD = 'brazo';break;

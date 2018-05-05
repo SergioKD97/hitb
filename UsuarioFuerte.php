@@ -154,7 +154,7 @@ $("#calendar").fullCalendar({
 //        alert('pulsaste sobre ' + date.format());
         //$('#modalEvento1').modal();
     },
-    events:'/hitbee/eventos.php',
+    events:'http://127.0.0.1:8081/PHP/hitbee/eventos.php',
     eventClick:function(calEvent,jsEvent,view){     
         $('#titutloEvento').html(calEvent.title);
         $('#descripcionEvento').html(calEvent.descripcion);
