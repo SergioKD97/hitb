@@ -299,7 +299,7 @@ session_start();
                 case 1: nombreBBDD = 'pecho';break;
                 case 2: nombreBBDD = 'hombro-espalda';break;
                 case 3: nombreBBDD = 'brazo';break;
-                case 4: nombreBBDD = 'abs';break;
+                case 4: nombreBBDD = 'abs';break; 
                 case 5: nombreBBDD = 'pierna';break;
         }
         //agrupar todo el tipo en una sola variable
