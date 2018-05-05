@@ -606,8 +606,8 @@ and open the template in the editor.
     .bordeChulo {
         width: 370px;
         height: 292px;
+        font-size: 50px;
     }    
-    
     
     #bodyText div {
     width: 73%;
@@ -615,12 +615,31 @@ and open the template in the editor.
     }
         
     .Pecho {margin-left: 0px !important;}
+    .Pecho div p{margin: -4px 50px 18px;}
+    .Pecho div .series{font-size: 36px !important}
+    .Pecho div .tiempo{font-size: 36px !important}
+    
     .Hombro {margin-left: 0px !important;}
-    .Brazo {margin-left: 0px !important;}    
-    .Abs {margin-left: 0px !important;}    
-    .Pierna {margin-left: 0px !important;}
+    .Hombro div p{margin: -7px 50px 18px;}
+    .Hombro div .series{font-size: 36px !important}
+    .Hombro div .tiempo{font-size: 36px !important}
 
+    .Brazo {margin-left: 0px !important;}    
+    .Brazo div p{margin: 17px 50px 45px; font-size: 55px}
+    .Brazo div .series{font-size: 36px !important}
+    .Brazo div .tiempo{font-size: 36px !important}
+
+    .Abs {margin-left: 0px !important;}    
+    .Abs div p{margin: 17px 50px 45px;font-size: 55px}    
+    .Abs div .series{font-size: 36px !important}
+    .Abs div .tiempo{font-size: 36px !important}
+
+    .Pierna {margin-left: 0px !important;}
+    .Pierna div p{margin: 17px 50px 45px;font-size: 55px}
+    .Pierna div .series{font-size: 36px !important}
+    .Pierna div .tiempo{font-size: 36px !important}    
      
+    
      .container {
         width: 400px;
     }        
