@@ -150,8 +150,8 @@ session_start();
 <script>
 $("#calendar").fullCalendar({
     dayClick:function(date,jsEvent,view){
-        $(this).css('background-color', 'red');
-        alert('pulsaste sobre ' + date.format());
+//        $(this).css('background-color', 'red');
+//        alert('pulsaste sobre ' + date.format());
         //$('#modalEvento1').modal();
     },
     events:'http://127.0.0.1:8081/PHP/hitbee/eventos.php',

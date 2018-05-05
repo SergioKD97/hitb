@@ -3,7 +3,7 @@ require './metodos.php';
 //
 $modo = $_GET['modo'];
 //function principal(){
-$sql = "select * from ".$_GET['tipo']." where nivel = ".$_GET['nivel']. " and id =". $_GET['id'];
+$sql = "select * from ".$_GET['tipo']." where nivel = ".$_GET['nivel']. " and idNivel =". $_GET['id'];
 $ejecutaSQL = mysqli_query($creaConexion, $sql);
 $fetch = mysqli_fetch_all($ejecutaSQL);
 for ($i = 0; $i < count($fetch); $i++){

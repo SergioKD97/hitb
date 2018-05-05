@@ -28,9 +28,7 @@
         $nivel = "";
         $tipo = $_GET['tipo'];
         $Modo = $tipo[0];
-        if(isset($_GET['usuarioNuevo'])){
-            echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
-        }
+
         ?>
         
         
@@ -244,7 +242,7 @@
   }
    
    function actualizaPlay() {
-       if(modo ==='repes'){
+       if(modo !=='t'){
          actualizaPlayRepes();  
        }else{
        //adapto el div al cronometro
