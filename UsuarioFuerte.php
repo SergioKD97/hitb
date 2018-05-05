@@ -143,11 +143,73 @@ session_start();
 </div>
 <br><br>       
 <div class="container">   
-    <div class="col-md-7"  id="calendar"></div>
-</div>      
+    <div class="col-md-6"  id="calendar"></div>
+    <div class="col-md-6"  id="series">
+        <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalSeries">Crea Tus Series</button>
+        <br>
+        <h2 class="text-center">Tus series: </h2>
+        <div style="width: 100%;" id="seriesCreadas">
+            <?php 
+            //PONER UNA CONSULTA PARA LAS DE TIEMPOOOOOOOOOOOOO
+                $consultaSerie = "select * from seriespersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' group by NombreTabla;";
+                $consultaSerie = mysqli_query($creaConexion, $consultaSerie);
+                $resultado = mysqli_fetch_all($consultaSerie);
+                for($i = 0; $i<count($resultado); $i++){
+                    $id = $resultado[$i][0] ;
+                    $nombreTabla = $resultado[$i][2];
+                    print('<button class="btn btn-warning btn-block">'.$nombreTabla.'</button>');
+                }
+            ?>
+        </div>
+    </div>
+</div>     
 
 
+
+
+<!--MODAAAAAAAL SERIRES-->
+<!-- Modal -->
+<div class="modal fade" id="modalSeries" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Crea tu serie</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <button id="repes" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Repeticiones</button>
+          <button id="tiempo" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Tiempo</button>
+                  
+          <form id="formularioSeries" action="seriePersonalizada.php?contador=1" method="post">
+              <input type="text" name="nombreSerie" required="" placeholder="Nombre de la serie" style="margin-left: 30%;" />
+              <br><br>
+              <div id="contenidoFormulario">                 
+               <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
+                <div id="cuerpoSerie">
+                    <div id="ejercicio">
+                        <input type="text" required="" name="nombre1" id="nombre" placeholder="nombre"/>
+                        <input type="text" required="" name="repeticiones1" id="repeticiones" placeholder="repeticiones"/>
+                        <!--<input type="text" required="" id="id"/>-->
+                    </div>
+                </div> 
+               <div class="btn-group" role="group" aria-label="Basic example">
+                   <input type="button" id="OtroEjercicio" onclick="SumaEjercicio();" class="btn btn-secondary" value="Otro ejercicio"/>
+                   <input type="reset" value="Borrar" class="btn btn-danger" />
+                   <input type="submit" id="enviaRepes" name="enviaRepes" value="Enviar" class="btn btn-success" />
+               <div>
+                   
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
+    
+    
+//CALENDARIO 
 $("#calendar").fullCalendar({
     dayClick:function(date,jsEvent,view){
 //        $(this).css('background-color', 'red');
@@ -162,8 +224,34 @@ $("#calendar").fullCalendar({
         
     }
 });
+//FIN CALENDARIO
+    contador = 1;
+    $('#formularioSeries').hide();
+    function seleccionaFormulario(id){
+        console.log(id);
+        switch(id){
+            case 'repes': 
+                $('#formularioSeries').fadeIn();
+                $('#tiempo').hide();
+                $('#repes').hide();
+                break;
+            case 'tiempo': alert(id);break;
+            default: alert('error al seleccionar formulario para la serie');break;
+        }      
+    }
+    function SumaEjercicio(){
+        contador++;
+        $('#cuerpoSerie').html($('#cuerpoSerie').html() + '<div id="ejercicio'+contador+'">\n\
+                                                          <input type="text" required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder="nombre"/>\n\
+                                                          <input type="text" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder="repeticiones"/>\n\
+                                                          <!--<input type="text" required="" id="'+contador+'"/>-->\n\
+                                                          </div>' );
+    
+        $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);
+    }
 </script>
-<!--MODAAAAAAAAAL-->
+
+<!--MODAAAAAAAAAL CALENDARIO-->
 <!-- Modal -->
 <div class="modal fade" id="modalEvento1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -184,7 +272,8 @@ $("#calendar").fullCalendar({
       </div>
     </div>
   </div>
+  </div> 
 </div>
-
     </body>
 </html>
+
