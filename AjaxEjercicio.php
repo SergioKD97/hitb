@@ -31,7 +31,7 @@ $modo = $_GET['modo'];
         $sqlPersonalizado = "select * from seriesPersonalizado where"
                 . " NombreUsu = '".$_SESSION['nombreUsuario']."' and "
                 . "NombreTabla = '".$_GET['NombreSerie']."' and "
-                . "id = ".$_GET['id']."";
+                . "idEjercicio = ".$_GET['id']."";
         $ejecutaSQLPersonalizado = mysqli_query($creaConexion, $sqlPersonalizado);
         $fetchPersonalizado = mysqli_fetch_all($ejecutaSQLPersonalizado);
         

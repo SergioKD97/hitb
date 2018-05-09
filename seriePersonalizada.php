@@ -11,6 +11,7 @@ $contador = $_GET['contador'];
 if(isset($_GET['tiempo'])){
     //Chequeo si ya existe una tabla con este nombre para este usuario
     $nombreTiempo = $_POST['nombreTiempo'];
+    $nombreTiempo = str_replace(' ', '_', $nombreTiempo);
         $sqlTablat="SELECT * FROM tiempopersonalizado WHERE NombreUsu='".$_SESSION['nombreUsuario']."' and NombreTabla = '$nombreTiempo' ";
         $checkeaUsuariot=mysqli_query($creaConexion,$sqlTablat);
         $numeroVecesUsuariot=mysqli_num_rows($checkeaUsuariot);
@@ -36,6 +37,7 @@ if(isset($_GET['tiempo'])){
     
 
         $nombreSerie = $_POST['nombreSerie'];
+        $nombreSerie = str_replace(' ', '_', $nombreSerie);
         //Chequeo si ya existe una tabla con este nombre para este usuario 
                             $sqlTabla="SELECT * FROM seriespersonalizado WHERE NombreUsu='".$_SESSION['nombreUsuario']."' and NombreTabla = '$nombreSerie' ";
                             $checkeaUsuario=mysqli_query($creaConexion,$sqlTabla);

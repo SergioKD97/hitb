@@ -154,8 +154,22 @@
         
         
         <div class="row">
-            <div class="col-sm-1 col-md-3">
-                <a href="niveles.php?tipo=<?php echo $_GET['tipo']?>"><button class="btn btn-info" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-arrow-left" ></i></button></a>
+            <div  class="col-sm-1 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+                <h3>Tanda de Ejercicios</h3>
+                <br>
+                <?php
+                    $sqlHistorial = "select * from tiempopersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' and NombreTabla = '".$_GET['NombreSerie']."'";
+                    $sqlHistorial = mysqli_query($creaConexion, $sqlHistorial);
+                    $resultadoHistorial = mysqli_fetch_all($sqlHistorial);
+                    for($m = 0; $m <count($resultadoHistorial); $m++){
+                        $idNivel = $resultadoHistorial[$m][3];
+                        $nombreEjer = $resultadoHistorial[$m][4];
+                        $minutos = $resultadoHistorial[$m][5];
+                        $segundos = $resultadoHistorial[$m][6];
+                        
+                        print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.'</h4>');
+                    }
+                ?>
             </div>
             <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio" style="margin: auto;">
                 
@@ -218,13 +232,20 @@
     $('#cronometro').css({'display' : 'none'});
     $('#cero').css({'display' : 'none'});
     //YA QUE ESTE MODO ES PERSONALIZADO, NO TIENE ASISTENTE DE AYUDA PARA LOS EJERCICIOS
-    $('#textoAyuda').hide();
+    $('#botonAyuda').hide();
     actualizaAjax();
     adaptaInterfaz();
- 
+  
+    
+    function coloreaTanda(){ // pone en rojo el ejercicio actual en la tanda de ejercicios
+    $('.tanda').css({'color' : 'black', 'font-weight':'normal'});
+    $('#tanda'+ (contador-1)).css({'color' : 'red', 'font-weight':'bold'}); //esto ultimo es negrita
+
+    }
+  
   function añadeAlCalendario (){
       $.ajax({
-          url: 'ActualizaEvento.php?tipo=seriespersonalizado&nivel=<?php echo $_GET['NombreSerie']?>',
+          url: 'ActualizaEvento.php?seccion=tiempo&tipo=seriespersonalizado&nivel=<?php echo $_GET['NombreSerie']?>',
           type: 'post',
           success: function (resp) {
             console.log(resp);
@@ -395,7 +416,7 @@
     function actualizaAjax(){
          $('#ejercicio').load('AjaxEjercicio.php?NombreUsu=<?php echo $_SESSION['nombreUsuario']?>&NombreSerie=<?php echo $_GET['NombreSerie']?>&seccion=personalizadoTiempo&modo='+modo+'&id='+contador);
          //$('#textoAyuda').load('AjaxBotonAyuda.php?personalizado=si&tipo=tiempopersonalizado&nivel=<?php//  echo $_GET['nivel']?>&id='+contador);
-
+         coloreaTanda();
          $('#segundos').load('AjaxSegundos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+contador);
          $('#minutos').load('AjaxMinutos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+contador);
  }

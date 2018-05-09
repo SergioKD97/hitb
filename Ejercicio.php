@@ -165,8 +165,13 @@
                         $idNivel = $resultadoHistorial[$m][5];
                         $nombreEjer = $resultadoHistorial[$m][2];
                         $repes = $resultadoHistorial[$m][6];
+                        //Para que no salgan las repeticiones que tienen que hacer 
+                        if( $Modo !== 't'){
+                            print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.' x '.$repes.'</h4>');
+                        }else{
+                            print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.'</h4>');
+                        }
                         
-                        print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.' x '.$repes.'</h4>');
                     }
                 ?>
             </div>
