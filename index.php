@@ -307,7 +307,7 @@ session_start();
         switch(id){
             //ESTOS TIENEN QUE SER LOS NOMBRES DE LAS TABLAS DE EJRCICIOS DE LA BBDD
                 case 1: nombreBBDD = 'pecho';break;
-                case 2: nombreBBDD = 'hombro-espalda';break;
+                case 2: nombreBBDD = 'hombroEspalda';break;
                 case 3: nombreBBDD = 'brazo';break;
                 case 4: nombreBBDD = 'abs';break; 
                 case 5: nombreBBDD = 'pierna';break;

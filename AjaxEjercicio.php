@@ -1,4 +1,5 @@
     <?php
+    session_start();
 require './metodos.php';
 //
 $modo = $_GET['modo'];

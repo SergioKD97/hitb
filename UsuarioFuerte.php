@@ -150,15 +150,29 @@ session_start();
         <h2 class="text-center">Tus series: </h2>
         <div style="width: 100%;" id="seriesCreadas">
             <?php 
-            //PONER UNA CONSULTA PARA LAS DE TIEMPOOOOOOOOOOOOO
+            // ESTA ES PARA LAS REPETICIONES
                 $consultaSerie = "select * from seriespersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' group by NombreTabla;";
                 $consultaSerie = mysqli_query($creaConexion, $consultaSerie);
                 $resultado = mysqli_fetch_all($consultaSerie);
+                print('<h3 class="text-center"> Repeticiones</h3>');
                 for($i = 0; $i<count($resultado); $i++){
                     $id = $resultado[$i][0] ;
                     $nombreTabla = $resultado[$i][2];
 
                     print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button class="btn btn-warning btn-block">'.$nombreTabla.'</button></a>');
+                }
+                
+                // ESTA ES PARA LAS DE TIEMPO
+                //REVISAR ESTOS PARAMETROOOOOOOS
+                $consultaSeriet = "select * from tiempopersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' group by NombreTabla;";
+                $consultaSeriet = mysqli_query($creaConexion, $consultaSeriet);
+                $resultadot = mysqli_fetch_all($consultaSeriet);
+                print('<h3 class="text-center"> Tiempo</h3>');
+                for($j = 0; $j<count($resultadot); $j++){
+                    $id = $resultadot[$j][0] ;
+                    $nombreTabla = $resultadot[$j][2];
+
+                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=tiempopersonalizado"><button class="btn btn-block btn-info">'.$nombreTabla.'</button></a>');
                 }
             ?>
         </div>
@@ -182,7 +196,29 @@ session_start();
       <div class="modal-body">
           <button id="repes" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Repeticiones</button>
           <button id="tiempo" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Tiempo</button>
-                  
+          <form id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post">
+           
+              <input type="text" name="nombreTiempo" required="" placeholder="Nombre de la serie" style="margin-left: 30%;" />
+              
+              <br><br>
+              <div id="contenidoFormulariot">                 
+               <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
+                <div id="cuerpoTiempo">
+                    <div id="ejerciciot">
+                        <input type="text" required="" name="nombret1" id="nombret" placeholder="nombre"/>
+                        <input type="text" required="" name="minutos1" id="minutost" placeholder="minutos"/>
+                        <input type="text" required="" name="segundos1" id="segundost" placeholder="segundos"/>
+                        <!--<input type="text" required="" id="id"/>-->
+                    </div>
+                </div> 
+               <div class="btn-group" role="group" aria-label="Basic example">
+                   <input type="button" id="OtroEjerciciot" onclick="SumaEjercicio(this.id);" class="btn btn-secondary" value="Otro ejercicio"/>
+                   <input type="reset" value="Borrar" class="btn btn-danger" />
+                   <input type="submit" id="enviaRepest" name="enviaTiempo" value="Enviar" class="btn btn-success" />             
+               </div> </div>
+         </form>  
+          
+          <!--FORMULARIO SERIES!!!-->
           <form id="formularioSeries" action="seriePersonalizada.php?contador=1" method="post">
               <input type="text" name="nombreSerie" required="" placeholder="Nombre de la serie" style="margin-left: 30%;" />
               <br><br>
@@ -196,13 +232,12 @@ session_start();
                     </div>
                 </div> 
                <div class="btn-group" role="group" aria-label="Basic example">
-                   <input type="button" id="OtroEjercicio" onclick="SumaEjercicio();" class="btn btn-secondary" value="Otro ejercicio"/>
+                   <input type="button" id="OtroEjercicio" onclick="SumaEjercicio(this.id);" class="btn btn-secondary" value="Otro ejercicio"/>
                    <input type="reset" value="Borrar" class="btn btn-danger" />
                    <input type="submit" id="enviaRepes" name="enviaRepes" value="Enviar" class="btn btn-success" />
-               <div>
-                   
               </div>
-          </form>
+         </div>    
+        </form>                 
       </div>
     </div>
   </div>
@@ -228,7 +263,10 @@ $("#calendar").fullCalendar({
 //FIN CALENDARIO
     contador = 1;
     $('#formularioSeries').hide();
+    $('#formularioTiempo').hide();
     function seleccionaFormulario(id){
+        $('#tiempo').fadeIn();
+        $('#repes').fadeIn();
         console.log(id);
         switch(id){
             case 'repes': 
@@ -236,19 +274,35 @@ $("#calendar").fullCalendar({
                 $('#tiempo').hide();
                 $('#repes').hide();
                 break;
-            case 'tiempo': alert(id);break;
+            case 'tiempo': 
+                $('#formularioTiempo').fadeIn();
+                $('#tiempo').hide();
+                $('#repes').hide(); ;break;
             default: alert('error al seleccionar formulario para la serie');break;
         }      
     }
-    function SumaEjercicio(){
+    function SumaEjercicio(id){
         contador++;
-        $('#cuerpoSerie').html($('#cuerpoSerie').html() + '<div id="ejercicio'+contador+'">\n\
-                                                          <input type="text" required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder="nombre"/>\n\
+        switch(id){
+            case 'OtroEjercicio':   
+                                $('#cuerpoSerie').html($('#cuerpoSerie').html() + '<div id="ejercicio'+contador+'">\n\
+                                                         <input type="text" required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder="nombre"/>\n\
                                                           <input type="text" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder="repeticiones"/>\n\
                                                           <!--<input type="text" required="" id="'+contador+'"/>-->\n\
                                                           </div>' );
+        $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);break;
     
-        $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);
+            case 'OtroEjerciciot' : 
+                                $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div id="ejercicio'+contador+'">\n\
+                                 <input type="text" required="" id="nombret'+contador+'" name="nombret'+contador+'" placeholder="nombre"/>\n\
+                                  <input type="text" required="" id="minutos'+contador+'" name="minutos'+contador+'" placeholder="minutos"/>\n\
+                                  \n\<input type="text" required="" id="segundos'+contador+'" name="segundos'+contador+'" placeholder="segundos"/>\n\
+                                  <!--<input type="text" required="" id="'+contador+'"/>-->\n\
+                                  </div>' );
+        $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
+        }
+        
+        
     }
 </script>
 
