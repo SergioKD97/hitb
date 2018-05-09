@@ -26,7 +26,6 @@ and open the template in the editor.
         width: 100%;
         display: table;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        position: fixed;
         top: 0;
         left: 0;
         z-index: 99;

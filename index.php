@@ -123,9 +123,7 @@ session_start();
             
             
     </header>
-       
-    <!--hace que el body se baje-->
-    <div class="headerPad" ></div>
+
     
     
                 <nav class="navResponsive">
@@ -291,6 +289,7 @@ session_start();
             }
             
         }
+        
         function ocultaDivs (id, tipo){
         var nombreBBDD = '';
                 

@@ -51,14 +51,12 @@ session_start();
             
             <div class="col-xs-7 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
-                <div id="HitBee">
-                   
-                </div>
+                <div id="HitBee"></div>
                 
                 <div  id="menu">
                     <ul class="top-menu">
                         <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Noticias </span></a></li>
+                        <li><a href="<?php echo $direccion?>"><span class="li-text"> Usuario </span></a></li>
                         <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
                         <li><a href="Productos.php"><span class="ac_unit"> Info </span></a></li>
                         
@@ -70,25 +68,19 @@ session_start();
             
             <div id="top-user" class="col-xs-3 col-s-3 col-md-3  col-lg-3">
             
-                <div id="marginLogin">
+                <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
-                       <i class="icon-user-circle iconoLogin"  data-toggle="modal" data-target="#ModalContenedor"></i> <span class="letraLogin">LOGIN</span>
-                    </a>                
-                    
-                    
+                       <i class="icon-user-circle iconoLogin"  ></i> <span id="letraLogin" class="letraLogin">LOGIN</span>
+                    </a>               
                     
                 </div>
-            
-            
-            
-            
             </div>
+            
             
     </header>
        
-    <!--hace que el body se baje-->
-    <div class="headerPad" ></div>
+
     
     
                 <nav class="navResponsive">
@@ -115,7 +107,8 @@ session_start();
       </div>
         
       <div class="modal-body">
-          <form name="formularioRegsitroModal" action="registro.php" method="POST">
+          <!--formulario registro-->
+          <form id="formularioRegsitroModal" name="formularioRegsitroModal" action="registro.php" method="POST">
           <table border="0" style=" margin-left: auto; margin-right: auto;">
                     <tbody>
                       <tr>
@@ -135,12 +128,40 @@ session_start();
                   </tbody>
               </table>
           <br>
-          <input  type="submit" class="btn  btn-block btn-primary"value="Confirmar" name="botonEnviar" />   
+          <input  type="submit" class="btn  btn-block btn-primary"value="Confirmar" id="botonEnviar" name="botonEnviar" />   
+          <input type="buton" class="btn  btn-block btn-danger" value="Login" id="login" onclick="muestraLogin(this.id);"/>
+          </form>
+          <!--FORMULARIO LOGIN-->
+          <form id="formularioLogin" action="login.php" method="post">
+             <table border="0" style=" margin-left: auto; margin-right: auto;">
+                    <tbody>
+                      <tr>
+                          <td>Nombre de usuario</td>
+                          <td style="margin-left: 10%;"><input type="text" value="Marco" required="" name="nombreLogin" placeholder="Nombre de usuario" /></th>
+                      </tr>
+
+                  
+                      <tr>
+                          <td>Contraseña</td>
+                          <td style="margin-left: 10%;"> <input type="password" value="1234" required="" name="contraLogin" placeholder="contraseña" /></td>
+                      </tr>
+                  </tbody>
+              </table>
+          <br> 
+          <input  type="submit" class="btn  btn-block btn-primary" value="Confirmar" id="ConfirmarLogin" name="botonEnviar" />   
+          <input type="buton" class="btn  btn-block btn-danger" value="Registro" id="registro" onclick="muestraLogin(this.id);"/>
           </form>
       </div>
     </div>
   </div>
 </div>
+        
+        
+        <!--**** FIN  MODAAAAAAAAAAAAAAAAAAAAAL*****-->
+
+
+
+
 <br><br>       
 <div class="container">   
     <div class="col-md-6"  id="calendar"></div>
@@ -253,6 +274,47 @@ session_start();
   </div>
 </div>
 <script>
+    mainS();
+        //PARA HEADER
+        
+        $('#formularioLogin').css({'display' : 'none'});
+        function enviaPanel(){
+            location.href='UsuarioFuerte.php';
+        }
+        function muestraLogin(id){
+            if(id === 'login'){
+            $('#formularioRegsitroModal').hide();
+            $('#formularioLogin').css({'display' : 'inline'});
+            }else{
+            $('#formularioRegsitroModal').css({'display' : 'inline'});
+            $('#formularioLogin').hide();
+            }
+            
+        }
+        
+        function mainS () {
+                $('.iconoMenu').click(function(){
+                        if (contador == 1) {
+                                $('.navResponsive').animate({
+                                        left: '0'
+                                });
+                                contador = 0;
+                        } else {
+                                contador = 1;
+                                $('.navResponsive').animate({
+                                        left: '-100%'
+                                });
+                        }
+                });
+
+                // Mostramos y ocultamos submenus
+                $('.submenu').click(function(){
+                        $(this).children('.children').slideToggle();
+                });
+        }
+    
+    
+    
     
     
 //CALENDARIO 
