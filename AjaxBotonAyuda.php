@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require './metodos.php';
 $sql = "select descripcion from ".$_GET['tipo']." where nivel = ".$_GET['nivel']. " and id =". $_GET['id'];
 $ejecutaSQL = mysqli_query($creaConexion, $sql);

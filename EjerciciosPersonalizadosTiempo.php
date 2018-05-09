@@ -217,6 +217,8 @@
     $('#botonMenos').attr("disabled","disabled");
     $('#cronometro').css({'display' : 'none'});
     $('#cero').css({'display' : 'none'});
+    //YA QUE ESTE MODO ES PERSONALIZADO, NO TIENE ASISTENTE DE AYUDA PARA LOS EJERCICIOS
+    $('#textoAyuda').hide();
     actualizaAjax();
     adaptaInterfaz();
  
@@ -275,56 +277,56 @@
    // TEMPORIZADOR PARA LA DURACION DE LOS EJERCICIOS
    function duracionEjercicio(){
        //para que si se pasa de ejercicio antes de que se acaabe el tiempo no siga estando el cero de mas
-//       $('#cero').css({ 'display': 'none'});
-//       $('#cronometro').css({ 'display': 'block'});
-//       //actulizo el contenido del div para ajustarlo al cronometro
-//       var minutos = $('#minutos').text();
-//       var segundos = $('#segundos').text();
-//       var tiempo = function (){
-//                                     
-//           //para hacer el pitido de los 5 segundos
-//            if(segundos == 5){
-//                reproduceSonido('5s')
-//            }
-//            // actualizo minutos
-//            if((segundos == 0) && (minutos != 0)){
-//                $('#cero').css({ 'display': 'none'});
-//                   segundos = 60;
-//                   minutos--;
-//                 
-//                   $('#minutos').html(minutos);
-//                   $('#segundos').html(segundos);
-//               }            
-//            //se acaba el tiempo
-//            if((segundos == 0) && (minutos ==00) ){
-//               clearInterval(tiempoMinutos);
-//            //pasa al siguiente ejercicio
-//               $('#cronometro').hide();
-//               var correctorDeContador = contador+1;
-//               $('#segundos').load('AjaxSegundos.php?tipo=<?php //echo $_GET['tipo']?>&nivel=<?php //echo $_GET['nivel']?>&id='+correctorDeContador);
-//               $('#minutos').load('AjaxMinutos.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php//echo $_GET['nivel']?>&id='+correctorDeContador);
-//               $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
-//               reproduceSonido('go');
-//               if(contador != numeroTotal){  
-//               temporizador();
-//               }else{
-//                completado();
-//               }
-//           }
-//           
-//           if(segundos != 0){
-//                segundos--;
-//                if(segundos <10){
-//                    $('#cero').css({'display' : 'inline'});
-//                }else{
-//                    $('#cero').css({'display' : 'none'});
-//                    
-//                }
-//                $('#segundos').html(segundos);
-//            }
-//       };
-//       
-//        tiempoMinutos = setInterval(tiempo, 1000);
+       $('#cero').css({ 'display': 'none'});
+       $('#cronometro').css({ 'display': 'block'});
+       //actulizo el contenido del div para ajustarlo al cronometro
+       var minutos = $('#minutos').text();
+       var segundos = $('#segundos').text();
+       var tiempo = function (){
+                                     
+           //para hacer el pitido de los 5 segundos
+            if(segundos == 5){
+                reproduceSonido('5s');
+            }
+            // actualizo minutos
+            if((segundos == 0) && (minutos != 0)){
+                $('#cero').css({ 'display': 'none'});
+                   segundos = 60;
+                   minutos--;
+                 
+                   $('#minutos').html(minutos);
+                   $('#segundos').html(segundos);
+               }            
+            //se acaba el tiempo
+            if((segundos == 0) && (minutos ==00) ){
+               clearInterval(tiempoMinutos);
+            //pasa al siguiente ejercicio
+               $('#cronometro').hide();
+               var correctorDeContador = contador+1;
+              $('#segundos').load('AjaxSegundos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+correctorDeContador);
+               $('#minutos').load('AjaxMinutos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+correctorDeContador);
+               $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+               reproduceSonido('go');
+               if(contador != numeroTotal){  
+               temporizador();
+               }else{
+                completado();
+               }
+           }
+           
+           if(segundos != 0){
+                segundos--;
+                if(segundos <10){
+                    $('#cero').css({'display' : 'inline'});
+                }else{
+                    $('#cero').css({'display' : 'none'});
+                    
+                }
+                $('#segundos').html(segundos);
+            }
+       };
+       
+        tiempoMinutos = setInterval(tiempo, 1000);
    }
    
    
@@ -341,14 +343,13 @@
         if(typeof tiempoMinutos !== 'undefined'){
             clearInterval(tiempoMinutos);
             var correctorDeContador = contador+1;
-//            $('#segundos').load('AjaxSegundos.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php //echo $_GET['nivel']?>&id='+correctorDeContador);
-//            $('#minutos').load('AjaxMinutos.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php// echo $_GET['nivel']?>&id='+correctorDeContador);
+            $('#segundos').load('AjaxSegundos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+correctorDeContador);
+            $('#minutos').load('AjaxMinutos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+correctorDeContador);
         }
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
         $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
             if((contador != $('#spanTotal').text())){
                 
-              //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     tiempoTemporizador--;
                     $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
@@ -363,7 +364,6 @@
                         clearInterval(intervalo);
                         reproduceSonido('go');
                         sumaEjercicio();
-//                        temporizadorCorrecto = true;
                         if(contador != $('#spanTotal').text()){
                           //  $('#botonMas').attr("disabled","disabled");
                         }
@@ -393,11 +393,11 @@
     
     
     function actualizaAjax(){
-         $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&NombreUsu=<?php echo $_SESSION['nombreUsuario']?>&NombreSerie=<?php echo $_GET['NombreSerie']?>&seccion=personalizadoRepes&modo=<?php echo $Modo?>&id='+contador);
-//         $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php // echo $_GET['tipo']?>&nivel=<?php // echo $_GET['nivel']?>&id='+contador);
+         $('#ejercicio').load('AjaxEjercicio.php?NombreUsu=<?php echo $_SESSION['nombreUsuario']?>&NombreSerie=<?php echo $_GET['NombreSerie']?>&seccion=personalizadoTiempo&modo='+modo+'&id='+contador);
+         //$('#textoAyuda').load('AjaxBotonAyuda.php?personalizado=si&tipo=tiempopersonalizado&nivel=<?php//  echo $_GET['nivel']?>&id='+contador);
 
-//         $('#segundos').load('AjaxSegundos.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php// echo $_GET['nivel']?>&id='+contador);
-//         $('#minutos').load('AjaxMinutos.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php// echo $_GET['nivel']?>&id='+contador);
+         $('#segundos').load('AjaxSegundos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+contador);
+         $('#minutos').load('AjaxMinutos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+contador);
  }
     
     function sumaEjercicio (flecha){
@@ -406,8 +406,8 @@
         }else{
         //console.log('si no entiendes porque el crono funciona bien aqui esta el codigo que arregla el contador explicado');
         var correctorDeContador = contador+1;
-//        $('#segundos').load('AjaxSegundos.php?tipo=<?php // echo $_GET['tipo']?>&nivel=<?php // echo $_GET['nivel']?>&id='+correctorDeContador);
-//        $('#minutos').load('AjaxMinutos.php?tipo=<?php // echo $_GET['tipo']?>&nivel=<?php // echo $_GET['nivel']?>&id='+correctorDeContador);
+        $('#segundos').load('AjaxSegundos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+correctorDeContador);
+        $('#minutos').load('AjaxMinutos.php?seccion=personalizadoTiempo&NombreSerie=<?php echo $_GET['NombreSerie']?>&id='+correctorDeContador);
         console.log(flecha);
         if(flecha != 'flecha'){
             //actulizo el temporizador de descanso 
@@ -564,7 +564,6 @@
                         $('#spanTotal').text($('#spanTotal').text());
                         $('#play').css({'display' : 'none'});
                         actualizaAjax();
-//                        temporizadorCorrecto = true;
                         if(contador != $('#spanTotal').text()){
                           //  $('#botonMas').attr("disabled","disabled");
                         }

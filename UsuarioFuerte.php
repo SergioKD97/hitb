@@ -172,7 +172,7 @@ session_start();
                     $id = $resultadot[$j][0] ;
                     $nombreTabla = $resultadot[$j][2];
 
-                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=tiempopersonalizado"><button class="btn btn-block btn-info">'.$nombreTabla.'</button></a>');
+                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTabla.'&tipo=tiempopersonalizado"><button class="btn btn-block btn-info">'.$nombreTabla.'</button></a>');
                 }
             ?>
         </div>

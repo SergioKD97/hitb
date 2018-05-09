@@ -26,6 +26,8 @@ $modo = $_GET['modo'];
          }
     
     }else{// personalizada
+        if( $_GET['seccion'] == 'personalizadoRepes'){
+            
         $sqlPersonalizado = "select * from seriesPersonalizado where"
                 . " NombreUsu = '".$_SESSION['nombreUsuario']."' and "
                 . "NombreTabla = '".$_GET['NombreSerie']."' and "
@@ -43,7 +45,35 @@ $modo = $_GET['modo'];
         }
         
         print('<h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.' <span id="repeticiones">x '.$Repeticiones.'</span></h3>');
+       
+            
+        }else{
+            
+            
+        $sqlPersonalizadoT = "select * from tiempopersonalizado where"
+                . " NombreUsu = '".$_SESSION['nombreUsuario']."' and "
+                . "NombreTabla = '".$_GET['NombreSerie']."' and "
+                . "idEjercicio = ".$_GET['id']."";
+        $ejecutaSQLPersonalizadoT = mysqli_query($creaConexion, $sqlPersonalizadoT);
+        $fetchPersonalizadoT = mysqli_fetch_all($ejecutaSQLPersonalizadoT);
         
+        for($e = 0; $e<count($fetchPersonalizadoT); $e++){
+            $id = $fetchPersonalizadoT[$e][0];
+            $nombreUsu =  $fetchPersonalizadoT[$e][1];
+            $NombreTabla =  $fetchPersonalizadoT[$e][2];
+            $idEjercicio = $fetchPersonalizadoT[$e][3];
+            $NombreEjer = $fetchPersonalizadoT[$e][4];
+            $minutos = $fetchPersonalizadoT[$e][5];
+            $segundos = $fetchPersonalizadoT[$e][6];
+
+        }
+        
+        print('<h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.'</h3>');
+       
+            
+            
+        }
+ 
     }
 
  ?>
