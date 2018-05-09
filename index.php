@@ -24,7 +24,7 @@ session_start();
     <style>
     
     
-        
+                
         
     </style>
     
@@ -32,6 +32,17 @@ session_start();
     <body class="body-wrap-home">
         <?php 
         require './conectarBBDD.php';
+        
+        //variable para cambiar el href del Usuario
+        if((isset($_SESSION['nombreUsuario'])) && 
+               ($_SESSION['nombreUsuario'] != '')){
+            $direccion = 'UsuarioFuerte.php';
+
+        }else{
+             $direccion = 'index.php';
+        }
+        
+        
         //CODIGO QUE SE EJECUTA CUANDO ALGUIEN SE LOGUEA
         // REVISAR SI ESTA BIEN
         //ABAJO ESTA LA EJECUCION
@@ -51,8 +62,14 @@ session_start();
                         . '</div>'.'");</script>';
                 
             }
-          }
+                   
+                }
+                
+                
+          
         
+          
+          
         ?>
 
         
@@ -77,7 +94,7 @@ session_start();
                 <div  id="menu">
                     <ul class="top-menu">
                         <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Noticias </span></a></li>
+                        <li><a href="<?php echo $direccion?>"><span class="li-text"> Usuario </span></a></li>
                         <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
                         <li><a href="Productos.php"><span class="ac_unit"> Info </span></a></li>
                         
