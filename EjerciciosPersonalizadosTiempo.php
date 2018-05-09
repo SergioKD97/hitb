@@ -169,7 +169,7 @@
                     <span id="numeroEjercicio" style="font-size: 30px;">
                     <span id="spanContador"> 1<?php // echo $contador;?></span>
                     /
-                    <span id="spanTotal"><?php echo $miMetodos->numeroEjercicioPersonalizado($creaConexion); ?></span>
+                    <span id="spanTotal"><?php echo $miMetodos->numeroEjercicioPersonalizadoTiempo($creaConexion); ?></span>
                 </span>
                     <button onclick="sumaEjercicio('flecha');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
                 </div>
@@ -223,13 +223,13 @@
     adaptaInterfaz();
  
   function añadeAlCalendario (){
-//      $.ajax({
-//          url: 'ActualizaEvento.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php// echo $_GET['nivel']?>',
-//          type: 'post',
-//          success: function (resp) {
-//            console.log(resp);
-//                    }
-//      });
+      $.ajax({
+          url: 'ActualizaEvento.php?tipo=seriespersonalizado&nivel=<?php echo $_GET['NombreSerie']?>',
+          type: 'post',
+          success: function (resp) {
+            console.log(resp);
+                    }
+      });
   }
    
   function adaptaInterfaz(){

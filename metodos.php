@@ -65,6 +65,15 @@
         $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
         echo $arrayConsulta[0][0];
         }
+        
+    // esta solo vale para el tiempo
+    function numeroEjercicioPersonalizadoTiempo($creaConexion){
+        $consultaSQL = 'select count(*) from tiempopersonalizado where NombreUsu="'.$_SESSION['nombreUsuario'].'" and NombreTabla = "'.$_GET['NombreSerie'].'"';
+        $ejecutaConsulta = mysqli_query($creaConexion, $consultaSQL);
+        $arrayConsulta = mysqli_fetch_all($ejecutaConsulta);
+        echo $arrayConsulta[0][0];
+
+        }
     }
     
     function colocaEjercicioPrincipal($creaConexion){

@@ -15,11 +15,11 @@ $id = $_GET['id'];
             print $segundos;
     }else{
         
-        $sql = "select segundos from tiempopersonalizado where NombreTabla = ".$_GET['NombreSerie']. " and idEjercicio =".$id;
-        $ejecutaSQL = mysqli_query($creaConexion, $sql);
-        $fetch = mysqli_fetch_all($ejecutaSQL);
-        for ($e = 0; $e < count($fetch); $e++){
-            $segundos = $fetch[$e][0];
+        $sqlT = "select segundos from tiempopersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' and NombreTabla = '".$_GET['NombreSerie']."' and idEjercicio =".$id;
+        $ejecutaSQLT = mysqli_query($creaConexion, $sqlT);
+        $fetchT = mysqli_fetch_all($ejecutaSQLT);
+        for ($e = 0; $e < count($fetchT); $e++){
+            $segundos = $fetchT[$e][0];
         }
             print $segundos;
         

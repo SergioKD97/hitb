@@ -221,13 +221,13 @@
     adaptaInterfaz();
  
   function añadeAlCalendario (){
-//      $.ajax({
-//          url: 'ActualizaEvento.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php// echo $_GET['nivel']?>',
-//          type: 'post',
-//          success: function (resp) {
-//            console.log(resp);
-//                    }
-//      });
+      $.ajax({
+          url: 'ActualizaEvento.php?tipo=tiempopersonalizado&nivel=<?php echo $_GET['NombreSerie']?>',
+          type: 'post',
+          success: function (resp) {
+            console.log(resp);
+                    }
+      });
   }
    
   function adaptaInterfaz(){

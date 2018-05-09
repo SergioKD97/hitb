@@ -1,8 +1,10 @@
     <?php
+    session_start();
 require './metodos.php';
-
-if(!isset($_GET['seccion'])){
     $id = $_GET['id'];
+    
+if(!isset($_GET['seccion'])){
+
 
 $sql = "select minutos from ".$_GET['tipo']." where nivel = ".$_GET['nivel']. " and idNivel =".$id;
 //print_r($sql);
@@ -15,12 +17,11 @@ for ($i = 0; $i < count($fetch); $i++){
     
     
 }else{
-    $sqlT = "select minutos from tiempopersonalizado where NombreTabla = ".$_GET['NombreSerie']. " and idEjercicio =".$id;
-//print_r($sql);
+    $sqlT = "select minutos from tiempopersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' and NombreTabla = '".$_GET['NombreSerie']."' and idEjercicio =".$id;
 $ejecutaSQLT = mysqli_query($creaConexion, $sqlT);
 $fetchT= mysqli_fetch_all($ejecutaSQLT);
 for ($e = 0; $e < count($fetchT); $e++){
-    $minutos = $fetch[$e][0];
+    $minutos = $fetchT[$e][0];
 }
     print $minutos;
     

@@ -12,12 +12,12 @@ if($title[0] == 't'){
 }else{
     $modo = 'repeticiones';
 }
-
 $descripcion = "Hoy has ejercitado: $title del Nivel ".$_GET['nivel']." al estilo de $modo";
 $start = getdate();
 //adpatamos bien la fecha para que la pueda pillar el calendario
 $start = $start['year'] .'-'. $start['mon'] .'-'. $start['mday'] .' '. $start['hours'] .':'. $start['minutes'] .':'. $start['seconds'];
 $sql= "INSERT INTO eventos (nombre, title, descripcion, start) VALUES ('$nombre', '$title', '$descripcion', '$start'); ";
+print_r($sql);
 $sql = mysqli_query($creaConexion, $sql);
 
 }
