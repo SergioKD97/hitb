@@ -41,24 +41,16 @@ session_start();
             }
             if((isset($_SESSION['nombreUsuario'])) && 
                ($_SESSION['nombreUsuario'] != '')){
-                
-                //NO FINCIONAAAA HAY QUE CONSEGUIR QUE CAMBIE EL CSS AL ENTRAR EN MODO USUARIO
-                echo "<script>$('#marginLogin').css("."margin-left ".","."0px".");</script>";        
-                
-                
                 //actulaliza el nombre de usuario en el nombre del login
                 echo "<script>$('#letraLogin').text('".$_SESSION['nombreUsuario']."');</script>";
     //          print_r($_SESSION['nombreUsuario'] + 'este es el nombre de usuario');
                 echo '<script>$("#top-user").html("'.'<div onclick="+"enviaPanel();"+" id="+"marginLogin"+">'
                 . '<a href="+"javascript:void(0)"+" id="+"loginPop"+" title="+"Login"+" data-toggle="+"modal"+" data-target="+"#pop-auth"+">'
-                        . '<img style="+"width:50px;margin-top:0px;margin-bottom:6px;margin-left:0px;"+" src="+"imagenes/iconoLogin.jpg"+"> <span id="+"letraLogin"+" class="+"letraLogin"+">'.$_SESSION['nombreUsuario'].'</span>'
-                        . '</a>'
-                        . '<a href="+"cerrarSesion.php"+" >'
-                        . '<i style="+"font-size:60px;color:red;float:right"+" class="+"icon-exit_to_app iconoLogin"+"></i>'
+                        . '<i class="+"icon-user-circle iconoLogin"+"></i> <span id="+"letraLogin"+" class="+"letraLogin"+">'.$_SESSION['nombreUsuario'].'</span>'
                         . '</a>'
                         . '</div>'.'");</script>';
-                        
-                }
+                
+            }
           }
         
         ?>
@@ -80,7 +72,7 @@ session_start();
             
             <div class="col-xs-7 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
-                <div id="HitBee"></div>
+                <a href="cerrarSesion.php"><div id="HitBee"></div></a>
                 
                 <div  id="menu">
                     <ul class="top-menu">
@@ -103,9 +95,14 @@ session_start();
                        <i class="icon-user-circle iconoLogin"  ></i> <span id="letraLogin" class="letraLogin">LOGIN</span>
                     </a>               
                     
+                    
+                    
                 </div>
-            </div>
             
+            
+            
+            
+            </div>
             
     </header>
        
@@ -276,13 +273,6 @@ session_start();
             }
             
         }
-        
-        
-        
-        
-        
-        
-        
         function ocultaDivs (id, tipo){
         var nombreBBDD = '';
                 
