@@ -11,9 +11,10 @@ and open the template in the editor.
 
                                     /*MENUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU*/
         
-    body{
-    font-size: 17px;
-    height: 80px;
+    .bodyUsuario{
+    height: 100%;
+    width: 100%;
+    background: #F3E4D9;
     }                               
                                     
     #main {
@@ -370,6 +371,21 @@ and open the template in the editor.
     -moz-border-radius: 50% 50% 50% 50%;
     -webkit-border-radius: 50% 50% 50% 50%;
     border: 0px solid #000000;}
+    
+    
+    
+    
+    
+    
+                                                        /*USUARIO FUERTE*/
+    .DivCalendario{
+    background-color: aliceblue;
+    border: solid 2px burlywood;
+    }
+    
+    .barraOtroEjercicio{
+        display: flow-root;
+    }
 
                                                 /*/ Tablets en horizonal y escritorios normales*/
                                                    /*------------------------------------------------------------------------- /*/

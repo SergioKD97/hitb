@@ -7,10 +7,12 @@ session_start();
         <meta charset="UTF-8">
         <title>Hitbee</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">        
-          <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
         <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
         <link rel='stylesheet' href='css/calendario/fullcalendar.css' />
+        
+        
         <script src="js/calendario/jquery.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         
@@ -22,7 +24,7 @@ session_start();
               <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     </head>
-    <body class="body-wrap-home">
+    <body class="bodyUsuario">
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
@@ -163,9 +165,11 @@ session_start();
 
 
 <br><br>       
-<div class="container">   
-    <div class="col-md-6"  id="calendar"></div>
-    <div class="col-md-6"  id="series">
+<div class="container-fluid ">   
+    <div class="col-md-1"></div>
+    <div class="col-md-5 text-center DivCalendario"  id="calendar"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4 text-center"  id="series">
         <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalSeries">Crea Tus Series</button>
         <br>
         <h2 class="text-center">Tus series: </h2>
@@ -208,6 +212,7 @@ session_start();
             ?>
         </div>
     </div>
+    <div class="col-md-1"></div>
 </div>     
 
 
@@ -228,7 +233,7 @@ session_start();
           <button id="repes" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Repeticiones</button>
           <button id="tiempo" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Tiempo</button>
           <form id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post">
-           
+              <label for="name">Nombre Serie</label>
               <input type="text" name="nombreTiempo" required="" placeholder="Nombre de la serie" style="margin-left: 30%;" />
               
               <br><br>
@@ -242,7 +247,7 @@ session_start();
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
                 </div> 
-               <div class="btn-group" role="group" aria-label="Basic example">
+               <div class="btn-group barraOtroEjercicio" role="group" aria-label="Basic example">
                    <input type="button" id="OtroEjerciciot" onclick="SumaEjercicio(this.id);" class="btn btn-secondary" value="Otro ejercicio"/>
                    <input type="reset" value="Borrar" class="btn btn-danger" />
                    <input type="submit" id="enviaRepest" name="enviaTiempo" value="Enviar" class="btn btn-success" />             
@@ -250,24 +255,41 @@ session_start();
          </form>  
           
           <!--FORMULARIO SERIES!!!-->
-          <form id="formularioSeries" action="seriePersonalizada.php?contador=1" method="post">
-              <input type="text" name="nombreSerie" required="" placeholder="Nombre de la serie" style="margin-left: 30%;" />
+          
+          <form class="form-horizontal" id="formularioSeries" action="seriePersonalizada.php?contador=1" method="post">
+              
+              <div class="form-group">
+                  <label for="name" class="col-md-3 control-label">Nombre Serie: </label>
+                  <div class="col-md-7">
+                    <input type="text" class="form-control" name="nombreSerie" required="" placeholder="" />
+                   </div>
+              </div>
+              
               <br><br>
               <div id="contenidoFormulario">                 
                <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
                 <div id="cuerpoSerie">
                     <div id="ejercicio">
-                        <input type="text" required="" name="nombre1" id="nombre" placeholder="nombre"/>
-                        <input type="text" required="" name="repeticiones1" id="repeticiones" placeholder="repeticiones"/>
+                        <label for="name" class="col-md-4 text-center">Nombre </label>
+                        <label for="name" class="col-md-4 text-center">Repeticiones </label>
+                        <div class="col-md-6"></div>
+                        
+                        <div class="col-md-4 text-center" style="clear: both" >
+                            <input type="text" class="form-control" required="" name="nombre1" id="nombre" placeholder=""/>
+                        </div>
+                        <div class="col-md-4 text-center" style="">
+                            <input type="text" class="form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
+                        </div>
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
                 </div> 
-               <div class="btn-group" role="group" aria-label="Basic example">
+               <div class="btn-group barraOtroEjercicio" role="group" aria-label="Basic example" style="clear: both">
                    <input type="button" id="OtroEjercicio" onclick="SumaEjercicio(this.id);" class="btn btn-secondary" value="Otro ejercicio"/>
-                   <input type="reset" value="Borrar" class="btn btn-danger" />
-                   <input type="submit" id="enviaRepes" name="enviaRepes" value="Enviar" class="btn btn-success" />
+                   <input type="reset" value="Borrar" class="btn btn-danger" style="float: right"/>
+                   <input type="submit" id="enviaRepes" name="enviaRepes" value="Enviar" style="float: right" class="btn btn-success" />
               </div>
-         </div>    
+         </div>   
+              
         </form>                 
       </div>
     </div>
