@@ -31,6 +31,7 @@ session_start();
         $nivel = "";
 //        $tipo = $_GET['tipo'];
 //        $Modo = $tipo[0];
+        
         if(isset($_GET['usuarioNuevo'])){
             echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
         }
@@ -163,8 +164,7 @@ session_start();
 
 
 
-
-<br><br>       
+<br><br>            
 <div class="container-fluid ">   
     <div class="col-md-1"></div>
     <div class="col-md-5 text-center DivCalendario"  id="calendar"></div>
@@ -183,13 +183,17 @@ session_start();
                 if(count($resultado)>0){ 
                     print('<h3 class="text-center"> Repeticiones</h3>');
                     
-                }else{ echo '<br><h4 class="text-center">Aún no has creado ninguna serie personalizada. Picha arriba para hacerlo</h4>';}                   
+                }else{ echo '<br><h4 class="text-center">Aún no has creado ninguna serie personalizada. Picha arriba para hacerlo</h4>';
+                
+                }                   
                 
                 for($i = 0; $i<count($resultado); $i++){
                     $id = $resultado[$i][0] ;
                     $nombreTabla = $resultado[$i][2];
 
-                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button class="btn btn-warning btn-block">'. str_replace('_', ' ', $nombreTabla) .'</button></a>');
+                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button id="boton'.$i.'" class="btn btn-warning btn-block">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
+                            . '<button id="ayuda'.$i.'" onclick="muestraInfoS('."'muestraS$i'".', '.count($resultado).', '.$i.')" class="btn btn-secondary">?</button>'
+                            . '<div style="display:none;" id="muestraS'.$i.'"><div id="'.$i.'">'.$nombreTabla.'</div></div>');
                 }
                 
                 // ESTA ES PARA LAS DE TIEMPO
@@ -205,9 +209,11 @@ session_start();
                 
                 for($j = 0; $j<count($resultadot); $j++){
                     $id = $resultadot[$j][0] ;
-                    $nombreTabla = $resultadot[$j][2];
+                    $nombreTablat = $resultadot[$j][2];
 
-                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTabla.'&tipo=tiempopersonalizado"><button class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTabla).'</button></a>');
+                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="boton'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
+                            . '<button id="ayuda'.$j.'" onclick="muestraInfoT('."'muestraT$j'".', '.count($resultadot).', '.$j.')" class="btn btn-secondary">?</button>'
+                            . '<div style="display:none;" id="muestraT'.$j.'"><div id="'.$j.'">'.$nombreTablat.'</div></div>');
                 }
             ?>
         </div>
@@ -298,8 +304,38 @@ session_start();
 <script>
     mainS();
         //PARA HEADER
+       
+        
         
         $('#formularioLogin').css({'display' : 'none'});
+        
+        function muestraInfoS (id, contadorS, i){
+                 console.log(id);
+                for(var s = 0; s <contadorS; s++){
+                $('#muestraS'+s).css({'display' : 'none'});
+                }
+                //location.href=('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + $('#boton' +i).text());
+                $('#'+id).load('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + $('#boton' +i).text());
+                $('#'+id).css({'display' : 'block'});
+                
+
+            
+        }
+        
+        function muestraInfoT (id, contadorT, j){
+                for(var t = 0; t <contadorT; t++){
+                    $('#muestraT'+t).css({'display' : 'none'});
+                }
+//            $('#'+id).load('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + $('#'+j).text());    
+                location.href=('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + $('#boton'+j).text());           
+                console.log('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + $('#'+j).text());
+                $('#'+id).css({'display' : 'block'});
+
+
+            
+        }
+        
+        
         function enviaPanel(){
             location.href='UsuarioFuerte.php';
         }

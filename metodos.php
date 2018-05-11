@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-
-        <?php require './conectarBBDD.php';?>
+        <?php 
+        
+        require './conectarBBDD.php';?>
         
         <?php 
         class metodos {
@@ -74,11 +74,27 @@
         echo $arrayConsulta[0][0];
 
         }
+        
+//        function muestraTablaEjercicioPersonalizado($creaConexion, $tipo, $nombreSerie){
+//            
+//            $sql = "select * from $tipo where NombreUsu = '".$_SESSION['nombreUsuario']."' and NombreTabla = '$nombreSerie'";
+//            $sql= mysqli_query($creaConexion, $sql);
+//            $resultado = mysqli_fetch_all($sql);
+//            if($tipo == 'seriesPersonalizado'){
+//                for($i = 0; $i< count($resultado); $i++){
+//                    $nombreEjer = $resultado[$i][4];
+//                    $repeticiones = $resultado[$i][5];
+//                    print("<h4>$nombreEjer x $repeticiones</h4>");
+//                    
+//                }
+//            }else{
+//                
+//            }
+//        }
+
     }
     
-    function colocaEjercicioPrincipal($creaConexion){
-        $sql = 'select * from '.$_GET['tipo'].' where id = '; //ACABAAAAAAAAAAAAAAAAAAAAR
-    }
-        // FIN PAGINA EJERCICIOS
+
+    
    
         ?>
