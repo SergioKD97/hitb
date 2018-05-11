@@ -54,7 +54,7 @@ session_start();
                ($_SESSION['nombreUsuario'] != '')){
                 
                 //NO FINCIONAAAA HAY QUE CONSEGUIR QUE CAMBIE EL CSS AL ENTRAR EN MODO USUARIO
-                echo "<script>$('#marginLogin').css("."margin-left ".","."0px".");</script>";        
+                echo "<script>$('#marginLogin').css(".'margin-left'.",".'0px'.");</script>";        
                 
                 
                 //actulaliza el nombre de usuario en el nombre del login

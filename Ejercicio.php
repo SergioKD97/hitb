@@ -162,7 +162,7 @@
         
         
         
-        <div class="row">
+        <div>
             <div  class="col-sm-1 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
                 <h3>Tanda de Ejercicios</h3>
                 <br>
