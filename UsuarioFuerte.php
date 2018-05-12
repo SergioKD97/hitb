@@ -16,7 +16,9 @@ session_start();
         <script src="js/calendario/jquery.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         
-                
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/jquery.raty.js" type="text/javascript"></script>
         <script src='js/calendario/moment.min.js'></script>
         <script src='js/calendario/fullcalendar.js'></script>
         <script src="js/calendario/es.js" type="text/javascript"></script>
@@ -238,25 +240,49 @@ session_start();
       <div class="modal-body">
           <button id="repes" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Repeticiones</button>
           <button id="tiempo" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Tiempo</button>
-          <form id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post">
-              <label for="name">Nombre Serie</label>
-              <input type="text" name="nombreTiempo" required="" placeholder="Nombre de la serie" style="margin-left: 30%;" />
+          
+          <!--FORMULARIO TIEMPO!!!-->
+          
+          <form class="form-horizontal" id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post">
               
-              <br><br>
+              <div class="form-group">
+                  <label for="name" class="col-md-3 control-label">Nombre Serie: </label>
+                  <div class="col-md-7">
+                    <input type="text" class="form-control" name="nombreTiempo" required="" placeholder="" />
+                   </div>
+              </div>
+              
+              <br>
               <div id="contenidoFormulariot">                 
                <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
                 <div id="cuerpoTiempo">
                     <div id="ejerciciot">
-                        <input type="text" required="" name="nombret1" id="nombret" placeholder="nombre"/>
-                        <input type="text" required="" name="minutos1" id="minutost" placeholder="minutos"/>
-                        <input type="text" required="" name="segundos1" id="segundost" placeholder="segundos"/>
+                        
+                        <label for="name" class="col-md-4 text-center">Nombre </label>
+                        <label for="name" class="col-md-3 text-center">Minutos </label>
+                        <label for="name" class="col-md-3 text-center">Segundos </label>
+                        <br>
+                        
+                        
+                        <div class="col-md-4 text-center" style="clear: both" >
+                            <input type="text" class="contenidoNombre form-control" required="" name="nombret1" id="nombret" placeholder=""/>
+                        </div>
+
+                        <div class="col-md-2 text-center" style="margin-left: 23px;" >
+                            <input type="number" class="contenidoMinutos form-control" required="" name="minutos1" id="minutost" placeholder=""/>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 text-center" style="" >
+                            <input type="number" class="contenidoSegundos form-control" required="" name="segundos1" id="segundost" placeholder=""/>
+                        </div>
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
-                </div> 
-               <div class="btn-group barraOtroEjercicio" role="group" aria-label="Basic example">
-                   <input type="button" id="OtroEjerciciot" onclick="SumaEjercicio(this.id);" class="btn btn-secondary" value="Otro ejercicio"/>
-                   <input type="reset" value="Borrar" class="btn btn-danger" />
-                   <input type="submit" id="enviaRepest" name="enviaTiempo" value="Enviar" class="btn btn-success" />             
+                </div>               
+               
+               <div class="btn-group barraOtroEjercicio" role="group" aria-label="Basic example" style="clear: both">
+                   <span id="OtroEjerciciot" onclick="SumaEjercicio(this.id);" class="icon-plus icon-pluscss"></span>
+                   <input type="reset" value="Borrar" class="btn btn-danger" style="float: right;border-radius: 4px;" />
+                   <input type="submit" id="enviaRepest" name="enviaTiempo" value="Enviar" style="float:right;border-radius: 4px;" class="btn btn-success" />             
                </div> </div>
          </form>  
           
@@ -271,28 +297,34 @@ session_start();
                    </div>
               </div>
               
-              <br><br>
+              <br>
               <div id="contenidoFormulario">                 
                <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
                 <div id="cuerpoSerie">
                     <div id="ejercicio">
                         <label for="name" class="col-md-4 text-center">Nombre </label>
                         <label for="name" class="col-md-4 text-center">Repeticiones </label>
-                        <div class="col-md-6"></div>
-                        
+                                      <br>
+                                      <br>
+
                         <div class="col-md-4 text-center" style="clear: both" >
-                            <input type="text" class="form-control" required="" name="nombre1" id="nombre" placeholder=""/>
+                            <input type="text" class="contenidoNombre form-control" required="" name="nombre1" id="nombre" placeholder=""/>
                         </div>
-                        <div class="col-md-4 text-center" style="">
-                            <input type="text" class="form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
+                        <div class="col-md-1"></div>
+                        
+                        <div class="col-md-2 text-center" style="">
+                            <input type="number" class="contenidoRepes form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
                         </div>
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
                 </div> 
                <div class="btn-group barraOtroEjercicio" role="group" aria-label="Basic example" style="clear: both">
-                   <input type="button" id="OtroEjercicio" onclick="SumaEjercicio(this.id);" class="btn btn-secondary" value="Otro ejercicio"/>
-                   <input type="reset" value="Borrar" class="btn btn-danger" style="float: right"/>
-                   <input type="submit" id="enviaRepes" name="enviaRepes" value="Enviar" style="float: right" class="btn btn-success" />
+                    <span id="OtroEjercicio" onclick="SumaEjercicio(this.id);" class="icon-plus icon-pluscss"></span>
+                    <!--EL INPUT SIGUIENTE LO HE CAMBIADO POR EL SPAN DE ARRIBA(POSIBLES ERRORES)
+                    <input type="button" id="OtroEjercicio" onclick="SumaEjercicio(this.id);" />
+                    -->
+                    <input type="reset" value="Borrar" class="btn btn-danger" style="float: right;border-radius: 4px;"/>
+                    <input type="submit" id="enviaRepes" name="enviaRepes" value="Enviar" style="float:right;border-radius: 4px;" class="btn btn-success" />
               </div>
          </div>   
               
@@ -416,21 +448,37 @@ $("#calendar").fullCalendar({
         switch(id){
             case 'OtroEjercicio':   
                                 $('#cuerpoSerie').html($('#cuerpoSerie').html() + '<div id="ejercicio'+contador+'">\n\
-                                                         <input type="text" required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder="nombre"/>\n\
-                                                          <input type="text" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder="repeticiones"/>\n\
-                                                          <!--<input type="text" required="" id="'+contador+'"/>-->\n\
-                                                          </div>' );
+                                                        <div class="col-md-6"></div>\n\
+                                                        <div class="col-md-4 text-center" style="clear: both">\n\
+                                                            <input type="text"class="contenidoNombre form-control"  required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder=""/>\n\
+                                                        </div>\n\
+                                                        <div class="col-md-1"></div>\n\
+                                                        <div class="col-md-2 text-center" style="">\n\
+                                                            <input type="number" class="contenidoRepes form-control" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder=""/>\n\
+                                                        </div>\n\
+                                                        <!--<input type="text" required="" id="'+contador+'"/>-->\n\
+                                                        </div>' );
         $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);break;
     
+    
+   
             case 'OtroEjerciciot' : 
-                                $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div id="ejercicio'+contador+'">\n\
-                                 <input type="text" required="" id="nombret'+contador+'" name="nombret'+contador+'" placeholder="nombre"/>\n\
-                                  <input type="text" required="" id="minutos'+contador+'" name="minutos'+contador+'" placeholder="minutos"/>\n\
-                                  \n\<input type="text" required="" id="segundos'+contador+'" name="segundos'+contador+'" placeholder="segundos"/>\n\
-                                  <!--<input type="text" required="" id="'+contador+'"/>-->\n\
-                                  </div>' );
+                                $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div id="ejerciciot'+contador+'">\n\
+                                <div class="col-md-4 text-center" style="clear: both" >\n\
+                                    <input type="text" class="contenidoNombre form-control" required="" name="nombret1" id="nombret" placeholder=""/>\n\
+                                </div>\n\
+                                <div class="col-md-2 text-center" style="margin-left: 23px;" >\n\
+                                    <input type="number" class="contenidoMinutos form-control" required="" name="minutos1" id="minutost" placeholder=""/>\n\
+                                </div>\n\
+                                <div class="col-md-1"></div>\n\
+                                <div class="col-md-2 text-center" style="" >\n\
+                                    <input type="number" class="contenidoSegundos form-control" required="" name="segundos1" id="segundost" placeholder=""/>\n\
+                                </div>\n\
+                                <!--<input type="text" required="" id="'+contador+'"/>-->\n\
+                                </div>' );
         $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
         }
+        
         
         
     }

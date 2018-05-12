@@ -385,8 +385,44 @@ and open the template in the editor.
     
     .barraOtroEjercicio{
         display: flow-root;
+padding-top: 12px    }
+    
+    .contenidoRepes{
+        padding-right: 6px;
+        padding-left: 14px;
+        font-size: 20px;
     }
+    
+    .contenidoNombre{font-size: 16px}
 
+    
+    .contenidoMinutos{
+        padding-right: 6px;
+        padding-left: 14px;
+        font-size: 20px;}
+    
+    .contenidoSegundos{
+        padding-right: 6px;
+        padding-left: 14px;
+        font-size: 20px;}
+    
+    
+    #OtroEjercicio{   
+    background-color: white;
+    border: none;
+    width: 19.64px;
+    height: 25px;}
+    
+    .icon-pluscss{    
+    font-size: 25px;
+    position: inherit;
+    z-index: 1000;
+    }
+    
+    #exampleModalLongTitle{font-family: -webkit-body;
+    font-size: 20px;}
+    
+    
                                                 /*/ Tablets en horizonal y escritorios normales*/
                                                    /*------------------------------------------------------------------------- /*/
     @media (max-width: 1299px) { 
