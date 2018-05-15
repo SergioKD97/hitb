@@ -11,16 +11,15 @@ if(isset($_GET['tiempo'])){
     //Chequeo si ya existe una tabla con este nombre para este usuario
     $nombreTiempo = $_POST['nombreTiempo'];
     $nombreTiempo = str_replace(' ', '_', $nombreTiempo);
-    //para poner los segundos con dos ceros si solo ponen 1:
-//    if(strlen($_POST['segundos' . $i]) == 1){
-//        $_POST['segundos' . $i] = '0' . $_POST['segundos' . $i] ;
-//    }
+    
+
         $sqlTablat="SELECT * FROM tiempopersonalizado WHERE NombreUsu='".$_SESSION['nombreUsuario']."' and NombreTabla = '$nombreTiempo' ";
         $checkeaUsuariot=mysqli_query($creaConexion,$sqlTablat);
         $numeroVecesUsuariot=mysqli_num_rows($checkeaUsuariot);
         
         if($numeroVecesUsuariot == 0 ){
             for($i = 1; $i<=$contador; $i++){
+                //consulta para meter los datos en la tabla
                 $sqlt = "insert into tiempoPersonalizado "
                     . "(NombreUsu,NombreTabla,idEjercicio,NombreEjer,minutos,segundos)"
                     . "values ('".$_SESSION['nombreUsuario']."','"
@@ -28,9 +27,7 @@ if(isset($_GET['tiempo'])){
                         . "$i, "
                         . "'".$_POST['nombret' . $i]."',"
                         . "".$_POST['minutost' . $i].","
-                        . "".$_POST['segundost' . $i].");";
-                print_r($sqlt);
-                print_r($contador); 
+                        . "'". corrigeCeros($_POST['segundost' . $i])."');"; 
                 $ejecutaSQL = mysqli_query($creaConexion, $sqlt);
             }
         echo '<script>location.href= "UsuarioFuerte.php";</script>';
@@ -66,3 +63,11 @@ if(isset($_GET['tiempo'])){
     
 }
 
+    function corrigeCeros( $segundos){//para poner los segundos con dos ceros si solo ponen 1:
+        if($segundos <= 9){
+
+            return '0'.$segundos ;
+        }else{
+            return $segundos;
+        }
+    }

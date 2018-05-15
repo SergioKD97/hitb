@@ -194,7 +194,8 @@ session_start();
                     $nombreTabla = $resultado[$i][2];
 
                     print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button id="boton'.$i.'" class="btn btn-warning btn-block">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
-                            . '<button id="ayuda'.$i.'" onclick="muestraInfoS('."'muestraS$i'".')" class="btn btn-secondary">?</button>'
+                            . '<button id="ayuda'.$i.'" onclick="muestraInfoS('."'muestraS$i'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
+                            . '<button id="'.$i.'"  class="btn btn-secondary" onclick="modoBorrar(this.id)"><i id="icono'.$i.'" class="icon-lock"></i></button>'                           
                             . '<div id="muestraS'.$i.'"></div>');
                 }
                 
@@ -214,7 +215,8 @@ session_start();
                     $nombreTablat = $resultadot[$j][2];
 
                     print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
-                            . '<button id="ayuda'.$j.'" onclick="muestraInfoT('."'muestraT$j'".')" class="btn btn-secondary">?</button>'
+                            . '<button id="ayuda'.$j.'" onclick="muestraInfoT('."'muestraT$j'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
+                            . '<button id="'.$i.'"  class="btn btn-secondary" onclick="modoBorrar(this.id)" ><i id="icono'.$j.'" class="icon-lock" ></i></button>'
                             . '<div id="muestraT'.$j.'"></div>');
                 }
             ?>
@@ -269,11 +271,11 @@ session_start();
                         </div>
 
                         <div class="col-md-2 text-center" style="margin-left: 23px;" >
-                            <input type="number" class="contenidoMinutos form-control" required="" name="minutost1" id="minutost" placeholder=""/>
+                            <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost1" id="minutost" placeholder=""/>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-2 text-center" style="" >
-                            <input type="number" class="contenidoSegundos form-control" required="" name="segundost1" id="segundost" placeholder=""/>
+                            <input type="number" min="00" max="59" class="contenidoSegundos finporm-control" required="" name="segundost1" id="segundost" placeholder=""/>
                         </div>
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
@@ -313,7 +315,7 @@ session_start();
                         <div class="col-md-1"></div>
                         
                         <div class="col-md-2 text-center" style="">
-                            <input type="number" class="contenidoRepes form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
+                            <input type="number" min="0" class="contenidoRepes form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
                         </div>
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
@@ -349,8 +351,21 @@ session_start();
         
 
         
-        //una funcion que cargue los datos que se ejecute automaticamente y otra que solo los muestre
         
+        function modoBorrar(id){
+            console.log('icono'+id);
+            if($('#icono'+id).hasClass('icon-lock')){
+               $('#icono'+id).removeClass('icon-lock').addClass('icon-bin');
+               $('#'+id).removeClass('btn-success').addClass('btn-danger');
+            }else{
+                if($('#icono'+id).hasClass('icon-bin')){
+                    $('#modalBorrar').modal();
+                }
+            }
+
+        }
+        
+        //una funcion que cargue los datos que se ejecute automaticamente y otra que solo los muestre
         function muestraInfoS (id){
             //esto es para hacer la carga de datos, las demas veces que se llame a este metodo sera para mostrar los datos unicamente
             if(cargaInfoS === true){
@@ -380,7 +395,6 @@ session_start();
         }
         
         function muestraInfoT (id){
-            console.log(contadorT);
             
             if(cargaInfoT === true){
                 cargaInfoT = false;
@@ -400,7 +414,7 @@ session_start();
                     
                 }else{
                     
-                    for(var o = 0; o <contadorS; o++){
+                    for(var o = 0; o <contadorT; o++){
                         $('#muestraT'+o).css({'display' : 'none'});
                     }
                         $('#'+id).css({'display' : 'inline'});
@@ -493,7 +507,7 @@ $("#calendar").fullCalendar({
                                                         </div>\n\
                                                         <div class="col-md-1"></div>\n\
                                                         <div class="col-md-2 text-center" style="">\n\
-                                                            <input type="number" class="contenidoRepes form-control" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder=""/>\n\
+                                                            <input type="number" min="00" class="contenidoRepes form-control" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder=""/>\n\
                                                         </div>\n\
                                                         <!--<input type="text" required="" id="'+contador+'"/>-->\n\
                                                         </div>' );
@@ -507,11 +521,11 @@ $("#calendar").fullCalendar({
                                     <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <div class="col-md-2 text-center" style="margin-left: 23px;" >\n\
-                                    <input type="number" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
+                                    <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <div class="col-md-1"></div>\n\
                                 <div class="col-md-2 text-center" style="" >\n\
-                                    <input type="number" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
+                                    <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <!--<input type="text" required="" id="'+contador+'"/>-->\n\
                                 </div>' );
@@ -529,22 +543,41 @@ $("#calendar").fullCalendar({
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titutloEvento">Agregar titulo</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h2 class="modal-title text-center" id="titutloEvento">Agregar titulo</h2>
       </div>
       <div class="modal-body">
-          <div id="descripcionEvento"></div>
+          <h4><div id="descripcionEvento" class="text-center"></div></h4>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-secondary">Borrar</button>
-        <button type="button" class="btn btn-primary">Modificar</button>
-        <button type="button" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
   </div> 
+</div>
+
+<!--MODAAAAAAAAL BORRAR SERIE-->
+<!-- Modal -->
+<div class="modal fade" id="modalBorrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title text-center" id="exampleModalLabel">Borrado de serie</h3>
+      </div>
+        <h5><div class="modal-body text-center">
+        ¿Deseas borrar esta serie?
+            </div></h5>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">No</button>
+        <button type="button" class="btn btn-primary">Si</button>
+      </div>
+    </div>
+  </div>
 </div>
     </body>
 </html>
