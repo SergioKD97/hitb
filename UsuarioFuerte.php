@@ -193,9 +193,9 @@ session_start();
                     $id = $resultado[$i][0] ;
                     $nombreTabla = $resultado[$i][2];
 
-                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button id="boton'.$i.'" class="btn btn-warning btn-block">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
-                            . '<button id="ayuda'.$i.'" onclick="muestraInfoS('."'muestraS$i'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
-                            . '<button id="'.$i.'"  class="btn btn-secondary" onclick="modoBorrar(this.id)"><i id="icono'.$i.'" class="icon-lock"></i></button>'                           
+                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="btn btn-warning col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
+                            . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
+                            . '<button id="'.$i.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id)"><i id="icono'.$i.'" class="icon-lock"></i></button>'                           
                             . '<div id="muestraS'.$i.'"></div>');
                 }
                 
@@ -206,7 +206,7 @@ session_start();
                 $resultadot = mysqli_fetch_all($consultaSeriet);
                 
                 if(count($resultadot)>0){ 
-                    print('<h3 class="text-center"> Tiempo</h3>');
+                    print('<h3 class="text-center" style="clear: both;margin-top: 30px;"> Tiempo</h3>');
                     
                 } 
                 
@@ -215,7 +215,7 @@ session_start();
                     $nombreTablat = $resultadot[$j][2];
 
                     print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
-                            . '<button id="ayuda'.$j.'" onclick="muestraInfoT('."'muestraT$j'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
+                            . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
                             . '<button id="'.$i.'"  class="btn btn-secondary" onclick="modoBorrar(this.id)" ><i id="icono'.$j.'" class="icon-lock" ></i></button>'
                             . '<div id="muestraT'.$j.'"></div>');
                 }
@@ -345,8 +345,8 @@ session_start();
              cargaInfoT = true;
              contadorS = <?php echo count($resultado); ?>;
              contadorT = <?php echo count($resultadot); ?>;
-            muestraInfoS();
-            muestraInfoT();
+            sS();
+            sT();
         });
         
 
@@ -355,10 +355,10 @@ session_start();
         function modoBorrar(id){
             console.log('icono'+id);
             if($('#icono'+id).hasClass('icon-lock')){
-               $('#icono'+id).removeClass('icon-lock').addClass('icon-bin');
+               $('#icono'+id).removeClass('icon-lock').addClass('icon-trash');
                $('#'+id).removeClass('btn-success').addClass('btn-danger');
             }else{
-                if($('#icono'+id).hasClass('icon-bin')){
+                if($('#icono'+id).hasClass('icon-trash')){
                     $('#modalBorrar').modal();
                 }
             }
@@ -366,7 +366,7 @@ session_start();
         }
         
         //una funcion que cargue los datos que se ejecute automaticamente y otra que solo los muestre
-        function muestraInfoS (id){
+        function sS (id){
             //esto es para hacer la carga de datos, las demas veces que se llame a este metodo sera para mostrar los datos unicamente
             if(cargaInfoS === true){
                 cargaInfoS = false;
@@ -394,7 +394,7 @@ session_start();
             
         }
         
-        function muestraInfoT (id){
+        function sT (id){
             
             if(cargaInfoT === true){
                 cargaInfoT = false;
