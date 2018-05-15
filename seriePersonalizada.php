@@ -27,8 +27,10 @@ if(isset($_GET['tiempo'])){
                         . "$nombreTiempo',"
                         . "$i, "
                         . "'".$_POST['nombret' . $i]."',"
-                        . "'".$_POST['minutos' . $i]."',"
-                        . "".$_POST['segundos' . $i].");";
+                        . "".$_POST['minutost' . $i].","
+                        . "".$_POST['segundost' . $i].");";
+                print_r($sqlt);
+                print_r($contador); 
                 $ejecutaSQL = mysqli_query($creaConexion, $sqlt);
             }
         echo '<script>location.href= "UsuarioFuerte.php";</script>';

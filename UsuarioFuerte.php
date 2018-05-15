@@ -269,11 +269,11 @@ session_start();
                         </div>
 
                         <div class="col-md-2 text-center" style="margin-left: 23px;" >
-                            <input type="number" class="contenidoMinutos form-control" required="" name="minutos1" id="minutost" placeholder=""/>
+                            <input type="number" class="contenidoMinutos form-control" required="" name="minutost1" id="minutost" placeholder=""/>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-2 text-center" style="" >
-                            <input type="number" class="contenidoSegundos form-control" required="" name="segundos1" id="segundost" placeholder=""/>
+                            <input type="number" class="contenidoSegundos form-control" required="" name="segundost1" id="segundost" placeholder=""/>
                         </div>
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
@@ -410,10 +410,6 @@ session_start();
                        
         }
         
-        
-        function enviaPanel(){
-            location.href='UsuarioFuerte.php';
-        }
         function muestraLogin(id){
             if(id === 'login'){
             $('#formularioRegsitroModal').hide();
@@ -508,14 +504,14 @@ $("#calendar").fullCalendar({
             case 'OtroEjerciciot' : 
                                 $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div id="ejerciciot'+contador+'">\n\
                                 <div class="col-md-4 text-center" style="clear: both" >\n\
-                                    <input type="text" class="contenidoNombre form-control" required="" name="nombret1" id="nombret" placeholder=""/>\n\
+                                    <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <div class="col-md-2 text-center" style="margin-left: 23px;" >\n\
-                                    <input type="number" class="contenidoMinutos form-control" required="" name="minutos1" id="minutost" placeholder=""/>\n\
+                                    <input type="number" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <div class="col-md-1"></div>\n\
                                 <div class="col-md-2 text-center" style="" >\n\
-                                    <input type="number" class="contenidoSegundos form-control" required="" name="segundos1" id="segundost" placeholder=""/>\n\
+                                    <input type="number" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <!--<input type="text" required="" id="'+contador+'"/>-->\n\
                                 </div>' );
