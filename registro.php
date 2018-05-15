@@ -4,7 +4,7 @@ require './metodos.php';
 
 
                     // enlaza los campos rellenados con las variables de php
-                    $nombreUsuario=$_POST['nombre'];
+                    $nombreUsuario= str_replace(' ', '_', $_POST['nombre']) ;
                     $contrasena= $_POST['contra'];
                     $confirmarContraseña=$_POST['contra2'];
                     

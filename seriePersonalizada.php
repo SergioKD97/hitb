@@ -3,8 +3,7 @@ session_start();
 require './metodos.php';
 
 
-//SOLO PARA SERIEEEEEEEEES
-// AUN NO ESTA HECHO PARA EL TIEMPOOOOOO
+
 //MIRA ESTOOOOOOOOOOOOOO
 $contador = $_GET['contador'];
 
@@ -12,6 +11,10 @@ if(isset($_GET['tiempo'])){
     //Chequeo si ya existe una tabla con este nombre para este usuario
     $nombreTiempo = $_POST['nombreTiempo'];
     $nombreTiempo = str_replace(' ', '_', $nombreTiempo);
+    //para poner los segundos con dos ceros si solo ponen 1:
+//    if(strlen($_POST['segundos' . $i]) == 1){
+//        $_POST['segundos' . $i] = '0' . $_POST['segundos' . $i] ;
+//    }
         $sqlTablat="SELECT * FROM tiempopersonalizado WHERE NombreUsu='".$_SESSION['nombreUsuario']."' and NombreTabla = '$nombreTiempo' ";
         $checkeaUsuariot=mysqli_query($creaConexion,$sqlTablat);
         $numeroVecesUsuariot=mysqli_num_rows($checkeaUsuariot);

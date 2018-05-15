@@ -363,12 +363,18 @@ session_start();
                    
                 }
             }else{//como ya se ha hecho el load, ahora solo se ocultaran y mostraran los divs segun convenga
-                for(var a = 0; a <contadorS; a++){
-                    $('#muestraS'+a).css({'display' : 'none'});
-                }
-                    $('#'+id).css({'display' : 'inline'});
-            }
+                //esto es para que sipinchas en un boton que ya este mostrando contenido, se ouclte (es intuitivo)
+                if($('#'+id).is(":visible")){
+                    
+                    $('#'+id).css({'display' : 'none'});
                 
+                }else{
+                    for(var a = 0; a <contadorS; a++){
+                        $('#muestraS'+a).css({'display' : 'none'});
+                    }
+                    $('#'+id).css({'display' : 'inline'});
+                }
+            }
 
             
         }
@@ -387,10 +393,19 @@ session_start();
                 }
                 
             }else{
-                for(var o = 0; o <contadorS; o++){
-                    $('#muestraT'+o).css({'display' : 'none'});
+                
+                if($('#'+id).is(":visible")){
+                    
+                    $('#'+id).css({'display' : 'none'});
+                    
+                }else{
+                    
+                    for(var o = 0; o <contadorS; o++){
+                        $('#muestraT'+o).css({'display' : 'none'});
+                    }
+                        $('#'+id).css({'display' : 'inline'});
                 }
-                    $('#'+id).css({'display' : 'inline'});
+
             }
                        
         }

@@ -3,7 +3,7 @@ session_start(); // iniciamos sesion
 
 require './metodos.php';
          
-         $nombreUsuarioLogin = $_POST["nombreLogin"];
+         $nombreUsuarioLogin = str_replace(' ', '_', $_POST["nombreLogin"]) ;
          $contrasenaLogin = $_POST["contraLogin"];
  /// ESTE CODIGO ES PARA COMPROBAR SI LOS DATOS APORTADO SON CORRECTOS Y NOS DEJA ENTRAR EN LA BBDD/////
          
