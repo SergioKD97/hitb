@@ -194,8 +194,8 @@ session_start();
                     $nombreTabla = $resultado[$i][2];
 
                     print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button id="boton'.$i.'" class="btn btn-warning btn-block">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
-                            . '<button id="ayuda'.$i.'" onclick="muestraInfoS('."'muestraS$i'".', '.count($resultado).', '.$i.')" class="btn btn-secondary">?</button>'
-                            . '<div style="display:none;" id="muestraS'.$i.'"><div id="'.$i.'">'.$nombreTabla.'</div></div>');
+                            . '<button id="ayuda'.$i.'" onclick="muestraInfoS('."'muestraS$i'".')" class="btn btn-secondary">?</button>'
+                            . '<div id="muestraS'.$i.'"></div>');
                 }
                 
                 // ESTA ES PARA LAS DE TIEMPO
@@ -213,9 +213,9 @@ session_start();
                     $id = $resultadot[$j][0] ;
                     $nombreTablat = $resultadot[$j][2];
 
-                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="boton'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
-                            . '<button id="ayuda'.$j.'" onclick="muestraInfoT('."'muestraT$j'".', '.count($resultadot).', '.$j.')" class="btn btn-secondary">?</button>'
-                            . '<div style="display:none;" id="muestraT'.$j.'"><div id="'.$j.'">'.$nombreTablat.'</div></div>');
+                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
+                            . '<button id="ayuda'.$j.'" onclick="muestraInfoT('."'muestraT$j'".')" class="btn btn-secondary">?</button>'
+                            . '<div id="muestraT'.$j.'"></div>');
                 }
             ?>
         </div>
@@ -337,34 +337,62 @@ session_start();
     mainS();
         //PARA HEADER
        
+        $( document ).ready(function() {
+            $('#formularioLogin').css({'display' : 'none'});
+             cargaInfoS = true;
+             cargaInfoT = true;
+             contadorS = <?php echo count($resultado); ?>;
+             contadorT = <?php echo count($resultadot); ?>;
+            muestraInfoS();
+            muestraInfoT();
+        });
         
+
         
-        $('#formularioLogin').css({'display' : 'none'});
+        //una funcion que cargue los datos que se ejecute automaticamente y otra que solo los muestre
         
-        function muestraInfoS (id, contadorS, i){
-                 console.log(id);
+        function muestraInfoS (id){
+            //esto es para hacer la carga de datos, las demas veces que se llame a este metodo sera para mostrar los datos unicamente
+            if(cargaInfoS === true){
+                cargaInfoS = false;
                 for(var s = 0; s <contadorS; s++){
-                $('#muestraS'+s).css({'display' : 'none'});
+                    $('#muestraS'+s).css({'display' : 'none'});
+                    var texto = $('#boton' +s).text();
+                    texto = texto.replace(' ','_');                   
+                    $('#muestraS'+s).load('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + texto); 
+                   
                 }
-                //location.href=('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + $('#boton' +i).text());
-                $('#'+id).load('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + $('#boton' +i).text());
-                $('#'+id).css({'display' : 'block'});
+            }else{//como ya se ha hecho el load, ahora solo se ocultaran y mostraran los divs segun convenga
+                for(var a = 0; a <contadorS; a++){
+                    $('#muestraS'+a).css({'display' : 'none'});
+                }
+                    $('#'+id).css({'display' : 'inline'});
+            }
                 
 
             
         }
         
-        function muestraInfoT (id, contadorT, j){
-                for(var t = 0; t <contadorT; t++){
-                    $('#muestraT'+t).css({'display' : 'none'});
-                }
-//            $('#'+id).load('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + $('#'+j).text());    
-                location.href=('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + $('#boton'+j).text());           
-                console.log('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + $('#'+j).text());
-                $('#'+id).css({'display' : 'block'});
-
-
+        function muestraInfoT (id){
+            console.log(contadorT);
             
+            if(cargaInfoT === true){
+                cargaInfoT = false;
+                for(var b = 0; b <contadorT; b++){
+                    $('#muestraT'+ b).css({'display' : 'none'});
+                    var texto = $('#botonT' + b).text();
+                    texto = texto.replace(' ','_');                   
+                    $('#muestraT'+ b).load('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + texto); 
+                   
+                }
+                
+            }else{
+                for(var o = 0; o <contadorS; o++){
+                    $('#muestraT'+o).css({'display' : 'none'});
+                }
+                    $('#'+id).css({'display' : 'inline'});
+            }
+                       
         }
         
         
