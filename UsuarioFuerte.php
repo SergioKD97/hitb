@@ -167,7 +167,7 @@ session_start();
 
 
 <br><br>            
-<div class="container-fluid ">   
+<div class="container-fluid ">    
     <div class="col-md-1"></div>
     <div class="col-md-5 text-center DivCalendario"  id="calendar"></div>
     <div class="col-md-1"></div>
@@ -195,7 +195,8 @@ session_start();
 
                     print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="btn btn-warning col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
                             . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
-                            . '<button id="'.$i.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'                           
+                            . '<button id="'.$i.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'
+                            . '<div style="clear: both"></div>'                           
                             . '<div id="muestraS'.$i.'"></div>');
                 }
                 
@@ -217,12 +218,20 @@ session_start();
                     print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
                             . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
                             . '<button id="t'.$j.'"  class="btn btn-secondary" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
+                            . '<div style="clear: both"></div>'
                             . '<div id="muestraT'.$j.'"></div>');
                 }
             ?>
         </div>
     </div>
     <div class="col-md-1"></div>
+    <div class="row">
+        <div class="col-md-6" id="tablaHistorial">
+            <?php
+//                creatablaHistorial();
+            ?>
+        </div>
+    </div>
 </div>     
 
 
@@ -595,7 +604,7 @@ $("#calendar").fullCalendar({
         ¿Deseas borrar esta serie?
             </div></h5>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-secondary" id="no" data-dismiss="modal">No</button>
         <button type="button" class="btn btn-primary webon" id="si" onclick="borraSerie(this.id)">Si</button>
       </div>
     </div>
