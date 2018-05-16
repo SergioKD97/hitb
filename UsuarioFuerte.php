@@ -195,7 +195,7 @@ session_start();
 
                     print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="btn btn-warning col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
                             . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
-                            . '<button id="'.$i.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id)"><i id="icono'.$i.'" class="icon-lock"></i></button>'                           
+                            . '<button id="'.$i.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'                           
                             . '<div id="muestraS'.$i.'"></div>');
                 }
                 
@@ -216,7 +216,7 @@ session_start();
 
                     print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
                             . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
-                            . '<button id="'.$i.'"  class="btn btn-secondary" onclick="modoBorrar(this.id)" ><i id="icono'.$j.'" class="icon-lock" ></i></button>'
+                            . '<button id="t'.$j.'"  class="btn btn-secondary" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
                             . '<div id="muestraT'.$j.'"></div>');
                 }
             ?>
@@ -352,17 +352,39 @@ session_start();
 
         
         
-        function modoBorrar(id){
+        function modoBorrar(id, tipo){
             console.log('icono'+id);
             if($('#icono'+id).hasClass('icon-lock')){
                $('#icono'+id).removeClass('icon-lock').addClass('icon-trash');
-               $('#'+id).removeClass('btn-success').addClass('btn-danger');
+               $('#'+id).removeClass('btn-secondary').addClass('btn-danger');
             }else{
-                if($('#icono'+id).hasClass('icon-trash')){
-                    $('#modalBorrar').modal();
+                if(tipo == 0){//REPETICIONES
+                    if($('#icono'+id).hasClass('icon-trash')){
+                        $('#cuerpoSerieBorrar').text('¿Desea borrar la serie de ' +$('#boton'+id).text() +'?' );
+                                //cambio el id del boton de si para pasar de una forma guarra el nombre de la tabla
+                                var texto = $('#boton'+id).text();
+                                texto = texto.replace(' ','_');
+                                console.log('texto: ' + texto);
+                                //esta clase no esta declarada, se la pongo al boton para seguir teniendolo identificado, porque el id cambia y no se puede hacer referencia al id si cambia pero a la clase que no cambia, si
+                                $('.webon').attr('id',texto);
+                                $('#modalBorrar').modal();
+                    }
+                }else{//TIEMPO
+                    if($('#icono'+id).hasClass('icon-trash')){
+                        $('#cuerpoSerieBorrar').text('¿Desea borrar la serie de ' +$('#botonT'+id.substring(1)).text() +'?' );
+                                //cambio el id del boton de si para pasar de una forma guarra el nombre de la tabla
+                                var texto = $('#botonT'+id.substring(1)).text();
+                                texto = texto.replace(' ','_');
+                                //esta clase no esta declarada, se la pongo al boton para seguir teniendolo identificado, porque el id cambia y no se puede hacer referencia al id si cambia pero a la clase que no cambia, si
+                                $('.webon').attr('id',texto);
+                                $('#modalBorrar').modal();
+                    }
                 }
             }
 
+        }
+    function borraSerie(id){
+            location.href = 'borraSerie.php?nombreTabla='+id;
         }
         
         //una funcion que cargue los datos que se ejecute automaticamente y otra que solo los muestre
@@ -569,12 +591,12 @@ $("#calendar").fullCalendar({
         </button>
         <h3 class="modal-title text-center" id="exampleModalLabel">Borrado de serie</h3>
       </div>
-        <h5><div class="modal-body text-center">
+        <h5><div id="cuerpoSerieBorrar" class="modal-body text-center">
         ¿Deseas borrar esta serie?
             </div></h5>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary">No</button>
-        <button type="button" class="btn btn-primary">Si</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary webon" id="si" onclick="borraSerie(this.id)">Si</button>
       </div>
     </div>
   </div>
