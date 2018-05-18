@@ -146,11 +146,11 @@ and open the template in the editor.
     #loginPop{
         color: white;
         font-size: 42px;
-        margin-right: 10%;
         font-family: -webkit-pictograph;
     }
 
     .letraLogin{
+     font-size: 0.78em !important;
     }    
     #HitBee{
         background-image: url(../imagenes/FotoHit.png);
