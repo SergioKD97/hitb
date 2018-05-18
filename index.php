@@ -155,7 +155,7 @@ session_start();
                     <tbody>
                       <tr>
                           <td>Nombre de usuario</td>
-                          <td style="margin-left: 10%;"><input type="text" required="" name="nombre" placeholder="Nombre de usuario" /></th>
+                          <td style="margin-left: 10%;"><input type="text" maxlength="9" required="" name="nombre" placeholder="Nombre de usuario"  /></th>
                       </tr>
 
                   
