@@ -57,11 +57,11 @@ session_start();
                 
                 
                 //actulaliza el nombre de usuario en el nombre del login
-                echo "<script>$('#letraLogin').text('$nombre');</script>"; // creo que esta linea no sirve para nada
+                echo "<script>$('#letraLogin').text('".corrigeNombre($nombre)."');</script>"; // creo que esta linea no sirve para nada
     //          print_r($_SESSION['nombreUsuario'] + 'este es el nombre de usuario');
                 echo '<script>$("#top-user").html("'.'<div onclick="+"enviaPanel();"+" id="+"marginLogin"+">'
                 . '<a href="+"javascript:void(0)"+" id="+"loginPop"+" title="+"Login"+" data-toggle="+"modal"+" data-target="+"#pop-auth"+">'
-                        . '<img style="+"width:50px;margin-top:0px;margin-bottom:6px;margin-left:0px;"+" src="+"imagenes/iconoLogin.jpg"+"> <span id="+"letraLogin"+" class="+"letraLogin"+"> '.$nombre.'</span>'
+                        . '<img style="+"width:50px;margin-top:0px;margin-bottom:6px;margin-left:0px;"+" src="+"imagenes/iconoLogin.jpg"+"> <span id="+"letraLogin"+" class="+"letraLogin"+"> '. corrigeNombre($nombre).'</span>'
                         . '</a>'
                         . '<a href="+"cerrarSesion.php"+" >'
                         . '<i style="+"font-size:60px;color:red;float:right"+" id="+"iconoLogin"+" class="+"icon-exit_to_app"+"></i>'
@@ -127,10 +127,10 @@ session_start();
     
                 <nav class="navResponsive">
                     <ul class="ulResponsive">
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-house spanResponsive"></span>Inicio</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-suitcase spanResponsive"></span>Trabajos</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-earth spanResponsive"></span>Servicios</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-mail spanResponsive"></span>Contacto</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-house spanResponsive"></span>Inicio</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>">Workout</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-earth spanResponsive"></span>Dietas</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-mail spanResponsive"></span>Info</a></li>
                     </ul>
 		</nav>
     
@@ -258,8 +258,6 @@ session_start();
         actualizaInterfaz();    
         
         ?>
-    </body>
-</html>
 
 <script>
                                   
@@ -586,3 +584,15 @@ session_start();
     
     
 </script>
+<?php    
+        function corrigeNombre ($nombre){
+        $primeraLetra = strtoupper($nombre[0]);
+        $restoPalabra =  substr($nombre, 1, strlen($nombre)-1);
+        strtolower($restoPalabra);
+        $Final = $primeraLetra . $restoPalabra; 
+        return $Final;
+    }
+?>
+    </body>
+</html>
+
