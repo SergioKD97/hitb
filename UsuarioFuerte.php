@@ -194,7 +194,7 @@ session_start();
                     $nombreTabla = $resultado[$i][2];
 
                     print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="btn btn-warning col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
-                            . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
+                            . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="ayudaComun btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
                             . '<button id="'.$i.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'
                             . '<div style="clear: both"></div>'                           
                             . '<div id="muestraS'.$i.'"></div>');
@@ -215,9 +215,9 @@ session_start();
                     $id = $resultadot[$j][0] ;
                     $nombreTablat = $resultadot[$j][2];
 
-                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-block btn-info">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
-                            . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="btn btn-secondary"><i class="icon-question"></i></button>'
-                            . '<button id="t'.$j.'"  class="btn btn-secondary" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
+                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-info col-md-10">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
+                            . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="ayudaComun btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
+                            . '<button id="t'.$j.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
                             . '<div style="clear: both"></div>'
                             . '<div id="muestraT'.$j.'"></div>');
                 }

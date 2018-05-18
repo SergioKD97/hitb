@@ -422,6 +422,11 @@ padding-top: 12px    }
     #exampleModalLongTitle{font-family: -webkit-body;
     font-size: 20px;}
     
+    .ayudaComun{    
+    background-color: darkgrey;
+    }
+    
+    
     
                                                 /*/ Tablets en horizonal y escritorios normales*/
                                                    /*------------------------------------------------------------------------- /*/
@@ -465,7 +470,7 @@ padding-top: 12px    }
 
         #marginLogin{margin: auto}
 
-        .iconoLogin{
+        #iconoLogin{
             font-size: 39px;
             vertical-align: text-top;
             margin-right: 3px;
@@ -566,7 +571,11 @@ padding-top: 12px    }
             font-size: 28px !important;
         }
    
+        #iconoLogin{margin-right: -40px;
+        font-size: 62px !important;
+        margin-top: -5px;
         
+        }
         
     
         
@@ -696,6 +705,33 @@ padding-top: 12px    }
     }        
         
    
+    
+    
+    
+      .texto1-1,.texto1-3,.texto1-5,.texto1-7,.texto1-9,.texto1-11,.texto1-13,.texto1-15,.texto1-17,.texto1-19,.texto1-21,.texto1-23,.texto1-25,.texto1-27,.texto1-29,.texto1-31{float: none;clear: both;margin-left: 0px;font-size: 15px}
+        .texto1-2,.texto1-4,.texto1-6,.texto1-8,.texto1-10,.texto1-12,.texto1-14,.texto1-16,.texto1-18,.texto1-20,.texto1-22,.texto1-24,.texto1-26,.texto1-28,.texto1-30,.texto1-32{float: none;clear: both;margin-right: 0px;font-size: 15px}     
+   
+.divNivelBocata2 {
+    margin-top: 60px;
+}
+    
+       
+.divNivelBocata3 {
+    margin-top: 60px;
+}
+    
+    
+
+#HitBee{
+    background-size: contain;
+    height: 50px;
+    width: -webkit-fill-available;
+    margin-top: 19px;
+    
+}
+
+
+    
     }
     
     

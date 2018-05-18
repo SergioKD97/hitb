@@ -53,8 +53,7 @@ session_start();
             if((isset($_SESSION['nombreUsuario'])) && 
                ($_SESSION['nombreUsuario'] != '')){
                 $nombre = str_replace('_', ' ', $_SESSION['nombreUsuario']);                
-                //NO FINCIONAAAA HAY QUE CONSEGUIR QUE CAMBIE EL CSS AL ENTRAR EN MODO USUARIO
-                echo "<script>$('#marginLogin').css({'margin-left' : '0px'});</script>";        
+
                 
                 
                 //actulaliza el nombre de usuario en el nombre del login
@@ -65,7 +64,7 @@ session_start();
                         . '<img style="+"width:50px;margin-top:0px;margin-bottom:6px;margin-left:0px;"+" src="+"imagenes/iconoLogin.jpg"+"> <span id="+"letraLogin"+" class="+"letraLogin"+"> '.$nombre.'</span>'
                         . '</a>'
                         . '<a href="+"cerrarSesion.php"+" >'
-                        . '<i style="+"font-size:60px;color:red;float:right"+" class="+"icon-exit_to_app iconoLogin"+"></i>'
+                        . '<i style="+"font-size:60px;color:red;float:right"+" id="+"iconoLogin"+" class="+"icon-exit_to_app"+"></i>'
                         . '</a>'
                         . '</div>'.'");</script>';
                 
@@ -93,7 +92,7 @@ session_start();
                 </h1>
             </div>
             
-            <div class="col-xs-7 col-s-6 col-md-6  col-lg-6" style="text-align: center">
+            <div class="col-xs-6 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
                 <div id="HitBee"></div>
                 
@@ -110,7 +109,7 @@ session_start();
                 
             </div>
             
-            <div id="top-user" class="col-xs-3 col-s-3 col-md-3  col-lg-3">
+            <div id="top-user" class="col-xs-4 col-s-3 col-md-3  col-lg-3">
             
                 <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
@@ -274,6 +273,16 @@ session_start();
         $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
 
 
+
+      
+
+
+
+
+
+
+
+
         //Marc
         $('#formularioLogin').css({'display' : 'none'});
         function enviaPanel(){
@@ -351,10 +360,56 @@ session_start();
             $('.divNiveles' + id).load('Niveles.php?tipo='+tipoFinal);
             
             
-            //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
+                                    //DESPLAZAR AL BOCADILLO EN CADA EJERICIO A SU CORRESPONDIENTE ID
+           //div 1
+             if(id === 1){
+
                  $('html,body').animate({
-                scrollTop: $(".bordeChulo1").offset().top
+                scrollTop: $(".triangulo1").offset().top
                 }, 1000);
+            }
+            
+            
+           //div 2
+             if(id === 2){
+
+                 $('html,body').animate({
+                scrollTop: $(".triangulo2").offset().top
+                }, 1000);
+            }
+            
+           //div 3
+             if(id === 3){
+
+                 $('html,body').animate({
+                scrollTop: $(".triangulo3").offset().top
+                }, 1000);
+            }
+           
+           //div 4
+             if(id === 4){
+
+                 $('html,body').animate({
+                scrollTop: $(".triangulo4").offset().top
+                }, 1000);
+            }
+            
+           //div 5
+             if(id === 5){
+
+                 $('html,body').animate({
+                scrollTop: $(".triangulo5").offset().top
+                }, 1000);
+            }
+           
+           
+           
+           
+           
+           
+           
+           
+           
            
         }
         
@@ -401,7 +456,6 @@ session_start();
                  $('.divNiveles2').show();       
                  $('.divNiveles2').load('Niveles.php?tipo='+tipoFinal);
             
-                //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
                  $('html,body').animate({
                 scrollTop: $(".info").offset().top
                 }, 1000);
@@ -412,7 +466,6 @@ session_start();
                  $('.divNiveles4').show();         
                  $('.divNiveles4').load('Niveles.php?tipo='+tipoFinal);
             
-                //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
                  $('html,body').animate({
                 scrollTop: $(".Brazo").offset().top
                 }, 1000);
@@ -423,7 +476,6 @@ session_start();
                  $('.divNiveles5').show();
                  $('.divNiveles5').load('Niveles.php?tipo='+tipoFinal); 
             
-                 //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
                  $('html,body').animate({
                 scrollTop: $(".Pierna").offset().top
                 }, 1000);
@@ -466,7 +518,20 @@ session_start();
             }
             
             
+            
+            
         }
+
+
+         
+
+
+
+
+
+
+
+
 
         
         
@@ -491,14 +556,29 @@ session_start();
                 $('.submenu').click(function(){
                         $(this).children('.children').slideToggle();
                 });
-        }
+                
+                
+                
+                
+                
+                 //CSS SI EXISTE EL ID CUANDO ESTA LOGEADO
+             if (document.getElementById("iconoLogin")) {
+                $('#marginLogin').css({'margin-left' : '0px'});
+                $('#loginPop').css({'margin-left' : '0px'});
+                
+             
+                
+             }
+        
+        
+        
+    }
     
     
                                 /*BODY*/
     
 
 
-    
     
     
     
