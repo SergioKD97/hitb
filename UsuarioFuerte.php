@@ -168,10 +168,11 @@ session_start();
 
 <br><br>            
 <div class="container-fluid ">    
-    <div class="col-md-1"></div>
-    <div class="col-md-5 text-center DivCalendario"  id="calendar"></div>
-    <div class="col-md-1"></div>
-    <div class="col-md-4 text-center"  id="series">
+    <div class="col-xs-1 hidden-md col-lg-1"></div>
+    <div class="col-xs-10 col-md-6 col-lg-5 DivCalendario"  id="calendar"></div>
+    <div class="col-xs-1 hidden-lg"></div>
+    <div class="col-xs-1 text-center col-md-1 col-lg-1"></div>
+    <div class="col-xs-10 col-md-6 col-lg-4 "  id="series">
         <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalSeries">Crea Tus Series</button>
         <br>
         <h2 class="text-center">Tus series: </h2>
@@ -193,9 +194,9 @@ session_start();
                     $id = $resultado[$i][0] ;
                     $nombreTabla = $resultado[$i][2];
 
-                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="btn btn-warning col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
-                            . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="ayudaComun btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
-                            . '<button id="'.$i.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'
+                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="btn btn-warning col-xs-10 col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
+                            . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="ayudaComun btn btn-secondary col-xs-1 col-md-1"><i class="icon-question"></i></button>'
+                            . '<button id="'.$i.'"  class="btn btn-secondary col-xs-1 col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'
                             . '<div style="clear: both"></div>'                           
                             . '<div id="muestraS'.$i.'"></div>');
                 }
@@ -215,18 +216,18 @@ session_start();
                     $id = $resultadot[$j][0] ;
                     $nombreTablat = $resultadot[$j][2];
 
-                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-info col-md-10">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
-                            . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="ayudaComun btn btn-secondary col-md-1"><i class="icon-question"></i></button>'
-                            . '<button id="t'.$j.'"  class="btn btn-secondary col-md-1" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
+                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-info col-xs-10 col-md-10">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
+                            . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="ayudaComun btn btn-secondary col-xs-1 col-md-1"><i class="icon-question"></i></button>'
+                            . '<button id="t'.$j.'"  class="btn btn-secondary col-xs-1 col-md-1" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
                             . '<div style="clear: both"></div>'
                             . '<div id="muestraT'.$j.'"></div>');
                 }
             ?>
         </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-xs-1 hidden-md col-lg-1"></div>
     <div class="row">
-        <div class="col-md-6" id="tablaHistorial">
+        <div class="col-md-4" id="tablaHistorial">
             <?php
 //                creatablaHistorial();
             ?>

@@ -15,6 +15,7 @@ and open the template in the editor.
     height: 100%;
     width: 100%;
     background: #F3E4D9;
+    padding-right: 0px !important;
     }                               
                                     
     #main {
@@ -554,8 +555,7 @@ padding-top: 12px    }
             margin-left: auto;
         }
 
-
-        
+            
                                                                    /* BODY  */
                                                 
                                                                    
@@ -625,6 +625,11 @@ padding-top: 12px    }
         .divNivelBocata2{margin-top: 200px}
         .divNivelBocata3{margin-top: 200px}
         
+        
+        
+                                                    /*USUARIO FUERTE*/
+        .DivCalendario{margin-bottom: 40px}
+        #series{margin-bottom: 40px}
     }
     
     
@@ -655,7 +660,7 @@ padding-top: 12px    }
 
     
     
-    
+                                                    /*USUARIO FUERTE*/
     
     
     
