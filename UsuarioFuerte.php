@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <?php
 session_start();
 ?>
@@ -27,12 +27,14 @@ session_start();
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     </head>
     <body class="bodyUsuario">
-        <?php 
+        <?php
         include './metodos.php';
         $miMetodos = new metodos();
+        $direccion = $miMetodos->menu();//variable para cambiar el href del Usuario  
+        //Abajo esta lo de actualiza interfaz porque como lo ponga arriba se ejecuta antes del codigo
+        //nomal y se buggea
         $nivel = "";
-//        $tipo = $_GET['tipo'];
-//        $Modo = $tipo[0];
+
         
         if(isset($_GET['usuarioNuevo'])){
             echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
@@ -41,7 +43,7 @@ session_start();
         
         
             
-        <header>
+            <header>
         <div class="row container" >
             
             <div class="menu_bar  col-xs-2 col-s-3 col-md-3 col-lg-3">
@@ -54,7 +56,7 @@ session_start();
                 </h1>
             </div>
             
-            <div class="col-xs-7 col-s-6 col-md-6  col-lg-6" style="text-align: center">
+            <div class="col-xs-6 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
                 <div id="HitBee"></div>
                 
@@ -71,7 +73,7 @@ session_start();
                 
             </div>
             
-            <div id="top-user" class="col-xs-3 col-s-3 col-md-3  col-lg-3">
+            <div id="top-user" class="col-xs-4 col-s-3 col-md-3  col-lg-3">
             
                 <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
@@ -186,8 +188,6 @@ session_start();
                 if(count($resultado)>0){ 
                     print('<h3 class="text-center"> Repeticiones</h3>');
                     
-                }else{ echo '<br><h4 class="text-center">Aún no has creado ninguna serie personalizada. Picha arriba para hacerlo</h4>';
-                
                 }                   
                 
                 for($i = 0; $i<count($resultado); $i++){
@@ -210,6 +210,10 @@ session_start();
                 if(count($resultadot)>0){ 
                     print('<h3 class="text-center" style="clear: both;margin-top: 30px;"> Tiempo</h3>');
                     
+                }
+                
+                if((count($resultado) == 0)&&(count($resultadot) == 0)){ echo '<br><h4 class="text-center">Aún no has creado ninguna serie personalizada. Picha arriba para hacerlo</h4>';
+                
                 } 
                 
                 for($j = 0; $j<count($resultadot); $j++){
@@ -345,6 +349,16 @@ session_start();
     </div>
   </div>
 </div>
+
+            <?php
+        
+        if((isset($_SESSION['nombreUsuario'])) && 
+               ($_SESSION['nombreUsuario'] != '')){
+        $nombre = str_replace('_', ' ', $_SESSION['nombreUsuario']); 
+        $nombreFinal = $miMetodos->actualizaInterfaz();
+        }
+        
+        ?>
 <script>
     mainS();
         //PARA HEADER
@@ -486,7 +500,23 @@ session_start();
                 $('.submenu').click(function(){
                         $(this).children('.children').slideToggle();
                 });
-        }
+                
+                
+                
+                
+                
+                 //CSS SI EXISTE EL ID CUANDO ESTA LOGEADO
+             if (document.getElementById("iconoLogin")) {
+                $('#marginLogin').css({'margin-left' : '0px'});
+                $('#loginPop').css({'margin-left' : '0px'});
+                
+             
+                
+             }
+        
+        
+        
+    }
     
     
     

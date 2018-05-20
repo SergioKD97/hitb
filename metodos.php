@@ -74,11 +74,51 @@
         echo $arrayConsulta[0][0];
 
         }
-        
+    
+    // PARA EL MENU DEL INDEX
+    function menu (){
+        if((isset($_SESSION['nombreUsuario'])) && 
+               ($_SESSION['nombreUsuario'] != '')){
+            $direccion = 'UsuarioFuerte.php';
 
+        }else{
+             $direccion = 'index.php';
+        }
+        return $direccion;
     }
     
-
+    function corrigeNombre ($nombre){
+        $primeraLetra = strtoupper($nombre[0]);
+        $restoPalabra =  substr($nombre, 1, strlen($nombre)-1);
+        strtolower($restoPalabra);
+        $Final = $primeraLetra . $restoPalabra; 
+        return $Final;
+    }
     
-   
+    function actualizaInterfaz(){
+//            if( (isset($_GET['usuarioNuevo'])) && ($_GET['usuarioNuevo'] == true)){
+//                echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
+//            }
+            if((isset($_SESSION['nombreUsuario'])) && 
+               ($_SESSION['nombreUsuario'] != '')){
+                $nombre = str_replace('_', ' ', $_SESSION['nombreUsuario']);                
+                
+                //actulaliza el nombre de usuario en el nombre del login
+                echo "<script>$('#letraLogin').text('".$this->corrigeNombre($nombre)."');</script>"; // creo que esta linea no sirve para nada
+    //          print_r($_SESSION['nombreUsuario'] + 'este es el nombre de usuario');
+                echo '<script>$("#top-user").html("'.'<div onclick="+"enviaPanel();"+" id="+"marginLogin"+">'
+                . '<a href="+"javascript:void(0)"+" id="+"loginPop"+" title="+"Login"+" data-toggle="+"modal"+" data-target="+"#pop-auth"+">'
+                        . '<img style="+"width:50px;margin-top:0px;margin-bottom:6px;margin-left:0px;"+" src="+"imagenes/iconoLogin.jpg"+"> <span id="+"letraLogin"+" class="+"letraLogin"+"> '. $this->corrigeNombre($nombre).'</span>'
+                        . '</a>'
+                        . '<a href="+"cerrarSesion.php"+" >'
+                        . '<i style="+"font-size:60px;color:red;float:right"+" id="+"iconoLogin"+" class="+"icon-exit_to_app"+"></i>'
+                        . '</a>'
+                        . '</div>'.'");</script>';
+                
+            }
+                   
+                
+    }
+
+    }//FIN CLASE
         ?>

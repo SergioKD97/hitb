@@ -20,61 +20,16 @@ session_start();
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/jquery.raty.js" type="text/javascript"></script>
-    </head>
-    <style>
-    
-    
-                
-        
-    </style>
-    
+    </head> 
     
     <body class="body-wrap-home">
         <?php 
-        require './conectarBBDD.php';
-        
-        //variable para cambiar el href del Usuario
-        if((isset($_SESSION['nombreUsuario'])) && 
-               ($_SESSION['nombreUsuario'] != '')){
-            $direccion = 'UsuarioFuerte.php';
+        include './metodos.php';
+        $miMetodos = new metodos();
+        $direccion = $miMetodos->menu();//variable para cambiar el href del Usuario  
+        //Abajo esta lo de actualiza interfaz porque como lo ponga arriba se ejecuta antes del codigo
+        //nomal y se buggea
 
-        }else{
-             $direccion = 'index.php';
-        }
-        
-        
-        //CODIGO QUE SE EJECUTA CUANDO ALGUIEN SE LOGUEA
-        // REVISAR SI ESTA BIEN
-        //ABAJO ESTA LA EJECUCION
-        function actualizaInterfaz(){
-            if( (isset($_GET['usuarioNuevo'])) && ($_GET['usuarioNuevo'] == true)){
-                echo '<script language="javascript">alert("Usuario registrado con éxito");</script>';
-            }
-            if((isset($_SESSION['nombreUsuario'])) && 
-               ($_SESSION['nombreUsuario'] != '')){
-                $nombre = str_replace('_', ' ', $_SESSION['nombreUsuario']);                
-
-                
-                
-                //actulaliza el nombre de usuario en el nombre del login
-                echo "<script>$('#letraLogin').text('".corrigeNombre($nombre)."');</script>"; // creo que esta linea no sirve para nada
-    //          print_r($_SESSION['nombreUsuario'] + 'este es el nombre de usuario');
-                echo '<script>$("#top-user").html("'.'<div onclick="+"enviaPanel();"+" id="+"marginLogin"+">'
-                . '<a href="+"javascript:void(0)"+" id="+"loginPop"+" title="+"Login"+" data-toggle="+"modal"+" data-target="+"#pop-auth"+">'
-                        . '<img style="+"width:50px;margin-top:0px;margin-bottom:6px;margin-left:0px;"+" src="+"imagenes/iconoLogin.jpg"+"> <span id="+"letraLogin"+" class="+"letraLogin"+"> '. corrigeNombre($nombre).'</span>'
-                        . '</a>'
-                        . '<a href="+"cerrarSesion.php"+" >'
-                        . '<i style="+"font-size:60px;color:red;float:right"+" id="+"iconoLogin"+" class="+"icon-exit_to_app"+"></i>'
-                        . '</a>'
-                        . '</div>'.'");</script>';
-                
-            }
-                   
-                
-                }
-                
-                
-          
         ?>
 
         
@@ -251,13 +206,18 @@ session_start();
         <footer>
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
         </footer>
-        
-        
-   </div>
         <?php
-        actualizaInterfaz();    
+        
+        if((isset($_SESSION['nombreUsuario'])) && 
+               ($_SESSION['nombreUsuario'] != '')){
+        $nombre = str_replace('_', ' ', $_SESSION['nombreUsuario']); 
+        $nombreFinal = $miMetodos->actualizaInterfaz();
+        }
         
         ?>
+        
+   </div>
+
 
 <script>
                                   
@@ -584,15 +544,6 @@ session_start();
     
     
 </script>
-<?php    
-        function corrigeNombre ($nombre){
-        $primeraLetra = strtoupper($nombre[0]);
-        $restoPalabra =  substr($nombre, 1, strlen($nombre)-1);
-        strtolower($restoPalabra);
-        $Final = $primeraLetra . $restoPalabra; 
-        return $Final;
-    }
-?>
     </body>
 </html>
 

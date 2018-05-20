@@ -25,6 +25,9 @@
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
+        $direccion = $miMetodos->menu();//variable para cambiar el href del Usuario  
+        //Abajo esta lo de actualiza interfaz porque como lo ponga arriba se ejecuta antes del codigo
+        //nomal y se buggea
         $nivel = "";
         $tipo = $_GET['tipo'];
         $Modo = $tipo[0];
@@ -33,7 +36,7 @@
         
         
             
-        <header>
+            <header>
         <div class="row container" >
             
             <div class="menu_bar  col-xs-2 col-s-3 col-md-3 col-lg-3">
@@ -46,7 +49,7 @@
                 </h1>
             </div>
             
-            <div class="col-xs-7 col-s-6 col-md-6  col-lg-6" style="text-align: center">
+            <div class="col-xs-6 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
                 <div id="HitBee"></div>
                 
@@ -63,7 +66,7 @@
                 
             </div>
             
-            <div id="top-user" class="col-xs-3 col-s-3 col-md-3  col-lg-3">
+            <div id="top-user" class="col-xs-4 col-s-3 col-md-3  col-lg-3">
             
                 <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
                     <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
@@ -223,7 +226,15 @@
             
         </div>
     
-
+                <?php
+        
+        if((isset($_SESSION['nombreUsuario'])) && 
+               ($_SESSION['nombreUsuario'] != '')){
+        $nombre = str_replace('_', ' ', $_SESSION['nombreUsuario']); 
+        $nombreFinal = $miMetodos->actualizaInterfaz();
+        }
+        
+        ?>
 
 <script>
 //    NOTAS:
@@ -633,26 +644,42 @@
     }                                   /*MENU RESPONSIVE*/
 
  
-function mainS () {
-	$('.iconoMenu').click(function(){
-		if (contadorS == 1) {
-			$('.navResponsive').animate({
-				left: '0'
-			});
-			contadorS = 0;
-		} else {
-			contadorS = 1;
-			$('.navResponsive').animate({
-				left: '-100%'
-			});
-		}
-	});
- 
-	// Mostramos y ocultamos submenus
-	$('.submenu').click(function(){
-		$(this).children('.children').slideToggle();
-	});
-}
+        function mainS () {
+                $('.iconoMenu').click(function(){
+                        if (contador == 1) {
+                                $('.navResponsive').animate({
+                                        left: '0'
+                                });
+                                contador = 0;
+                        } else {
+                                contador = 1;
+                                $('.navResponsive').animate({
+                                        left: '-100%'
+                                });
+                        }
+                });
+
+                // Mostramos y ocultamos submenus
+                $('.submenu').click(function(){
+                        $(this).children('.children').slideToggle();
+                });
+                
+                
+                
+                
+                
+                 //CSS SI EXISTE EL ID CUANDO ESTA LOGEADO
+             if (document.getElementById("iconoLogin")) {
+                $('#marginLogin').css({'margin-left' : '0px'});
+                $('#loginPop').css({'margin-left' : '0px'});
+                
+             
+                
+             }
+        
+        
+        
+    }
     
     
     
