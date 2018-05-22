@@ -107,11 +107,13 @@ and open the template in the editor.
     }
 
     #logo {
-        background-image: url(../imagenes/logo.jpg);
+        background-image: url(../imagenes/logo.png);
         background-position: 50% 25%;
         background-size: cover;
+        background-size: cover;
         height: 161px;
-        width: 154px;
+        width: 207px;
+        border-radius: 31px;
         margin: 0px 21px;
         display: inline-block;
     }
@@ -217,7 +219,7 @@ and open the template in the editor.
                                                     
     #bodyText div{
         font-size: 51px;
-        font-family: serif;
+        font-family: unset;
         margin: 0 auto;
         width: 24%;
         text-shadow: black 0.1em 0.1em 0.2em;
