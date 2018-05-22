@@ -92,10 +92,10 @@ session_start();
     
                 <nav class="navResponsive">
                     <ul class="ulResponsive">
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-house spanResponsive"></span>Inicio</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-suitcase spanResponsive"></span>Trabajos</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-earth spanResponsive"></span>Servicios</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-mail spanResponsive"></span>Contacto</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Inicio</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Workout</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-newspaper-o spanResponsive"></span>Dietas</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-info-circle spanResponsive"></span>Info</a></li>
                     </ul>
 		</nav>
     

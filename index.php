@@ -82,10 +82,10 @@ session_start();
     
                 <nav class="navResponsive">
                     <ul class="ulResponsive">
-                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-house spanResponsive"></span>Inicio</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>">Workout</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-earth spanResponsive"></span>Dietas</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-mail spanResponsive"></span>Info</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Inicio</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Workout</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-newspaper-o spanResponsive"></span>Dietas</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-info-circle spanResponsive"></span>Info</a></li>
                     </ul>
 		</nav>
     
@@ -471,8 +471,8 @@ session_start();
                  
                 //DESPLAZAR AL BOCADILLO EN LOS 2 ULTIMOS EJERCICIOS
                  $('html,body').animate({
-                scrollTop: $(".footer-home").offset().top
-                }, 2000);            
+                scrollTop: $(".Abs").offset().top
+                }, 1000);
             }
             
             
