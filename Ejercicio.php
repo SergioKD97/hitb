@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php session_start();
 ?>
-<html>
+<html style="height: 100%">
     <head>
         <meta charset="UTF-8">
         <title>Hitbee</title>
@@ -21,7 +21,7 @@
         <script src='js/calendario/fullcalendar.js'></script>
 
     </head>
-    <body class="body-wrap-home">
+    <body class="body-wrap-home" style="height: 100%;background-color: lavenderblush;">
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
@@ -166,8 +166,8 @@
         
         
         <div>
-            <div  class="col-sm-1 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
-                <h3>Tanda de Ejercicios</h3>
+            <div style="border-right: 2px solid cadetblue;border-bottom: 2px solid cadetblue;" class="col-sm-1 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+                <h3 >Tanda de Ejercicios</h3>
                 <br>
                 <?php
                     $sqlHistorial = "select * from ".$_GET['tipo']." where nivel = ".$_GET['nivel']."";

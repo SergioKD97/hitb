@@ -173,11 +173,11 @@ session_start();
     <div class="col-xs-1 hidden-md col-lg-1"></div>
     <div class="col-xs-10 col-md-6 col-lg-5 DivCalendario"  id="calendar"></div>
     <div class="col-xs-1 hidden-lg"></div>
-    <div class="col-xs-1 text-center col-md-1 col-lg-1"></div>
+    <div class="col-xs-1 text-center clearBoth col-md-1 col-lg-1"></div>
     <div class="col-xs-10 col-md-6 col-lg-4 "  id="series">
         <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalSeries">Crea Tus Series</button>
         <br>
-        <h2 class="text-center">Tus series: </h2>
+        <h2 class="text-center clearBoth">Tus series: </h2>
         <div style="width: 100%;" id="seriesCreadas">
             <?php 
             // ESTA ES PARA LAS REPETICIONES
@@ -186,7 +186,7 @@ session_start();
                 $resultado = mysqli_fetch_all($consultaSerie);
                 
                 if(count($resultado)>0){ 
-                    print('<h3 class="text-center"> Repeticiones</h3>');
+                    print('<h3 class="text-center clearBoth"> Repeticiones</h3>');
                     
                 }                   
                 
@@ -262,8 +262,8 @@ session_start();
           <form class="form-horizontal" id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post">
               
               <div class="form-group">
-                  <label for="name" class="col-md-3 control-label">Nombre Serie: </label>
-                  <div class="col-md-7">
+                  <label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label labelNombre">Nombre Serie: </label>
+                  <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8 divLabelNombre">
                     <input type="text" class="form-control" name="nombreTiempo" required="" placeholder="" />
                    </div>
               </div>
@@ -274,22 +274,22 @@ session_start();
                 <div id="cuerpoTiempo">
                     <div id="ejerciciot">
                         
-                        <label for="name" class="col-md-4 text-center">Nombre </label>
-                        <label for="name" class="col-md-3 text-center">Minutos </label>
-                        <label for="name" class="col-md-3 text-center">Segundos </label>
+                        <label for="name" class="col-xs-4 col-sm-4 col-md-4 text-center">Nombre </label>
+                        <label for="name" class="col-xs-3 col-sm-3 col-md-3 text-center">Minutos </label>
+                        <label for="name" class="col-xs-3 col-sm-3 col-md-3 text-center">Segundos </label>
                         <br>
                         
                         
-                        <div class="col-md-4 text-center" style="clear: both" >
+                        <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="clear: both" >
                             <input type="text" class="contenidoNombre form-control" required="" name="nombret1" id="nombret" placeholder=""/>
                         </div>
 
-                        <div class="col-md-2 text-center" style="margin-left: 23px;" >
+                        <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >
                             <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost1" id="minutost" placeholder=""/>
                         </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-2 text-center" style="" >
-                            <input type="number" min="00" max="59" class="contenidoSegundos finporm-control" required="" name="segundost1" id="segundost" placeholder=""/>
+                        <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >
+                            <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost1" id="segundost" placeholder=""/>
                         </div>
                         <!--<input type="text" required="" id="id"/>-->
                     </div>
@@ -307,8 +307,8 @@ session_start();
           <form class="form-horizontal" id="formularioSeries" action="seriePersonalizada.php?contador=1" method="post">
               
               <div class="form-group">
-                  <label for="name" class="col-md-3 control-label">Nombre Serie: </label>
-                  <div class="col-md-7">
+                  <label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label labelNombre">Nombre Serie: </label>
+                  <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8 divLabelNombre">
                     <input type="text" class="form-control" name="nombreSerie" required="" placeholder="" />
                    </div>
               </div>
@@ -318,17 +318,17 @@ session_start();
                <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
                 <div id="cuerpoSerie">
                     <div id="ejercicio">
-                        <label for="name" class="col-md-4 text-center">Nombre </label>
-                        <label for="name" class="col-md-4 text-center">Repeticiones </label>
+                        <label for="name" class="col-md-4 text-center labelEjercicio">Nombre </label>
+                        <label for="name" class="col-md-4 text-center labelRepeticion ">Repeticiones </label>
                                       <br>
                                       <br>
 
-                        <div class="col-md-4 text-center" style="clear: both" >
+                        <div class="col-xs-4 col-sm-4 col-md-4" style="clear: both" >
                             <input type="text" class="contenidoNombre form-control" required="" name="nombre1" id="nombre" placeholder=""/>
                         </div>
-                        <div class="col-md-1"></div>
+                        <div class="col-xs-1 col-sm-1 col-md-1"></div>
                         
-                        <div class="col-md-2 text-center" style="">
+                        <div class="col-xs-2 col-sm-2 col-md-2" style="">
                             <input type="number" min="0" class="contenidoRepes form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
                         </div>
                         <!--<input type="text" required="" id="id"/>-->
@@ -564,16 +564,22 @@ $("#calendar").fullCalendar({
             case 'OtroEjercicio':   
                                 $('#cuerpoSerie').html($('#cuerpoSerie').html() + '<div id="ejercicio'+contador+'">\n\
                                                         <div class="col-md-6"></div>\n\
-                                                        <div class="col-md-4 text-center" style="clear: both">\n\
+                                                        <div class="col-xs-4 col-sm-4 col-md-4" style="clear: both">\n\
                                                             <input type="text"class="contenidoNombre form-control"  required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder=""/>\n\
                                                         </div>\n\
-                                                        <div class="col-md-1"></div>\n\
-                                                        <div class="col-md-2 text-center" style="">\n\
+                                                        <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
+                                                        <div class="col-xs-2 col-sm-2 col-md-2" style="">\n\
                                                             <input type="number" min="00" class="contenidoRepes form-control" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder=""/>\n\
                                                         </div>\n\
                                                         <!--<input type="text" required="" id="'+contador+'"/>-->\n\
                                                         </div>' );
         $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);break;
+    
+ 
+    
+    
+    
+    
     
     
    
@@ -582,17 +588,20 @@ $("#calendar").fullCalendar({
                                 <div class="col-md-4 text-center" style="clear: both" >\n\
                                     <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
                                 </div>\n\
-                                <div class="col-md-2 text-center" style="margin-left: 23px;" >\n\
+                                <div class="ccol-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >\n\
                                     <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
-                                <div class="col-md-1"></div>\n\
-                                <div class="col-md-2 text-center" style="" >\n\
+                                <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
+                                <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >\n\
                                     <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <!--<input type="text" required="" id="'+contador+'"/>-->\n\
                                 </div>' );
         $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
         }
+        
+        
+        
         
         
         
