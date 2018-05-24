@@ -29,9 +29,9 @@ session_start();
         $direccion = $miMetodos->menu();//variable para cambiar el href del Usuario  
         //Abajo esta lo de actualiza interfaz porque como lo ponga arriba se ejecuta antes del codigo
         //nomal y se buggea
-
+        
         ?>
-
+        
         
    <div id="main">
     <header>
