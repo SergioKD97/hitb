@@ -166,7 +166,7 @@
         
         
         <div>
-            <div style="border-right: 2px solid cadetblue;border-bottom: 2px solid cadetblue;" class="col-sm-1 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+            <div style="border-right: 2px solid cadetblue;border-bottom: 2px solid cadetblue;" class="col-sm-12 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
                 <h3 >Tanda de Ejercicios</h3>
                 <br>
                 <?php
@@ -187,7 +187,7 @@
                     }
                 ?>
             </div>
-            <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio" style="margin: auto;">
+            <div class=" col-xs-12 col-sm-12 col-md-6" id="contenedorEjercicio" style="margin: auto;">
                 
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
                 <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">3</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
@@ -208,10 +208,9 @@
                 </div>
                 
             </div>
-            <div class="col-sm-2 col-md-3">
-                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
-                <br>
-                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
+            <div class="col-sm-12 col-md-3">
+                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 8px;" ><i class="icon-question" ></i></button> 
+                <div id="textoAyuda" style="width: 100%;border-radius: 6px;padding: 2px "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
         </div>                
     
@@ -426,10 +425,10 @@
     function apareceAyuda(){
         
         if(!ayuda){
-            $('#textoAyuda').css({ 'opacity': '1'});
+            $('#textoAyuda').css({ 'display': 'block'});
             ayuda = true;
         }else{
-            $('#textoAyuda').css({ 'opacity': '0'});
+            $('#textoAyuda').css({ 'display': 'none'});
             ayuda = false;
         }
         return ayuda;

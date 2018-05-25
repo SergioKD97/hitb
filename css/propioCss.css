@@ -365,10 +365,17 @@ and open the template in the editor.
                                                             
                                                             /*EJERCICIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS*/
     #textoAyuda{
-        opacity: 0;
+        display: none;
+        border: 2px solid #C3E0E8;
     }
+    
+    #botonAyuda:hover + #textoAyuda{border: 2px solid grey}
+    
 
-
+    
+    
+    
+    
     .bordesCirculares{
      border-radius: 50% 50% 50% 50%;
     -moz-border-radius: 50% 50% 50% 50%;
@@ -434,9 +441,9 @@ padding-top: 12px    }
     .divLabelNombre{float: left}
     
     
-    
-    
-    
+
+
+
                                                 /*/ Tablets en horizonal y escritorios normales*/
                                                    /*------------------------------------------------------------------------- /*/
     @media (max-width: 1299px) { 
