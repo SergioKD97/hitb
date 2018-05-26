@@ -209,7 +209,7 @@
                 
             </div>
             <div class="col-sm-12 col-md-3">
-                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 8px;" ><i class="icon-question" ></i></button> 
+                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" f style="border-radius: 50%; margin-left: 8px;" ><i class="icon-question" ></i></button> 
                 <div id="textoAyuda" style="width: 100%;border-radius: 6px;padding: 2px "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
         </div>                
@@ -434,20 +434,32 @@
     //para el boton de ayuda
     function apareceAyuda(){
         
-        if(!ayuda){
-            $('#textoAyuda').css({ 'display': 'block'});
-            ayuda = true;
+        if(innerWidth <= 991){
+            console.log('estoy dentro');
+            $('#modalAyuda').modal();
         }else{
-            $('#textoAyuda').css({ 'display': 'none'});
-            ayuda = false;
+            if(!ayuda){
+                $('#textoAyuda').css({ 'display': 'block'});
+                ayuda = true;
+            }else{
+                $('#textoAyuda').css({ 'display': 'none'});
+                ayuda = false;
+            }
         }
-        return ayuda;
+            
+            return ayuda;
     }
     
     
     function actualizaAjax(){
          $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&modo=<?php echo $Modo?>&id='+contador);
-         $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
+         //para el modal de ayuda
+         if(innerWidth <= 991){
+            $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador+'&size=peque');  
+         }else{
+            $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);  
+         }
+            
          coloreaTanda();
          $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
          $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);
@@ -712,5 +724,28 @@
 
 
     </script>
+    <!--MODAL EJERCICIO AYUDAAAAAAAAAAAAAAAAA-->
+
+<!-- Modal -->
+<div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Asistente al deportista</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
     </body>
 </html>
