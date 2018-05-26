@@ -7,18 +7,23 @@
         <title>Hitbee</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maxium-scale=1.0, minimun-scale =1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="js/jquery.raty.css" rel="stylesheet" type="text/css"/>
         <link href="css/propioCss.css" rel="stylesheet" type="text/css"/>
         <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
-        <!--vh relacion con el alto vw relacion con el ancho de la pagina-->
+        <link rel='stylesheet' href='css/calendario/fullcalendar.css' />
+        
+        
+        <script src="js/calendario/jquery.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/jquery.raty.js" type="text/javascript"></script>
-        
-        <link rel='stylesheet' href='css/calendario/fullcalendar.css' />
-        <script src='js/calendario/jquery.min.js'></script>
         <script src='js/calendario/moment.min.js'></script>
         <script src='js/calendario/fullcalendar.js'></script>
+        <script src="js/calendario/es.js" type="text/javascript"></script>
+        
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
 
     </head>
     <body class="body-wrap-home" style="height: 100%;background-color: lavenderblush;">
@@ -153,11 +158,31 @@
       </div>
     </div>
   </div>
-</div>
-        
-        
+</div>     
         <!--**** FIN  MODAAAAAAAAAAAAAAAAAAAAAL*****-->
         
+        
+   <!--MODAL EJERCICIO AYUDAAAAAAAAAAAAAAAAA-->
+<!-- Modal -->
+<div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Asistente al deportista</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="cuerpoAyudaModal" class="modal-body">
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--**** FIN  MODAAAAAAAAAAAAAAAAAAAAAL*****-->     
         
         
         
@@ -425,7 +450,7 @@
     function apareceAyuda(){
         
         if(innerWidth <= 991){
-            console.log('estoy dentro');
+            
             $('#modalAyuda').modal();
         }else{
             if(!ayuda){
@@ -445,9 +470,13 @@
          $('#ejercicio').load('AjaxEjercicio.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&modo=<?php echo $Modo?>&id='+contador);
          //para el modal de ayuda
          if(innerWidth <= 991){
+             console.log('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador+'&size=peque');
             $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador+'&size=peque');  
+            $('#cuerpoAyudaModal').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador+'&size=peque');  
+    
          }else{
             $('#textoAyuda').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador);  
+            $('#cuerpoAyudaModal').load('AjaxBotonAyuda.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+contador); 
          }
             
          coloreaTanda();
@@ -714,27 +743,6 @@
 
 
     </script>
-    <!--MODAL EJERCICIO AYUDAAAAAAAAAAAAAAAAA-->
-
-<!-- Modal -->
-<div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Asistente al deportista</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
     
     
     </body>

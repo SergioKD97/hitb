@@ -10,11 +10,13 @@ for ($i = 0; $i < count($fetch); $i++){
     $descripcion = $fetch[$i][3];
     $foto = $fetch[$i][4];
     
+     if(isset($_GET['size'])){
+         print('<div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:40vh" src="imagenes/Ejercicios/'.$foto.'"/></div>
+                         <h3 id="nombreEjercicio" class="text-center">'.$nombre.'</h3>'
+                 . '<div>'.$descripcion.'</div>');
+     }else{
+     echo $descripcion;
 
+     }
  }
- if(isset($_GET['size'])){
-     
- }else{
- echo $descripcion;
- 
- }
+

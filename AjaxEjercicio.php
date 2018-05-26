@@ -20,7 +20,7 @@ $modo = $_GET['modo'];
             $foto = $fetch[$i][4];
 
 
-            print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:330px" src="imagenes/Ejercicios/'.$foto.'"/></div>
+            print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:40vh;" src="imagenes/Ejercicios/'.$foto.'"/></div>
                      <h3 id="nombreEjercicio" class="text-center">'.$nombre.' <span id="repeticiones">x '.$repeticiones.'</span></h3>
           ');
          }
