@@ -203,7 +203,7 @@ session_start();
         </div>    
             
 
-        <footer>
+        <footer style="position: unset !important;width: 100%;margin-top: 0px">
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
         </footer>
         <?php

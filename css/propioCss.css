@@ -351,9 +351,14 @@ and open the template in the editor.
     footer{
     padding: 20px 0 20px;
     color: #fff;
-    position: relative;
     background: #322E2D;
     }
+    
+    .footer1{
+            position: absolute;bottom: 0;width: 100%;
+        }
+        
+    
     
     .footer-home {
     padding: 0;
@@ -512,7 +517,7 @@ padding-top: 12px    }
         .navResponsive{
             display: block;
             width: 80%;
-            position: fixed;
+            position: absolute;
             right:100%;
             margin: 0;
         }
@@ -551,13 +556,21 @@ padding-top: 12px    }
         
         
         
-        
-                  
+    .footer1{
+            position: absolute;bottom: 0;width: 100%;
+        }                  
     }
     
     @media (max-width: 991px) { 
      /* start of large tablet styles */
 
+     
+         .footer1{
+            position: unset;margin-top: 100px;
+        }
+     
+     
+     
         
         .letraLogin{
             display: none;
@@ -657,6 +670,9 @@ padding-top: 12px    }
         #nombre{}
         #repeticiones{}          
     }
+    
+    
+    
     
     
     
@@ -789,3 +805,8 @@ padding-top: 12px    }
     
     
     }
+    
+    
+    
+    
+    

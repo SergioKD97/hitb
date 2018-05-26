@@ -2,7 +2,7 @@
 <?php
 session_start();
 ?>
-<html>
+<html style="height: 100%">
     <head>
         <meta charset="UTF-8">
         <title>Hitbee</title>
@@ -26,7 +26,7 @@ session_start();
               <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     </head>
-    <body class="bodyUsuario">
+    <body class="bodyUsuario" style="height: 100%">
         <?php
         include './metodos.php';
         $miMetodos = new metodos();
@@ -350,6 +350,13 @@ session_start();
   </div>
 </div>
 
+
+        <footer class="footer1">
+            <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
+        </footer>
+
+
+
             <?php
         
         if((isset($_SESSION['nombreUsuario'])) && 
@@ -585,10 +592,10 @@ $("#calendar").fullCalendar({
    
             case 'OtroEjerciciot' : 
                                 $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div id="ejerciciot'+contador+'">\n\
-                                <div class="col-md-4 text-center" style="clear: both" >\n\
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="clear: both" >\n\
                                     <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
                                 </div>\n\
-                                <div class="ccol-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >\n\
+                                <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >\n\
                                     <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
                                 <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
