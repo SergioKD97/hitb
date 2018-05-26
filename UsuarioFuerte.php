@@ -167,7 +167,7 @@ session_start();
         <!--**** FIN  MODAAAAAAAAAAAAAAAAAAAAAL*****-->
 
 
-
+        
 <br><br>            
 <div class="container-fluid ">    
     <div class="col-xs-1 hidden-md col-lg-1"></div>
@@ -306,7 +306,7 @@ session_start();
           
           <!--FORMULARIO SERIES!!!-->
           
-          <form class="form-horizontal" id="formularioSeries" action="seriePersonalizada.php?contador=1" method="post">
+          <form class="form-horizontal" id="formularioSeries" enctype="multipart/form-data" action="seriePersonalizada.php?contador=1" method="post">
               
               <div class="form-group">
                   <label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label labelNombre">Nombre Serie: </label>
@@ -333,7 +333,9 @@ session_start();
                         <div class="col-xs-2 col-sm-2 col-md-2" style="">
                             <input type="number" min="0" class="contenidoRepes form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
                         </div>
-                        <!--<input type="text" required="" id="id"/>-->
+                        
+                        <br><br><input type="file" id="foto" name="foto1"/>
+                        
                     </div>
                 </div> 
                <div class="btn-group barraOtroEjercicio" role="group" aria-label="Basic example" style="clear: both">
@@ -383,11 +385,7 @@ session_start();
              contadorT = <?php echo count($resultadot); ?>;
             sS();
             sT();
-        });
-        
-
-        
-        
+        });        
         function modoBorrar(id, tipo){
             console.log('icono'+id);
             if($('#icono'+id).hasClass('icon-lock')){

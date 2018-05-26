@@ -46,14 +46,31 @@ if(isset($_GET['tiempo'])){
                             $numeroVecesUsuario=mysqli_num_rows($checkeaUsuario);
         if($numeroVecesUsuario == 0 ){
             for($i = 1; $i<=$contador; $i++){
+                //para subir la foto
+                if (isset($_FILES['foto'.$i])===false) {//esto verifica si se ha subido foto o no
+                    $foto = $_FILES["foto".$i]["name"];
+                    $ruta = $_FILES["foto".$i]["tmp_name"];
+                    $servidor = "imagenesUsu/";
+                    //cambio el nombre para que si dos imagenes tienen el mismo nombre, se distingan ya que no hay dos usuarios distintos
+                    $rutaImagenFinal = $servidor.$_SESSION['nombreUsuario'].$foto;
+                    print_r($rutaImagenFinal);
+                    move_uploaded_file($ruta, $rutaImagenFinal );
+                    echo $_FILES['foto'.$i]['tmp_name']; 
+                }else{//valor predeterminado
+                    $foto= 'logo.png';
+                }
+                
+                //FIN SUBIR FOTO
+                
                 $sql = "insert into seriespersonalizado "
-                    . "(NombreUsu,NombreTabla,idEjercicio,NombreEjer,Repeticiones)"
+                    . "(NombreUsu,NombreTabla,idEjercicio,NombreEjer,Repeticiones,foto)"
                     . "values ('".$_SESSION['nombreUsuario']."','"
                         . "$nombreSerie',"
                         . "$i, "
                         . "'".$_POST['nombre' . $i]."',"
-                        . "".$_POST['repeticiones' . $i].");";
-                $ejecutaSQL = mysqli_query($creaConexion, $sql);
+                        . "".$_POST['repeticiones' . $i].","
+                        . "'$foto');";
+                $ejecutaSQL = mysqli_query($creaConexion, $sql);          
             }
         echo '<script>location.href= "UsuarioFuerte.php";</script>';
         }else{
