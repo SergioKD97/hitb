@@ -448,6 +448,13 @@ padding-top: 12px    }
     
 
 
+    
+    /*¡CAMBIARA CUANDO ESTE EN PANTALLA MAS DE 1299*/
+    @media screen and (max-height: 801px) {
+    .footer1{position: unset;margin-top: 100px;}
+    }
+    
+    
 
                                                 /*/ Tablets en horizonal y escritorios normales*/
                                                    /*------------------------------------------------------------------------- /*/
@@ -460,6 +467,8 @@ padding-top: 12px    }
 
     @media (max-width: 1199px) { 
 
+        
+        
         
         .headerPad{
             height: 92px;
@@ -561,9 +570,30 @@ padding-top: 12px    }
         }                  
     }
     
+    
+    
+    
+            /*¡CAMBIARA CUANDO ESTE EN PANTALLA HASTA 1199*/
+    @media screen and (max-height: 700px) {
+    .footer1{position: unset;margin-top: 100px;}
+    }
+        
+    
+    
+    
     @media (max-width: 991px) { 
      /* start of large tablet styles */
 
+     
+     
+     @media screen and (min-height: 801px) {
+    
+    .footer1{position: absolute;bottom: 0;width: 100%;}
+    
+    }
+     
+     
+     
      
          .footer1{
             position: unset;margin-top: 100px;
