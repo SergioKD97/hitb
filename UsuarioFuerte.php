@@ -257,6 +257,7 @@ session_start();
           <button id="repes" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Repeticiones</button>
           <button id="tiempo" class="btn btn-info btn-block" onclick="seleccionaFormulario(this.id);" >Tiempo</button>
           
+          <button class="btn btn-secondary" id="atrasFormularioPers" onclick="atrasFormPers()" style="display: none;"><i class="icon-arrow-left"></i></button>
           <!--FORMULARIO TIEMPO!!!-->
           
           <form class="form-horizontal" id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post">
@@ -351,9 +352,9 @@ session_start();
 </div>
 
 
-        <footer class="footer1">
+<!--        <footer class="footer1">
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
-        </footer>
+        </footer>-->
 
 
 
@@ -551,14 +552,17 @@ $("#calendar").fullCalendar({
     function seleccionaFormulario(id){
         $('#tiempo').fadeIn();
         $('#repes').fadeIn();
+        $('#atrasFormularioPers').hide();
         console.log(id);
         switch(id){
             case 'repes': 
+                $('#atrasFormularioPers').fadeIn();
                 $('#formularioSeries').fadeIn();
                 $('#tiempo').hide();
                 $('#repes').hide();
                 break;
             case 'tiempo': 
+                $('#atrasFormularioPers').fadeIn();
                 $('#formularioTiempo').fadeIn();
                 $('#tiempo').hide();
                 $('#repes').hide(); ;break;
@@ -605,13 +609,16 @@ $("#calendar").fullCalendar({
                                 <!--<input type="text" required="" id="'+contador+'"/>-->\n\
                                 </div>' );
         $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
-        }
-        
-        
-        
-        
-        
-        
+        }   
+    }
+    
+    function atrasFormPers(){
+    
+        $('#atrasFormularioPers').hide();
+        $('#formularioSeries').hide();
+        $('#formularioTiempo').hide();
+        $('#repes').fadeIn();
+        $('#tiempo').fadeIn();
     }
 </script>
 
