@@ -191,27 +191,11 @@
         
         
         <div>
-            <div style="border-right: 2px solid cadetblue;border-bottom: 2px solid cadetblue;" class="col-sm-12 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
-                <h3 >Tanda de Ejercicios</h3>
-                <br>
-                <?php
-                    $sqlHistorial = "select * from ".$_GET['tipo']." where nivel = ".$_GET['nivel']."";
-                    $sqlHistorial = mysqli_query($creaConexion, $sqlHistorial);
-                    $resultadoHistorial = mysqli_fetch_all($sqlHistorial);
-                    for($m = 0; $m <count($resultadoHistorial); $m++){
-                        $idNivel = $resultadoHistorial[$m][5];
-                        $nombreEjer = $resultadoHistorial[$m][2];
-                        $repes = $resultadoHistorial[$m][6];
-                        //Para que no salgan las repeticiones que tienen que hacer 
-                        if( $Modo !== 't'){
-                            print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.' x '.$repes.'</h4>');
-                        }else{
-                            print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.'</h4>');
-                        }
-                        
-                    }
-                ?>
+            <div  class="col-sm-12 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+               <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" f style="border-radius: 50%; margin-left: 8px;" ><i class="icon-question" ></i></button> 
+                <div id="textoAyuda" style="width: 100%;border-radius: 6px;padding: 2px "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
+            
             <div class=" col-xs-12 col-sm-12 col-md-6" id="contenedorEjercicio" style="margin: auto;">
                 
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
@@ -233,9 +217,26 @@
                 </div>
                 
             </div>
-            <div class="col-sm-12 col-md-3">
-                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" f style="border-radius: 50%; margin-left: 8px;" ><i class="icon-question" ></i></button> 
-                <div id="textoAyuda" style="width: 100%;border-radius: 6px;padding: 2px "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
+            <div class="col-sm-12 col-md-3" style="border-left: 2px solid cadetblue;border-bottom: 2px solid cadetblue;">
+                <h3 >Tanda de Ejercicios</h3>
+                <br>
+                <?php
+                    $sqlHistorial = "select * from ".$_GET['tipo']." where nivel = ".$_GET['nivel']."";
+                    $sqlHistorial = mysqli_query($creaConexion, $sqlHistorial);
+                    $resultadoHistorial = mysqli_fetch_all($sqlHistorial);
+                    for($m = 0; $m <count($resultadoHistorial); $m++){
+                        $idNivel = $resultadoHistorial[$m][5];
+                        $nombreEjer = $resultadoHistorial[$m][2];
+                        $repes = $resultadoHistorial[$m][6];
+                        //Para que no salgan las repeticiones que tienen que hacer 
+                        if( $Modo !== 't'){
+                            print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.' x '.$repes.'</h4>');
+                        }else{
+                            print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.'</h4>');
+                        }
+                        
+                    }
+                ?>
             </div>
         </div>                
     
