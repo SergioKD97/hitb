@@ -224,6 +224,12 @@
                
             
         </div>
+        
+        
+        <footer class="footer1">
+            <div  class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
+        </footer>
+        
     
                 <?php
         
@@ -257,6 +263,10 @@
     actualizaAjax();
     adaptaInterfaz();
     
+  
+  
+  
+  
   
   function coloreaTanda(){ // pone en rojo el ejercicio actual en la tanda de ejercicios
     $('.tanda').css({'color' : 'black', 'font-weight':'normal'});
