@@ -584,7 +584,7 @@ padding-top: 12px    }
     @media (max-width: 991px) { 
      /* start of large tablet styles */
 
-     
+
      
      @media screen and (min-height: 801px) {
     
@@ -603,7 +603,7 @@ padding-top: 12px    }
      
          .contenedorEjercicio{height: 100%}
 
-         #contenedorEjercicio{margin-bottom: 200px}
+         #contenedorEjercicio{margin-bottom: 50px}
          
         .letraLogin{
             display: none;

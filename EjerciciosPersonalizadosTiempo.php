@@ -164,7 +164,7 @@
         
         <div class="row">
             
-            <div class="col-xs-12 col-sm-12 col-md-8" id="contenedorEjercicio" style="margin: auto;">
+            <div class="col-xs-12 col-sm-12 col-md-8" id="contenedorEjercicio" style="">
                 
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
                 <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">3</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
