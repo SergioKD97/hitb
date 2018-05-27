@@ -19,15 +19,31 @@ if(isset($_GET['tiempo'])){
         
         if($numeroVecesUsuariot == 0 ){
             for($i = 1; $i<=$contador; $i++){
+                
+                //para subir la foto
+                if ($_FILES['fotot'.$i]['size'] == 0) {//esto verifica si se ha subido foto o no
+                    $foto= 'logo.png';
+                }else{//valor predeterminado
+                    $foto = $_FILES["fotot".$i]["name"];
+                    $ruta = $_FILES["fotot".$i]["tmp_name"];
+                    $servidor = "imagenesUsu/";
+                    //cambio el nombre para que si dos imagenes tienen el mismo nombre, se distingan ya que no hay dos usuarios distintos
+                    $rutaImagenFinal = $servidor.$_SESSION['nombreUsuario'].$foto; //para guardarlo bn en el server
+                    $foto = $_SESSION['nombreUsuario'].$foto;//para la bbdd
+                    move_uploaded_file($ruta, $rutaImagenFinal );//movimiento de la foto al server
+                }
+                
+                //FIN SUBIR FOTO
                 //consulta para meter los datos en la tabla
                 $sqlt = "insert into tiempoPersonalizado "
-                    . "(NombreUsu,NombreTabla,idEjercicio,NombreEjer,minutos,segundos)"
+                    . "(NombreUsu,NombreTabla,idEjercicio,NombreEjer,minutos,segundos,foto)"
                     . "values ('".$_SESSION['nombreUsuario']."','"
                         . "$nombreTiempo',"
                         . "$i, "
                         . "'".$_POST['nombret' . $i]."',"
                         . "".$_POST['minutost' . $i].","
-                        . "'". corrigeCeros($_POST['segundost' . $i])."');"; 
+                        . "'". corrigeCeros($_POST['segundost' . $i])."',"
+                        . "'$foto');";
                 $ejecutaSQL = mysqli_query($creaConexion, $sqlt);
             }
         echo '<script>location.href= "UsuarioFuerte.php";</script>';
@@ -47,17 +63,16 @@ if(isset($_GET['tiempo'])){
         if($numeroVecesUsuario == 0 ){
             for($i = 1; $i<=$contador; $i++){
                 //para subir la foto
-                if (isset($_FILES['foto'.$i])===false) {//esto verifica si se ha subido foto o no
+                if ($_FILES['foto'.$i]['size'] == 0) {//esto verifica si se ha subido foto o no
+                    $foto= 'logo.png';
+                }else{//valor predeterminado
                     $foto = $_FILES["foto".$i]["name"];
                     $ruta = $_FILES["foto".$i]["tmp_name"];
                     $servidor = "imagenesUsu/";
                     //cambio el nombre para que si dos imagenes tienen el mismo nombre, se distingan ya que no hay dos usuarios distintos
-                    $rutaImagenFinal = $servidor.$_SESSION['nombreUsuario'].$foto;
-                    print_r($rutaImagenFinal);
-                    move_uploaded_file($ruta, $rutaImagenFinal );
-                    echo $_FILES['foto'.$i]['tmp_name']; 
-                }else{//valor predeterminado
-                    $foto= 'logo.png';
+                    $rutaImagenFinal = $servidor.$_SESSION['nombreUsuario'].$foto; //para guardarlo bn en el server
+                    $foto = $_SESSION['nombreUsuario'].$foto;//para la bbdd
+                    move_uploaded_file($ruta, $rutaImagenFinal );//movimiento de la foto al server
                 }
                 
                 //FIN SUBIR FOTO

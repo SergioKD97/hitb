@@ -260,7 +260,7 @@ session_start();
           <button class="btn btn-secondary" id="atrasFormularioPers" onclick="atrasFormPers()" style="display: none;"><i class="icon-arrow-left"></i></button>
           <!--FORMULARIO TIEMPO!!!-->
           
-          <form class="form-horizontal" id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post">
+          <form class="form-horizontal" id="formularioTiempo" action="seriePersonalizada.php?tiempo=tiempo&contador=1" method="post" enctype="multipart/form-data">
               
               <div class="form-group">
                   <label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label labelNombre">Nombre Serie: </label>
@@ -292,7 +292,7 @@ session_start();
                         <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >
                             <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost1" id="segundost" placeholder=""/>
                         </div>
-                        <!--<input type="text" required="" id="id"/>-->
+                        <br><br><input type="file" id="fotot" name="fotot1"/>
                     </div>
                 </div>               
                
@@ -389,15 +389,17 @@ session_start();
         function modoBorrar(id, tipo){
             console.log('icono'+id);
             if($('#icono'+id).hasClass('icon-lock')){
-               $('#icono'+id).removeClass('icon-lock').addClass('icon-trash');
-               $('#'+id).removeClass('btn-secondary').addClass('btn-danger');
+                
+                   $('#icono'+id).removeClass('icon-lock').addClass('icon-trash');
+                   $('#'+id).removeClass('btn-secondary').addClass('btn-danger');
             }else{
                 if(tipo == 0){//REPETICIONES
                     if($('#icono'+id).hasClass('icon-trash')){
                         $('#cuerpoSerieBorrar').text('¿Desea borrar la serie de ' +$('#boton'+id).text() +'?' );
                                 //cambio el id del boton de si para pasar de una forma guarra el nombre de la tabla
                                 var texto = $('#boton'+id).text();
-                                texto = texto.replace(' ','_');
+                                console.log('texto sin editar espacios: ' + texto);
+                                texto = texto.replace(/ /g,'_');
                                 console.log('texto: ' + texto);
                                 //esta clase no esta declarada, se la pongo al boton para seguir teniendolo identificado, porque el id cambia y no se puede hacer referencia al id si cambia pero a la clase que no cambia, si
                                 $('.webon').attr('id',texto);
@@ -429,7 +431,7 @@ session_start();
                 for(var s = 0; s <contadorS; s++){
                     $('#muestraS'+s).css({'display' : 'none'});
                     var texto = $('#boton' +s).text();
-                    texto = texto.replace(' ','_');                   
+                    texto = texto.replace(/ /g,'_');                   
                     $('#muestraS'+s).load('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + texto); 
                    
                 }
@@ -457,7 +459,7 @@ session_start();
                 for(var b = 0; b <contadorT; b++){
                     $('#muestraT'+ b).css({'display' : 'none'});
                     var texto = $('#botonT' + b).text();
-                    texto = texto.replace(' ','_');                   
+                    texto = texto.replace(/ /g,'_');                    
                     $('#muestraT'+ b).load('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + texto); 
                    
                 }
@@ -584,7 +586,7 @@ $("#calendar").fullCalendar({
                                                         <div class="col-xs-2 col-sm-2 col-md-2" style="">\n\
                                                             <input type="number" min="00" class="contenidoRepes form-control" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder=""/>\n\
                                                         </div>\n\
-                                                        <!--<input type="text" required="" id="'+contador+'"/>-->\n\
+                                                        <br><br><input type="file" id="foto'+contador+'" name="foto'+contador+'"/>\n\
                                                         </div>' );
         $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);break;
     
@@ -608,7 +610,7 @@ $("#calendar").fullCalendar({
                                 <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >\n\
                                     <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
                                 </div>\n\
-                                <!--<input type="text" required="" id="'+contador+'"/>-->\n\
+                                <br><br><input type="file" id="fotot'+contador+'" name="fotot'+contador+'"/>\n\
                                 </div>' );
         $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
         }   
