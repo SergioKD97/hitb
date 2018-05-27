@@ -345,7 +345,7 @@ session_start();
 </div>
 
 
-        <footer class="footer1">
+<footer class="footer2" style="margin-top: ">
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
         </footer>
 

@@ -237,11 +237,7 @@
         </div>                  
     
         
-        
-            
-    
-        
-    <br><br>
+
         <footer class="footer1">
             <div  class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
         </footer>
