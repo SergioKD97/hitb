@@ -56,7 +56,7 @@ session_start();
                         <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
                         <li><a href="<?php echo $direccion?>"><span class="li-text"> Usuario </span></a></li>
                         <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
-                        <li><a href="Productos.php"><span class="ac_unit"> Info </span></a></li>
+                        <li><a href="info.php"><span class="ac_unit"> Info </span></a></li>
                         
                     </ul>
                 </div>

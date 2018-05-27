@@ -198,12 +198,9 @@
         
             
             
-        <div class="container">
-                
-                    <div id="CalendarioWeb"></div>
-               
-            
-        </div>
+        <footer style="position: unset !important;width: 100%;margin-top: 0px">
+            <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
+        </footer>
     
         <?php
         
@@ -510,7 +507,7 @@
         
     }
     function completado (){
-        $('#ejercicio').html('<h1>COMPLETADO!</h1>');
+        $('#ejercicio').html('<h1>COMPLETADO!</h1><br><img style=height:40vh; src="imagenes/ganador.gif"/>"');
         $('#botonMas').hide();
         $('#play').hide();
         $('#botonMenos').hide();

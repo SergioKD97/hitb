@@ -217,7 +217,7 @@
                 </div>
                 
             </div>
-            <div class="col-sm-12 col-md-3" style="border-left: 2px solid cadetblue;border-bottom: 2px solid cadetblue;">
+            <div class="col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue;">
                 <h3 >Tanda de Ejercicios</h3>
                 <br>
                 <?php
@@ -580,7 +580,7 @@
         
     }
     function completado (){
-        $('#ejercicio').html('<h1>COMPLETADO!</h1>');
+        $('#ejercicio').html('<h1>COMPLETADO!</h1><br><img style=height:40vh; src="imagenes/ganador.gif"/>"');
         $('#botonMas').hide();
         $('#play').hide();
         $('#botonMenos').hide();
