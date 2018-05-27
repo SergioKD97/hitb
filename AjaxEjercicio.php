@@ -42,9 +42,12 @@ $modo = $_GET['modo'];
             $idEjercicio = $fetchPersonalizado[$l][3];
             $NombreEjer = $fetchPersonalizado[$l][4];
             $Repeticiones = $fetchPersonalizado[$l][5];
+            $foto = $fetchPersonalizado[$l][6];
         }
         
-        print('<h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.' <span id="repeticiones">x '.$Repeticiones.'</span></h3>');
+                    print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:40vh;" src="imagenesUsu/'.$foto.'"/></div>
+                     <h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.' <span id="repeticiones">x '.$Repeticiones.'</span></h3>
+          ');
        
             
         }else{
@@ -65,10 +68,12 @@ $modo = $_GET['modo'];
             $NombreEjer = $fetchPersonalizadoT[$e][4];
             $minutos = $fetchPersonalizadoT[$e][5];
             $segundos = $fetchPersonalizadoT[$e][6];
-
+            $foto = $fetchPersonalizadoT[$e][7];
         }
         
-        print('<h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.'</h3>');
+        print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:40vh;" src="imagenesUsu/'.$foto.'"/></div>
+                     <h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.'</h3>
+          ');
        
             
             
