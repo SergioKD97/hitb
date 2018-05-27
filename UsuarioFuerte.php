@@ -64,9 +64,6 @@ session_start();
                     <ul class="top-menu">
                         <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
                         <li><a href="<?php echo $direccion?>"><span class="li-text"> Usuario </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
-                        <li><a href="Productos.php"><span class="ac_unit"> Info </span></a></li>
-                        
                     </ul>
                 </div>
                 
@@ -76,7 +73,7 @@ session_start();
             <div id="top-user" class="col-xs-4 col-s-3 col-md-3  col-lg-3">
             
                 <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
-                    <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
+                    <a href="<?php echo $direccion?>" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
                        <i class="icon-user-circle iconoLogin"  ></i> <span id="letraLogin" class="letraLogin">LOGIN</span>
                     </a>               
@@ -92,10 +89,8 @@ session_start();
     
                 <nav class="navResponsive">
                     <ul class="ulResponsive">
-                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Inicio</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Workout</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-newspaper-o spanResponsive"></span>Dietas</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-info-circle spanResponsive"></span>Info</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Workout</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Usuario</a></li>
                     </ul>
 		</nav>
     
@@ -169,7 +164,7 @@ session_start();
 
         
 <br><br>            
-<div class="container-fluid ">    
+<div class="container-fluid contenedorUsuarioFuerte" >    
     <div class="col-xs-1 hidden-md col-lg-1"></div>
     <div class="col-xs-10 col-md-6 col-lg-5 DivCalendario"  id="calendar"></div>
     <div class="col-xs-1 hidden-lg"></div>
@@ -230,13 +225,7 @@ session_start();
         </div>
     </div>
     <div class="col-xs-1 hidden-md col-lg-1"></div>
-    <div class="row">
-        <div class="col-md-4" id="tablaHistorial">
-            <?php
-//                creatablaHistorial();
-            ?>
-        </div>
-    </div>
+
 </div>     
 
 

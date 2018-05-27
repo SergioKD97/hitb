@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php session_start();
 ?>
-<html>
+<html style="height: 100%">
     <head>
         <meta charset="UTF-8">
         <title>Hitbee</title>
@@ -21,7 +21,7 @@
         <script src='js/calendario/fullcalendar.js'></script>
 
     </head>
-    <body class="body-wrap-home">
+    <body class="body-wrap-home" style="height: 100%">
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
@@ -36,7 +36,7 @@
         
         
             
-            <header>
+    <header>
         <div class="row container" >
             
             <div class="menu_bar  col-xs-2 col-s-3 col-md-3 col-lg-3">
@@ -57,8 +57,6 @@
                     <ul class="top-menu">
                         <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
                         <li><a href="<?php echo $direccion?>"><span class="li-text"> Usuario </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
-                        <li><a href="Productos.php"><span class="ac_unit"> Info </span></a></li>
                         
                     </ul>
                 </div>
@@ -69,7 +67,7 @@
             <div id="top-user" class="col-xs-4 col-s-3 col-md-3  col-lg-3">
             
                 <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
-                    <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
+                    <a href="<?php echo $direccion?>" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
                        <i class="icon-user-circle iconoLogin"  ></i> <span id="letraLogin" class="letraLogin">LOGIN</span>
                     </a>               
@@ -79,17 +77,13 @@
             
             
     </header>
-       
-    <!--hace que el body se baje-->
-    <div class="headerPad" ></div>
+
     
     
                 <nav class="navResponsive">
                     <ul class="ulResponsive">
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-house spanResponsive"></span>Inicio</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-suitcase spanResponsive"></span>Trabajos</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-earth spanResponsive"></span>Servicios</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-mail spanResponsive"></span>Contacto</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Workout</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Usuario</a></li>
                     </ul>
 		</nav>
     
@@ -108,12 +102,13 @@
       </div>
         
       <div class="modal-body">
-          <form name="formularioRegsitroModal" action="registro.php" method="POST">
+          <!--formulario registro-->
+          <form id="formularioRegsitroModal" name="formularioRegsitroModal" action="registro.php" method="POST">
           <table border="0" style=" margin-left: auto; margin-right: auto;">
                     <tbody>
                       <tr>
                           <td>Nombre de usuario</td>
-                          <td style="margin-left: 10%;"><input type="text" required="" name="nombre" placeholder="Nombre de usuario" /></th>
+                          <td style="margin-left: 10%;"><input type="text" maxlength="9" required="" name="nombre" placeholder="Nombre de usuario"  /></th>
                       </tr>
 
                   
@@ -128,45 +123,40 @@
                   </tbody>
               </table>
           <br>
-          <input  type="submit" class="btn  btn-block btn-primary"value="Confirmar" name="botonEnviar" />   
+          <input  type="submit" class="btn  btn-block btn-primary"value="Confirmar" id="botonEnviar" name="botonEnviar" />   
+          <input type="buton" class="btn  btn-block btn-danger" value="Login" id="login" onclick="muestraLogin(this.id);"/>
+          </form>
+          <!--FORMULARIO LOGIN-->
+          <form id="formularioLogin" action="login.php" method="post">
+             <table border="0" style=" margin-left: auto; margin-right: auto;">
+                    <tbody>
+                      <tr>
+                          <td>Nombre de usuario</td>
+                          <td style="margin-left: 10%;"><input type="text" value="Marco" required="" name="nombreLogin" placeholder="Nombre de usuario" /></th>
+                      </tr>
+
+                  
+                      <tr>
+                          <td>Contraseña</td>
+                          <td style="margin-left: 10%;"> <input type="password" value="1234" required="" name="contraLogin" placeholder="contraseña" /></td>
+                      </tr>
+                  </tbody>
+              </table>
+          <br> 
+          <input  type="submit" class="btn  btn-block btn-primary" value="Confirmar" id="ConfirmarLogin" name="botonEnviar" />   
+          <input type="buton" class="btn  btn-block btn-danger" value="Registro" id="registro" onclick="muestraLogin(this.id);"/>
           </form>
       </div>
     </div>
   </div>
 </div>
         
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
+    
         
         
         <div class="row">
-            <div  class="col-sm-1 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
-                <h3>Tanda de Ejercicios</h3>
-                <br>
-                <?php
-                    $sqlHistorial = "select * from seriespersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' and NombreTabla  = '".$_GET['NombreSerie']."'";
-                    $sqlHistorial = mysqli_query($creaConexion, $sqlHistorial);
-                    $resultadoHistorial = mysqli_fetch_all($sqlHistorial);
-                    for($m = 0; $m <count($resultadoHistorial); $m++){
-                        $idNivel = $resultadoHistorial[$m][3];
-                        $nombreEjer = $resultadoHistorial[$m][4];
-                        $repes = $resultadoHistorial[$m][5];
-                        
-                        print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.' x '.$repes.'</h4>');
-                    }
-                ?>
-            </div>
-            <div class=" col-xs-12 col-sm-9 col-md-6" id="contenedorEjercicio" style="margin: auto;">
+            
+            <div class=" col-xs-12 col-sm-12 col-md-8" id="contenedorEjercicio" style="margin: auto;">
                 
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
                 <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">3</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
@@ -189,19 +179,44 @@
             </div>
             <div class="col-sm-2 col-md-3">
                 <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
-                <br>
+                <br>    
                 <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
+        
+        
+        <div  class="col-sm-12 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+                <h3>Tanda de Ejercicios</h3>
+                <br>
+                <?php
+                    $sqlHistorial = "select * from seriespersonalizado where NombreUsu = '".$_SESSION['nombreUsuario']."' and NombreTabla  = '".$_GET['NombreSerie']."'";
+                    $sqlHistorial = mysqli_query($creaConexion, $sqlHistorial);
+                    $resultadoHistorial = mysqli_fetch_all($sqlHistorial);
+                    for($m = 0; $m <count($resultadoHistorial); $m++){
+                        $idNivel = $resultadoHistorial[$m][3];
+                        $nombreEjer = $resultadoHistorial[$m][4];
+                        $repes = $resultadoHistorial[$m][5];
+                        
+                        print('<h4 class="tanda" id="tanda'.$m.'">'.$idNivel.'º '.$nombreEjer.' x '.$repes.'</h4>');
+                    }
+                ?>
+            </div>
+        
+        
+        
+        
         </div>                
     
         
+
         
-            
-            
-        <footer style="position: unset !important;width: 100%;margin-top: 0px">
+           
+
+        <footer class="footer1">
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
         </footer>
     
+
+
         <?php
         
         if((isset($_SESSION['nombreUsuario'])) && 

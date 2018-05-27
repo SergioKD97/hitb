@@ -55,8 +55,6 @@ session_start();
                     <ul class="top-menu">
                         <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
                         <li><a href="<?php echo $direccion?>"><span class="li-text"> Usuario </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
-                        <li><a href="info.php"><span class="ac_unit"> Info </span></a></li>
                         
                     </ul>
                 </div>
@@ -82,10 +80,8 @@ session_start();
     
                 <nav class="navResponsive">
                     <ul class="ulResponsive">
-                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Inicio</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Workout</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-newspaper-o spanResponsive"></span>Dietas</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-info-circle spanResponsive"></span>Info</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Workout</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Usuario</a></li>
                     </ul>
 		</nav>
     

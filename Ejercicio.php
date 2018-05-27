@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php session_start();
 ?>
-<html style="height: 100%">
+<html>
     <head>
         <meta charset="UTF-8">
         <title>Hitbee</title>
@@ -26,7 +26,7 @@
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
 
     </head>
-    <body class="body-wrap-home" style="height: 100%;background-color: lavenderblush;">
+    <body class="body-wrap-home" style="background-color: lavenderblush;">
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
@@ -62,9 +62,6 @@
                     <ul class="top-menu">
                         <li><a href="index.php"><span class="li-text"> Workouts </span></a></li>
                         <li><a href="<?php echo $direccion?>"><span class="li-text"> Usuario </span></a></li>
-                        <li><a href="Productos.php"><span class="li-text"> Dietas </span></a></li>
-                        <li><a href="Productos.php"><span class="ac_unit"> Info </span></a></li>
-                        
                     </ul>
                 </div>
                 
@@ -74,7 +71,7 @@
             <div id="top-user" class="col-xs-4 col-s-3 col-md-3  col-lg-3">
             
                 <div id="marginLogin" data-toggle="modal" data-target="#ModalContenedor">
-                    <a href="javascript:void(0)" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
+                    <a href="<?php echo $direccion?>" id="loginPop" title="Login" data-toggle="modal" data-target="#pop-auth">
                        <!--al pinchar en este boton se abre el modal puesto en el data-target-->
                        <i class="icon-user-circle iconoLogin"  ></i> <span id="letraLogin" class="letraLogin">LOGIN</span>
                     </a>               
@@ -89,10 +86,9 @@
     
                 <nav class="navResponsive">
                     <ul class="ulResponsive">
-                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Inicio</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Workout</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-newspaper-o spanResponsive"></span>Dietas</a></li>
-                        <li class="liResponsive"><a class="aResponsive" href="#"><span class="icon-info-circle spanResponsive"></span>Info</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="index.php"><span class="icon-home spanResponsive"></span>Workout</a></li>
+                        <li class="liResponsive"><a class="aResponsive" href="<?php echo $direccion?>"><span class="icon-home spanResponsive"></span>Usuario</a></li>
+
                     </ul>
 		</nav>
     
@@ -190,7 +186,7 @@
         
         
         
-        <div>
+    <div class="container-fluid contenedorEjercicio " >
             <div  class="col-sm-12 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" f style="border-radius: 50%; margin-left: 8px;" ><i class="icon-question" ></i></button> 
                 <div id="textoAyuda" style="width: 100%;border-radius: 6px;padding: 2px "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
@@ -238,18 +234,12 @@
                     }
                 ?>
             </div>
-        </div>                
+        </div>                  
     
         
         
             
-            
-        <div class="container">
-                
-                    <div id="CalendarioWeb"></div>
-               
-            
-        </div>
+    
         
     <br><br>
         <footer class="footer1">

@@ -377,9 +377,9 @@ and open the template in the editor.
     #botonAyuda:hover + #textoAyuda{border: 2px solid grey}
     
 
+    .contenedorEjercicio{height: 600px}
     
-    
-    
+         #contenedorEjercicio{margin-bottom: 100px}
     
     .bordesCirculares{
      border-radius: 50% 50% 50% 50%;
@@ -445,13 +445,13 @@ padding-top: 12px    }
     .labelNombre{float: left;padding-top: 7px;margin-bottom: 0;text-align: right;}
     .divLabelNombre{float: left}
     
-    
+    .contenedorUsuarioFuerte{height: 500px}
 
 
     
     /*¡CAMBIARA CUANDO ESTE EN PANTALLA MAS DE 1299*/
-    @media screen and (max-height: 801px) {
-    .footer1{position: unset;margin-top: 100px;}
+    @media screen and (max-height: 901px) {
+    .footer1{position: unset;margin-top: 150px;}
     }
     
     
@@ -525,7 +525,7 @@ padding-top: 12px    }
 
         .navResponsive{
             display: block;
-            width: 80%;
+            width: 50%;
             position: absolute;
             right:100%;
             margin: 0;
@@ -574,8 +574,8 @@ padding-top: 12px    }
     
     
             /*¡CAMBIARA CUANDO ESTE EN PANTALLA HASTA 1199*/
-    @media screen and (max-height: 700px) {
-    .footer1{position: unset;margin-top: 100px;}
+    @media screen and (max-height: 850px) {
+    .footer1{position: unset;margin-top: 150px;}
     }
         
     
@@ -594,17 +594,21 @@ padding-top: 12px    }
      
      
      
+    
      
          .footer1{
             position: unset;margin-top: 100px;
         }
      
      
-     
-        
+         .contenedorEjercicio{height: 100%}
+
+         #contenedorEjercicio{margin-bottom: 200px}
+         
         .letraLogin{
             display: none;
         }
+        
         #marginLogin{
             margin: 0px 42%;    
         }
@@ -699,6 +703,10 @@ padding-top: 12px    }
         
         #nombre{}
         #repeticiones{}          
+    
+    
+    .contenedorUsuarioFuerte{height: 100%}
+    
     }
     
     
@@ -740,6 +748,11 @@ padding-top: 12px    }
     
     @media screen and (max-width: 605px) {
          
+        
+      .navResponsive{
+            width: 100%;
+        }    
+        
     .bordeChulo {
         width: 370px;
         height: 292px;
