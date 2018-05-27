@@ -618,39 +618,20 @@ $("#calendar").fullCalendar({
     function restaEjercicio(id){//por si quieren poner un ejercicio menos en el formulario personalizado
        
         if(contador >1){
-            contador--;
+            
             switch(id){                
                 case 'EjercicioMenos':
-                        $('#cuerpoSerie').html($('#cuerpoSerie').html() + '<div id="ejercicio'+contador+'">\n\
-                                                        <div class="col-md-6"></div>\n\
-                                                        <div class="col-xs-4 col-sm-4 col-md-4" style="clear: both">\n\
-                                                            <input type="text"class="contenidoNombre form-control"  required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder=""/>\n\
-                                                        </div>\n\
-                                                        <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
-                                                        <div class="col-xs-2 col-sm-2 col-md-2" style="">\n\
-                                                            <input type="number" min="00" class="contenidoRepes form-control" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder=""/>\n\
-                                                        </div>\n\
-                                                        <!--<input type="text" required="" id="'+contador+'"/>-->\n\
-                                                        </div>' );
+                        $('#ejercicio'+contador).remove();
+                         contador--;
                         $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);break;
                 case 'EjercicioMenost':
-                         $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div id="ejerciciot'+contador+'">\n\
-                                <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="clear: both" >\n\
-                                    <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
-                                </div>\n\
-                                <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >\n\
-                                    <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
-                                </div>\n\
-                                <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
-                                <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >\n\
-                                    <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
-                                </div>\n\
-                                <!--<input type="text" required="" id="'+contador+'"/>-->\n\
-                                </div>' );
+                        $('#ejerciciot'+contador).remove();
+                        contador--; 
                         $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
                
                     default : alert('Problema al restar el ejercicio');break;
            }
+           
         }
         
     
