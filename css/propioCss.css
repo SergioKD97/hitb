@@ -378,9 +378,9 @@ and open the template in the editor.
     #botonAyuda:hover + #textoAyuda{border: 2px solid grey}
     
 
-    .contenedorEjercicio{}
+    .contenedorEjercicio{height: 500px}
     
-         #contenedorEjercicio{margin-bottom: 25px}
+         #contenedorEjercicio{margin-bottom: 50px}
     
     .bordesCirculares{
      border-radius: 50% 50% 50% 50%;
@@ -474,7 +474,7 @@ padding-top: 12px    }
     @media (max-width: 1199px) { 
 
         
-        
+        .contenedorEjercicio{height: 550px}
         
         .headerPad{
             height: 92px;
@@ -619,7 +619,7 @@ padding-top: 12px    }
         }     
          .contenedorEjercicio{height: 100%}
 
-         #contenedorEjercicio{margin-bottom: 25px}
+         #contenedorEjercicio{margin-bottom: 50px}
          
         .letraLogin{
             display: none;
