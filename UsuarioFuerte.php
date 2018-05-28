@@ -387,9 +387,7 @@ session_start();
                         $('#cuerpoSerieBorrar').text('¿Desea borrar la serie de ' +$('#boton'+id).text() +'?' );
                                 //cambio el id del boton de si para pasar de una forma guarra el nombre de la tabla
                                 var texto = $('#boton'+id).text();
-                                console.log('texto sin editar espacios: ' + texto);
                                 texto = texto.replace(/ /g,'_');
-                                console.log('texto: ' + texto);
                                 //esta clase no esta declarada, se la pongo al boton para seguir teniendolo identificado, porque el id cambia y no se puede hacer referencia al id si cambia pero a la clase que no cambia, si
                                 $('.webon').attr('id',texto);
                                 $('#modalBorrar').modal();
@@ -399,7 +397,7 @@ session_start();
                         $('#cuerpoSerieBorrar').text('¿Desea borrar la serie de ' +$('#botonT'+id.substring(1)).text() +'?' );
                                 //cambio el id del boton de si para pasar de una forma guarra el nombre de la tabla
                                 var texto = $('#botonT'+id.substring(1)).text();
-                                texto = texto.replace(' ','_');
+                                texto = texto.replace(/ /g,'_');
                                 //esta clase no esta declarada, se la pongo al boton para seguir teniendolo identificado, porque el id cambia y no se puede hacer referencia al id si cambia pero a la clase que no cambia, si
                                 $('.webon').attr('id',texto);
                                 $('#modalBorrar').modal();
@@ -420,7 +418,8 @@ session_start();
                 for(var s = 0; s <contadorS; s++){
                     $('#muestraS'+s).css({'display' : 'none'});
                     var texto = $('#boton' +s).text();
-                    texto = texto.replace(/ /g,'_');                   
+                    texto = texto.replace(/ /g,'_');   
+                    
                     $('#muestraS'+s).load('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + texto); 
                    
                 }
@@ -448,7 +447,8 @@ session_start();
                 for(var b = 0; b <contadorT; b++){
                     $('#muestraT'+ b).css({'display' : 'none'});
                     var texto = $('#botonT' + b).text();
-                    texto = texto.replace(/ /g,'_');                    
+                    texto = texto.replace(/ /g,'_');
+                    console.log(texto);
                     $('#muestraT'+ b).load('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + texto); 
                    
                 }
