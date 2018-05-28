@@ -268,7 +268,7 @@ session_start();
                         <label for="name" class="col-xs-3 col-sm-3 col-md-3 text-center">Minutos </label>
                         <label for="name" class="col-xs-3 col-sm-3 col-md-3 text-center">Segundos </label>
                         <br>
-                        <div class="row">
+                        
                             <div class="col-xs-1 col-sm-1 col-md-1" style="clear: both;font-size: 24px">1.-</div>
                             <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="" >
                                 <input type="text" class="contenidoNombre form-control" required="" name="nombret1" id="nombret" placeholder=""/>
@@ -281,9 +281,9 @@ session_start();
                             <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >
                                 <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost1" id="segundost" placeholder=""/>
                             </div>
-                        </div>
+                            
                         <div class="row" style="clear: both">
-                            <div style="margin-right: 3px;" class="col-xs-1 col-sm-1 col-md-1"></div>
+                            <div style="margin-right: 13px;" class="col-xs-1 col-sm-1 col-md-1"></div>
                             <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;">
                                 <input type="file" id="foto" name="foto1">
                             </div>
@@ -333,7 +333,7 @@ session_start();
                         <div class="col-xs-4 col-sm-4 col-md-4"></div>
                         
                         <div class="row" style="clear: both">
-                            <div style="margin-right: 12px;" class="col-xs-1 col-sm-1 col-md-1"></div>
+                            <div style="margin-right: 13px;" class="col-xs-1 col-sm-1 col-md-1"></div>
                             <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;" >
                                 <input type="file" id="foto" name="foto1"/>
                             </div>
@@ -380,6 +380,8 @@ session_start();
         $( document ).ready(function() {
             $('#formularioLogin').css({'display' : 'none'});
              contador =1;
+             contadorSerie =1;
+             contadorTiempo=1;
              contadorSer = 1;
              cargaInfoS = true;
              cargaInfoT = true;
@@ -577,10 +579,12 @@ $("#calendar").fullCalendar({
     }
     function SumaEjercicio(id){
         contador++;
+
         switch(id){
             case 'OtroEjercicio':   
+                contadorSerie++
                                 $('#cuerpoSerie').html($('#cuerpoSerie').html() + '</div><div class="row" style="margin-top: 20px" id="ejercicio'+contador+'">\n\
-                                                        <div class="col-xs-1 col-sm-1 col-md-1" style="float: left;font-size: 24px">'+contador+'.-</div>\n\
+                                                        <div class="col-xs-1 col-sm-1 col-md-1" style="float: left;font-size: 24px">'+contadorSerie+'.-</div>\n\
                                                         <div class="col-xs-4 col-sm-4 col-md-4" style="">\n\
                                                             <input type="text"class="contenidoNombre form-control"  required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder=""/>\n\
                                                         </div>\n\
@@ -590,7 +594,7 @@ $("#calendar").fullCalendar({
                                                         </div>\n\
                                                         <div class="col-xs-4 col-sm-4 col-md-4"></div>\n\
                                                         <div class="row" style="clear: both">\n\
-                                                            <div style="margin-right: 12px;" class="col-xs-1 col-sm-1 col-md-1"></div>\n\
+                                                            <div style="margin-right: 13px;" class="col-xs-1 col-sm-1 col-md-1"></div>\n\
                                                             <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;" >\n\
                                                                 <input type="file" id="foto'+contador+'" name="foto'+contador+'"/>\n\
                                                             </div>\n\
@@ -605,9 +609,9 @@ $("#calendar").fullCalendar({
     
    
             case 'OtroEjerciciot' : 
+        contadorTiempo++
                                 $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div class="row" style="margin-top: 20px" id="ejerciciot'+contador+'">\n\
-                                <div class="row">\n\
-                                    <div class="col-xs-1 col-sm-1 col-md-1" style="clear: both;font-size: 24px">'+contador+'.-</div>\n\
+                                    <div class="col-xs-1 col-sm-1 col-md-1" style="clear: both;font-size: 24px">'+contadorTiempo+'.-</div>\n\
                                     <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="" >\n\
                                         <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
                                     </div>\n\
@@ -618,9 +622,8 @@ $("#calendar").fullCalendar({
                                     <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >\n\
                                         <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
                                     </div>\n\
-                                </div>\n\
                                 <div class="row" style="clear: both">\n\
-                                    <div style="margin-right: 3px;" class="col-xs-1 col-sm-1 col-md-1"></div>\n\
+                                    <div style="margin-right: 13px;" class="col-xs-1 col-sm-1 col-md-1"></div>\n\
                                     <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;">\n\
                                         <input type="file" id="fotot'+contador+'" name="fotot'+contador+'"/>\n\
                                     </div>\n\
@@ -643,10 +646,12 @@ $("#calendar").fullCalendar({
                 case 'EjercicioMenos':
                         $('#ejercicio'+contador).remove();
                          contador--;
+                         contadorSerie--;
                         $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);break;
                 case 'EjercicioMenost':
                         $('#ejerciciot'+contador).remove();
                         contador--; 
+                        contadorTiempo--;
                         $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
                
                     default : alert('Problema al restar el ejercicio');break;
