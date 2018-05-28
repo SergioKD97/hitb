@@ -470,7 +470,7 @@ padding-top: 12px    }
     
     .contenedorUsuarioFuerte{margin-bottom: 50px}
     
-
+    
     @media (max-width: 1199px) { 
 
         
@@ -590,7 +590,7 @@ padding-top: 12px    }
     
     }
     
-    @media screen and (max-height: 750px) {
+    @media screen and (max-height: 850px) {
     .footer2{position: unset;margin-top: 150px;}
     
     }    

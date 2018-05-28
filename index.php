@@ -49,7 +49,7 @@ session_start();
             
             <div class="col-xs-6 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
-                <div id="HitBee"></div>
+                <a href="index.php"><div id="HitBee"></div></a>
                 
                 <div  id="menu">
                     <ul class="top-menu">

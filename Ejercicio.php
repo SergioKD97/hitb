@@ -56,7 +56,7 @@
             
             <div class="col-xs-6 col-s-6 col-md-6  col-lg-6" style="text-align: center">
                 
-                <div id="HitBee"></div>
+                <a href="index.php"><div id="HitBee"></div></a>
                 
                 <div  id="menu">
                     <ul class="top-menu">
@@ -213,7 +213,7 @@
                 </div>
                 
             </div>
-            <div class="col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue;">
+            <div class="col-xs-12 col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue;">
                 <h3 >Tanda de Ejercicios</h3>
                 <br>
                 <?php
