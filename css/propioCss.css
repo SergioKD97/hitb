@@ -79,7 +79,7 @@ and open the template in the editor.
     #menu ul.top-menu li:hover a{color: #fff; background: #E75A3A;}
 
 
-
+    
 
 
 
@@ -164,6 +164,11 @@ and open the template in the editor.
         display: inline-block;
     }
         
+    
+    #tituloModal{    font-family: -webkit-body;
+    font-size: 30px;}
+    
+    
 
                                             /*MENU RESPONSIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/
     .navResponsive {
@@ -389,7 +394,8 @@ and open the template in the editor.
     border: 0px solid #000000;}
     
     
-    
+    hr{border: 0; height: 2px; text-align: center; background-image: linear-gradient(to left, #fff, #000, #fff);
+    }
     
     
     

@@ -105,18 +105,18 @@ session_start();
           <table border="0" style=" margin-left: auto; margin-right: auto;">
                     <tbody>
                       <tr>
-                          <td>Nombre de usuario</td>
-                          <td style="margin-left: 10%;"><input type="text" maxlength="9" required="" name="nombre" placeholder="Nombre de usuario"  /></th>
+                          <td style="width: 159px;">Nombre de usuario</td>
+                          <td style="margin-left: 10%;"><input class="form-control" type="text" maxlength="9" required="" name="nombre" placeholder=""  /></th>
                       </tr>
 
                   
                       <tr>
                           <td>Contraseña</td>
-                          <td style="margin-left: 10%;"> <input type="password" required="" name="contra" placeholder="contraseña" /></td>
+                          <td style="margin-left: 10%;"> <input class="form-control"  type="password" required="" name="contra" placeholder="" /></td>
                       </tr>
                       <tr>
                           <td>Confirmar contraseña</td>
-                          <td style="margin-left: 10%;"><input type="password" required="" name="contra2" placeholder="Confirma contraseña" /></td>
+                          <td style="margin-left: 10%;"><input class="form-control"  type="password" required="" name="contra2" placeholder="" /></td>
                       </tr>
                   </tbody>
               </table>
@@ -129,14 +129,14 @@ session_start();
              <table border="0" style=" margin-left: auto; margin-right: auto;">
                     <tbody>
                       <tr>
-                          <td>Nombre de usuario</td>
-                          <td style="margin-left: 10%;"><input type="text" value="Marco" required="" name="nombreLogin" placeholder="Nombre de usuario" /></th>
+                          <td style="width: 159px;">Nombre de usuario</td>
+                          <td style="margin-left: 10%;"><input class="form-control" type="text" value="Marco" required="" name="nombreLogin" placeholder="" /></th>
                       </tr>
 
                   
                       <tr>
-                          <td>Contraseña</td>
-                          <td style="margin-left: 10%;"> <input type="password" value="1234" required="" name="contraLogin" placeholder="contraseña" /></td>
+                          <td style="width: 159px;">Contraseña</td>
+                          <td style="margin-left: 10%;"> <input class="form-control" type="password" value="1234" required="" name="contraLogin" placeholder="" /></td>
                       </tr>
                   </tbody>
               </table>

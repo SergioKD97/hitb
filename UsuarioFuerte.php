@@ -262,26 +262,32 @@ session_start();
               <div id="contenidoFormulariot">                 
                <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
                 <div id="cuerpoTiempo">
-                    <div id="ejerciciot">
-                        
+                    <div class="row"  id="ejerciciot">
+                        <div class="col-xs-1 col-sm-1 col-md-1"></div>
                         <label for="name" class="col-xs-4 col-sm-4 col-md-4 text-center">Nombre </label>
                         <label for="name" class="col-xs-3 col-sm-3 col-md-3 text-center">Minutos </label>
                         <label for="name" class="col-xs-3 col-sm-3 col-md-3 text-center">Segundos </label>
                         <br>
-                        
-                        
-                        <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="clear: both" >
-                            <input type="text" class="contenidoNombre form-control" required="" name="nombret1" id="nombret" placeholder=""/>
-                        </div>
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-1 col-md-1" style="clear: both;font-size: 24px">1.-</div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="" >
+                                <input type="text" class="contenidoNombre form-control" required="" name="nombret1" id="nombret" placeholder=""/>
+                            </div>
 
-                        <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >
-                            <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost1" id="minutost" placeholder=""/>
+                            <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >
+                                <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost1" id="minutost" placeholder=""/>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >
+                                <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost1" id="segundost" placeholder=""/>
+                            </div>
                         </div>
-                        <div class="col-xs-1 col-sm-1 col-md-1"></div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >
-                            <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost1" id="segundost" placeholder=""/>
+                        <div class="row" style="clear: both">
+                            <div style="margin-right: 3px;" class="col-xs-1 col-sm-1 col-md-1"></div>
+                            <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;">
+                                <input type="file" id="foto" name="foto1">
+                            </div>
                         </div>
-                        <br><br><input type="file" id="fotot" name="fotot1"/>
                     </div>
                 </div>               
                
@@ -308,13 +314,15 @@ session_start();
               <div id="contenidoFormulario">                 
                <!--  Aqui se cargarán los ejercicicios que se quieran meter-->
                 <div id="cuerpoSerie">
-                    <div id="ejercicio">
+                    <div class="row" id="ejercicio">
+                        <h1 class="col-xs-1 col-sm-1 col-md-1" style="float: left"></h1>
                         <label for="name" class="col-md-4 text-center labelEjercicio">Nombre </label>
                         <label for="name" class="col-md-4 text-center labelRepeticion ">Repeticiones </label>
                                       <br>
                                       <br>
 
-                        <div class="col-xs-4 col-sm-4 col-md-4" style="clear: both" >
+                        <div class="col-xs-1 col-sm-1 col-md-1" style="float: left;font-size: 24px">1.-</div>
+                        <div class="col-xs-4 col-sm-4 col-md-4" style="" >
                             <input type="text" class="contenidoNombre form-control" required="" name="nombre1" id="nombre" placeholder=""/>
                         </div>
                         <div class="col-xs-1 col-sm-1 col-md-1"></div>
@@ -322,11 +330,16 @@ session_start();
                         <div class="col-xs-2 col-sm-2 col-md-2" style="">
                             <input type="number" min="0" class="contenidoRepes form-control" required="" name="repeticiones1" id="repeticiones" placeholder=""/>
                         </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4"></div>
                         
-                        <br><br><input type="file" id="foto" name="foto1"/>
-                        
-                    </div>
+                        <div class="row" style="clear: both">
+                            <div style="margin-right: 12px;" class="col-xs-1 col-sm-1 col-md-1"></div>
+                            <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;" >
+                                <input type="file" id="foto" name="foto1"/>
+                            </div>
+                        </div>
                 </div> 
+                </div>
                <div class="btn-group barraOtroEjercicio" role="group" aria-label="Basic example" style="clear: both">
                     <span id="OtroEjercicio" onclick="SumaEjercicio(this.id);" class="icon-plus icon-pluscss"></span>
                     <span id="EjercicioMenos" onclick="restaEjercicio(this.id);" style="margin-left: 3%;" class="icon-minus icon-pluscss"></span>
@@ -343,9 +356,9 @@ session_start();
     </div>
   </div>
 </div>
+</div>
 
-
-<footer class="footer2" style="margin-top: ">
+        <footer class="footer2" >
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
         </footer>
 
@@ -566,17 +579,23 @@ $("#calendar").fullCalendar({
         contador++;
         switch(id){
             case 'OtroEjercicio':   
-                                $('#cuerpoSerie').html($('#cuerpoSerie').html() + '<div id="ejercicio'+contador+'">\n\
-                                                        <div class="col-md-6"></div>\n\
-                                                        <div class="col-xs-4 col-sm-4 col-md-4" style="clear: both">\n\
+                                $('#cuerpoSerie').html($('#cuerpoSerie').html() + '</div><div class="row" style="margin-top: 20px" id="ejercicio'+contador+'">\n\
+                                                        <div class="col-xs-1 col-sm-1 col-md-1" style="float: left;font-size: 24px">'+contador+'.-</div>\n\
+                                                        <div class="col-xs-4 col-sm-4 col-md-4" style="">\n\
                                                             <input type="text"class="contenidoNombre form-control"  required="" id="nombre'+contador+'" name="nombre'+contador+'" placeholder=""/>\n\
                                                         </div>\n\
                                                         <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
                                                         <div class="col-xs-2 col-sm-2 col-md-2" style="">\n\
                                                             <input type="number" min="00" class="contenidoRepes form-control" required="" id="repeticiones'+contador+'" name="repeticiones'+contador+'" placeholder=""/>\n\
                                                         </div>\n\
-                                                        <br><br><input type="file" id="foto'+contador+'" name="foto'+contador+'"/>\n\
-                                                        </div>' );
+                                                        <div class="col-xs-4 col-sm-4 col-md-4"></div>\n\
+                                                        <div class="row" style="clear: both">\n\
+                                                            <div style="margin-right: 12px;" class="col-xs-1 col-sm-1 col-md-1"></div>\n\
+                                                            <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;" >\n\
+                                                                <input type="file" id="foto'+contador+'" name="foto'+contador+'"/>\n\
+                                                            </div>\n\
+                                                        </div>\n\
+                                                    </div>' );
         $('#formularioSeries').attr('action', 'seriePersonalizada.php?contador='+contador);break;
     
  
@@ -584,25 +603,37 @@ $("#calendar").fullCalendar({
     
     
     
-    
-    
    
             case 'OtroEjerciciot' : 
-                                $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div id="ejerciciot'+contador+'">\n\
-                                <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="clear: both" >\n\
-                                    <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
+                                $('#cuerpoTiempo').html($('#cuerpoTiempo').html() + '<div class="row" style="margin-top: 20px" id="ejerciciot'+contador+'">\n\
+                                <div class="row">\n\
+                                    <div class="col-xs-1 col-sm-1 col-md-1" style="clear: both;font-size: 24px">'+contador+'.-</div>\n\
+                                    <div class="col-xs-4 col-sm-4 col-md-4 text-center" style="" >\n\
+                                        <input type="text" class="contenidoNombre form-control" required="" name="nombret'+contador+'" id="nombret'+contador+'" placeholder=""/>\n\
+                                    </div>\n\
+                                    <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >\n\
+                                        <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
+                                    </div>\n\
+                                    <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
+                                    <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >\n\
+                                        <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
+                                    </div>\n\
                                 </div>\n\
-                                <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="margin-left: 23px;" >\n\
-                                    <input type="number" min="00" class="contenidoMinutos form-control" required="" name="minutost'+contador+'" id="minutost'+contador+'" placeholder=""/>\n\
+                                <div class="row" style="clear: both">\n\
+                                    <div style="margin-right: 3px;" class="col-xs-1 col-sm-1 col-md-1"></div>\n\
+                                    <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;">\n\
+                                        <input type="file" id="fotot'+contador+'" name="fotot'+contador+'"/>\n\
+                                    </div>\n\
                                 </div>\n\
-                                <div class="col-xs-1 col-sm-1 col-md-1"></div>\n\
-                                <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="" >\n\
-                                    <input type="number" min="00" max="59" class="contenidoSegundos form-control" required="" name="segundost'+contador+'" id="segundost'+contador+'" placeholder=""/>\n\
-                                </div>\n\
-                                <br><br><input type="file" id="fotot'+contador+'" name="fotot'+contador+'"/>\n\
-                                </div>' );
+                            </div>' );
         $('#formularioTiempo').attr('action', 'seriePersonalizada.php?tiempo=tiempo&contador='+contador);break;
-        }   
+        
+
+
+
+
+
+}   
     }
     function restaEjercicio(id){//por si quieren poner un ejercicio menos en el formulario personalizado
        
