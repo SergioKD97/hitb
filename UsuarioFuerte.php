@@ -400,9 +400,7 @@ session_start();
                         $('#cuerpoSerieBorrar').text('¿Desea borrar la serie de ' +$('#boton'+id).text() +'?' );
                                 //cambio el id del boton de si para pasar de una forma guarra el nombre de la tabla
                                 var texto = $('#boton'+id).text();
-                                console.log('texto sin editar espacios: ' + texto);
                                 texto = texto.replace(/ /g,'_');
-                                console.log('texto: ' + texto);
                                 //esta clase no esta declarada, se la pongo al boton para seguir teniendolo identificado, porque el id cambia y no se puede hacer referencia al id si cambia pero a la clase que no cambia, si
                                 $('.webon').attr('id',texto);
                                 $('#modalBorrar').modal();
@@ -412,7 +410,7 @@ session_start();
                         $('#cuerpoSerieBorrar').text('¿Desea borrar la serie de ' +$('#botonT'+id.substring(1)).text() +'?' );
                                 //cambio el id del boton de si para pasar de una forma guarra el nombre de la tabla
                                 var texto = $('#botonT'+id.substring(1)).text();
-                                texto = texto.replace(' ','_');
+                                texto = texto.replace(/ /g,'_');
                                 //esta clase no esta declarada, se la pongo al boton para seguir teniendolo identificado, porque el id cambia y no se puede hacer referencia al id si cambia pero a la clase que no cambia, si
                                 $('.webon').attr('id',texto);
                                 $('#modalBorrar').modal();
@@ -433,7 +431,8 @@ session_start();
                 for(var s = 0; s <contadorS; s++){
                     $('#muestraS'+s).css({'display' : 'none'});
                     var texto = $('#boton' +s).text();
-                    texto = texto.replace(/ /g,'_');                   
+                    texto = texto.replace(/ /g,'_');   
+                    
                     $('#muestraS'+s).load('AjaxHistoriaPersonalizado.php?tipo=seriespersonalizado&nombreTabla=' + texto); 
                    
                 }
@@ -461,7 +460,8 @@ session_start();
                 for(var b = 0; b <contadorT; b++){
                     $('#muestraT'+ b).css({'display' : 'none'});
                     var texto = $('#botonT' + b).text();
-                    texto = texto.replace(/ /g,'_');                    
+                    texto = texto.replace(/ /g,'_');
+                    console.log(texto);
                     $('#muestraT'+ b).load('AjaxHistoriaPersonalizado.php?tipo=tiempopersonalizado&nombreTabla=' + texto); 
                    
                 }
@@ -541,7 +541,7 @@ $("#calendar").fullCalendar({
     dayClick:function(date,jsEvent,view){
 //        $(this).css('background-color', 'red');
 //        alert('pulsaste sobre ' + date.format());
-        //$('#modalEvento1').modal();
+        $('#modalAgenda').modal();
     },
     events:'./eventos.php',
     eventClick:function(calEvent,jsEvent,view){     
@@ -666,6 +666,33 @@ $("#calendar").fullCalendar({
     }
 </script>
 
+<!--MODAL PARA CREAR EVENTOS COMO UNA AGENDA-->
+<!-- Modal -->
+<div class="modal fade" id="modalAgenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">          
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>          
+        <h2 class="modal-title text-center" id="exampleModalLabel">Agenda</h2>
+      </div>
+      <div class="modal-body">
+          <form id="formularioAgenda" name="formularioAgenda" method="POST" action="ActualizaEvento.php?modo=agenda">
+              <input name="nombreAgenda" id="nombreAgenda" type="text" required="" placeholder="Nombre del evento"/>
+              <input name="descripcionAgenda" id="descripcionAgenda" type="text" required="" placeholder="Descripcion del evento"/>              
+              <button type="reset" class="btn btn-danger">Borrar</button>
+              <button type="submit" class="btn btn-success">Enviar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--MODAAAAAAAAAL CALENDARIO-->
 <!-- Modal -->
 <div class="modal fade" id="modalEvento1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -687,7 +714,7 @@ $("#calendar").fullCalendar({
   </div> 
 </div>
 
-<!--MODAAAAAAAAL BORRAR SERIE-->
+<!--MODAAAAAAAAL PARA BORRAR SERIE-->
 <!-- Modal -->
 <div class="modal fade" id="modalBorrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
