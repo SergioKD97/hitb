@@ -6,13 +6,16 @@ if(isset($_SESSION['nombreUsuario'])){
 $nombre = $_SESSION['nombreUsuario'];
 
 if( (isset($_GET['modo'])) && $_GET['modo'] =='agenda' ){
-    echo 'hola';
     $title = $_POST['nombreAgenda'];
     $descripcion = $_POST['descripcionAgenda'];
-    $startAgenda = getdate();
-    $startAgenda = $startAgenda['year'] .'-'. $startAgenda['mon'] .'-'. $startAgenda['mday'] .' '. $startAgenda['hours'] .':'. $startAgenda['minutes'] .':'. $startAgenda['seconds'];
-    $sql= "INSERT INTO eventos (nombre, title, descripcion, start, color) VALUES ('$nombre', '$title', '$descripcion', '$startAgenda', '#ff4d4d'); ";
+    $fecha = $_POST['fechaAgenda'];
+    $hora = $_POST['horaAgenda'].":00";
+    $fechaFinal = $fecha . ' ' . $hora;
+    
+    
+    $sql= "INSERT INTO eventos (nombre, title, descripcion, start, color) VALUES ('$nombre', '$title', '$descripcion', '$fechaFinal', '#ff4d4d'); ";
     $sql = mysqli_query($creaConexion, $sql);
+    echo "<script>location.href='UsuarioFuerte.php'</script>";
 }else{
 
 //  A PARTIR DE AQUI ES PARA EJERCICIOS, TODO LO QUE ESTA AQUI ABAJO ESTA BIEN. ARRIBA DE ESTA LINEA VOY A PONER LO DE LA AGENDA

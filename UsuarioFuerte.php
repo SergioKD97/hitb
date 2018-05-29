@@ -23,6 +23,12 @@ session_start();
         <script src='js/calendario/fullcalendar.js'></script>
         <script src="js/calendario/es.js" type="text/javascript"></script>
         
+        <!--estas dos son para el clockpicker-->
+        <script src="js/calendario/bootstrap-clockpicker.js" type="text/javascript"></script>
+        <link href="css/calendario/bootstrap-clockpicker.css" rel="stylesheet" type="text/css"/>
+        <!--FIN CLOCKPICKER-->
+        
+        
               <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     </head>
@@ -357,6 +363,37 @@ session_start();
   </div>
 </div>
 </div>
+                <!--MODAL PARA CREAR EVENTOS COMO UNA AGENDA-->
+<!-- Modal -->
+<div class="modal fade" id="modalAgenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">          
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>          
+        <h2 class="modal-title text-center" id="exampleModalLabel">Agenda</h2>
+      </div>
+      <div class="modal-body">
+          <form id="formularioAgenda" name="formularioAgenda" method="POST" action="ActualizaEvento.php?modo=agenda">
+              <h5 id="fecha" class="text-center">hola</h5>
+              <input class="form-control" name="nombreAgenda" id="nombreAgenda" type="text" required="" placeholder="Nombre del evento"/>
+              <input class="form-control" name="descripcionAgenda" id="descripcionAgenda" type="text" required="" placeholder="Descripcion del evento"/>              
+              <input class="form-control" name="fechaAgenda" id="fechaAgenda" type="hidden" readonly="" />
+              <!--para el clockPicker-->
+              <div class="input-group clockpicker" data-autoclose="true" >
+                  <input type="text" name="horaAgenda" id="horaAgenda" class="form-control" required=""/>
+              </div>
+                            
+              <button style="float: right;" type="reset" class="btn btn-danger">Borrar</button>
+              <button style="float: right; "type="submit" class="btn btn-success">Enviar</button>
+              <button style="float: right;" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <br>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 
         <footer class="footer2" >
             <div class="footer-home small text-center">Copyright © HitBee, All Rights Reserved</div>
@@ -544,6 +581,7 @@ $("#calendar").fullCalendar({
 //        $(this).css('background-color', 'red');
 //        alert('pulsaste sobre ' + date.format());
         $('#fecha').html(date.format());
+        $('#fechaAgenda').val(date.format());
         $('#modalAgenda').modal();
     },
     events:'./eventos.php',
@@ -554,6 +592,8 @@ $("#calendar").fullCalendar({
         
     }
 });
+//CLOCKPICKER 
+$('.clockpicker').clockpicker();
 //FIN CALENDARIO
 //    contador = 1;
     $('#formularioSeries').hide();
@@ -672,33 +712,7 @@ $("#calendar").fullCalendar({
     }
 </script>
 
-<!--MODAL PARA CREAR EVENTOS COMO UNA AGENDA-->
-<!-- Modal -->
-<div class="modal fade" id="modalAgenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">          
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>          
-        <h2 class="modal-title text-center" id="exampleModalLabel">Agenda</h2>
-        <h5 id="fecha" class="text-center">hola</h5>
-      </div>
-      <div class="modal-body">
-          <form id="formularioAgenda" name="formularioAgenda" method="POST" action="ActualizaEvento.php?modo=agenda">
-              <input name="nombreAgenda" id="nombreAgenda" type="text" required="" placeholder="Nombre del evento"/>
-              <input name="descripcionAgenda" id="descripcionAgenda" type="text" required="" placeholder="Descripcion del evento"/>              
-              <button type="reset" class="btn btn-danger">Borrar</button>
-              <button type="submit" class="btn btn-success">Enviar</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </form>
-      </div>
-      <div class="modal-footer">
 
-      </div>
-    </div>
-  </div>
-</div>
 
 <!--MODAAAAAAAAAL CALENDARIO-->
 <!-- Modal -->
