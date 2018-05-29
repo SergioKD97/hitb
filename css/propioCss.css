@@ -214,6 +214,7 @@ and open the template in the editor.
     .fotoBack{
     background-image: url(../imagenes/Gym-desktop-background.jpg);
     background-size: cover;
+    background-attachment: fixed
     }                  
                                                     
     .bodyEjercicios{
@@ -469,9 +470,7 @@ padding-top: 12px    }
                                                    /*------------------------------------------------------------------------- /*/
     @media (max-width: 1299px) { 
 
-        .fotoBack{
-    background-size: cover;
-    } 
+       
         
         
         #loginPop{
@@ -485,9 +484,6 @@ padding-top: 12px    }
                                                                 /* start of large tablet styles */
     @media (max-width: 1199px) { 
         
-        .fotoBack{
-        background-size: cover;
-        } 
         
         
         .contenedorEjercicio{height: 550px}
@@ -615,10 +611,6 @@ padding-top: 12px    }
     @media (max-width: 991px) { 
 
 
-        .fotoBack{
-        background-size: cover;
-        }      
-     
      
      
      
@@ -745,10 +737,7 @@ padding-top: 12px    }
     
     @media screen and (max-width: 767px) {
         
-
-        .fotoBack{
-        background-size: cover;
-        }          
+   
         
     #bodyText div {
         width: 50%;
