@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php session_start();
 ?>
-<html style="height: 100%">
+<html >
     <head>
         <meta charset="UTF-8">
         <title>Hitbee</title>
@@ -21,7 +21,7 @@
         <script src='js/calendario/fullcalendar.js'></script>
 
     </head>
-    <body class="body-wrap-home" style="height: 100%">
+    <body class="body-wrap-home">
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
@@ -154,7 +154,7 @@
     
         
         
-        <div class="row">
+        <div class="container-fluid contenedorEjercicio">
             
             <div class=" col-xs-12 col-sm-12 col-md-8" id="contenedorEjercicio" style="">
                 

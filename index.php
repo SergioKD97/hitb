@@ -456,7 +456,7 @@ session_start();
                  //DESPLAZAR AL BOCADILLO EN LOS 3 PRIMEROS EJERCICIOS
                  $('html,body').animate({
                 scrollTop: $(".info").offset().top
-                }, 1000);
+                }, 800);
             }
             else{
                 console.log('entro por el grande ' + id);
@@ -468,7 +468,7 @@ session_start();
                 //DESPLAZAR AL BOCADILLO EN LOS 2 ULTIMOS EJERCICIOS
                  $('html,body').animate({
                 scrollTop: $(".Abs").offset().top
-                }, 1000);
+                }, 800);
             }
             
             

@@ -213,17 +213,18 @@ and open the template in the editor.
                         
     .fotoBack{
     background-image: url(../imagenes/Gym-desktop-background.jpg);
-
+    background-size: cover;
     }                  
                                                     
     .bodyEjercicios{
-       padding-top: 20px;
-       padding-bottom: 37px;
+       padding-top: 40px;
+       padding-bottom: 70px;
     }
                                                     
                                                     
     #bodyText div{
         font-size: 51px;
+        padding-bottom: 6px;
         font-family: unset;
         margin: 0 auto;
         width: 24%;
@@ -468,6 +469,11 @@ padding-top: 12px    }
                                                    /*------------------------------------------------------------------------- /*/
     @media (max-width: 1299px) { 
 
+        .fotoBack{
+    background-size: cover;
+    } 
+        
+        
         #loginPop{
                 font-size: 36px;
             }
@@ -476,9 +482,13 @@ padding-top: 12px    }
     
     .contenedorUsuarioFuerte{margin-bottom: 50px}
     
-    
+                                                                /* start of large tablet styles */
     @media (max-width: 1199px) { 
-
+        
+        .fotoBack{
+        background-size: cover;
+        } 
+        
         
         .contenedorEjercicio{height: 550px}
         
@@ -590,7 +600,7 @@ padding-top: 12px    }
     
     
     
-            /*¡CAMBIARA CUANDO ESTE EN PANTALLA HASTA 1199*/
+            /*¡CAMBIARA CUANDO HEIGHT HASTA 1199*/
     @media screen and (max-height: 825px) {
     .footer1{position: unset;margin-top: 150px;}
     
@@ -601,29 +611,26 @@ padding-top: 12px    }
     
     }    
     
-    
+                                                                    /* start of large tablet styles */
     @media (max-width: 991px) { 
-     /* start of large tablet styles */
 
 
-     
-     @media screen and (min-height: 801px) {
-    
-    .footer1{position: absolute;bottom: 0;width: 100%;}
-    }
+        .fotoBack{
+        background-size: cover;
+        }      
      
      
      
-    
      
          .footer1{
             position: unset;margin-top: 100px;
         }
         
+        
         .footer2{
             position: unset;margin-top: 100px;
         }     
-         .contenedorEjercicio{height: 100%}
+         .contenedorEjercicio{height: 100%;min-height: 650px}
 
          #contenedorEjercicio{margin-bottom: 50px}
          
@@ -734,9 +741,15 @@ padding-top: 12px    }
     
     
     
-    
+                                                                /* start of large tablet styles */
     
     @media screen and (max-width: 767px) {
+        
+
+        .fotoBack{
+        background-size: cover;
+        }          
+        
     #bodyText div {
         width: 50%;
         font-size: 50px;
@@ -765,8 +778,8 @@ padding-top: 12px    }
                                                     /*USUARIO FUERTE*/
     
     
-    
-    
+                                                            /* start of large tablet styles */
+     
     
     @media screen and (max-width: 605px) {
          
@@ -845,7 +858,7 @@ padding-top: 12px    }
 
     
     }
-    
+                                                             /* start of large tablet styles */
     
     @media screen and (max-width: 440px) {
     
