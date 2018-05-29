@@ -285,7 +285,7 @@ session_start();
                         <div class="row" style="clear: both">
                             <div style="margin-right: 13px;" class="col-xs-1 col-sm-1 col-md-1"></div>
                             <div class="col-xs-4 col-sm-4 col-md-4" style="margin-top: 3px;">
-                                <input type="file" id="foto" name="foto1">
+                                <input type="file" id="fotot" name="fotot1">
                             </div>
                         </div>
                     </div>
@@ -543,6 +543,7 @@ $("#calendar").fullCalendar({
     dayClick:function(date,jsEvent,view){
 //        $(this).css('background-color', 'red');
 //        alert('pulsaste sobre ' + date.format());
+        $('#fecha').html(date.format());
         $('#modalAgenda').modal();
     },
     events:'./eventos.php',
@@ -681,6 +682,7 @@ $("#calendar").fullCalendar({
           <span aria-hidden="true">&times;</span>
         </button>          
         <h2 class="modal-title text-center" id="exampleModalLabel">Agenda</h2>
+        <h5 id="fecha" class="text-center">hola</h5>
       </div>
       <div class="modal-body">
           <form id="formularioAgenda" name="formularioAgenda" method="POST" action="ActualizaEvento.php?modo=agenda">
