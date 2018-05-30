@@ -11,7 +11,6 @@
         <link href="css/icomoon.css" rel="stylesheet" type="text/css"/>
         <link rel='stylesheet' href='css/calendario/fullcalendar.css' />
         
-        
         <script src="js/calendario/jquery.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         
@@ -194,9 +193,11 @@
             
         <div class=" col-xs-12 col-sm-12 col-md-6" id="contenedorEjercicio" style="">
                 
+            
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
+            
                 <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">3</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
-                <div id="botones" class="text-center" style=" margin: auto;" >  
+                <div id="botones" class="text-center" style="margin: auto" >  
                     <button id="botonMenos"  
                             class="btn btn-info" style="border-radius: 50%;" onclick="restaEjercicio();">
                     <i class="icon-arrow-left  "></i></button>
@@ -368,7 +369,7 @@
                var correctorDeContador = contador+1;
                $('#segundos').load('AjaxSegundos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
                $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
-               $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+               $('.contenedorTemporizador').html('<h1>'+tiempoTemporizador+'</h1>');
                reproduceSonido('go');
                if(contador != numeroTotal){  
                temporizador();
@@ -410,13 +411,13 @@
             $('#minutos').load('AjaxMinutos.php?tipo=<?php echo $_GET['tipo']?>&nivel=<?php echo $_GET['nivel']?>&id='+correctorDeContador);
         }
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
-        $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+        $('.contenedorTemporizador').html('<h1>'+tiempoTemporizador+'</h1>');
             if((contador != $('#spanTotal').text())){
                 
               //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     tiempoTemporizador--;
-                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    $('.contenedorTemporizador').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
                     if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('4s');
@@ -585,7 +586,7 @@
           $('#icono').removeClass('icon-pause').addClass('icon-play'); 
           var saludo = function (){
                     tiempoTemporizador--;
-                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    $('.contenedorTemporizador').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
                     if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('5s');
@@ -621,14 +622,15 @@
            actualizaAjax();
            $('#play').css({'display' : 'none'});
        }else{
+           
            if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
-           $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+           $('#ejercicio').html('<div class="contenedorCronometro"><div class="wrapper"><div class="pie spinner"></div><div class="pie filler"></div><div class="mask"></div></div></div><div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div><div style="margin-bottom:80px"><h3>Siguiente Ejercicio: Salto Tijera</h3></div>');
            if((contador != $('#spanTotal').text())){
                 
               //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     tiempoTemporizador--;
-                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+           $('.contenedorTemporizador').html('<div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div>');
                     if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('4s');

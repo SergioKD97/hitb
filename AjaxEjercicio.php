@@ -20,7 +20,7 @@ $modo = $_GET['modo'];
             $foto = $fetch[$i][4];
 
 
-            print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:45vh;" src="imagenes/Ejercicios/'.$foto.'"/></div>
+            print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:40vh;" src="imagenes/Ejercicios/'.$foto.'"/></div>
                      <h3 id="nombreEjercicio" class="text-center">'.$nombre.' <span id="repeticiones">x '.$repeticiones.'</span></h3>
           ');
          }
@@ -45,7 +45,7 @@ $modo = $_GET['modo'];
             $foto = $fetchPersonalizado[$l][6];
         }
         
-                    print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:45vh;" src="imagenesUsu/'.$foto.'"/></div>
+                    print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:40vh;" src="imagenesUsu/'.$foto.'"/></div>
                      <h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.' <span id="repeticiones">x '.$Repeticiones.'</span></h3>
           ');
        
@@ -71,7 +71,7 @@ $modo = $_GET['modo'];
             $foto = $fetchPersonalizadoT[$e][7];
         }
         
-        print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:45vh;" src="imagenesUsu/'.$foto.'"/></div>
+        print( ' <div><img class="img-responsive" style="margin: auto;margin-top: 6px;height:40vh;" src="imagenesUsu/'.$foto.'"/></div>
                      <h3 id="nombreEjercicio" class="text-center">'.$NombreEjer.'</h3>
           ');
        

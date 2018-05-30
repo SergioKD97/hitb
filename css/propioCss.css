@@ -399,6 +399,12 @@ and open the template in the editor.
     hr{border: 0; height: 2px; text-align: center; background-image: linear-gradient(to left, #fff, #000, #fff);
     }
     
+    .contenedorTemporizador{
+        position: relative;
+    z-index: 1000;
+    margin-top: -119px;
+    margin-bottom: 100px;
+    }
     
     
                                                         /*USUARIO FUERTE*/
@@ -877,3 +883,82 @@ padding-top: 12px    }
     
     
     
+                                                             /* PRUEBA CRONOMETRO */
+.wrapper {
+  position: relative;
+  margin: 40px auto;
+  background: white;
+  
+}
+
+.wrapper, .wrapper * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 114px;
+  height: 114px;
+  background-color: lavenderblush;
+  margin-top: 65px;
+}
+
+.wrapper .pie {
+  width: 50%;
+  height: 100%;
+  transform-origin: 100% 50%;
+  position: absolute;
+    background: lavenderblush;
+    border: 5px solid #5bc0de;
+  
+}
+
+.wrapper .spinner {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  z-index: 200;
+  border-right: none;
+  animation: rota 30s linear infinite;
+}
+
+.wrapper:hover .spinner,
+.wrapper:hover .filler,
+.wrapper:hover .mask {
+  animation-play-state: running;
+}
+
+.wrapper .filler {
+  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  left: 50%;
+  opacity: 0;
+  z-index: 100;
+  animation: opa 30s steps(1, end) infinite reverse;
+  border-left: none;
+}
+
+.wrapper .mask {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  background: inherit;
+  opacity: 1;
+  z-index: 300;
+  animation: opa 30s steps(1, end) infinite;
+}
+
+@keyframes rota {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes opa {
+  0% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
