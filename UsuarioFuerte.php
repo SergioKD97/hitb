@@ -376,13 +376,13 @@ session_start();
       </div>
       <div class="modal-body">
           <form id="formularioAgenda" name="formularioAgenda" method="POST" action="ActualizaEvento.php?modo=agenda">
-              <h5 id="fecha" class="text-center">hola</h5>
+              <h5 id="fecha" class="text-center" style="font-size: 18px">hola</h5>
               <input class="form-control" name="nombreAgenda" id="nombreAgenda" type="text" required="" placeholder="Nombre del evento"/>
               <input class="form-control" name="descripcionAgenda" id="descripcionAgenda" type="text" required="" placeholder="Descripcion del evento"/>              
               <input class="form-control" name="fechaAgenda" id="fechaAgenda" type="hidden" readonly="" />
               <!--para el clockPicker-->
-              <div class="input-group clockpicker" data-autoclose="true" >
-                  <input type="text" name="horaAgenda" id="horaAgenda" class="form-control" required=""/>
+              <div class="input-group clockpicker" data-autoclose="true"  >
+                  <input type="text" name="horaAgenda" id="horaAgenda" class="form-control" placeholder="Hora" required=""/>
               </div>
                             
               <button style="float: right;" type="reset" class="btn btn-danger">Borrar</button>
