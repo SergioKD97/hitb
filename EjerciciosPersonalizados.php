@@ -156,7 +156,13 @@
         
         <div class="container-fluid contenedorEjercicio">
             
-            <div class=" col-xs-12 col-sm-12 col-md-8" id="contenedorEjercicio" style="">
+          <div class="col-sm-2 col-md-3">
+                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
+                <br>    
+                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
+            </div>
+            
+            <div class=" col-xs-12 col-sm-12 col-md-6" id="contenedorEjercicio" style="">
                 
                 <div id="ejercicio" class="text-center"style="width: 100%;"></div>
                 <div id="cronometro" class="text-center"><h1><span id="temporizador" style="background-color: grey;"><span id="minutos">3</span>:<span id="cero">0</span><span id="segundos">3</span></span></h1></div>
@@ -177,14 +183,10 @@
                 </div>
                 
             </div>
-            <div class="col-sm-2 col-md-3">
-                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
-                <br>    
-                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
-            </div>
+            
         
         
-        <div  class="col-xs-12 col-sm-12 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+        <div  class="col-xs-12 col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue;"> <!--Aqui iran todos los ejercicios de la serie-->
                 <h3>Tanda de Ejercicios</h3>
                 <br>
                 <?php

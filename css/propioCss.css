@@ -779,9 +779,9 @@ padding-top: 12px    }
     @media screen and (max-width: 605px) {
          
         
-      .navResponsive{
-            width: 100%;
-        }    
+    .navResponsive{
+        width: 100%;
+    }    
         
     .bordeChulo {
         width: 370px;
@@ -849,6 +849,16 @@ padding-top: 12px    }
     margin-top: 19px;
     
 }
+
+
+
+.DivCalendario{width: 100%}
+
+.divPrimeroCalendario{width: 0%}
+
+
+
+
 
 
     

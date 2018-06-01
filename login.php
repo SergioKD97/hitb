@@ -17,7 +17,7 @@ require './metodos.php';
          $contraVerdad = $arrayContra[0][0];
          
          if($numeroVecesNombreUsuarioLogin > 0){ //CASO BUENO
-             if( $contrasenaLogin == $contraVerdad ){
+             if( $contrasenaLogin == $contraVerdad ){   
                 // ESTO ES PARA TENER LAS VARIABLES DEL USUARIO DISPONIBLES EN CUALQUIER MOMENTOS
                 $arrayVariablesUsuario = mysqli_fetch_all($queryCompruebaNombre);
                 $_SESSION['id'] = $arrayVariablesUsuario[0][0] ;

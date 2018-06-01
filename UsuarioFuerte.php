@@ -171,9 +171,9 @@ session_start();
         
 <br><br>            
 <div class="container-fluid contenedorUsuarioFuerte" >    
-    <div class="col-xs-1 hidden-md col-lg-1"></div>
+    <div class="col-xs-1 hidden-md col-lg-1 divPrimeroCalendario"></div>
     <div class="col-xs-10 col-md-6 col-lg-5 DivCalendario"  id="calendar"></div>
-    <div class="col-xs-1 hidden-lg"></div>
+
     <div class="col-xs-1 text-center clearBoth col-md-1 col-lg-1"></div>
     <div class="col-xs-10 col-md-6 col-lg-4 "  id="series">
         <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalSeries">Crea Tus Series</button>

@@ -31,7 +31,7 @@ session_start();
         //nomal y se buggea
         
         ?>
-        
+            
         
    <div id="main">
     <header>
