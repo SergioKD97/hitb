@@ -972,6 +972,13 @@ width: 14%    }
   z-index: 300;
   animation: opa 30s steps(1, end) infinite;
 }
+/*para pausar la animacion del crono*/
+.paused{
+        -webkit-animation-play-state: paused !important; 
+        -moz-animation-play-state: paused !important; 
+        -o-animation-play-state: paused !important;
+        animation-play-state: paused !important;
+}
 
 @keyframes rota {
   0% {
@@ -989,3 +996,4 @@ width: 14%    }
     opacity: 0;
   }
 }
+
