@@ -174,8 +174,8 @@ session_start();
     <div class="col-xs-1 hidden-md col-lg-1 divPrimeroCalendario"></div>
     <div class="col-xs-10 col-md-6 col-lg-5 DivCalendario"  id="calendar"></div>
 
-    <div class="col-xs-1 text-center clearBoth col-md-1 col-lg-1"></div>
-    <div class="col-xs-10 col-md-6 col-lg-4 "  id="series">
+    <div class="col-xs-1 text-center clearBoth col-md-1 col-lg-1 divPrimeroSeries"></div>
+    <div class="col-xs-10 col-md-6 col-lg-4 "  id="series" >
         <button class="btn btn-success btn-block" data-toggle="modal" data-target="#modalSeries">Crea Tus Series</button>
         <br>
         <h2 class="text-center clearBoth">Tus series: </h2>
@@ -195,9 +195,9 @@ session_start();
                     $id = $resultado[$i][0] ;
                     $nombreTabla = $resultado[$i][2];
 
-                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="btn btn-warning col-xs-10 col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
+                    print('<a href="EjerciciosPersonalizados.php?NombreSerie='.$nombreTabla.'&tipo=seriespersonalizado"><button style="margin-bottom: 10px;" id="boton'.$i.'" class="ejerciciosCreados btn btn-warning col-xs-10 col-md-10">'. str_replace('_', ' ', $nombreTabla) .'</button></a>'
                             . '<button id="ayuda'.$i.'" onclick="sS('."'muestraS$i'".')" class="ayudaComun btn btn-secondary col-xs-1 col-md-1"><i class="icon-question"></i></button>'
-                            . '<button id="'.$i.'"  class="btn btn-secondary col-xs-1 col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'
+                            . '<button id="'.$i.'"  class="borrarComun btn btn-secondary col-xs-1 col-md-1" onclick="modoBorrar(this.id,0)"><i id="icono'.$i.'" class="icon-lock"></i></button>'
                             . '<div style="clear: both"></div>'                           
                             . '<div id="muestraS'.$i.'"></div>');
                 }
@@ -221,16 +221,16 @@ session_start();
                     $id = $resultadot[$j][0] ;
                     $nombreTablat = $resultadot[$j][2];
 
-                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="btn btn-info col-xs-10 col-md-10">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
+                    print('<a href="EjerciciosPersonalizadosTiempo.php?NombreSerie='.$nombreTablat.'&tipo=tiempopersonalizado"><button id="botonT'.$j.'" class="ejerciciosCreados btn btn-info col-xs-10 col-md-10">'.str_replace('_', ' ', $nombreTablat).'</button></a>'
                             . '<button id="ayuda'.$j.'" onclick="sT('."'muestraT$j'".')" class="ayudaComun btn btn-secondary col-xs-1 col-md-1"><i class="icon-question"></i></button>'
-                            . '<button id="t'.$j.'"  class="btn btn-secondary col-xs-1 col-md-1" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
+                            . '<button id="t'.$j.'"  class="borrarComun btn btn-secondary col-xs-1 col-md-1" onclick="modoBorrar(this.id,1)" ><i id="iconot'.$j.'" class="icon-lock" ></i></button>'
                             . '<div style="clear: both"></div>'
                             . '<div id="muestraT'.$j.'"></div>');
                 }
             ?>
         </div>
     </div>
-    <div class="col-xs-1 hidden-md col-lg-1"></div>
+    <div class="col-xs-1 hidden-md col-lg-1 divSegundoSeries"></div>
 
 </div>     
 

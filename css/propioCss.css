@@ -734,6 +734,10 @@ padding-top: 12px    }
     
     .contenedorUsuarioFuerte{height: auto}
     
+    
+    .divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5{margin-left: 5px}
+    
+    
     }
     
     
@@ -857,11 +861,19 @@ padding-top: 12px    }
 .divPrimeroCalendario{width: 0%}
 
 
+#series{width: 100%}
+.divPrimeroSeries{width: 0%}
+.divSegundoSeries{width: 0%}
+
+.ejerciciosCreados{width: 70%}
 
 
+.ayudaComun{    
+width: 14%    }
 
+.borrarComun{width: 14%}
 
-    
+#HitBee{display: block}    
     }
                                                              /* start of large tablet styles */
     
@@ -885,8 +897,13 @@ padding-top: 12px    }
     }    
     
     
+#HitBee{display: none}    
     
+#iconoLogin{    margin-right: -55px;}
+
+#top-user{width: 56%}
     
+    .divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5{margin-left: 0px}
     }
     
     
