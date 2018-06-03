@@ -253,6 +253,10 @@
     //como son ejercicios personalizados, no hay descripcion
     $('#botonAyuda').hide();
  
+ 
+    function enviaPanel(){
+        location.href='UsuarioFuerte.php';
+    }
    function coloreaTanda(){ // pone en rojo el ejercicio actual en la tanda de ejercicios
     $('.tanda').css({'color' : 'black', 'font-weight':'normal'});
     $('#tanda'+ (contador-1)).css({'color' : 'red', 'font-weight':'bold'}); //esto ultimo es negrita
