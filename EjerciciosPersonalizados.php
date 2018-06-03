@@ -19,9 +19,11 @@
         <script src='js/calendario/jquery.min.js'></script>
         <script src='js/calendario/moment.min.js'></script>
         <script src='js/calendario/fullcalendar.js'></script>
-
+        <script src="js/frasesMotivadora.js" type="text/javascript"></script>
+        
+        
     </head>
-    <body class="body-wrap-home" >
+    <body class="body-wrap-home" style="background-color: lavenderblush;">
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
@@ -155,11 +157,9 @@
         
         
         <div class="container-fluid contenedorEjercicio">
-            
-          <div class="col-sm-2 col-md-3">
-                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
-                <br>    
-                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
+       
+            <div id="frasesMotivadoras" class="col-sm-12 col-md-3"> 
+                
             </div>
             
             <div class=" col-xs-12 col-sm-12 col-md-6" id="contenedorEjercicio" style="">
@@ -234,6 +234,8 @@
 //    HAY METODOS DUPLICADOS PARA EJECUTARSE SEGÚN EL METODO SEA DE REPETICIONES O TIEMPO
     //Sergio
     mainS();
+    fraseMotivadoras();
+    var contadorFrases = 0;
     var contadorS = 1;
 //fin sergio 
     var ayuda = false;
@@ -252,6 +254,42 @@
     adaptaInterfaz();
     //como son ejercicios personalizados, no hay descripcion
     $('#botonAyuda').hide();
+ 
+ 
+ 
+ 
+    function fraseMotivadoras() {
+        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
+
+        $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
+    
+      setTimeout("cambiarFrase()", 4000);
+      
+      console.log(contadorFrases);
+    
+    }
+    
+     function cambiarFrase() {
+        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
+         
+         
+        $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
+        
+      setTimeout("fraseMotivadoras()", 4000);
+      
+            console.log(contadorFrases);
+
+     }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
     function siguienteEjercicio(){
       var correctorDeContador = contador+1;
@@ -677,8 +715,6 @@
                 $('.submenu').click(function(){
                         $(this).children('.children').slideToggle();
                 });
-                
-                
                 
                 
                 

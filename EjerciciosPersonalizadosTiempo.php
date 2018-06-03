@@ -18,13 +18,16 @@ session_start();
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/jquery.raty.js" type="text/javascript"></script>
         
+        <script src="js/frasesMotivadora.js" type="text/javascript"></script>
+
+        
         <link rel='stylesheet' href='css/calendario/fullcalendar.css' />
         <script src='js/calendario/jquery.min.js'></script>
         <script src='js/calendario/moment.min.js'></script>
         <script src='js/calendario/fullcalendar.js'></script>
-
+        
     </head>
-    <body class="body-wrap-home"  >
+    <body class="body-wrap-home" style="background-color: lavenderblush;">
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
@@ -168,10 +171,8 @@ session_start();
         <div class="container-fluid contenedorEjercicio">
             
             
-            <div class="col-sm-2 col-md-3"> 
-                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" style="border-radius: 50%; margin-left: 10%;" ><i class="icon-question" ></i></button> 
-                <br>
-                <div id="textoAyuda" style="width: 100%; "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
+            <div id="frasesMotivadoras" class="col-sm-12 col-md-3"> 
+                
             </div>
             
             <div class="col-xs-12 col-sm-12 col-md-6" id="contenedorEjercicio" style="">
@@ -191,7 +192,7 @@ session_start();
                     <button onclick="sumaEjercicio('flecha');" name="botonMas" id="botonMas" class="btn btn-info" style="border-radius: 50%;"><i class="icon-arrow-right" ></i></button>            
                 </div>
                 <div id="menuBotones" class="text-center" style="margin: auto;">
-                    <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i id="icono" class="icon-pause"></i></button>
+                   <button id="play" class="btn btn-success" onclick="actualizaPlay();" style="border-radius: 50%;"><i id="icono" class="icon-pause"></i></button>
                 </div>
                 
             </div>
@@ -244,6 +245,8 @@ session_start();
 //    HAY METODOS DUPLICADOS PARA EJECUTARSE SEGÚN EL METODO SEA DE REPETICIONES O TIEMPO
     //Sergio
     mainS();
+    fraseMotivadoras();
+    var contadorFrases = 0;
     var contadorS = 1;
 //fin sergio 
     var ayuda = false;
@@ -264,6 +267,36 @@ session_start();
     adaptaInterfaz();
   
   
+    
+    
+     function fraseMotivadoras() {
+        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
+
+        $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
+    
+      setTimeout("cambiarFrase()", 4000);
+      
+      console.log(contadorFrases);
+    
+    }
+    
+     function cambiarFrase() {
+        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
+         
+         
+        $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
+        
+      setTimeout("fraseMotivadoras()", 4000);
+      
+            console.log(contadorFrases);
+
+     }
+    
+    
+    
+    
+    
+    
     
     function siguienteEjercicio(){
       var correctorDeContador = contador+1;
@@ -705,9 +738,12 @@ session_start();
              }
         
         
-        
     }
     
+    
+    
+       
+
 
 
 

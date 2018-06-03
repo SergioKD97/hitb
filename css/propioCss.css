@@ -205,7 +205,13 @@ and open the template in the editor.
     }
 
 
-
+#frasesMotivadoras{
+    border-radius: 6px;
+    padding: 2px;
+    display: block;
+border: 2px solid cadetblue;
+font-size: 17px;
+    font-style: italic;}
 
 
 
@@ -736,6 +742,11 @@ padding-top: 12px    }
     
     
     .divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5{margin-left: 5px}
+    
+    #frasesMotivadoras{
+    margin-top: 20px;
+    margin-bottom: 20px
+    }
     
     
     }
