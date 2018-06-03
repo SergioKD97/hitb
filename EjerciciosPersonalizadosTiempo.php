@@ -21,7 +21,7 @@
         <script src='js/calendario/fullcalendar.js'></script>
 
     </head>
-    <body class="body-wrap-home" >
+    <body class="body-wrap-home"  >
         <?php 
         include './metodos.php';
         $miMetodos = new metodos();
