@@ -3,7 +3,42 @@
 require './metodos.php';
 //
 $modo = $_GET['modo'];
-
+//este if es para poner el siguiente ejercicio cuando esta el descanso
+if(isset($_GET['sigEjercicio'])){// si existe sigEjercicio, solo hara esto y nada mas
+    //para el predeterminado
+        if($_GET['sigEjercicio'] =='si'){
+            $sql = "select nombre from ".$_GET['tipo']." where nivel = ".$_GET['nivel']. " and idNivel =". $_GET['id'];
+            $ejecutaSQL = mysqli_query($creaConexion, $sql);
+            $fetch = mysqli_fetch_all($ejecutaSQL);
+        
+            $sigEj = $fetch[0][0];
+            print_r($sigEj);
+        }//para las repes
+        if($_GET['sigEjercicio'] =='siRepes'){
+                    $sqlPersonalizado = "select NombreEjer from seriesPersonalizado where"
+                . " NombreUsu = '".$_SESSION['nombreUsuario']."' and "
+                . "NombreTabla = '".$_GET['NombreSerie']."' and "
+                . "idEjercicio = ".$_GET['id']."";
+            $ejecutaSQL = mysqli_query($creaConexion, $sqlPersonalizado);
+            $fetch = mysqli_fetch_all($ejecutaSQL);
+        
+            $sigEj = $fetch[0][0];
+            print_r($sigEj);
+        }//para el tiempo
+        if($_GET['sigEjercicio'] =='siTiempo'){
+                    $sqlPersonalizadoT = "select NombreEjer from tiempopersonalizado where"
+                . " NombreUsu = '".$_SESSION['nombreUsuario']."' and "
+                . "NombreTabla = '".$_GET['NombreSerie']."' and "
+                . "idEjercicio = ".$_GET['id']."";
+            $ejecutaSQL = mysqli_query($creaConexion, $sqlPersonalizadoT);
+            $fetch = mysqli_fetch_all($ejecutaSQL);
+        
+            $sigEj = $fetch[0][0];
+            print_r($sigEj);
+            
+        }
+        
+}else{
 //este if esta para ver si la serie es personalizada o creada. Si existe la variable
 // seccion es que es personalizada, sino es de la normales
     if(!isset($_GET['seccion'])){
@@ -80,6 +115,7 @@ $modo = $_GET['modo'];
         }
  
     }
+}
 
  ?>
 <script>

@@ -260,6 +260,13 @@
     actualizaAjax();
     adaptaInterfaz();
   
+  
+    
+    function siguienteEjercicio(){
+      var correctorDeContador = contador+1;
+      $('#sigEjercicio').load('AjaxEjercicio.php?sigEjercicio=siTiempo&NombreUsu=<?php echo $_SESSION['nombreUsuario']?>&NombreSerie=<?php echo $_GET['NombreSerie']?>&seccion=personalizadoTiempo&modo='+modo+'&id='+correctorDeContador);
+      
+    }
     function enviaPanel(){
         location.href='UsuarioFuerte.php';
     }
@@ -400,7 +407,8 @@
             $('.contenedorTemporizador').html('<h1>'+tiempoTemporizador+'</h1>');
         }else{
             console.log('no existo');
-            $('#ejercicio').html('<div class="contenedorCronometro"><div id="wrapper" class="wrapper"><div id="spinner" class="pie spinner"></div><div id="filler" class="pie filler"></div><div id="mask" class="mask"></div></div></div><div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div><div style="margin-bottom:80px"><h3>Siguiente Ejercicio: Salto Tijera</h3></div>');
+            $('#ejercicio').html('<div class="contenedorCronometro"><div id="wrapper" class="wrapper"><div id="spinner" class="pie spinner"></div><div id="filler" class="pie filler"></div><div id="mask" class="mask"></div></div></div><div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div><div style="margin-bottom:80px"><h3>Siguiente Ejercicio: <span id="sigEjercicio"></span></h3></div>');
+            siguienteEjercicio();
             
         }
            
@@ -601,7 +609,8 @@
            $('#play').css({'display' : 'none'});
        }else{
            if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
-           $('#ejercicio').html('<div class="contenedorCronometro"><div class="wrapper"><div class="pie spinner"></div><div class="pie filler"></div><div class="mask"></div></div></div><div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div><div style="margin-bottom:80px"><h3>Siguiente Ejercicio: Salto Tijera</h3></div>');
+           $('#ejercicio').html('<div class="contenedorCronometro"><div class="wrapper"><div class="pie spinner"></div><div class="pie filler"></div><div class="mask"></div></div></div><div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div><div style="margin-bottom:80px"><h3>Siguiente Ejercicio: <span id="sigEjercicio"></span></h3></div>');
+           siguienteEjercicio();
            if((contador != $('#spanTotal').text())){
                 
               //  var contadorCronometro = $('#ejercicio').text();
