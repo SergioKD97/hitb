@@ -245,10 +245,13 @@ session_start();
         function muestraLogin(id){
             if(id === 'login'){
             $('#formularioRegsitroModal').hide();
+            $('#tituloModal').text('Login');
             $('#formularioLogin').css({'display' : 'inline'});
             }else{
-            $('#formularioRegsitroModal').css({'display' : 'inline'});
             $('#formularioLogin').hide();
+            $('#tituloModal').text('Formulario de Registro');
+            $('#formularioRegsitroModal').css({'display' : 'inline'});
+            
             }
             
         }

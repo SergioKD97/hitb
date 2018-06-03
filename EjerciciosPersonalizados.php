@@ -303,7 +303,7 @@
        
         if(typeof tiempoMinutos !== 'undefined'){clearInterval(tiempoMinutos);}
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
-         
+        $('.wrapper,.pie,.mask').addClass('paused'); 
       
     }else{
       $('#icono').removeClass('icon-pause').addClass('icon-play'); 
@@ -387,13 +387,21 @@
 //            $('#minutos').load('AjaxMinutos.php?tipo=<?php// echo $_GET['tipo']?>&nivel=<?php// echo $_GET['nivel']?>&id='+correctorDeContador);
         }
         if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
-        $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
-            if((contador != $('#spanTotal').text())){
-                
+        if($('.contenedorCronometro').length){
+            console.log('existo');
+            $('.contenedorTemporizador').html('<h1>'+tiempoTemporizador+'</h1>');
+        }else{
+            console.log('no existo');
+            $('#ejercicio').html('<div class="contenedorCronometro"><div id="wrapper" class="wrapper"><div id="spinner" class="pie spinner"></div><div id="filler" class="pie filler"></div><div id="mask" class="mask"></div></div></div><div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div><div style="margin-bottom:80px"><h3>Siguiente Ejercicio: Salto Tijera</h3></div>');
+            
+        }
+           
+         if((contador != $('#spanTotal').text())){
+              $('.wrapper,.pie,.mask').removeClass('paused'); 
               //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     tiempoTemporizador--;
-                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    $('.contenedorTemporizador').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
                     if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('4s');
@@ -541,13 +549,15 @@
                
         if($('#icono').hasClass('icon-play')){ 
            $('#icono').removeClass('icon-play').addClass('icon-pause');  
+           $('.wrapper,.pie,.mask').addClass('paused');
            if(typeof intervalo !== 'undefined'){clearInterval(intervalo);}
 
         }else{
           $('#icono').removeClass('icon-pause').addClass('icon-play'); 
           var saludo = function (){
                     tiempoTemporizador--;
-                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    $('.wrapper,.pie,.mask').removeClass('paused'); //o aqui
+                    $('.contenedorTemporizador').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
                     if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('5s');
@@ -584,13 +594,13 @@
            $('#play').css({'display' : 'none'});
        }else{
            if(typeof intervalo !== 'undefined'){clearInterval(intervalo); tiempoTemporizador = 30;}
-           $('#ejercicio').html('<h1>'+tiempoTemporizador+'</h1>');
+           $('#ejercicio').html('<div class="contenedorCronometro"><div class="wrapper"><div class="pie spinner"></div><div class="pie filler"></div><div class="mask"></div></div></div><div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div><div style="margin-bottom:80px"><h3>Siguiente Ejercicio: Salto Tijera</h3></div>');
            if((contador != $('#spanTotal').text())){
                 
               //  var contadorCronometro = $('#ejercicio').text();
                 var saludo = function (){
                     tiempoTemporizador--;
-                    $('#ejercicio').html('<h1 class="text-center">'+tiempoTemporizador+'</h1>');
+                    $('.contenedorTemporizador').html('<div class="contenedorTemporizador"><h1>'+tiempoTemporizador+'</h1></div>');
                     if(tiempoTemporizador === 5){
                         console.log('cambiar esto a 5s');
                         reproduceSonido('4s');
