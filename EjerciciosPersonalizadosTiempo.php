@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<?php session_start();
+<?php
+session_start();
+ error_reporting(0);
+
 ?>
 <html >
     <head>
@@ -31,7 +34,7 @@
         $nivel = "";
         $tipo = $_GET['tipo'];
         $Modo = $tipo[0];
-
+       
         ?>
         
         
@@ -556,6 +559,7 @@
         $('#play').hide();
         $('#botonMenos').hide();
         $('#numeroEjercicio').hide();
+        $('#temporizador').hide();//esto es para cuando solo tiene un ejercicio y se lo salta, para que no de error
         añadeAlCalendario();
     }
 

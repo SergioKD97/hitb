@@ -1,7 +1,7 @@
     <?php
     session_start();
 require './metodos.php';
-
+error_reporting(0);
 $id = $_GET['id'];
     if(!isset($_GET['seccion'])){
         
