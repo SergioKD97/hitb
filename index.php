@@ -226,24 +226,14 @@ session_start();
         $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
         $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
 
-
-        widthConstante();
-      
-
-
-        function widthConstante(){
-            var repetir = function (){
-                        if(innerWidth <= 991){
-//                            $('#borrar').text('Sergio');
-                        }   
-                        else{
-//                            $('#borrar').text('Puta');
-                        }
-            };
-            CronoWidth = setInterval(repetir, 100);
-        }
-
-
+        // metodo para cambiar el resize
+    $(window).on("resize", function(){
+        console.log('marc puto amo');
+        if(innerWidth <991){
+            $('.divNiveles3,.triangulo3').css({'display':'none'});
+        }     
+                
+    });
 
 
 
