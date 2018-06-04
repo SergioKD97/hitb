@@ -234,8 +234,7 @@
 //    HAY METODOS DUPLICADOS PARA EJECUTARSE SEGÚN EL METODO SEA DE REPETICIONES O TIEMPO
     //Sergio
     mainS();
-    fraseMotivadoras();
-    var contadorFrases = 0;
+    fraseMotivadoras();    var contadorFrases = 0;
     var contadorS = 1;
 //fin sergio 
     var ayuda = false;
@@ -254,7 +253,7 @@
     adaptaInterfaz();
     //como son ejercicios personalizados, no hay descripcion
     $('#botonAyuda').hide();
- 
+    fraseMotivadoras();
  
  
  
