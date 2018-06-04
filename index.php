@@ -227,11 +227,21 @@ session_start();
         $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
 
 
-
+        widthConstante();
       
 
 
-
+        function widthConstante(){
+            var repetir = function (){
+                        if(innerWidth <= 991){
+//                            $('#borrar').text('Sergio');
+                        }   
+                        else{
+//                            $('#borrar').text('Puta');
+                        }
+            };
+            CronoWidth = setInterval(repetir, 100);
+        }
 
 
 
