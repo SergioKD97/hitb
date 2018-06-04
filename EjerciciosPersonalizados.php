@@ -234,7 +234,7 @@
 //    HAY METODOS DUPLICADOS PARA EJECUTARSE SEGÚN EL METODO SEA DE REPETICIONES O TIEMPO
     //Sergio
     mainS();
-    fraseMotivadoras();    var contadorFrases = 0;
+    var contadorFrases = 0;
     var contadorS = 1;
 //fin sergio 
     var ayuda = false;
@@ -257,7 +257,8 @@
  
  
  
-    function fraseMotivadoras() {
+     function fraseMotivadoras() {
+
         if(contadorFrases === 28){contadorFrases=0};
      
         $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
