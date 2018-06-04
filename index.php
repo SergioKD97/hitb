@@ -226,12 +226,34 @@ session_start();
         $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
         $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
 
+
         // metodo para cambiar el resize
     $(window).on("resize", function(){
         console.log('marc puto amo');
-        if(innerWidth <991){
-            $('.divNiveles3,.triangulo3').css({'display':'none'});
-        }     
+        
+        if(innerWidth === 1199){
+            $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+            $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        }
+        if(innerWidth === 991){
+            $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+            $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        }
+        if(innerWidth === 767){
+            $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+            $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        }
+        if(innerWidth === 605){
+            $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+            $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        }
+        if(innerWidth === 440){
+            $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+            $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+        }
+            
+    
+        
                 
     });
 
@@ -482,17 +504,11 @@ session_start();
 
          
 
-
-
-
-
-
-
-
-
         
         
         }
+        
+        
         //Fin Marc
         function mainS () {
                 $('.iconoMenu').click(function(){
