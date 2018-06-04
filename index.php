@@ -286,7 +286,7 @@ session_start();
                 case 5: nombreBBDD = 'pierna';break;
         }
         //agrupar todo el tipo en una sola variable
-        var tipoFinal = tipo.toString() + nombreBBDD .toString();
+        var tipoFinal = tipo.toString() + nombreBBDD.toString();
 
         // aqui se ajusta a que div se va a meter la informacion dependiendo del tamaño
         if(innerWidth < 605 ){

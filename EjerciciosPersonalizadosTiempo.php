@@ -588,7 +588,7 @@ session_start();
         
     }
     function completado (){
-        $('#ejercicio').html('<h1>COMPLETADO!</h1><br><img style=height:40vh; src="imagenes/ganador.gif"/>"');
+        $('#ejercicio').html('<h1>COMPLETADO!</h1><br><img style=height:40vh; src="imagenes/ganador.gif"/>');
         $('#botonMas').hide();
         $('#play').hide();
         $('#botonMenos').hide();

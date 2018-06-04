@@ -261,7 +261,6 @@
     mainS();
     var contadorS = 1;
 //fin sergio 
-    var ayuda = false;
     var contador = 1; 
     var temporizadorCorrecto = true;
     var tiempoTemporizador = 30;
@@ -462,19 +461,15 @@
     function apareceAyuda(){
         
         if(innerWidth <= 991){
-            
+            $('#textoAyuda').css({ 'display': 'none'});
             $('#modalAyuda').modal();
         }else{
-            if(!ayuda){
-                $('#textoAyuda').css({ 'display': 'block'});
-                ayuda = true;
-            }else{
+            if($('#textoAyuda').is(":visible")){                
                 $('#textoAyuda').css({ 'display': 'none'});
-                ayuda = false;
+            }else{
+                $('#textoAyuda').css({ 'display': 'block'});                
             }
-        }
-            
-            return ayuda;
+        }            
     }
     
     
@@ -581,7 +576,7 @@
         
     }
     function completado (){
-        $('#ejercicio').html('<h1>COMPLETADO!</h1><br><img style=height:40vh; src="imagenes/ganador.gif"/>"');
+        $('#ejercicio').html('<h1>COMPLETADO!</h1><br><img style=height:40vh; src="imagenes/ganador.gif"/>');
         $('#botonMas').hide();
         $('#play').hide();
         $('#botonMenos').hide();
