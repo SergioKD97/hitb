@@ -186,7 +186,7 @@
         
         
     <div class="container-fluid contenedorEjercicio " >
-            <div  class="col-sm-12 col-md-3 text-center"> <!--Aqui iran todos los ejercicios de la serie-->
+        <div  class="col-sm-12 col-md-3 text-center" style="margin-top: 12px"> <!--Aqui iran todos los ejercicios de la serie-->
                <button id="botonAyuda" class="btn btn-info" onclick="apareceAyuda()" f style="border-radius: 50%; margin-left: 8px;" ><i class="icon-question" ></i></button> 
                 <div id="textoAyuda" style="width: 100%;border-radius: 6px;padding: 2px "><?php echo $miMetodos->consultaBotonAyuda($creaConexion, $postContador)?></div>
             </div>
@@ -214,7 +214,7 @@
                 </div>
                 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue;">
+            <div class="col-xs-12 col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue; margin-top: 5px">
                 <h3 >Tanda de Ejercicios</h3>
                 <br>
                 <?php

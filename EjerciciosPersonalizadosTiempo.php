@@ -201,7 +201,7 @@ session_start();
         
         
         
-        <div  class="col-xs-12 col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue;"> <!--Aqui iran todos los ejercicios de la serie-->
+        <div  class="col-xs-12 col-sm-12 col-md-3 text-center" style="border: 2px solid cadetblue;margin-top: 5px"> <!--Aqui iran todos los ejercicios de la serie-->
                 <h3>Tanda de Ejercicios</h3>
                 <br>
                 <?php
