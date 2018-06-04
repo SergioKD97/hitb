@@ -259,23 +259,24 @@
  
  
     function fraseMotivadoras() {
-        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
-
+        if(contadorFrases === 28){contadorFrases=0};
+     
         $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
-    
-      setTimeout("cambiarFrase()", 4000);
+      
+      contadorFrases = contadorFrases + 1;
+      setTimeout("cambiarFrase()", 10000);
       
       console.log(contadorFrases);
     
     }
     
      function cambiarFrase() {
-        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
-         
-         
+        if(contadorFrases === 28){contadorFrases=0};
+        
         $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
         
-      setTimeout("fraseMotivadoras()", 4000);
+        contadorFrases = contadorFrases + 1;
+        setTimeout("fraseMotivadoras()", 10000);
       
             console.log(contadorFrases);
 

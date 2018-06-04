@@ -245,7 +245,6 @@ session_start();
 //    HAY METODOS DUPLICADOS PARA EJECUTARSE SEGÚN EL METODO SEA DE REPETICIONES O TIEMPO
     //Sergio
     mainS();
-    fraseMotivadoras();
     var contadorFrases = 0;
     var contadorS = 1;
 //fin sergio 
@@ -265,28 +264,30 @@ session_start();
     $('#botonAyuda').hide();
     actualizaAjax();
     adaptaInterfaz();
-  
+    fraseMotivadoras();
   
     
     
      function fraseMotivadoras() {
-        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
 
+        if(contadorFrases === 28){contadorFrases=0};
+     
         $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
-    
-      setTimeout("cambiarFrase()", 4000);
+      
+      contadorFrases = contadorFrases + 1;
+      setTimeout("cambiarFrase()", 10000);
       
       console.log(contadorFrases);
     
     }
     
      function cambiarFrase() {
-        contadorFrases = Math.floor(Math.random() * frasesMotivadoras.length);
-         
-         
+        if(contadorFrases === 28){contadorFrases=0};
+        
         $('#frasesMotivadoras').hide().html('<div>'+frasesMotivadoras[contadorFrases]+'</div>').fadeIn('slow');
         
-      setTimeout("fraseMotivadoras()", 4000);
+        contadorFrases = contadorFrases + 1;
+        setTimeout("fraseMotivadoras()", 10000);
       
             console.log(contadorFrases);
 
