@@ -669,9 +669,7 @@ padding-top: 12px    }
             font-size: 39px;
         }
         
-        .bordeChulo1 {
-            font-size: 28px !important;
-        }
+       
    
         #iconoLogin{margin-right: -40px;
         font-size: 62px !important;
@@ -685,27 +683,27 @@ padding-top: 12px    }
         .Pecho {margin-left: 80px !important;}
         
         .Pecho div p{margin: -4px 31px 15px;}
-        .Pecho div .series{}
-        .Pecho div .tiempo{}
+        .Pecho div .series{font-size: 28px}
+        .Pecho div .tiempo{font-size: 28px}
 
         .Hombro div p{margin: -7px 32px 15px;}
-        .Hombro div .series{}
-        .Hombro div .tiempo{}
+        .Hombro div .series{font-size: 28px}
+        .Hombro div .tiempo{font-size: 28px}
 
 
         .Brazo {margin-left: 80px !important;}    
         .Brazo div p{margin: 13px 32px 35px;font-size: 46px;}
-        .Brazo div .series{}
-        .Brazo div .tiempo{}
+        .Brazo div .series{font-size: 28px}
+        .Brazo div .tiempo{font-size: 28px}
 
         .Abs div p{margin: 13px 32px 32px;font-size: 46px;}    
-        .Abs div .series{}
-        .Abs div .tiempo{}
+        .Abs div .series{font-size: 28px}
+        .Abs div .tiempo{font-size: 28px}
 
         .Pierna {margin-left: 225px !important;}  
         .Pierna div p{margin: 13px 32px 32px;font-size: 46px;}
-        .Pierna div .series{}
-        .Pierna div .tiempo{}
+        .Pierna div .series{font-size: 28px}
+        .Pierna div .tiempo{font-size: 28px}
 
         
         
@@ -813,28 +811,28 @@ padding-top: 12px    }
         
     .Pecho {margin-left: 0px !important;}
     .Pecho div p{margin: -4px 50px 18px;}
-    .Pecho div .series{font-size: 36px !important}
-    .Pecho div .tiempo{font-size: 36px !important}
+    .Pecho div .series{font-size: 36px}
+    .Pecho div .tiempo{font-size: 36px}
     
     .Hombro {margin-left: 0px !important;}
     .Hombro div p{margin: -7px 50px 18px;}
-    .Hombro div .series{font-size: 36px !important}
-    .Hombro div .tiempo{font-size: 36px !important}
+    .Hombro div .series{font-size: 36px}
+    .Hombro div .tiempo{font-size: 36px}
 
     .Brazo {margin-left: 0px !important;}    
     .Brazo div p{margin: 17px 50px 45px; font-size: 55px}
-    .Brazo div .series{font-size: 36px !important}
-    .Brazo div .tiempo{font-size: 36px !important}
+    .Brazo div .series{font-size: 36px }
+    .Brazo div .tiempo{font-size: 36px }
 
     .Abs {margin-left: 0px !important;}    
     .Abs div p{margin: 17px 50px 45px;font-size: 55px}    
-    .Abs div .series{font-size: 36px !important}
-    .Abs div .tiempo{font-size: 36px !important}
+    .Abs div .series{font-size: 36px}
+    .Abs div .tiempo{font-size: 36px}
 
     .Pierna {margin-left: 0px !important;}
     .Pierna div p{margin: 17px 50px 45px;font-size: 55px}
-    .Pierna div .series{font-size: 36px !important}
-    .Pierna div .tiempo{font-size: 36px !important}    
+    .Pierna div .series{font-size: 36px}
+    .Pierna div .tiempo{font-size: 36px}    
      
     
      .container {
@@ -892,10 +890,13 @@ width: 14%    }
     
     @media screen and (max-width: 440px) {
     
+      
     
+        
     .bordeChulo {
         width: 298px;
         height: 236px;
+            font-size: 39px;
     }    
     
     
@@ -917,8 +918,27 @@ width: 14%    }
 #top-user{width: 56%}
     
     .divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5{margin-left: 0px}
-    }
     
+    
+    
+    
+        .Pecho div .series{font-size: 28px}
+        .Pecho div .tiempo{font-size: 28px}
+
+        .Hombro div .series{font-size: 28px}
+        .Hombro div .tiempo{font-size: 28px}
+
+
+        .Brazo div .series{font-size: 28px}
+        .Brazo div .tiempo{font-size: 28px}
+
+        .Abs div .series{font-size: 28px}
+        .Abs div .tiempo{font-size: 28px}
+
+        .Pierna div .series{font-size: 28px}
+        .Pierna div .tiempo{font-size: 28px}
+    
+    }
     
     
     

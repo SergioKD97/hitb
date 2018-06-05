@@ -231,23 +231,29 @@ session_start();
     $(window).on("resize", function(){
         console.log('marc puto amo');
         
-        if(innerWidth === 1199){
+        if((innerWidth < 1199) && (innerWidth > 1189)){
+            
+        console.log('ENTRA');
+            $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
+            $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
+         }
+        if((innerWidth < 991) && (innerWidth > 981)){
+        console.log('ENTRA');
             $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
             $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
         }
-        if(innerWidth === 991){
+        if((innerWidth < 767) && (innerWidth > 757)){
+            console.log('ENTRA');
             $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
             $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
         }
-        if(innerWidth === 767){
+        if((innerWidth < 605) && (innerWidth > 595)){
+            console.log('ENTRA');
             $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
             $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
         }
-        if(innerWidth === 605){
-            $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
-            $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
-        }
-        if(innerWidth === 440){
+        if((innerWidth < 440) && (innerWidth > 430)){
+            console.log('ENTRA');
             $('.triangulo1,.triangulo2,.triangulo3,.triangulo4,.triangulo5').hide();
             $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
         }
