@@ -911,11 +911,9 @@ width: 14%    }
     }    
     
     
-#HitBee{display: none}    
-    
-#iconoLogin{    margin-right: -55px;}
+#HitBee{display: block;width: 190px;}    
 
-#top-user{width: 56%}
+#top-user{width: 33%}
     
     .divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5{margin-left: 0px}
     

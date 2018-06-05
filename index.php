@@ -258,7 +258,29 @@ session_start();
             $('.divNiveles1,.divNiveles2,.divNiveles3,.divNiveles4,.divNiveles5').hide();
         }
             
-    
+        if (document.getElementById("iconoLogin")) {
+                $('#marginLogin').css({'margin-left' : '0px'});
+                $('#loginPop').css({'margin-left' : '0px'});
+                
+                
+                    if (document.getElementById("iconoLogin")) {
+                        
+                        if((innerWidth < 440) && (innerWidth > 420)){
+                   
+                            $('#HitBee').css({'display' : 'none'});
+                            $('#iconoLogin').css({'margin-right' : '-55px'});
+                            $('#top-user').css({'width' : '56%'});
+                        }
+                
+                        if((innerWidth > 440) && (innerWidth < 460)){
+                            $('#HitBee').css({'display' : 'inline-block'});
+                            document.getElementById("top-user").style.width = null;
+                            document.getElementById("iconoLogin").style.margin = null;
+                            $('#iconoLogin').css({'margin-right' : 'none'});
+                        }                
+                    }
+                
+        }
         
                 
     });
@@ -545,6 +567,12 @@ session_start();
                 $('#marginLogin').css({'margin-left' : '0px'});
                 $('#loginPop').css({'margin-left' : '0px'});
                 
+                
+                if(innerWidth > 1199){
+                    
+                }
+             
+             
              
                 
              }
